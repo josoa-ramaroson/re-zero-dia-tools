@@ -34,13 +34,13 @@ require 'configuration.php';
 
 $sql5="SELECT matricule , idau FROM $tbl_automobile  ORDER BY matricule ASC";
 $result5 = mysqli_query($link, $sql5);
-while ($row5 = mysql_fetch_assoc($result5)) {
+while ($row5 = mysqli_fetch_assoc($result5)) {
 echo '<option value='.$row5['idau'].'>'.$row5['matricule'].'</option>';
 }
 $idau=$_POST['idau'];
 $sql4 = "SELECT * FROM $tbl_automobile  where idau='$idau'";
 $result4 = mysqli_query($link, $sql4);
-while ($row4 = mysql_fetch_assoc($result4)) {
+while ($row4 = mysqli_fetch_assoc($result4)) {
 $id=$row4['id'];
 }  
 ?>
@@ -146,7 +146,7 @@ $datam=mysqli_fetch_array($resultm);
       <?php
 $sql2 = ("SELECT *  FROM $tbl_libelle where categorie='Ti' ORDER BY libelle  ASC ");
 $result2 = mysqli_query($link, $sql2);
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 echo '<option> '.$row2['libelle'].' </option>';
 }
 
@@ -211,7 +211,7 @@ echo '<option> '.$row2['libelle'].' </option>';
         <?php
 $sql2 = ("SELECT *  FROM $tbl_libelle where categorie='Ti' ORDER BY libelle  ASC ");
 $result2 = mysqli_query($link, $sql2);
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 echo '<option> '.$row2['libelle'].' </option>';
 }
 

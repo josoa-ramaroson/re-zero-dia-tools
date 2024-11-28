@@ -30,7 +30,7 @@ Require("bienvenue.php");  // on appelle la page contenant la fonction
 <?php
 $sql = "SELECT count(id) FROM $tbl_contact  WHERE statut='6' GROUP BY  ville";  
 
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
  
  
 $nb_total = mysqli_fetch_array($resultat);
@@ -52,7 +52,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
  
 $sql = "SELECT c.quartier, c.ville,  COUNT(id) AS nbch  FROM  $tbl_contact c WHERE statut='6' GROUP BY  ville  order by ville LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC  DESC
   
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 ?>
  
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -74,13 +74,13 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 
 
 }
-mysql_free_result ($req); 
+mysqli_free_result ($req);
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
-mysql_free_result ($resultat);  
+mysqli_free_result ($resultat);
 
 
-mysql_close ();  
+mysqli_close($link);
 
 	                 function gettatut($fetat){
 				   if ($fetat=='imprimé')         { echo $couleur="#fdff00";}//jaune		 

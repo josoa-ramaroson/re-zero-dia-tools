@@ -120,7 +120,7 @@ require "client_lient.php";
 $T=$datam['Tarif'];
 $sql82 = ("SELECT * FROM tarif where idt='$T'");
 $result82 = mysqli_query($link, $sql82);
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 echo $row82['Libelle'];
 }
 
@@ -199,7 +199,7 @@ echo $row82['Libelle'];
 $sql81 = ("SELECT * FROM z_annee  ORDER BY annee ASC ");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
 }
 ?>

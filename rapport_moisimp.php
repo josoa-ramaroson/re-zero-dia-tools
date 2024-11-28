@@ -39,7 +39,7 @@ mysqli_select_db($db)or die("cannot select DB");
   
 $sql = "SELECT count(*) FROM $tbl_paiement";  
 
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
  
  
 $nb_total = mysqli_fetch_array($resultat);  
@@ -62,42 +62,42 @@ $sql = "SELECT SUM(paiement) AS Paie, st, date FROM $tbl_paiement where MONTH(da
 
 	$sqPT="SELECT SUM(paiement) AS Paie  FROM $tbl_paiement where MONTH(date)=$mois and YEAR(date)=$annee "; 
 	$RPT = mysqli_query($link, $sqPT);
-	$AFPT = mysql_fetch_assoc($RPT);
+	$AFPT = mysqli_fetch_assoc($RPT);
 	$tPT=$AFPT['Paie']; 
 
 // on ex?cute la requ?te  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 
 	$sqPS="SELECT SUM(paiement) AS Paie , st FROM $tbl_paiement where st='E' and MONTH(date)=$mois and YEAR(date)=$annee "; 
 	$RPS = mysqli_query($link, $sqPS);
-	$AFPS = mysql_fetch_assoc($RPS);
+	$AFPS = mysqli_fetch_assoc($RPS);
 	$tPS=$AFPS['Paie']; 
 	
 	$sqPP="SELECT SUM(paiement) AS Paie , st FROM $tbl_paiement where st='P' and  MONTH(date)=$mois and YEAR(date)=$annee"; 
 	$RPP = mysqli_query($link, $sqPP);
-	$AFPP = mysql_fetch_assoc($RPP);
+	$AFPP = mysqli_fetch_assoc($RPP);
 	$tPPP=$AFPP['Paie'];
 	
     $sqPD="SELECT SUM(paiement) AS Paie , st FROM $tbl_paiement where st='D' and  MONTH(date)=$mois and YEAR(date)=$annee"; 
 	$RPD = mysqli_query($link, $sqPD);
-	$AFPD = mysql_fetch_assoc($RPD);
+	$AFPD = mysqli_fetch_assoc($RPD);
 	$tPPD=$AFPD['Paie'];
 	
 	$sqPF="SELECT SUM(paiement) AS Paie , st FROM $tbl_paiement where st='F' and  MONTH(date)=$mois and YEAR(date)=$annee"; 
 	$RPF = mysqli_query($link, $sqPF);
-	$AFPF = mysql_fetch_assoc($RPF);
+	$AFPF = mysqli_fetch_assoc($RPF);
 	$tPPF=$AFPF['Paie'];
 	
 	
 	$sqPA="SELECT SUM(paiement) AS Paie , st FROM $tbl_paiement where st='A' and  MONTH(date)=$mois and YEAR(date)=$annee"; 
 	$RPA = mysqli_query($link, $sqPA);
-	$AFPA = mysql_fetch_assoc($RPA);
+	$AFPA = mysqli_fetch_assoc($RPA);
 	$tPPA=$AFPA['Paie'];
 	
 	
 	//$sqFS="SELECT SUM(totalttc) AS fact , SUM(ortc) AS fortc, SUM(impayee) AS fimp, SUM(Pre) AS DPre , SUM(totalnet) AS ft, st FROM $tbl_fact  where st='E' and  MONTH(date)=$mois and YEAR(date)=$annee"; 
 	//$RFS = mysqli_query($link, $sqFS);
-	//$AFFS = mysql_fetch_assoc($RFS);
+	//$AFFS = mysqli_fetch_assoc($RFS);
 	//$tFS=$AFFS['fact']; 
 	//$tFSi=$AFFS['fimp'];
 	//$tFSO=$AFFS['fortc'];
@@ -108,7 +108,7 @@ $req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql
 	
 	$sqFS="SELECT SUM(cons) AS cons, SUM(totalht) AS totalht, SUM(tax) AS tax, SUM(totalttc) AS totalttc, SUM(ortc) AS ortc, SUM(impayee) AS impayee, SUM(Pre) AS Pre, SUM(totalnet) AS totalnet, RefLocalite , nserie , fannee , st FROM $tv_facturation where  st='E' and  fannee='$annee'  and nserie='$mois'  ";  
 	$RFS = mysqli_query($link, $sqFS);
-	$AFFS = mysql_fetch_assoc($RFS);
+	$AFFS = mysqli_fetch_assoc($RFS);
 	
 	$tFS=$AFFS['totalttc']; 
 	$tFSi=$AFFS['impayee'];
@@ -120,14 +120,14 @@ $req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql
 	
 	$sqFP="SELECT SUM(totalttc) AS fact , SUM(totalnet) AS ft, st FROM $tbl_fact   where st='P' and   MONTH(date)=$mois and YEAR(date)=$annee"; 
 	$RFP = mysqli_query($link, $sqFP);
-	$AFP = mysql_fetch_assoc($RFP);
+	$AFP = mysqli_fetch_assoc($RFP);
 	$tFP=$AFP['fact']; 
 	$tFPt=$AFP['ft']; 
 	
 	
 	$sqFD="SELECT SUM(totalttc) AS fact , SUM(totalnet) AS ft, SUM(impayee) AS impayee, st FROM $tbl_fact   where st='D' and  MONTH(date)=$mois and YEAR(date)=$annee"; 
 	$RFD = mysqli_query($link, $sqFD);
-	$AFD = mysql_fetch_assoc($RFD);
+	$AFD = mysqli_fetch_assoc($RFD);
 	$tFD=$AFD['fact']; 
 	$tFDt=$AFD['ft']; 
 	$tFDi=$AFD['impayee'];
@@ -135,14 +135,14 @@ $req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql
  
  	$sqFF="SELECT SUM(totalttc) AS fact , SUM(totalnet) AS ft, st FROM $tbl_fact   where st='F' and  MONTH(date)=$mois and YEAR(date)=$annee"; 
 	$RFF = mysqli_query($link, $sqFF);
-	$AFF = mysql_fetch_assoc($RFF);
+	$AFF = mysqli_fetch_assoc($RFF);
 	$tFF=$AFF['fact']; 
 	$tFFt=$AFF['ft'];
 	
 	
 	$sqFA="SELECT SUM(totalttc) AS fact , SUM(totalnet) AS ft, st FROM $tbl_fact   where st='A' and  MONTH(date)=$mois and YEAR(date)=$annee";  
 	$RFA = mysqli_query($link, $sqFA);
-	$AFA = mysql_fetch_assoc($RFA);
+	$AFA = mysqli_fetch_assoc($RFA);
 	$tFA=$AFA['fact']; 
 	$tFAt=$AFA['ft'];
 	
@@ -274,13 +274,13 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 
 }
 
-mysql_free_result ($req); 
+mysqli_free_result ($req); 
   // echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
-mysql_free_result ($resultat);  
+mysqli_free_result ($resultat);  
 
 
-mysql_close ();  
+mysqli_close($link);  
 ?>
   </table>
   

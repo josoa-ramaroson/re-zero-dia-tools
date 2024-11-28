@@ -67,7 +67,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
                     <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
                   </div></td>
                 <td width="11%" bgcolor="#FFFFFF"><div align=""></div></td>
@@ -90,7 +90,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
                 <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
               </tr>
               <tr> 
@@ -126,7 +126,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
               <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
               <tr> 
 <?php
@@ -145,7 +145,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
                 <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
               </tr>
               <tr> 

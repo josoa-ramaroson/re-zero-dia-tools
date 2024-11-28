@@ -21,14 +21,14 @@ $CodeTypeClts=addslashes($_REQUEST['CodeTypeClts']);
 require 'configuration.php';
 
 $sql = " SELECT * FROM $tbl_fact f , $tbl_contact c  where f.id=c.id and f.nserie=$nserie and f.fannee=$anneec  and  CodeTypeClts='$CodeTypeClts' ORDER BY f.id ASC ";
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
  
 ?>
 Categorie : <em><?php //$CodeTypeClts;
  
 $sqltclient = "SELECT * FROM $tbl_client where idtclient='$CodeTypeClts'";
 $resulttclient = mysqli_query($link, $sqltclient);
-$rowtclient = mysql_fetch_assoc($resulttclient);
+$rowtclient = mysqli_fetch_assoc($resulttclient);
 if ($rowtclient===FALSE) {}
 else 
  {
@@ -66,7 +66,7 @@ while($datafact=mysqli_fetch_array($req)){ // Start looping table row
    <?php
 }
 
-mysql_close ();  
+mysqli_close($link);
 				  function gettatut($fetat){
 				  if ($fetat<=100000 && $fetat>=75000)         { echo $couleur="#ffc88d";}//orange 
 				  if ($fetat>=100000)                          { echo $couleur="#ec9b9b";}//rouge -Declined

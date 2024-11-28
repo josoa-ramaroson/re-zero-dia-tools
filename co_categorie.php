@@ -127,7 +127,7 @@ Etablissement :
 $sql81 = ("SELECT * FROM $tbl_client ORDER BY idtclient ASC");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option value='.$row81['idtclient'].'> '.$row81['TypeClts'].' </option>';
 }
 
@@ -178,7 +178,7 @@ echo "<option value=$row[refville]>$row[ville]</option>";
 $sql81 = ("SELECT * FROM $tbl_client ORDER BY idtclient ASC");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option value='.$row81['idtclient'].'> '.$row81['TypeClts'].' </option>';
 }
 
@@ -217,7 +217,7 @@ echo '<option value='.$row81['idtclient'].'> '.$row81['TypeClts'].' </option>';
 $sql81 = ("SELECT * FROM tarif ORDER BY idt ASC");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option value='.$row81['idt'].'> '.$row81['Libelle'].' </option>';
 }
 

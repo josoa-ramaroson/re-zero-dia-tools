@@ -109,7 +109,7 @@ Require("bienvenue.php");  // on appelle la page contenant la fonction
 <?php
 $sql = "SELECT count(*) FROM $tbl_fact  WHERE fannee='$anneec' and nserie='$nserie' and st='E' ";  
 
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
  
  
 $nb_total = mysqli_fetch_array($resultat);
@@ -135,19 +135,19 @@ $sql = "SELECT  f.bstatut, c.quartier, c.ville, f.impression , COUNT(*) AS nbch 
    /*//Nombre FACTURE_ par Quartier
     $rqfact = "SELECT COUNT(quartier) AS nbfc FROM $tbl_contact c , $tbl_fact f WHERE c.id=f.id  and  nserie='$nserie' and st='E' GROUP BY  quartier"; 
 	$sqnbf = mysqli_query($link, $rqfact);
-	$nbfc= mysql_fetch_assoc($sqnbf);
+	$nbfc= mysqli_fetch_assoc($sqnbf);
 	$nfact=$nbfc['nbfc']; 
 
  
     //Nombre total des clients par quartier
     $rqtfact = "SELECT COUNT(quartier) AS nbtfc FROM $tbl_contact GROUP BY  quartier"; 
 	$sqtnbf = mysqli_query($link, $rqtfact);
-	$nbtfc= mysql_fetch_assoc($sqtnbf);
+	$nbtfc= mysqli_fetch_assoc($sqtnbf);
 	$ntclient=$nbtfc['nbtfc']; */
 	
  
 // on ex?cute la requ?te  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 ?>
  
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -231,13 +231,13 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 
 
 }
-mysql_free_result ($req); 
+mysqli_free_result ($req); 
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
-mysql_free_result ($resultat);  
+mysqli_free_result ($resultat);  
 
 
-mysql_close ();  
+mysqli_close($link);  
 
 	                 function gettatut($fetat){
 				   if ($fetat=='imprimé')         { echo $couleur="#fdff00";}//jaune		 

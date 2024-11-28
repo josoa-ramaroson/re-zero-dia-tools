@@ -25,7 +25,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 require 'fonction.php';
 $sql = "SELECT count(*) FROM $tbl_pctaches where suivi!='Traité' and  realisateur='$id_nom'";  
 
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
  
 $nb_total = mysqli_fetch_array($resultat);
 
@@ -41,7 +41,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tbl_pctaches  where suivi!='Traité' and  realisateur='$id_nom' ORDER BY idpc DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
  
 // on ex?cute la requ?te  ASC
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 ?>
 </span></strong></font></font></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></p>
 <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
@@ -77,10 +77,10 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 
 }
 
-mysql_free_result ($req); 
+mysqli_free_result ($req);
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
-mysql_free_result ($resultat);  
+mysqli_free_result ($resultat);
 	                 function gettatut($fetat){
 				 if ($fetat=='En cours') { echo $couleur="#fdff00";}//jaune	
 				 if ($fetat=='Traité')   { echo $couleur="#87e385";}//vert fonce

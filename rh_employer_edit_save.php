@@ -49,13 +49,13 @@ $idservice=addslashes($_POST['subcat']);
 
 $sql1 = "SELECT * FROM $tb_rhservice where idser=$idservice";
 $result1 = mysqli_query($link, $sql1);
-while ($row1 = mysql_fetch_assoc($result1)) {
+while ($row1 = mysqli_fetch_assoc($result1)) {
 $service=$row1['service'];
 }  
 
 $sql2 = "SELECT * FROM $tb_rhdirection where idrh=$iddirection";
 $result2 = mysqli_query($link, $sql2);
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 $direction=$row2['direction'];
 } */
 
@@ -121,7 +121,7 @@ $NTC=addslashes($_POST['NTC']);
 
 $sqlRECH = "SELECT * FROM $tb_rhpersonnel where idrhp=$id";
 $resultRECH = mysqli_query($link, $sqlRECH);
-while ($RECH = mysql_fetch_assoc($resultRECH)) {
+while ($RECH = mysqli_fetch_assoc($resultRECH)) {
 
   $avancement=$RECH['avancement'];
   $anciennete=$RECH['anciennete'];
@@ -177,5 +177,5 @@ $result=mysqli_query($link, $sql);
    else {
    echo "ERROR";
    }
-  mysql_close(); 
+  mysqli_close($link); 
 ?>

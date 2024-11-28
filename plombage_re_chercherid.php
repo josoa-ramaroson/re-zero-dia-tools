@@ -251,7 +251,7 @@ $mr2=addslashes($_REQUEST['mr2']);
 $sql3 = "SELECT * FROM $tbl_plombcont  where idclient='$mr2' ORDER BY idpp DESC ";  //ASC
 
 $req3 = mysqli_query($link, $sql3);
-while($data2=mysql_fetch_assoc($req3)){ // Start looping table row 
+while($data2=mysqli_fetch_assoc($req3)){ // Start looping table row
 ?>
 </p>
   <table width="99%" border="0">
@@ -282,7 +282,7 @@ echo " ce compteur n'est pas encore verifier <br>";
 		if ($fetat>0) { echo $couleur="#87e385";} else { echo $couleur="#ffc88d";}//vert
 		}
 		
-mysql_close ();  
+mysqli_close($link);  
 ?>
 </body>
 </html>

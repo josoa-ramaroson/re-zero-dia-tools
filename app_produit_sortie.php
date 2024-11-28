@@ -176,7 +176,7 @@ echo '<option> '.$row2s['service'].' </option>';
             <?php
 $sql2B = ("SELECT DISTINCT(titre) FROM 	$tv_v_app_produit_type_menu where reste>0 ORDER BY titre  ASC ");
 $result2B= mysqli_query($link, $sql2B);
-while ($row2B = mysql_fetch_assoc($result2B)) {
+while ($row2B = mysqli_fetch_assoc($result2B)) {
 echo '<option> '.$row2B['titre'].' </option>';
 }
 
@@ -277,7 +277,7 @@ echo '<option> '.$row2['titre'].' </option>';
 $sql = "SELECT count(*) FROM $tbl_appproduit_sortie ";  
 
 // on ex?cute cette requ?te  
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
  
 // on r?cup?re le nombre d'?l?ments ? afficher  
 $nb_total = mysqli_fetch_array($resultat);
@@ -300,7 +300,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tbl_appproduit_sortie  ORDER BY idvente  DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
  
 // on ex?cute la requ?te  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 
 ?>
 </p>
@@ -340,11 +340,11 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
  $numboucle++;
 }
 
-mysql_free_result ($req); 
+mysqli_free_result ($req); 
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
-mysql_free_result ($resultat);  
-mysql_close ();  
+mysqli_free_result ($resultat);  
+mysqli_close($link);
 ?>
 </table>
 <p>&nbsp; </p>

@@ -10,8 +10,8 @@ $aigr=addslashes($_POST['aigr']);
 $acr=addslashes($_POST['acr']);
 
 $valeur_existant = "SELECT COUNT(*) AS nb FROM $tb_rhconfig  WHERE rhc='1' ";
-$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysql_error());
-$nb = mysql_fetch_assoc($sqLvaleur);
+$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysqli_error($link));
+$nb = mysqli_fetch_assoc($sqLvaleur);
 
 if($nb['nb'] == 1)
 {
@@ -25,7 +25,7 @@ else
 $sqlp="INSERT INTO $tb_rhconfig  ( id_nom  , taux  , mois ,  annee , aigr, acr)
                     VALUES      ('$blogin', '$taux', '$mois', '$annee', '$aigr', '$acr' )";								
 $r=mysqli_query($link, $sqlp)
-or die(mysql_error());
+or die(mysqli_error($link));
 mysql_close($link);
 header("location: rh_configuration.php");
 }

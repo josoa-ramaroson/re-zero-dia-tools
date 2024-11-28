@@ -127,8 +127,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
               <?php
 $sql8 = ("SELECT * FROM tarif ORDER BY idt ASC");
 $result8 = mysqli_query($link, $sql8);
-
-while ($row8 = mysql_fetch_assoc($result8)) {
+while ($row8 = mysqli_fetch_assoc($result8)) {
 echo '<option value='.$row8['idt'].'> '.$row8['Libelle'].' </option>';
 }
 
@@ -150,7 +149,7 @@ echo '<option value='.$row8['idt'].'> '.$row8['Libelle'].' </option>';
 $sql81 = ("SELECT * FROM $tbl_client ORDER BY idtclient ASC");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option value='.$row81['idtclient'].'> '.$row81['TypeClts'].' </option>';
 }
 
@@ -172,7 +171,7 @@ echo '<option value='.$row81['idtclient'].'> '.$row81['TypeClts'].' </option>';
 $sql82 = "SELECT * FROM $tbl_piece ORDER BY idtyp ASC";
 $result82 = mysqli_query($link, $sql82);
 
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 echo '<option value='.$row82['CodeTypePiece'].'> '.$row82['Pieces'].' </option>';
 }
 
@@ -204,7 +203,7 @@ echo '<option value='.$row82['CodeTypePiece'].'> '.$row82['Pieces'].' </option>'
 $sql8 = ("SELECT ile FROM ile ORDER BY ile ASC");
 $result8 = mysqli_query($link, $sql8);
 
-while ($row8 = mysql_fetch_assoc($result8)) {
+while ($row8 = mysqli_fetch_assoc($result8)) {
 echo '<option> '.$row8['ile'].' </option>';
 }
 

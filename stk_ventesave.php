@@ -6,7 +6,7 @@ $datev=addslashes($_POST['datev']);
 $idproduit=addslashes($_POST['idproduit']);
 $sql5 = "SELECT * FROM $tbl_produit where idproduit=$idproduit";
 $result5 = mysqli_query($link, $sql5);
-while ($row5 = mysql_fetch_assoc($result5)) {
+while ($row5 = mysqli_fetch_assoc($result5)) {
 $titre=$row5['titre'];
 } 
 $Qvente=addslashes($_POST['Qvente']); 

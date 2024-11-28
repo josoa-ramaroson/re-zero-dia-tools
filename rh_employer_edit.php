@@ -376,7 +376,7 @@ echo '<option value='.$vide.' selected> Realisez la connexion </option>';
 $sql9 = ("SELECT id_u, id_nom , u_nom , u_prenom, u_login  FROM $tbl_utilisateur  ORDER BY id_u ASC ");
 $result9 = mysqli_query($link, $sql9);
 
-while ($row9 = mysql_fetch_assoc($result9)) {
+while ($row9 = mysqli_fetch_assoc($result9)) {
 echo '<option value='.$row9['id_u'].'> '.$row9['u_nom'].' '.$row9['u_prenom'].' ( '.$row9['u_login'].')</option>';
 }
 
@@ -478,8 +478,8 @@ Statut
 	
 	$sql = "SELECT * FROM $tb_rhdirection where  idrh=$iddr ";
 
-	$resultat = mysqli_query($link, $sql) or exit(mysql_error()); 
-	$nqt = mysql_fetch_assoc($resultat);
+	$resultat = mysqli_query($link, $sql) or exit(mysqli_error($link));
+	$nqt = mysqli_fetch_assoc($resultat);
 
 	if((!isset($nqt['direction'])|| empty($nqt['direction']))) { $qt=''; return $qt;}
 	else {$qt=$nqt['direction']; return $qt;}

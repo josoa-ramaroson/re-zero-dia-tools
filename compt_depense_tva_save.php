@@ -62,7 +62,7 @@ VALUE ('$Date','$Maxa_id','$Modep','$md','$Ht','0','0','$Ht','$Fourniseur','$Pie
 $sqlcon="update $tb_comptconf set idcomp='$Compte' where idc='$Maxa_id'";
 $connection=mysqli_query($link, $sqlcon);
 
-mysql_close();
+mysqli_close($link);
 
 include ("compt_depense_debiter_tva.php");
 ?>

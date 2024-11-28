@@ -12,7 +12,7 @@ $Date=addslashes($_POST['Date']);
 $req="UPDATE  $tb_comptcl SET  Nomcl='$Nomcl',Prenomcl='$Prenomcl',Adressecl='$Adressecl',Telephonecl='$Telephonecl',Statutcl='$Statutcl',Date='$Date'
  where Numcsave='$Numcsave' ";
  $result=mysqli_query($link, $req);
- mysql_close();
+ mysqli_close($link);
 
 
 include ("compt_client.php");

@@ -10,19 +10,19 @@ $refville=addslashes($_REQUEST['refville']);
 
 $sql1 = "SELECT * FROM quartier where id_quartier=$RefQuartier";
 $result1 = mysqli_query($link, $sql1);
-while ($row1 = mysql_fetch_assoc($result1)) {
+while ($row1 = mysqli_fetch_assoc($result1)) {
 $quartier=$row1['quartier'];
 }  
 
 $sql2 = "SELECT * FROM ville where refville=$refville";
 $result2 = mysqli_query($link, $sql2);
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 $ville=$row2['ville'];
 } 
 
 $sql3 = "SELECT * FROM commune where ref_com=$RefCommune";
 $result3 = mysqli_query($link, $sql3);
-while ($row3 = mysql_fetch_assoc($result3)) {
+while ($row3 = mysqli_fetch_assoc($result3)) {
 $secteur=$row3['commune'];
 } 
 
@@ -36,7 +36,7 @@ $sql="update $tbl_contact  set id_nom='$id_nom', RefCommune='$RefCommune', RefLo
 $result=mysqli_query($link, $sql);
 
 
-   mysql_close(); 
+   mysqli_close($link); 
 ?>
 <?php
 	header("location:co_affichage_user_repartion.php");

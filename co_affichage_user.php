@@ -121,7 +121,7 @@ $datam=mysqli_fetch_array($resultm);
 $T=$datam['Tarif'];
 $sql82 = ("SELECT * FROM tarif where idt='$T'");
 $result82 = mysqli_query($link, $sql82);
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 echo $row82['Libelle'];
 }
 

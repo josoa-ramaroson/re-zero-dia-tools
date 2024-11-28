@@ -38,7 +38,7 @@ mysqli_select_db($db)or die("cannot select DB");
   
 $sql = "SELECT count(*) FROM $tbl_paiement";  
 
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
  
  
 $nb_total = mysqli_fetch_array($resultat);  
@@ -61,7 +61,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT SUM(paiement) AS Paie, p.st, p.date, f.libelle, p.id FROM $tbl_paiement p, $tbl_fact f where  p.idf=f.idf and  p.date='$date' GROUP BY libelle LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC  DESC
 
 // on ex?cute la requ?te  f
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 
 ?>
   </font></strong></font></font></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></p> <a href="rapport_dateautreimp.php?datef=<?php echo md5(microtime()).$date;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a></p>
@@ -86,13 +86,13 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 
 }
 
-mysql_free_result ($req); 
+mysqli_free_result ($req);
   // echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
-mysql_free_result ($resultat);  
+mysqli_free_result ($resultat);
 
 
-mysql_close ();  
+mysqli_close($link);
 ?>
   </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">

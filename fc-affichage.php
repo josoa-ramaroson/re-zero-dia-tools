@@ -1,4 +1,5 @@
 <?php
+$_SERVER["QUERY_STRING"] = "";
 function barre_navigation ($nb_total,$nb_affichage_par_page,$debut,$nb_liens_dans_la_barre) { 
     $barre = ''; 
    if ($_SERVER['QUERY_STRING'] == "") { 

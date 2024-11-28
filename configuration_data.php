@@ -346,7 +346,7 @@ Require("bienvenue.php"); // on appelle la page contenant la fonction
 $sql82 = ("SELECT * FROM annee  ORDER BY annee ASC ");
 $result82 = mysqli_query($link, $sql82);
 
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 echo '<option> '.$row82['annee'].' </option>';
 }
 ?>
@@ -387,7 +387,7 @@ mysqli_select_db($db)or die("cannot select DB");
   
 $sql = "SELECT count(*) FROM $tbl_config ";  
 
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
  
  
 $nb_total = mysqli_fetch_array($resultat);
@@ -410,7 +410,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tbl_config  ORDER BY idconf DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
  
 // on ex?cute la requ?te  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 ?>
   </font></strong></font></font></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></p>
 <form name="form2" method="post" action="produit_cancel.php">
@@ -436,11 +436,11 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 
 }
 
-mysql_free_result ($req); 
+mysqli_free_result ($req); 
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
-mysql_free_result ($resultat);  
-mysql_close ();  
+mysqli_free_result ($resultat);  
+mysqli_close($link);  
 ?>
   </table>
 </form>

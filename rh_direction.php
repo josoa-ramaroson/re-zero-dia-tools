@@ -69,7 +69,7 @@ require 'fonction.php';
 $sql = "SELECT count(*) FROM $tb_rhdirection ";  
 
 // on ex?cute cette requ?te  
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
  
 // on r?cup?re le nombre d'?l?ments ? afficher  
 $nb_total = mysqli_fetch_array($resultat);  
@@ -92,7 +92,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tb_rhdirection  ORDER BY idrh DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
  
 // on ex?cute la requ?te  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 ?>
   </font></strong></font></font></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></p>
   <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -115,15 +115,15 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 // Exit looping and close connection 
 }
 // on lib?re l'espace m?moire allou? pour cette requ?te  
-mysql_free_result ($req); 
+mysqli_free_result ($req); 
  
    // on affiche enfin notre barre 20 avant de passer a l autre page
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
 // on lib?re l'espace m?moire allou? pour cette requ?te  
-mysql_free_result ($resultat);  
+mysqli_free_result ($resultat);  
 // on ferme la connexion ? la base de donn?es.  
-mysql_close ();  
+mysqli_close($link);  
 ?>
   </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">

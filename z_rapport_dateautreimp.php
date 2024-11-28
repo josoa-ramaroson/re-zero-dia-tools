@@ -36,7 +36,7 @@ $ARCH=date("Y", strtotime("$date"));
   
 $sql = "SELECT count(*) FROM $dbbk.z_"."$ARCH"."_$tbl_paiement";  
 
-$resultat = mysqli_query($linkibk,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($linkibk,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));  
  
  
 $nb_total = mysqli_fetch_array($resultat);  

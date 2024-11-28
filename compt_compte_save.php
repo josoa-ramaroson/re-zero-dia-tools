@@ -5,7 +5,7 @@ require 'configuration.php';
 $Numc=addslashes($_POST['Numc']);
 $Description=addslashes($_POST['Description']);
 mysqli_query($link, "INSERT INTO $compte (Numc,Description) VALUE ('$Numc','$Description')");
-mysql_close();
+mysqli_close($link);
 
 
 include ("compt_compte.php");

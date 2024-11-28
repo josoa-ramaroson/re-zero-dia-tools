@@ -185,7 +185,7 @@ while($rowsact=mysqli_fetch_array($resultact)){
 $sql8 = ("SELECT soussecteur FROM soussecteur ORDER BY soussecteur ASC");
 $result8 = mysqli_query($link, $sql8);
 
-while ($row8 = mysql_fetch_assoc($result8)) {
+while ($row8 = mysqli_fetch_assoc($result8)) {
 echo '<option> '.$row8['soussecteur'].' </option>';
 }
 
@@ -201,7 +201,7 @@ echo '<option> '.$row8['soussecteur'].' </option>';
 $sql2 = ("SELECT annee FROM annee ORDER BY annee ASC ");
 $result2 = mysqli_query($link, $sql2);
 
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 echo '<option> '.$row2['annee'].' </option>';
 }
 
@@ -217,7 +217,7 @@ echo '<option> '.$row2['annee'].' </option>';
 $sql9 = ("SELECT nombre FROM nombre ORDER BY id ASC ");
 $result9 = mysqli_query($link, $sql9);
 
-while ($row9 = mysql_fetch_assoc($result9)) {
+while ($row9 = mysqli_fetch_assoc($result9)) {
 echo '<option> '.$row9['nombre'].' </option>';
 }
 

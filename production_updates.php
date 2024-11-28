@@ -21,7 +21,7 @@ if($resultp){
 else {
 echo "ERROR";
 }
-mysql_close();
+mysqli_close($link);
 ?>
 <?php
 header("location: production.php");

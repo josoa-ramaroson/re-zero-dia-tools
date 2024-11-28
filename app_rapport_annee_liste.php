@@ -84,7 +84,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
   <?php
 }
  
-mysql_close ();  
+mysqli_close($link);  
 ?>
 </table>
 </body>

@@ -44,14 +44,14 @@ require 'xbackup_menu.php';
 	 $table1=$_REQUEST["table"];
 	 
      //Connexion à la base
-     $db = mysqli_connect($server, $user, $password) or die(mysql_error());
-     mysqli_select_db($database, $db) or die(mysql_error());
+     $db = mysqli_connect($server, $user, $password) or die(mysqli_error($link));
+     mysqli_select_db($database, $db) or die(mysqli_error($link));
       
 
     
  	$sql = "SHOW TABLES FROM $database WHERE Tables_in_$database='$table1'" ;
 	 
-     $tables = mysqli_query($link, $sql) or die(mysql_error());
+     $tables = mysqli_query($link, $sql) or die(mysqli_error($link));
       
    
      for ($i=0; $i<$ignore; $i++) ($donnees = mysqli_fetch_array($tables));
@@ -62,7 +62,7 @@ require 'xbackup_menu.php';
 	 
       $table = $donnees[0];
       $sql = 'SHOW CREATE TABLE '.$table;
-      $res = mysqli_query($link, $sql) or die(mysql_error().$sql);
+      $res = mysqli_query($link, $sql) or die(mysqli_error($link).$sql);
       if ($res)
       {
        
@@ -82,7 +82,7 @@ require 'xbackup_menu.php';
        $insertions = $tableau[1];
        gzwrite($fp, $insertions);
       
-       $req_table = mysqli_query($link, 'SELECT * FROM '.$table) or die(mysql_error());
+       $req_table = mysqli_query($link, 'SELECT * FROM '.$table) or die(mysqli_error($link));
        $nbr_champs = mysql_num_fields($req_table);
        while ($ligne = mysqli_fetch_array($req_table))
        {
@@ -96,7 +96,7 @@ require 'xbackup_menu.php';
         gzwrite($fp, $insertions);
        }
       } // fin if ($res)
-      mysql_free_result($res);
+      mysqli_free_result($res);
       gzclose($fp);
 	  
 	  

@@ -28,7 +28,7 @@ $data2=mysqli_fetch_array($resultat2)
 ?>
   <?php
 $sql = "SELECT * FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie' ORDER BY matricule ASC "; //DESC 
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 ?>
  </p>
 <p align="center"><em>RECAPITULATIF TOTAL RETENUES
@@ -107,7 +107,7 @@ $NTC= $rmat['NTC'];
    <?php
 }
 
-mysql_close ();  
+mysqli_close($link);
 ?>
 </table>
 <p>&nbsp;</p>

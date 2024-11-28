@@ -35,7 +35,7 @@
 $sql8 = ("SELECT * FROM $tbl_paiement where id_nom= '$id_nom' GROUP BY  id_nom ORDER BY id_nom ASC ");
 $result8 = mysqli_query($link, $sql8);
 
-while ($row8 = mysql_fetch_assoc($result8)) {
+while ($row8 = mysqli_fetch_assoc($result8)) {
 echo '<option> '.$row8['id_nom'].' </option>';
 }
 
@@ -76,7 +76,7 @@ echo '<option> '.$row8['id_nom'].' </option>';
 $sql8 = ("SELECT * FROM $tbl_paiement where id_nom= '$id_nom' GROUP BY  id_nom ORDER BY id_nom ASC ");
 $result8 = mysqli_query($link, $sql8);
 
-while ($row8 = mysql_fetch_assoc($result8)) {
+while ($row8 = mysqli_fetch_assoc($result8)) {
 echo '<option> '.$row8['id_nom'].' </option>';
 }
 

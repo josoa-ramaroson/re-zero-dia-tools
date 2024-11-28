@@ -120,7 +120,7 @@ require 'bienvenue.php';    // on appelle la page contenant la fonction
                 if (isset($_REQUEST["id"]))
                 $id = $_REQUEST["id"];
 $sql = "SELECT * FROM $tbl_contact where id='$id' and statut='6'";
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 $datam=mysqli_fetch_array($req);
 ?></td>
         </tr>

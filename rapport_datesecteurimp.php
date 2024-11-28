@@ -40,7 +40,7 @@ mysqli_select_db($db)or die("cannot select DB");
   
 $sql = "SELECT count(*) FROM $tv_paiement where date='$date' GROUP BY refcommune ";  
 
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
  
  
 $nb_total = mysqli_fetch_array($resultat);
@@ -63,7 +63,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT SUM(paiement) AS Paie, id_nom , refcommune,  date FROM $tv_paiement where date='$date' GROUP BY refcommune  LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC  DESC
 
 // on ex?cute la requ?te  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 
 ?>
   </font></strong></font></font></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></p>
@@ -86,7 +86,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 	  
 $sql3 = "SELECT * FROM commune where ref_com=$RefCommune";
 $result3 = mysqli_query($link, $sql3);
-while ($row3 = mysql_fetch_assoc($result3)) {
+while ($row3 = mysqli_fetch_assoc($result3)) {
 echo $secteur=$row3['commune'];
 } 	 ?>
       </td>
@@ -97,13 +97,13 @@ echo $secteur=$row3['commune'];
 
 }
 
-mysql_free_result ($req); 
+mysqli_free_result ($req); 
    //echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
-mysql_free_result ($resultat);  
+mysqli_free_result ($resultat);  
 
 
-mysql_close ();  
+mysqli_close($link);  
 ?>
   </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">

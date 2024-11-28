@@ -2,8 +2,8 @@
 	require 'fonction.php';
 	function compt_bilactif($Compte,$annee,$tb_ecriture){
 	$sql = "SELECT SUM(TTC) AS TTC FROM $tb_ecriture where  Compte=$Compte and  YEAR(Date)=$annee and  mo='C' ";
-	$resultat = mysqli_query($link, $sql) or exit(mysql_error());
-	$nqt = mysql_fetch_assoc($resultat);
+	$resultat = mysqli_query($link, $sql) or exit(mysqli_error($link));
+	$nqt = mysqli_fetch_assoc($resultat);
 
 	if((!isset($nqt['TTC'])|| empty($nqt['TTC']))) { $qt=0; return $qt;}
 	else {$qt=$nqt['TTC']; return $qt;}

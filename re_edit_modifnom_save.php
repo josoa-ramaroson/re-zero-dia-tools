@@ -46,7 +46,7 @@ $texte = " l'agent : $id_nom a realisé une changement de nom  de $Designation $
 mail($destinataires,$sujet,$texte,"From:contact@edaanjouan.com");
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-   mysql_close(); 
+   mysqli_close($link); 
 ?>
 <?php
 	header("location:re_edit_modifnom.php?id=$id");

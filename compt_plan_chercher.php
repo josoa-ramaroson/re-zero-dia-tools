@@ -131,7 +131,7 @@ while($row=mysqli_fetch_array($resultat)){ // Start looping table row
               <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
             </table>
           </form></td>

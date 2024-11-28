@@ -14,7 +14,7 @@ $sqlp="INSERT INTO $tbl_appproduit_entre ( date  , titre  , Quantite  ,  Validit
 					
 $r=mysqli_query($link, $sqlp)
 
-or die(mysql_error());
+or die(mysqli_error($link));
 mysql_close($link);
 ?>
 <?php

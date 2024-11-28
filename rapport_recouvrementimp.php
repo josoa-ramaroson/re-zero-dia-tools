@@ -40,7 +40,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 	 
 	 $sql3 = "SELECT * FROM commune where ref_com=$RefCommune";
 $result3 = mysqli_query($link, $sql3);
-while ($row3 = mysql_fetch_assoc($result3)) {
+while ($row3 = mysqli_fetch_assoc($result3)) {
 echo $secteur=$row3['commune'];
 }
 	 
@@ -84,7 +84,7 @@ while($data2=mysqli_fetch_array($req2)){ // Start looping table row
 	 
 	 $sql32 = "SELECT * FROM ville where refville=$RefLocalite";
 $result32 = mysqli_query($link, $sql32);
-while ($row32 = mysql_fetch_assoc($result32)) {
+while ($row32 = mysqli_fetch_assoc($result32)) {
 echo $ville=$row32['ville'];
 }
 	 

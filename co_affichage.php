@@ -106,7 +106,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 $sql81 = ("SELECT * FROM z_annee  ORDER BY annee ASC ");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
 }
 ?>
@@ -141,7 +141,7 @@ echo '<option> '.$row81['annee'].' </option>';
  <p>
    <?php
 $sql = "SELECT count(*) FROM $tbl_contact  where statut='6'";  
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 $nb_total = mysqli_fetch_array($resultat);
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -150,7 +150,7 @@ else {
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 50; 
 $sql = "SELECT * FROM $tbl_contact  where statut='6' ORDER BY nomprenom ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 ?>
  </p>
 <table width="98%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -176,11 +176,11 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
      <td align="center" bgcolor="#FFFFFF"><a href="co_affichage_user.php?id=<?php echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-success" >Aperçu</a></td>
    <?php
 }
-mysql_free_result ($req); 
+mysqli_free_result ($req);
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
-mysql_free_result ($resultat);  
-mysql_close ();  
+mysqli_free_result ($resultat);
+mysqli_close($link);
 ?>
 </table>
 <p>&nbsp;</p>

@@ -69,7 +69,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
 }
 ?>
@@ -115,7 +115,7 @@ echo '<option> '.$row81['annee'].' </option>';
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
 }
 ?>
@@ -161,7 +161,7 @@ echo '<option> '.$row81['annee'].' </option>';
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
 }
 ?>
@@ -215,7 +215,7 @@ echo '<option> '.$row81['annee'].' </option>';
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
 }
 ?>
@@ -261,7 +261,7 @@ echo '<option> '.$row81['annee'].' </option>';
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
 }
 ?>

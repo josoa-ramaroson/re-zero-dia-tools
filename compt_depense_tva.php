@@ -23,8 +23,8 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 
     //choix d espace de memoire pour les connection.---------------------------------------------------------------- 
 	$valeur_existant = "SELECT COUNT(*) AS nb FROM $tb_comptconf  WHERE idcomp='$id_nom' ";
-	$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysql_error());
-	$nb = mysql_fetch_assoc($sqLvaleur);
+	$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysqli_error($link));
+	$nb = mysqli_fetch_assoc($sqLvaleur);
 	
 	if($nb['nb'] == 1)
    {
@@ -119,7 +119,7 @@ $row22=mysqli_fetch_array($resu);
               <?php
 $req="select Code ,Description from $plan WHERE Code='52' or Code='57' ";
 $resultat4=mysqli_query($link, $req);
-while ($row3 = mysql_fetch_assoc($resultat4)) {
+while ($row3 = mysqli_fetch_assoc($resultat4)) {
 //echo '<option> '.$row3['Code'].' </option>' ;
 echo '<option value='.$row3['Code'].'> '.$row3['Code'].' '.$row3['Description'].' </option>';
 }
@@ -172,7 +172,7 @@ echo '<option value='.$row3['Code'].'> '.$row3['Code'].' '.$row3['Description'].
 $sqlS = ("SELECT * FROM $tb_comptf  ORDER BY Societef ASC ");
 $resultS = mysqli_query($link, $sqlS);
 
-while ($rowS = mysql_fetch_assoc($resultS)) {
+while ($rowS = mysqli_fetch_assoc($resultS)) {
 echo '<option> '.$rowS['Societef'].' </option>';
 }
 ?>

@@ -19,7 +19,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 /*$Police=$_POST['id'];
 $sql82 ="SELECT * FROM $tbl_contact where Police='$Police'";
 $result82 = mysqli_query($link, $sql82);
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 $id=$row82['id'];
 }*/
 

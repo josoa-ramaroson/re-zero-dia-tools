@@ -19,7 +19,7 @@ $idfournisseur=addslashes($_POST['fournisseur']);
 
 $sqlS = "SELECT * FROM $tb_comptf  where idf=$idfournisseur";
 $resultS = mysqli_query($link, $sqlS);
-$rowS = mysql_fetch_assoc($resultS);
+$rowS = mysqli_fetch_assoc($resultS);
 $fournisseur=$rowS['Societef'];
 
 //---------------------------------------------------------------------

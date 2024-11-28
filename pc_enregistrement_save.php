@@ -36,7 +36,7 @@ mysqli_select_db($link, $db);
 
 $sql9 ="SELECT id_u, u_nom , u_prenom  FROM $tbl_utilisateur  where id_u='$id_u'";
 $result9 = mysqli_query($link, $sql9);
-while ($row9 = mysql_fetch_assoc($result9)) {
+while ($row9 = mysqli_fetch_assoc($result9)) {
 $utilisateur=$row9['u_nom'].' '.$row9['u_prenom'];
 }
 
@@ -51,7 +51,7 @@ if($result){
 else {
 echo "ERROR";
 }
-mysql_close();
+mysqli_close($link);
 ?>
 <?php
 header("location: pc_enregistrement.php");

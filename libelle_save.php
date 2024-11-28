@@ -10,7 +10,7 @@ $sqlp="INSERT INTO $tbl_libelle   ( libelle   , categorie   ,id_nom  )
 					
 													
 $r=mysqli_query($link, $sqlp)
-or die(mysql_error());
+or die(mysqli_error($link));
 mysql_close($link);
 
 ?>

@@ -12,12 +12,12 @@ $reqfact=mysqli_query($link, $sqfact);
 
 $sqlT = "SELECT COUNT(*) AS Nomimprime FROM $tbl_contact where statut='6' and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec'  and nserie='$nserie')";   
 $reqT=mysqli_query($link, $sqlT);
-$datanombre= mysql_fetch_assoc($reqT);
+$datanombre= mysqli_fetch_assoc($reqT);
 $Nomimprime=$datanombre['Nomimprime'];
 
 $sql7 = "SELECT COUNT(*) AS bt FROM $tbl_contact  WHERE statut='6' and Tarif!='10'";   
 $req7=mysqli_query($link, $sql7);
-$data7= mysql_fetch_assoc($req7);
+$data7= mysqli_fetch_assoc($req7);
 $cbt=$data7['bt'];
 
 ?>
@@ -50,7 +50,7 @@ while($data=mysqli_fetch_array($reqfact)){ // Start looping table row
         <?php
 }
  
-mysql_close ();  
+mysqli_close($link);
 ?>
       </table>
       <p>&nbsp;</p>

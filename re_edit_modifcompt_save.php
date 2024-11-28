@@ -20,7 +20,7 @@ $quartier=addslashes($_POST['quartier']);
 $T=$Tarif;
 $sql82 = ("SELECT * FROM tarif where idt='$T'");
 $result82 = mysqli_query($link, $sql82);
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 $typecompteur=$row82['typecom'];
 }
 
@@ -48,7 +48,7 @@ $etat='facture';
 
 $sql82 ="SELECT * FROM tarif where idt='$Tarif'";
 $result82 = mysqli_query($link, $sql82);
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 $t1=$row82['t1'];
 $t2=$row82['t2'];
 $q=$row82['q'];
@@ -88,5 +88,5 @@ mail($destinataires,$sujet,$texte,"From:facturation@sonelecanjouan.com");
 	   $idr=md5(microtime()).$id;
        header("location:re_edit_modifcompt.php?id=$idr");
 
-  mysql_close(); 
+  mysqli_close($link); 
 ?>

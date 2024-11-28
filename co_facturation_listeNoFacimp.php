@@ -20,14 +20,14 @@ if(($_SESSION['u_niveau'] != 2)) {
 $id_nom=substr($_REQUEST["id@"],32);
 $sqlu = "SELECT * FROM $tbl_saisie where blogin='$id_nom'";
 $resultu = mysqli_query($link, $sqlu);
-while ($rowu = mysql_fetch_assoc($resultu)) {
+while ($rowu = mysqli_fetch_assoc($resultu)) {
 $bville=$rowu['bville'];
 $bquartier=$rowu['bquartier'];
 } 
 
 require 'configuration.php';
 $sql = "SELECT * FROM $tbl_contact where  ville='$bville'  and quartier='$bquartier' and statut='6'  and  (Tarif='2' or Tarif='3' or Tarif='4' or Tarif='6' or Tarif='7' or Tarif='8' or Tarif='9' or Tarif='11') and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec'  and nserie='$nserie') ORDER BY id  ASC";  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 ?>
  </p>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -57,7 +57,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
    <?php
 }
 
-mysql_close ();  
+mysqli_close($link);
 ?>
 </table>
 <p>&nbsp;</p>

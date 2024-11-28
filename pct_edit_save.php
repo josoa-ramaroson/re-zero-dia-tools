@@ -21,5 +21,5 @@ $result=mysqli_query($link, $sql);
    else {
    echo "ERROR";
    }
-  mysql_close(); 
+  mysqli_close($link);
 ?>

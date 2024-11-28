@@ -30,12 +30,12 @@ $service=substr($_REQUEST["c"],32);
 $sql = "SELECT * FROM $tbl_appaut where  MONTH(date)=$mois and YEAR(date)=$annee  and  service='$service' ORDER BY idapp_aut DESC ";  //ASC
  
 // on ex?cute la requ?te  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 
 
 	$sqPT="SELECT SUM(Montant) AS montant  FROM $tbl_appaut where  MONTH(date)=$mois and YEAR(date)=$annee  and  service='$service' "; 
 	$RPT = mysqli_query($link, $sqPT);
-	$AFPT = mysql_fetch_assoc($RPT);
+	$AFPT = mysqli_fetch_assoc($RPT);
 	$tPT=$AFPT['montant']; 
 	
 ?>

@@ -42,7 +42,7 @@ $sql="SELECT *  FROM $tb_comptf where idf='$idf' ";
 $result=mysqli_query($link, $sql);
 $rows=mysqli_fetch_array($result);
    
-mysql_close();
+mysqli_close($link);
 			
 			?>
             <input  class="form-control" name="Numf"  readonly="readonly" type="text" id="nucl" value="<?php echo $rows['Numf'] ?>">
@@ -167,7 +167,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
   <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
 </table>
 <p>&nbsp;</p>

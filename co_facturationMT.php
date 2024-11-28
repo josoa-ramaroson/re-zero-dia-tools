@@ -25,13 +25,13 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 
 $sqlu = "SELECT * FROM $tbl_saisie where blogin='$id_nom'";
 $resultu = mysqli_query($link, $sqlu);
-while ($rowu = mysql_fetch_assoc($resultu)) {
+while ($rowu = mysqli_fetch_assoc($resultu)) {
 $bville=$rowu['bville'];
 $bquartier=$rowu['bquartier'];
 } 
 
 $sql = "SELECT count(*) FROM $tbl_contact where  statut='6' and Tarif='10' and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec' and nserie='$nserie')";  
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 $nb_total = mysqli_fetch_array($resultat);
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -40,7 +40,7 @@ else {
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 1; 
 $sql = "SELECT * FROM $tbl_contact where  statut='6' and Tarif='10' and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec'  and nserie='$nserie') ORDER BY id ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 
 	//recherche du repport 
 ?>
@@ -221,11 +221,11 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
    </tr>
    <?php
 }
-mysql_free_result ($req); 
+mysqli_free_result ($req); 
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
-mysql_free_result ($resultat);  
-mysql_close ();  
+mysqli_free_result ($resultat);  
+mysqli_close($link);  
 ?>
 </table>
 <p>&nbsp;</p>

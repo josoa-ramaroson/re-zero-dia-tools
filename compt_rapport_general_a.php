@@ -84,7 +84,7 @@ $annee=$_POST['annee'];
               <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
             </table>
           </form></td>
@@ -115,7 +115,7 @@ $annee=$_POST['annee'];
               <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
               <BR>
             </div></td>
@@ -186,7 +186,7 @@ $annee=$_POST['annee'];
               <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
             </table>
           </form></td>
@@ -217,7 +217,7 @@ $annee=$_POST['annee'];
             <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
             <BR>
           </div></td>

@@ -120,7 +120,7 @@ $iddirection=addslashes($_REQUEST['direction']);
 
 $sql2 = "SELECT * FROM $tb_rhdirection where idrh=$iddirection";
 $result2 = mysqli_query($link, $sql2);
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 $direction=$row2['direction'];
 } 
     $m1d=$direction;
@@ -140,7 +140,7 @@ $data2=mysqli_fetch_array($resultat2)
   <?php
 
 $sql = "SELECT count(*) FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie' and direction='$m1d'";  
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 $nb_total = mysqli_fetch_array($resultat);  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -149,7 +149,7 @@ else {
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page =50; 
 $sql = "SELECT * FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie' and direction='$m1d' ORDER BY matricule ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //DESC
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 ?>
   </p>
 </p>
@@ -210,11 +210,11 @@ while($datafact=mysqli_fetch_array($req)){ // Start looping table row
    </tr>
    <?php
 }
-mysql_free_result ($req); 
+mysqli_free_result ($req);
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], $iddirection,  10).'</span>';  
 }  
-mysql_free_result ($resultat);  
-mysql_close ();  
+mysqli_free_result ($resultat);
+mysqli_close($link);
 				  function gettatut($fetat){
 				  if ($fetat<=1000000 && $fetat>=500000)         { echo $couleur="#ffc88d";}//orange 
 				  if ($fetat>=1000000)                          { echo $couleur="#ec9b9b";}//rouge -Declined

@@ -129,7 +129,7 @@ $matricule= $rmat['matricule'];
 <?php
 
 $sql = "SELECT count(*) FROM $tb_rhpaie where matricule='$m1p'";  
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 $nb_total = mysqli_fetch_array($resultat);
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -138,7 +138,7 @@ else {
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page =12; 
 $sql = "SELECT * FROM $tb_rhpaie where  matricule='$m1p' ORDER BY nomprenom ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //DESC
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 ?>
   Matricule : <?php echo  $m1p ?></p>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -196,11 +196,11 @@ while($datafact=mysqli_fetch_array($req)){ // Start looping table row
    </tr>
    <?php
 }
-mysql_free_result ($req); 
+mysqli_free_result ($req); 
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], $matricule,  10).'</span>';  
 }  
-mysql_free_result ($resultat);  
-mysql_close ();  
+mysqli_free_result ($resultat);  
+mysqli_close($link);
 				  function gettatut($fetat){
 				  if ($fetat<=1000000 && $fetat>=500000)         { echo $couleur="#ffc88d";}//orange 
 				  if ($fetat>=1000000)                          { echo $couleur="#ec9b9b";}//rouge -Declined

@@ -20,13 +20,13 @@ $refville=addslashes($_POST['refville']);
 
 $sql1 = "SELECT * FROM quartier where id_quartier=$RefQuartier";
 $result1 = mysqli_query($link, $sql1);
-while ($row1 = mysql_fetch_assoc($result1)) {
+while ($row1 = mysqli_fetch_assoc($result1)) {
 $quartier=$row1['quartier'];
 }  
 
 $sql2 = "SELECT * FROM ville where refville=$refville";
 $result2 = mysqli_query($link, $sql2);
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 $ville=$row2['ville'];
 } 
     $m1v=$ville;
@@ -56,11 +56,11 @@ $ville=$row2['ville'];
    <?php
 require 'configuration.php';
 $sql = "SELECT * FROM  $tbl_contact c  where c.ville='$m1v' and  c.quartier='$m2q' and statut='6' and  (Tarif='1' or Tarif='5'  or Tarif='12')  ORDER BY c.id ASC";  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 
 $sql7 = "SELECT COUNT(*) AS bt FROM $tbl_contact c  where c.ville='$m1v' and  c.quartier='$m2q' and statut='6' and  (Tarif='1' or Tarif='5'  or Tarif='12') ";   
 $req7=mysqli_query($link, $sql7);
-$data7= mysql_fetch_assoc($req7);
+$data7= mysqli_fetch_assoc($req7);
 $cbt=$data7['bt']; 
 
 ?>
@@ -91,7 +91,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
    </tr>
    <?php
 }
-mysql_close ();  
+mysqli_close($link);
 			 
 ?>
 </table>

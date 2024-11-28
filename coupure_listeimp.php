@@ -22,7 +22,7 @@ $req=mysqli_query($link, $sql);
 
 $sqFP="SELECT  COUNT(*) AS nbres, SUM(f.totalnet) AS totalnet , SUM(f.totalttc) AS totalttc, SUM(f.impayee) AS impayee, f.fannee ,SUM(f.ortc) AS ortc, f.st , f.nserie, c.ville, c.quartier FROM $tbl_fact f, $tbl_contact c  where f.fannee='$anneec' and f.st='E' and nserie='$cserie' and c.id=f.id and c.ville='$m1v' and  c.quartier='$m2q' and  f.totalnet > 1000 and idf NOT IN(SELECT idf FROM $tbl_paiement where YEAR(date)='$anneec')"; 
 	$RFP = mysqli_query($link, $sqFP);
-	$AFP = mysql_fetch_assoc($RFP);
+	$AFP = mysqli_fetch_assoc($RFP);
 	$tFP=$AFP['totalttc'];
 	$tFPt=$AFP['totalnet']; 
 	$tFPn=$AFP['nbres'];
@@ -76,7 +76,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
    </tr>
    <?php
 }  
-mysql_close ();  
+mysqli_close($link);  
 ?>
 </table>
 <p>&nbsp;</p>

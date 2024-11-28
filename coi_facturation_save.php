@@ -40,7 +40,7 @@ $sujet = " AMANDE du ID_Client : $Max_id ";
 $texte = " l'agent : $id_nom a facturé une amande à $nomprenom de $montant au client ID_Client : $Max_id , Quartier : $quartier  "; 
 mail($destinataires,$sujet,$texte,"From:contact@edaanjouan.com");
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-   mysql_close(); 
+   mysqli_close($link); 
 ?>
 <?php
 header("location:coi_facturation_liste.php");

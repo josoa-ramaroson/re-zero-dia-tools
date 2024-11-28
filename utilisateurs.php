@@ -91,7 +91,7 @@ while($rows=mysqli_fetch_array($result)){ // Start looping table row
 $sql8 = ("SELECT * FROM $tbl_utilisateur ORDER BY id_nom ASC ");
 $result8 = mysqli_query($link, $sql8);
 
-while ($row8 = mysql_fetch_assoc($result8)) {
+while ($row8 = mysqli_fetch_assoc($result8)) {
 echo '<option> '.$row8['u_login'].' </option>';
 }
 

@@ -40,7 +40,7 @@
                 <?php
 $sql2 = ("SELECT titre  FROM $tbl_enreg GROUP BY titre ORDER BY titre  ASC ");
 $result2 = mysqli_query($link, $sql2);
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 echo '<option> '.$row2['titre'].' </option>';
 }
 
@@ -97,7 +97,7 @@ echo '<option> '.$row2['titre'].' </option>';
                                 <?php
 $sql2 = ("SELECT titre  FROM $tbl_vente  where type!=0 GROUP BY titre ORDER BY titre  ASC  ");
 $result2 = mysqli_query($link, $sql2);
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 echo '<option> '.$row2['titre'].' </option>';
 }
 
@@ -148,7 +148,7 @@ echo '<option> '.$row2['titre'].' </option>';
 $sql81 = ("SELECT * FROM anneeRef  ORDER BY annee ASC ");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
 }
 ?>
@@ -173,7 +173,7 @@ echo '<option> '.$row81['annee'].' </option>';
 $sql81 = ("SELECT * FROM anneeRef  ORDER BY annee ASC ");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
 }
 ?>
@@ -216,7 +216,7 @@ echo '<option> '.$row81['annee'].' </option>';
 $sql2 = ("SELECT id_nom FROM $tbl_vente  where type!=0 GROUP BY id_nom ORDER BY id_nom  ASC ");
 $result2 = mysqli_query($link, $sql2);
 echo '<option>  </option>';
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 echo '<option> '.$row2['id_nom'].' </option>';
 }
 
@@ -250,7 +250,7 @@ echo '<option> '.$row2['id_nom'].' </option>';
 $sql2 = ("SELECT id_nom FROM $tbl_vente where type!=0  GROUP BY id_nom ORDER BY id_nom  ASC ");
 $result2 = mysqli_query($link, $sql2);
 echo '<option>  </option>';
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 echo '<option> '.$row2['id_nom'].' </option>';
 }
 

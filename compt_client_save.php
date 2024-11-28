@@ -11,7 +11,7 @@ $Statutcl=addslashes($_POST['Statutcl']);
 $Date=addslashes($_POST['Date']);
 mysqli_query($link, "INSERT INTO $tb_comptcl (Numcsave,Nomcl,Prenomcl,Adressecl,Telephonecl,Statutcl,Date) 
 VALUE ('$Numcsave','$Nomcl','$Prenomcl','$Adressecl','$Telephonecl','$Statutcl','$Date')");
-mysql_close();
+mysqli_close($link);
 
 
 include ("compt_client.php");

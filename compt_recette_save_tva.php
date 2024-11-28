@@ -59,7 +59,7 @@ VALUE ('$Date','$Maxa_id','$Modep','$md','0','$Ht','0','$Ht','$Fourniseur','$Pie
 $sqlcon="update $tb_comptconf set idcomp='$Compte' where idc='$Maxa_id'";
 $connection=mysqli_query($link, $sqlcon);
 
-mysql_close();
+mysqli_close($link);
 
 
 include ("compt_recette_crediter_tva.php");

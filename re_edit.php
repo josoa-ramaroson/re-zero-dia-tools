@@ -224,7 +224,7 @@ $datam=mysqli_fetch_array($resultm);
 $CodeTypeClts=$datam['CodeTypeClts']; 
 $sqltclient = "SELECT * FROM $tbl_client where idtclient='$CodeTypeClts'";
 $resulttclient = mysqli_query($link, $sqltclient);
-$rowtclient = mysql_fetch_assoc($resulttclient);
+$rowtclient = mysqli_fetch_assoc($resulttclient);
 if ($rowtclient===FALSE) {}
 else 
  {
@@ -238,7 +238,7 @@ echo $TypeClts=$rowtclient['idtclient'];
 $sql84 = ("SELECT * FROM $tbl_client ORDER BY idtclient ASC");
 $result84 = mysqli_query($link, $sql84);
 
-while ($row84 = mysql_fetch_assoc($result84)) {
+while ($row84 = mysqli_fetch_assoc($result84)) {
 echo '<option value='.$row84['idtclient'].'> '.$row84['TypeClts'].' </option>';
 }
 
@@ -351,7 +351,7 @@ echo '<option value='.$row84['idtclient'].'> '.$row84['TypeClts'].' </option>';
               <?php
 $sql8 = ("SELECT * FROM tarif ORDER BY idt ASC");
 $result8 = mysqli_query($link, $sql8);
-while ($row8 = mysql_fetch_assoc($result8)) {
+while ($row8 = mysqli_fetch_assoc($result8)) {
 echo '<option value='.$row8['idt'].'> '.$row8['Libelle'].' </option>';
 }
 

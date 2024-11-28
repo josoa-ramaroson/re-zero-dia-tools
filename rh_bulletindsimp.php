@@ -25,13 +25,13 @@ $idservice=addslashes($_REQUEST['subcat']);
 
 $sql1 = "SELECT * FROM $tb_rhservice where idser=$idservice";
 $result1 = mysqli_query($link, $sql1);
-while ($row1 = mysql_fetch_assoc($result1)) {
+while ($row1 = mysqli_fetch_assoc($result1)) {
 $service=$row1['service'];
 }  
 
 $sql2 = "SELECT * FROM $tb_rhdirection where idrh=$iddirection";
 $result2 = mysqli_query($link, $sql2);
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 $direction=$row2['direction'];
 } 
     $m1d=$direction;

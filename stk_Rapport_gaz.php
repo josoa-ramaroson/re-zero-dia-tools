@@ -62,7 +62,7 @@ $req5=mysqli_query($link, $sql5);
 
 $sql4 = "SELECT *  FROM $tbl_clientgaz  ORDER BY nomprenom   ASC ";
 $result4 = mysqli_query($link, $sql4);
-while ($row4 = mysql_fetch_assoc($result4)) {
+while ($row4 = mysqli_fetch_assoc($result4)) {
 echo '<option value='.$row4['id'].'>'.$row4['nomprenom'].'</option>';
 }
 
@@ -122,7 +122,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 }
 }
 
-//mysql_close();
+//mysqli_close($link);
 ?>
         </table>
       </form></td>

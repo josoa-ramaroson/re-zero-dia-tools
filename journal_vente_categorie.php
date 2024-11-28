@@ -20,13 +20,13 @@ $refville=addslashes($_REQUEST['refville']);
 
 $sql1 = "SELECT * FROM quartier where id_quartier=$RefQuartier";
 $result1 = mysqli_query($link, $sql1);
-while ($row1 = mysql_fetch_assoc($result1)) {
+while ($row1 = mysqli_fetch_assoc($result1)) {
 $quartier=$row1['quartier'];
 }  
 
 $sql2 = "SELECT * FROM ville where refville=$refville";
 $result2 = mysqli_query($link, $sql2);
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 $ville=$row2['ville'];
 } 
     $m1v=$ville;
@@ -44,14 +44,14 @@ $CodeTypeClts=addslashes($_REQUEST['CodeTypeClts']);
 require 'configuration.php';
 
 $sql = " SELECT * FROM $tbl_fact f , $tbl_contact c  where f.id=c.id and f.nserie=$nserie and f.fannee=$anneec  and c.ville='$m1v' and  c.quartier='$m2q' and CodeTypeClts='$CodeTypeClts' ORDER BY f.id ASC ";
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
  
 ?>
  Ville : <em><?php echo  $m1v;?></em> Quartier : <em><?php echo $m2q;?></em> Categorie : <em><?php //$CodeTypeClts;
  
 $sqltclient = "SELECT * FROM $tbl_client where idtclient='$CodeTypeClts'";
 $resulttclient = mysqli_query($link, $sqltclient);
-$rowtclient = mysql_fetch_assoc($resulttclient);
+$rowtclient = mysqli_fetch_assoc($resulttclient);
 if ($rowtclient===FALSE) {}
 else 
  {
@@ -85,7 +85,7 @@ while($datafact=mysqli_fetch_array($req)){ // Start looping table row
    <?php
 }
 
-mysql_close ();  
+mysqli_close($link);  
 				  function gettatut($fetat){
 				  if ($fetat<=100000 && $fetat>=75000)         { echo $couleur="#ffc88d";}//orange 
 				  if ($fetat>=100000)                          { echo $couleur="#ec9b9b";}//rouge -Declined

@@ -61,7 +61,7 @@ require "client_lient.php";
 $sql81 = ("SELECT * FROM z_annee  ORDER BY annee ASC ");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
 }
 ?>

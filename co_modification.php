@@ -102,7 +102,7 @@ $rows3=mysqli_fetch_array($result3);
  <?php $idt=$rows3['id'];
 $sql82 ="SELECT * FROM $tbl_contact where id='$idt'";
 $result82 = mysqli_query($link, $sql82);
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 $Tarif=$row82['Tarif'];
 $chtaxe=$row82['chtaxe'];
 ?>

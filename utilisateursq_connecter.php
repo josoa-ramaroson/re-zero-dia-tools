@@ -25,7 +25,7 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
   
 $sql = "SELECT count(*) FROM $tbl_utilisateur";  
 
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
  
  
 $nb_total = mysqli_fetch_array($resultat);
@@ -48,7 +48,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tbl_utilisateur  where session='1' ORDER BY u_nom ASC LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC
  
 // on ex?cute la requ?te  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 ?>
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr> 
@@ -76,10 +76,10 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 
 }
 
-mysql_free_result ($req); 
+mysqli_free_result ($req); 
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
-mysql_free_result ($resultat); 
+mysqli_free_result ($resultat); 
 
 
 
@@ -90,7 +90,7 @@ mysql_free_result ($resultat);
 				 echo "$couleur";
 				 }
 				  
-mysql_close ();  
+mysqli_close($link);
 ?>
     </table>      <div align="center"></div></td>
   </tr>

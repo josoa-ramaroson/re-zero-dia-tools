@@ -12,7 +12,7 @@ if($resultp){
 }
 else {
 }
-mysql_close();
+mysqli_close($link);
 ?>
 <?php
 header("location: coupure_remise.php");

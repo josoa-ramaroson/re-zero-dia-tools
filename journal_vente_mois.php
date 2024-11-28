@@ -145,7 +145,7 @@ $ref_com=addslashes($_REQUEST['ref_com']);
 $sql83 = ("SELECT * FROM commune  ORDER BY commune ASC ");
 $result83 = mysqli_query($link, $sql83);
 
-while ($row83 = mysql_fetch_assoc($result83)) {
+while ($row83 = mysqli_fetch_assoc($result83)) {
 echo '<option value= '.$row83['ref_com'].'> '.$row83['commune'].' </option>';
 }
 ?>

@@ -43,7 +43,7 @@ $sql="SELECT *  FROM $tb_comptcl where Numcsave='$Numcsave' ";
 $result=mysqli_query($link, $sql);
 $rows=mysqli_fetch_array($result);
    
-mysql_close();
+mysqli_close($link);
 			
 			?>
 			 <input class="form-control" name="Numcsave"  readonly="readonly" type="text" id="nucl" value="<?php echo $rows['Numcsave'] ?>"> 
@@ -145,7 +145,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
         <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
       </table>
    </td>

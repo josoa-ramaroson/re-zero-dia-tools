@@ -54,7 +54,7 @@ while($datafact=mysqli_fetch_array($reqfact)){ // Start looping table row
         </tr>
         <?php
 }
-mysql_close ();  
+mysqli_close($link);  
 ?>
       </table>
       <p>&nbsp;</p>

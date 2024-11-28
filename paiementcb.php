@@ -162,7 +162,7 @@ location.href="paiementcb_save.php?<?php  echo md5(microtime()); ?>&dt=<?php ech
 
 $sql = "SELECT count(*) FROM $tbl_paiement where id<500000";  
 
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
  
  
 $nb_total = mysqli_fetch_array($resultat);  
@@ -185,7 +185,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sqfac = "SELECT * FROM $tbl_paiement where id<500000 GROUP BY  idp desc LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC  DESC
  
 // on ex?cute la requ?te  
-$resultfac = mysqli_query($link, $sqfac) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultfac = mysqli_query($link, $sqfac) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 
 
 
@@ -235,17 +235,17 @@ while($rowsfac=mysqli_fetch_array($resultfac)){
   <?php
 }
 
-mysql_free_result ($resultfac); 
+mysqli_free_result ($resultfac); 
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
-mysql_free_result ($resultat);  
+mysqli_free_result ($resultat);  
 
 	                 function gettatut($fetat){
 			    // if ($fetat=='P')    { echo $couleur="#ffc88d";}//vert fonce
 				 if ($fetat=='R')    { echo $couleur="#ec9b9b";}//rouge -Declined	
 				 }
 				 
-mysql_close ();  
+mysqli_close($link);  
 ?>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">

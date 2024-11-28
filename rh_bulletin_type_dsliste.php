@@ -18,13 +18,13 @@ $idservice=addslashes($_REQUEST['subcat']);
 
 $sql1 = "SELECT * FROM $tb_rhservice where idser=$idservice";
 $result1 = mysqli_query($link, $sql1);
-while ($row1 = mysql_fetch_assoc($result1)) {
+while ($row1 = mysqli_fetch_assoc($result1)) {
 $service=$row1['service'];
 }  
 
 $sql2 = "SELECT * FROM $tb_rhdirection where idrh=$iddirection";
 $result2 = mysqli_query($link, $sql2);
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 $direction=$row2['direction'];
 } 
     $m1d=$direction;
@@ -37,7 +37,7 @@ $direction=$row2['direction'];
 <p>
 <?php
 $sql = "SELECT * FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie' and direction='$m1d' and  service='$m2s' ORDER BY matricule ASC ";  //DESC
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 ?>
  <?php
 $sql2="SELECT SUM(sbase) AS sbase , SUM(SS) AS SS , SUM(SI) AS SI, SUM(SD) AS SD, SUM(SR) AS SR, SUM(SNET) AS SNET, moispaie ,anneepaie , direction, service,  SUM(igr) AS igr ,  SUM(retraite) AS retraite   FROM $tb_rhpaie   where anneepaie='$anneepaie' and moispaie='$moispaie' and direction='$m1d' and  service='$m2s'"; 
@@ -109,7 +109,7 @@ while($datafact=mysqli_fetch_array($req)){ // Start looping table row
    <?php
 }
 
-mysql_close ();  
+mysqli_close($link);  
 				  function gettatut($fetat){
 				  if ($fetat<=1000000 && $fetat>=500000)         { echo $couleur="#ffc88d";}//orange 
 				  if ($fetat>=1000000)                          { echo $couleur="#ec9b9b";}//rouge -Declined

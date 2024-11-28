@@ -17,7 +17,7 @@ mysqli_select_db($db)or die("cannot select DB");
   
 $sql = "SELECT count(*) FROM $tbl_com ";  
 
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
  
  
 $nb_total = mysqli_fetch_array($resultat);  
@@ -40,7 +40,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tbl_com  ORDER BY idcom DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
  
 // on ex?cute la requ?te  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 ?>
 </font></font></font></p>
 <table width="100%" border="0">
@@ -58,7 +58,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 
 }
 }
-mysql_close ();  
+mysqli_close($link);  
 ?>
         </p>
         <table width="100%" border="0" cellspacing="0" cellpadding="0">

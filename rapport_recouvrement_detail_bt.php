@@ -174,7 +174,7 @@ while($data33B=mysqli_fetch_array($req33B)){ // Start looping table row
 	 
 	 $sql32 = "SELECT * FROM ville where refville=$RefLocalite";
 $result32 = mysqli_query($link, $sql32);
-while ($row32 = mysql_fetch_assoc($result32)) {
+while ($row32 = mysqli_fetch_assoc($result32)) {
 echo $ville=$row32['ville'];
 }
 	 

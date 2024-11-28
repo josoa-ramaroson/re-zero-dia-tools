@@ -30,12 +30,12 @@ $date2=substr($_REQUEST["b"],32);
 $sql = "SELECT * FROM $tbl_appaut where  date >= '$date1'  and  date<='$date2' ORDER BY date ASC ";  //ASC DESC
  
 // on ex?cute la requ?te  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 
 
 	$sqPT="SELECT SUM(Montant) AS montant  FROM $tbl_appaut where date >= '$date1'  and  date<='$date2' "; 
 	$RPT = mysqli_query($link, $sqPT);
-	$AFPT = mysql_fetch_assoc($RPT);
+	$AFPT = mysqli_fetch_assoc($RPT);
 	$tPT=$AFPT['montant']; 
 	
 ?>

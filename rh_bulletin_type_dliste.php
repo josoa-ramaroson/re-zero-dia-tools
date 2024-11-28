@@ -115,7 +115,7 @@ $iddirection=addslashes($_REQUEST['direction']);
 
 $sql2 = "SELECT * FROM $tb_rhdirection where idrh=$iddirection";
 $result2 = mysqli_query($link, $sql2);
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 $direction=$row2['direction'];
 } 
     $m1d=$direction;
@@ -131,7 +131,7 @@ $data2=mysqli_fetch_array($resultat2)
 ?>
   <?php
 $sql = "SELECT * FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie' and direction='$m1d' ORDER BY matricule ASC  ";  //DESC
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 ?>
   </p>
 </p>

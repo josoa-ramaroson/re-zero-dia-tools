@@ -153,7 +153,7 @@ function toggleBox(szDivID, iState)// 1 visible, 0 hidden
 $CodeTypeClts=$datam['CodeTypeClts']; 
 $sqltclient = "SELECT * FROM $tbl_client where idtclient='$CodeTypeClts'";
 $resulttclient = mysqli_query($link, $sqltclient);
-$rowtclient = mysql_fetch_assoc($resulttclient);
+$rowtclient = mysqli_fetch_assoc($resulttclient);
 if ($rowtclient===FALSE) {}
 else 
  {
@@ -183,7 +183,7 @@ echo $TypeClts=$rowtclient['TypeClts'];
 $CodeTypePiece=$datam['CodeTypePiece']; 
 $sqltpiece = "SELECT * FROM $tbl_piece where CodeTypePiece='$CodeTypePiece'";
 $resulttpiece = mysqli_query($link, $sqltpiece);
-$rowtpiece = mysql_fetch_assoc($resulttpiece);
+$rowtpiece = mysqli_fetch_assoc($resulttpiece);
 
 if ($rowtpiece===FALSE) {}
 else {
@@ -238,7 +238,7 @@ echo $Pieces=$rowtpiece['Pieces'];
 $T=$datam['Tarif'];
 $sql82 = ("SELECT * FROM tarif where idt='$T'");
 $result82 = mysqli_query($link, $sql82);
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 echo $row82['Libelle'];
 }
 

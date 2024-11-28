@@ -14,7 +14,7 @@ if($resultp){
 }
 else {
 }
-mysql_close();
+mysqli_close($link);
 ?>
 <?php
 $m1vd=md5(microtime()).$m1v;

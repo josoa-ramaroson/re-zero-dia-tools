@@ -77,8 +77,8 @@ if ($clique!=1) {
 	
 //-------------------detecter les doublons --------- Une personne peut faire passer un paiement d'une facture---
 $valeur_existant = "SELECT COUNT(*) AS nb FROM $tbl_paiement  WHERE  idf='$idf' and date='$date' and nrecu='$nrecu' and  id_nom='$id_nom'";
-$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysql_error());
-$nb = mysql_fetch_assoc($sqLvaleur);
+$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysqli_error($link));
+$nb = mysqli_fetch_assoc($sqLvaleur);
 
 if($nb['nb']==1)
 { 	
@@ -144,7 +144,7 @@ $resultp=mysqli_query($link, $sqlp);
 
 $valeur = "SELECT COUNT(*) AS nbrecu FROM $tbl_paiement  WHERE  nrecu='$Maxa_id'";   
 $sqLv = mysqli_query($link, $valeur);
-$nbdata = mysql_fetch_assoc($sqLv);
+$nbdata = mysqli_fetch_assoc($sqLv);
 if($nbdata['nbrecu']==1)
 {
 

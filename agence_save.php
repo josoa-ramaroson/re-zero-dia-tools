@@ -14,7 +14,7 @@ $sqlp="INSERT INTO $tbl_agence  ( id_nom   , a_nom   ,a_adresse,   a_tel   , a_s
 					
 													
 $r=mysqli_query($link, $sqlp)
-or die(mysql_error());
+or die(mysqli_error($link));
 mysql_close($link);
 
 ?>

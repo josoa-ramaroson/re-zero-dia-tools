@@ -21,11 +21,11 @@ $tarif=addslashes($_REQUEST['tarif']);
 require 'configuration.php';
 
 $sql = " SELECT * FROM $tbl_fact f , $tbl_contact c  where f.id=c.id and f.nserie=$nserie and f.fannee=$anneec  and  Tarif='$tarif' ORDER BY f.id ASC ";
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
  
 $sql7 = "SELECT COUNT(*) AS nombre FROM $tbl_contact  WHERE statut='6' and Tarif='$tarif'";   
 $req7=mysqli_query($link, $sql7);
-$data7= mysql_fetch_assoc($req7);
+$data7= mysqli_fetch_assoc($req7);
 $nombre=$data7['nombre'];
 
 ?>
@@ -65,7 +65,7 @@ while($datafact=mysqli_fetch_array($req)){ // Start looping table row
    <?php
 }
 
-mysql_close ();  
+mysqli_close($link);  
 				  function gettatut($fetat){
 				  if ($fetat<=100000 && $fetat>=75000)         { echo $couleur="#ffc88d";}//orange 
 				  if ($fetat>=100000)                          { echo $couleur="#ec9b9b";}//rouge -Declined

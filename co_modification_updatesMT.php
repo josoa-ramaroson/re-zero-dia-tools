@@ -30,7 +30,7 @@ exit;
 $Tarif=addslashes($_POST['Tarif']);
 $sql82 ="SELECT * FROM tarif where idt='$Tarif'";
 $result82 = mysqli_query($link, $sql82);
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 $t1=$row82['t1'];
 $t2=$row82['t2'];
 $q=$row82['q'];

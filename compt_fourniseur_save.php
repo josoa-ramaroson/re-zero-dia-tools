@@ -24,7 +24,7 @@ $pays=addslashes($_POST['pays']);
 
 mysqli_query($link, "INSERT INTO $tb_comptf (Numf,Societef,Adressef,Telephonef,Statutf,Date , personne , Telephonem , faxe , email , web ,ville ,pays) 
 VALUE ('$Numf','$Societef','$Adressef','$Telephonef','$Statutf','$Date', '$personne' , '$Telephonem' , '$faxe' , '$email' , '$web' , '$ville' , '$pays')");
-mysql_close();
+mysqli_close($link);
 
 
 include ("compt_fourniseur.php");

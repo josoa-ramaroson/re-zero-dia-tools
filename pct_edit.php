@@ -110,7 +110,7 @@ while($rowsact=mysqli_fetch_array($resultact)){
 $sql9 = ("SELECT id_nom , u_niveau , u_login FROM $tbl_utilisateur where u_niveau='10' ORDER BY id_u ASC ");
 $result9 = mysqli_query($link, $sql9);
 
-while ($row9 = mysql_fetch_assoc($result9)) {
+while ($row9 = mysqli_fetch_assoc($result9)) {
 echo '<option> '.$row9['u_login'].' </option>';
 }
 

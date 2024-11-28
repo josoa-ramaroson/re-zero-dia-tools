@@ -67,19 +67,19 @@ $refville=addslashes($_POST['refville']);
 
 $sql1 = "SELECT * FROM quartier where id_quartier=$RefQuartier";
 $result1 = mysqli_query($link, $sql1);
-while ($row1 = mysql_fetch_assoc($result1)) {
+while ($row1 = mysqli_fetch_assoc($result1)) {
 $quartier=$row1['quartier'];
 }  
 
 $sql2 = "SELECT * FROM ville where refville=$refville";
 $result2 = mysqli_query($link, $sql2);
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 $ville=$row2['ville'];
 } 
 
 $sql3 = "SELECT * FROM commune where ref_com=$RefCommune";
 $result3 = mysqli_query($link, $sql3);
-while ($row3 = mysql_fetch_assoc($result3)) {
+while ($row3 = mysqli_fetch_assoc($result3)) {
 $secteur=$row3['commune'];
 } 
 
@@ -109,6 +109,9 @@ $statut='1';
 $sql="INSERT INTO $tbl_contact ( id_nom , Designation, nomprenom,surnom, email, titre, tel, login, pwd , fax , url , adresse , quartier, ville, secteur, ile, Police,  RefCommune, RefLocalite, RefQuartier, AdresseLivraison, BoitePostale,  DateCreation, CodeTypeClts, CodeTypePiece, NumPieces,  statut,chtaxe,Tarif,coefTi)
 VALUES
 ('$id_nom' ,'$Designation', '$nomprenom', '$surnom', '$email', '$titre', '$tel', '$login', '$pwd', '$fax' , '$url' , '$adresse' , '$quartier' , '$ville', '$secteur', '$ile', '$Max_id', '$RefCommune', '$RefLocalite', '$RefQuartier' , '$AdresseLivraison', '$BoitePostale', '$DateCreation', '$CodeTypeClts', '$CodeTypePiece', '$NumPieces',  '$statut' , '$chtaxe' , '$Tarif','$coefTi')";
+
+var_dump($sql);
+
 $result=mysqli_query($link, $sql);
 
 //---------FACTURATION DU MONTANT POLICE D ABONNEMENT---------------------------------
@@ -132,7 +135,7 @@ $sujet = "Demande d'Abonnement ID_Client : $Max_id ";
 $texte = " l'agent : $id_nom a realisé la demande d'abonnement de $Designation $nomprenom son ID_Client : $Max_id , ville : $ville, Quartier : $quartier  "; 
 mail($destinataires,$sujet,$texte,"From:$emailinfo");
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-   mysql_close(); 
+   mysqli_close($link);
 ?>
 <?php
 header("location:re_affichage_n.php");

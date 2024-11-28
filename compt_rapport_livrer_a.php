@@ -71,7 +71,7 @@ $tt=$dt-$ct;
               <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
             </table>
           </form></td>
@@ -105,7 +105,7 @@ $tt=$dt-$ct;
       <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
     </table>
     <p>&nbsp;</p>

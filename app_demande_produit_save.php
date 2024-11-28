@@ -21,7 +21,7 @@ VALUES
 (  '$id_dem',  '$id_nom' ,  '$date_dem', '$nomprenom', '$direction', '$service', '$designation', '$quantite', '$fournisseur')";
 $result=mysqli_query($link, $sql);
 
-mysql_close(); 
+mysqli_close($link); 
 ?>
 <?php
 $idr=md5(microtime()).$id_dem;

@@ -148,8 +148,8 @@ $etat='facture';
 $date=$m2;
 
 $valeur_existant = "SELECT COUNT(*) AS nb , idf FROM $tbl_fact  WHERE st='A' and id='$m1' and date='$m2'";
-$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysql_error());
-$nb = mysql_fetch_assoc($sqLvaleur);
+$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysqli_error($link));
+$nb = mysqli_fetch_assoc($sqLvaleur);
 
 if($nb['nb'] == 1)
 { 	
@@ -166,7 +166,7 @@ $result2=mysqli_query($link, $sql2);
 $Codebare=$Max_idf;
 }
 
-mysql_close();
+mysqli_close($link);
 ?>
 <p align="center">&nbsp;</p>
 <p align="center">&nbsp;</p>

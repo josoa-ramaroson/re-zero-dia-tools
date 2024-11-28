@@ -115,7 +115,7 @@ $datam=mysqli_fetch_array($resultm);
 $sql5 = ("SELECT ville FROM ville ORDER BY ville ASC ");
 $result5 = mysqli_query($link, $sql5);
 
-while ($row5 = mysql_fetch_assoc($result5)) {
+while ($row5 = mysqli_fetch_assoc($result5)) {
 echo '<option> '.$row5['ville'].' </option>';
 }
 
@@ -151,7 +151,7 @@ echo '<option> '.$row5['ville'].' </option>';
 $sql51 = ("SELECT ile FROM ile ORDER BY ile ASC ");
 $result51 = mysqli_query($link, $sql51);
 
-while ($row51 = mysql_fetch_assoc($result51)) {
+while ($row51 = mysqli_fetch_assoc($result51)) {
 echo '<option> '.$row51['ile'].' </option>';
 }
 

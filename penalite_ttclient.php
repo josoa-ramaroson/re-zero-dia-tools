@@ -34,6 +34,6 @@ $sqlp="update  $tbl_fact f  set   bstatut='retard' , Pre='$Pre' , totalnet='$tot
 $resultp=mysqli_query($link, $sqlp);
 } 
 
-mysql_close();
+mysqli_close($link);
 header("location: penalite.php?a=1");
 ?>

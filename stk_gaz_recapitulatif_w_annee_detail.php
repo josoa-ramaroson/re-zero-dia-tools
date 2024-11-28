@@ -71,7 +71,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
                 <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
               </table>
             </form></td>
@@ -113,7 +113,7 @@ while($data2=mysqli_fetch_array($req2)){ // Start looping table row
                 <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
               </table>
             </form></td>

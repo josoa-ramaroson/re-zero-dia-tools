@@ -21,5 +21,5 @@ $result=mysqli_query($link, $sql);
 	   $idr=md5(microtime()).$id;
 	   header("location:re_affichage_user.php?id=$idr");
    }
-  mysql_close(); 
+  mysqli_close($link); 
 ?>

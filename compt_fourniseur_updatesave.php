@@ -28,7 +28,7 @@ personne='$personne' , Telephonem='$Telephonem' , faxe='$faxe' , email='$email' 
 
  where idf='$idf' ";
  $result=mysqli_query($link, $req);
- mysql_close();
+ mysqli_close($link);
 
 
 include ("compt_fourniseur.php");

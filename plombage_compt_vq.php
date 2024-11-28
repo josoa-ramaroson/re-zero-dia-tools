@@ -195,13 +195,13 @@ $refville=addslashes($_REQUEST['refville']);
 
 $sql1 = "SELECT * FROM quartier where id_quartier=$RefQuartier";
 $result1 = mysqli_query($link, $sql1);
-while ($row1 = mysql_fetch_assoc($result1)) {
+while ($row1 = mysqli_fetch_assoc($result1)) {
 $quartier=$row1['quartier'];
 }  
 
 $sql2 = "SELECT * FROM ville where refville=$refville";
 $result2 = mysqli_query($link, $sql2);
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 $ville=$row2['ville'];
 } 
     $m1v=$ville;
@@ -212,7 +212,7 @@ $ville=$row2['ville'];
 <p>
   <?php
 $sql = "SELECT count(*) FROM $tbl_contact c, $tbl_plombage p where statut='6' and  p.id=c.id and  c.ville='$m1v' and  c.quartier='$m2q'";  
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 $nb_total = mysqli_fetch_array($resultat);
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -221,11 +221,11 @@ else {
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 50; 
 $sql = "SELECT * FROM $tbl_contact c, $tbl_plombage p where c.statut='6' and  p.id=c.id and  c.ville='$m1v' and  c.quartier='$m2q' ORDER BY nomprenom ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 
 $sqFP="SELECT  COUNT(*) AS nbres FROM $tbl_contact c, $tbl_plombage p where c.statut='6' and  p.id=c.id and  c.ville='$m1v' and  c.quartier='$m2q'"; 
 	$RFP = mysqli_query($link, $sqFP);
-	$AFP = mysql_fetch_assoc($RFP);
+	$AFP = mysqli_fetch_assoc($RFP);
 	$tFPn=$AFP['nbres'];
 
 
@@ -276,10 +276,10 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
    </tr>
    <?php
 }
-mysql_free_result ($req); 
+mysqli_free_result ($req);
  echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], $refville , $RefQuartier,  10).'</span>'; 
 }  
-mysql_free_result ($resultat); 
+mysqli_free_result ($resultat);
 
 		function stat_eda2($tbl_plombcont,$tbl_plombage,$idv){ 
 		$sqlv="SELECT COUNT(*) AS nombre FROM $tbl_plombcont ct, $tbl_plombage p  WHERE ct.idclient=p.id and ct.idclient='$idv'" ;
@@ -292,7 +292,7 @@ mysql_free_result ($resultat);
 		if ($fetat>0) { echo $couleur="#87e385";} else { echo $couleur="#ffc88d";}//vert
 		}
 		 
-mysql_close ();  
+mysqli_close($link);
 ?>
 </table>
 <p>&nbsp;</p>

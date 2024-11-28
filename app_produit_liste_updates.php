@@ -25,6 +25,6 @@ if($resultp){
 else {
 echo "ERROR";
 }
-mysql_close();
+mysqli_close($link);
 header("location:app_produit_liste.php");
 ?>

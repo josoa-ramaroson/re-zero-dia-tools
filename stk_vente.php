@@ -149,7 +149,7 @@ echo "<option value=$row[idproduit]>$row[titre]</option>";
 
 $sql4 = "SELECT *  FROM $tbl_contact where statut='2' ORDER BY nomprenom   ASC ";
 $result4 = mysqli_query($link, $sql4);
-while ($row4 = mysql_fetch_assoc($result4)) {
+while ($row4 = mysqli_fetch_assoc($result4)) {
 echo '<option value='.$row4['id'].'>'.$row4['nomprenom'].'</option>';
 }
 
@@ -180,7 +180,7 @@ echo '<option value='.$row4['id'].'>'.$row4['nomprenom'].'</option>';
 $sql = "SELECT count(*) FROM $tbl_vente where '500000'>=nc ";  
 
 
-$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
  
 
 $nb_total = mysqli_fetch_array($resultat);
@@ -196,7 +196,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
    
 
 $sql = "SELECT * FROM $tbl_vente  where '500000'>=nc ORDER BY idvente  DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;   
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 ?>
 </p>
 <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -227,15 +227,15 @@ while($data=mysqli_fetch_array($req)){
 
 }
 
-mysql_free_result ($req); 
+mysqli_free_result ($req); 
  
 
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
 
-mysql_free_result ($resultat);  
+mysqli_free_result ($resultat);  
   
-mysql_close ();  
+mysqli_close($link);
 ?>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">

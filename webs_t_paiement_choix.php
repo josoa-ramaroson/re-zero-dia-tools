@@ -43,7 +43,7 @@ if(($_SESSION['u_niveau'] != 4)) {
 $sql2 = ("SELECT id_nom FROM $tbl_paiement_bachtemp where miseajours!=1 GROUP BY id_nom ORDER BY id_nom  ASC ");
 $result2 = mysqli_query($link, $sql2);
 echo '<option>  </option>';
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 echo '<option> '.$row2['id_nom'].' </option>';
 }
 ?>

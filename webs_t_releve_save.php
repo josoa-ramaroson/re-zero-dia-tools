@@ -45,7 +45,7 @@ exit;
  $Tarif=addslashes($_POST['Tarif']);
 $sql82 ="SELECT * FROM tarif where idt='$Tarif'";
 $result82 = mysqli_query($link, $sql82);
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 $t1=$row82['t1'];
 $t2=$row82['t2'];
 $q=$row82['q'];
@@ -130,8 +130,8 @@ $etat='facture';
 
 
 $valeur_existant = "SELECT COUNT(*) AS nb FROM $tbl_fact  WHERE st='E' and id='$id'  and fannee='$fannee' and nserie='$nserie'";
-$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysql_error());
-$nb = mysql_fetch_assoc($sqLvaleur);
+$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysqli_error($link));
+$nb = mysqli_fetch_assoc($sqLvaleur);
 
 if($nb['nb'] == 1)
 { 	
@@ -173,6 +173,6 @@ if ($imp>'0'){
     $resultp=mysqli_query($link, $sqlp);
 	}
 
-mysql_close(); 
+mysqli_close($link); 
 ?>
 

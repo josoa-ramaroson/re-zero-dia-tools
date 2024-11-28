@@ -8,7 +8,7 @@ $id_user = $_REQUEST["id_nom"];
 
 $sqlRECH = "SELECT * FROM $tbl_paiement_bachtemp where miseajours!='1' and id_nom='$userchoix'";
 $resultRECH = mysqli_query($link, $sqlRECH);
-while ($RECH = mysql_fetch_assoc($resultRECH)) {
+while ($RECH = mysqli_fetch_assoc($resultRECH)) {
   $idpb=$RECH['idpb'];
   $id=$RECH['id'];
   //$id_nom=$RECH['id_nom'];

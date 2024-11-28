@@ -20,5 +20,5 @@ $rows = mysqli_query($link, "SELECT n.NTC, p.matricule, p.direction, p.service, 
 
 
 // loop over the rows, outputting them
-while ($row = mysql_fetch_assoc($rows)) fputcsv($output, $row);
+while ($row = mysqli_fetch_assoc($rows)) fputcsv($output, $row);
 ?>

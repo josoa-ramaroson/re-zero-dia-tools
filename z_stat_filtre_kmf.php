@@ -65,7 +65,7 @@ while($data11=mysqli_fetch_array($req11)){ // Start looping table row
 	 
 	 $sql3 = "SELECT * FROM commune where ref_com=$RefCommune";
 $result3 = mysqli_query($link, $sql3);
-while ($row3 = mysql_fetch_assoc($result3)) {
+while ($row3 = mysqli_fetch_assoc($result3)) {
 echo $secteur=$row3['commune'];
 }
 	 
@@ -129,7 +129,7 @@ while($data22=mysqli_fetch_array($req22)){ // Start looping table row
 	 
 	 $sql322 = "SELECT * FROM ville where refville=$RefLocalite";
 $result322 = mysqli_query($link, $sql322);
-while ($row322 = mysql_fetch_assoc($result322)) {
+while ($row322 = mysqli_fetch_assoc($result322)) {
 echo $ville=$row322['ville'];
 }
 	 
@@ -247,7 +247,7 @@ $nb= $data33['nbres'];
   </tr>
   <tr>
     <td height="21"><?php
-mysql_close (); 
+mysqli_close($link); 
 include_once('pied.php');
 ?></td>
   </tr>

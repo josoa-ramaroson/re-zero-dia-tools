@@ -85,8 +85,8 @@ $Ets=addslashes($ligne[20]);
 
 //$valeur_existant = "SELECT COUNT(*) AS nb FROM $tbl_contact WHERE Email='$Email'";
 $valeur_existant = "SELECT COUNT(*) AS nb FROM clienteda  WHERE Police='$Police' ";
-$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysql_error());
-$nb = mysql_fetch_assoc($sqLvaleur);
+$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysqli_error($link));
+$nb = mysqli_fetch_assoc($sqLvaleur);
 
 if($nb['nb'] == 1)
 {

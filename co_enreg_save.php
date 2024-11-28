@@ -19,7 +19,7 @@ $datepose=addslashes($_POST['datepose']);
 $T=$Tarif;
 $sql82 = ("SELECT * FROM tarif where idt='$T'");
 $result82 = mysqli_query($link, $sql82);
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 $typecompteur=$row82['typecom'];
 }
 
@@ -41,8 +41,8 @@ $Max_idf = $rowsmaxf['Maxa_id'];
 
 
 $valeur_existant = "SELECT COUNT(*) AS nb FROM $tbl_fact  WHERE id='$id' and st='E' and idf='$Max_idf'";
-$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysql_error());
-$nb = mysql_fetch_assoc($sqLvaleur);
+$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysqli_error($link));
+$nb = mysqli_fetch_assoc($sqLvaleur);
 
 if($nb['nb'] == 1)
 {
@@ -53,7 +53,7 @@ else
 {
 $sql2="INSERT INTO $tbl_fact ( id, ci , st, id_nom, fannee, nfacture,  nf, libelle) VALUES
 ( '$id','$ci', '$st', '$id_nom', '$anneec',  '$nfacture', '$Indexinitial', '$libelle')";
-$r=mysqli_query($link, $sql2) or die(mysql_error());
+$r=mysqli_query($link, $sql2) or die(mysqli_error($link));
 }
 //--------------------------------------------------------------------------------------------------
 
@@ -66,5 +66,5 @@ $r=mysqli_query($link, $sql2) or die(mysql_error());
    else {
    echo "ERROR";
    }
-  mysql_close(); 
+  mysqli_close($link); 
 ?>

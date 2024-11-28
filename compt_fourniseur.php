@@ -48,7 +48,7 @@ while($rows=mysqli_fetch_array($result)){
  $nf=$rows['compt_fourniseur'];
   //echo $nf+1 ;
    }
-mysql_close();
+mysqli_close($link);
 			
 			?>
 			 <input class="form-control" name="Numf"  readonly="readonly" type="text" id="nucl" value="<?php echo $nf+1 ?>"> 
@@ -173,7 +173,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
   <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
 </table>
 <p>&nbsp;</p>

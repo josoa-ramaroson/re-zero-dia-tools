@@ -93,11 +93,11 @@ httpxml.send(null);
 <p>
   <?php
 $sql = "SELECT * FROM $tbl_contact c, $tbl_plombage p where c.statut='6' and  p.id=c.id and  c.ville='$m1v' and  c.quartier='$m2q' ORDER BY nomprenom ASC ";  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));  
 
 $sqFP="SELECT  COUNT(*) AS nbres FROM $tbl_contact c, $tbl_plombage p where c.statut='6' and  p.id=c.id and  c.ville='$m1v' and  c.quartier='$m2q'"; 
 	$RFP = mysqli_query($link, $sqFP); 
-	$AFP = mysql_fetch_assoc($RFP);
+	$AFP = mysqli_fetch_assoc($RFP);
 	$tFPn=$AFP['nbres'];
 
 ?>
@@ -158,7 +158,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 		if ($fetat>0) { echo $couleur="#87e385";} else { echo $couleur="#ffffff";}//vert
 		}
 		
-mysql_close ();  
+mysqli_close($link);  
 ?>
 </table>
 <p>&nbsp;</p>

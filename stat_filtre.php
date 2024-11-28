@@ -106,57 +106,57 @@ require("bienvenue.php");  // on appelle la page contenant la fonction
 <?php
 $sql = "SELECT COUNT(*) AS actif FROM $tbl_contact  WHERE statut='6'";   
 $req=mysqli_query($link, $sql);
-$data= mysql_fetch_assoc($req);
+$data= mysqli_fetch_assoc($req);
 $Actif=$data['actif'];
 
 $sql2 = "SELECT COUNT(*) AS resilier FROM $tbl_contact  WHERE statut='7'";   
 $req2=mysqli_query($link, $sql2);
-$data2= mysql_fetch_assoc($req2);
+$data2= mysqli_fetch_assoc($req2);
 $Resilier=$data2['resilier'];
 
 $sql3 = "SELECT COUNT(*) AS police FROM $tbl_contact  WHERE statut='1'";   
 $req3=mysqli_query($link, $sql3);
-$data3= mysql_fetch_assoc($req3);
+$data3= mysqli_fetch_assoc($req3);
 $ppolice=$data3['police'];
 
 $sql4 = "SELECT COUNT(*) AS devis1 FROM $tbl_contact  WHERE statut='2'";   
 $req4=mysqli_query($link, $sql4);
-$data4= mysql_fetch_assoc($req4);
+$data4= mysqli_fetch_assoc($req4);
 $pdevis1=$data4['devis1'];
 
 $sql5 = "SELECT COUNT(*) AS devis2 FROM $tbl_contact  WHERE statut='3'";   
 $req5=mysqli_query($link, $sql5);
-$data5= mysql_fetch_assoc($req5);
+$data5= mysqli_fetch_assoc($req5);
 $pdevis2=$data5['devis2'];
 
 $sql6 = "SELECT COUNT(*) AS brancher FROM $tbl_contact  WHERE statut='4'";   
 $req6=mysqli_query($link, $sql6);
-$data6= mysql_fetch_assoc($req6);
+$data6= mysqli_fetch_assoc($req6);
 $pbrancher=$data6['brancher'];
 
 $sql9 = "SELECT COUNT(*) AS ffacture FROM $tbl_contact  WHERE statut='5'";   
 $req9=mysqli_query($link, $sql9);
-$data9= mysql_fetch_assoc($req9);
+$data9= mysqli_fetch_assoc($req9);
 $ffacture=$data9['ffacture'];
 
 $sql7 = "SELECT COUNT(*) AS bt FROM $tbl_contact  WHERE statut='6' and Tarif!='10'";   
 $req7=mysqli_query($link, $sql7);
-$data7= mysql_fetch_assoc($req7);
+$data7= mysqli_fetch_assoc($req7);
 $cbt=$data7['bt'];
 
 $sql8 = "SELECT COUNT(*) AS mt FROM $tbl_contact  WHERE statut='6' and Tarif='10'";   
 $req8=mysqli_query($link, $sql8);
-$data8= mysql_fetch_assoc($req8);
+$data8= mysqli_fetch_assoc($req8);
 $cmt=$data8['mt'];
 
 $sql9 = "SELECT COUNT(*) AS mono FROM $tbl_contact  WHERE statut='6' and (Tarif='2' or Tarif='3' or Tarif='4' or Tarif='6' or Tarif='7' or Tarif='8' or Tarif='9' or Tarif='11') ";   
 $req9=mysqli_query($link, $sql9);
-$data9= mysql_fetch_assoc($req9);
+$data9= mysqli_fetch_assoc($req9);
 $mono=$data9['mono'];
 
 $sql10 = "SELECT COUNT(*) AS tri FROM $tbl_contact  WHERE statut='6' and (Tarif='1' or Tarif='5' or Tarif='10' or Tarif='12')";   
 $req10=mysqli_query($link, $sql10);
-$data10= mysql_fetch_assoc($req10);
+$data10= mysqli_fetch_assoc($req10);
 $tri=$data10['tri'];
 
 ?>
@@ -245,7 +245,7 @@ $tri=$data10['tri'];
 $sql82 = ("SELECT * FROM annee  ORDER BY annee ASC ");
 $result82 = mysqli_query($link, $sql82);
 
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 echo '<option> '.$row82['annee'].' </option>';
 }
 ?>
@@ -298,7 +298,7 @@ echo '<option> '.$row82['annee'].' </option>';
 $sql82 = ("SELECT * FROM annee  ORDER BY annee ASC ");
 $result82 = mysqli_query($link, $sql82);
 
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 echo '<option> '.$row82['annee'].' </option>';
 }
 ?>

@@ -194,5 +194,5 @@ $result2=mysqli_query($link, $sql2);
    else {
    echo "ERROR";
    }
-  mysql_close(); 
+  mysqli_close($link); 
 ?>

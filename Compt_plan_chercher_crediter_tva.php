@@ -130,7 +130,7 @@ $c=$row['Code'];
               <?php
 // Exit looping and close connection 
 }
-//mysql_close();
+//mysqli_close($link);
 ?>
             </table>
           </form></td>

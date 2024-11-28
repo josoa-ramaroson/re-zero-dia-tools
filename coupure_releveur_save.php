@@ -9,7 +9,7 @@ $idf=substr($_REQUEST["idf"],32);
 
 $sql1 = "SELECT * FROM $tbl_fact where idf=$idf";
 $result1 = mysqli_query($link, $sql1);
-while ($row1 = mysql_fetch_assoc($result1)) {
+while ($row1 = mysqli_fetch_assoc($result1)) {
 $totalneti=$row1['totalnet'];
 $reporti=$row1['report'];
 $bstatuti= $row1['bstatut'];
@@ -34,6 +34,6 @@ if($resultp){
 }
 else {
 }
-mysql_close();
+mysqli_close($link);
 header("location: coupure_releveur.php?mr1=$mr1");
 ?>

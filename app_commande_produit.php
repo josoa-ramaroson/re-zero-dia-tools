@@ -176,7 +176,7 @@ $num=$num.'/'.$Max_idnum;
 $sqlS = ("SELECT * FROM $tb_comptf  ORDER BY Societef ASC ");
 $resultS = mysqli_query($link, $sqlS);
 
-while ($rowS = mysql_fetch_assoc($resultS)) {
+while ($rowS = mysqli_fetch_assoc($resultS)) {
 echo '<option value='.$rowS['idf'].'> '.$rowS['Societef'].' </option>';
 }
 ?>

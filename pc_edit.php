@@ -175,7 +175,7 @@ $datam=mysqli_fetch_array($resultm);
 $sql9 = ("SELECT id_u, id_nom , u_nom , u_prenom  FROM $tbl_utilisateur  ORDER BY id_u ASC ");
 $result9 = mysqli_query($link, $sql9);
 
-while ($row9 = mysql_fetch_assoc($result9)) {
+while ($row9 = mysqli_fetch_assoc($result9)) {
 echo '<option value='.$row9['id_u'].'> '.$row9['u_nom'].' '.$row9['u_prenom'].'</option>';
 }
 ?>

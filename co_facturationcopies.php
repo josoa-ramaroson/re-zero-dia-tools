@@ -35,13 +35,13 @@ require 'configuration.php';
 
 $sql5="SELECT * FROM $tbl_contact where id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec') ORDER BY id ASC";
 $result5 = mysqli_query($link, $sql5);
-while ($row5 = mysql_fetch_assoc($result5)) {
+while ($row5 = mysqli_fetch_assoc($result5)) {
 echo '<option value='.$row5['id'].'>'.$row5['id'].'</option>';
 }
 $id=$_POST['id'];
 $sql4 = "SELECT * FROM $tbl_contact where id='$id'";
 $result4 = mysqli_query($link, $sql4);
-while ($row4 = mysql_fetch_assoc($result4)) {
+while ($row4 = mysqli_fetch_assoc($result4)) {
 $id=$row4['id'];
 }  
 ?>

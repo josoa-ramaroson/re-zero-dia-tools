@@ -27,7 +27,7 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
 					$sqlup = "UPDATE $tbl_ind SET nbligne = '2' WHERE sid1='".$_SESSION['SID2']."' AND sid2= '".$_SESSION['SID1']."' AND nbligne = '1'";
 	
 	//$sqlup = 'UPDATE  chat_ind SET nbligne = "2" WHERE sid1= "'.$_SESSION['SID2'].'" AND sid2= "'.$_SESSION['SID1'].'" AND nbligne = "1"'; 
-						$requp = mysqli_query($link, $sqlup);						mysql_close (); 					?>
+						$requp = mysqli_query($link, $sqlup);						mysqli_close($link); 					?>
 					<!-- /chat-display -->				
 					<!-- chat-form -->
 					<div id="chat-form" class="row">

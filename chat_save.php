@@ -17,7 +17,7 @@ $result=mysqli_query($link, $sql);
 $sqlnb = "SELECT count(*) FROM $tbl_ind where sid1=$SID1 and   sid2=$SID2 ";
 $reqnb = mysqli_query($link, $sqlnb);
 $datanb = mysqli_fetch_array($reqnb);
-mysql_free_result($reqnb);  
+mysqli_free_result($reqnb);
  
 if ($datanb[0]) { 
    $sqlnb="UPDATE  $tbl_ind SET nbligne= $nbligne WHERE sid1=$SID1 and sid2=$SID2";
@@ -29,6 +29,6 @@ else {
 }  
 
 
-mysql_close();
+mysqli_close($link);
 header("location:chat.php?sid1=$SID1&sid2=$SID2");
 ?>

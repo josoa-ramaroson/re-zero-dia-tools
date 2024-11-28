@@ -59,7 +59,7 @@
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
 }
 ?>
@@ -126,7 +126,7 @@ echo '<option> '.$row81['annee'].' </option>';
 $sql8 = ("SELECT * FROM $tbl_paiement GROUP BY  id_nom ORDER BY id_nom ASC ");
 $result8 = mysqli_query($link, $sql8);
 
-while ($row8 = mysql_fetch_assoc($result8)) {
+while ($row8 = mysqli_fetch_assoc($result8)) {
 echo '<option> '.$row8['id_nom'].' </option>';
 }
 
@@ -209,7 +209,7 @@ echo '<option> '.$row8['id_nom'].' </option>';
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
 }
 ?>
@@ -278,7 +278,7 @@ echo '<option> '.$row81['annee'].' </option>';
 $sql8 = ("SELECT * FROM $tbl_paiement GROUP BY  id_nom ORDER BY id_nom ASC ");
 $result8 = mysqli_query($link, $sql8);
 
-while ($row8 = mysql_fetch_assoc($result8)) {
+while ($row8 = mysqli_fetch_assoc($result8)) {
 echo '<option> '.$row8['id_nom'].' </option>';
 }
 
@@ -318,7 +318,7 @@ echo '<option> '.$row8['id_nom'].' </option>';
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
 }
 ?>
@@ -360,7 +360,7 @@ echo '<option> '.$row81['annee'].' </option>';
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
 }
 ?>

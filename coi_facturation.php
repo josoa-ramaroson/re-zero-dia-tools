@@ -40,7 +40,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
                 if (isset($_REQUEST["id"]))
                 $id = $_REQUEST["id"];
 $sql = "SELECT * FROM $tbl_contact where id='$id' and statut='6'";
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 $datam=mysqli_fetch_array($req);
 
 	$sqldate="SELECT * FROM $tbl_caisse "; //DESC  ASC
@@ -115,7 +115,7 @@ $datam=mysqli_fetch_array($req);
       <?php
 $sql2 = ("SELECT *  FROM $tbl_libelle where categorie='F' ORDER BY libelle  ASC ");
 $result2 = mysqli_query($link, $sql2);
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 echo '<option> '.$row2['libelle'].' </option>';
 }
 

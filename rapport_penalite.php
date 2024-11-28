@@ -64,7 +64,7 @@ require("bienvenue.php");    // on appelle la page contenant la fonction
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
 $result81 = mysqli_query($link, $sql81);
 
-while ($row81 = mysql_fetch_assoc($result81)) {
+while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
 }
 ?>
@@ -93,13 +93,13 @@ mysqli_select_db($db)or die("cannot select DB");
   
 $sqFS="SELECT  SUM(Pre) AS Pre, RefLocalite , nserie , fannee FROM $tv_facturation where fannee='$annee'  and nserie='$mois' ";  
 	$RFS = mysqli_query($link, $sqFS);
-	$AFFS = mysql_fetch_assoc($RFS);
+	$AFFS = mysqli_fetch_assoc($RFS);
 	$tFSl=$AFFS['Pre'];
 	$A=$tFSl;
 
 $sqFSN="SELECT  SUM(Pre) AS Pre, totalnet, report, RefLocalite , nserie , fannee FROM $tv_facturation where fannee='$annee'  and nserie='$mois' and totalnet=report";  
 	$RFSN = mysqli_query($link, $sqFSN);
-	$AFFSN = mysql_fetch_assoc($RFSN);
+	$AFFSN = mysqli_fetch_assoc($RFSN);
 	$tFSlN=$AFFSN['Pre'];
 	$B=$tFSlN;
 	

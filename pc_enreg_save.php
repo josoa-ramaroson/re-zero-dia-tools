@@ -26,7 +26,7 @@ $result=mysqli_query($link, $sql);
    else {
    echo "ERROR";
    }
-  mysql_close(); 
+  mysqli_close($link); 
 ?>
 <?php
 $idr=md5(microtime()).$id;

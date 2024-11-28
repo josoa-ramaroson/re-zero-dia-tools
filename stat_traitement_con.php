@@ -25,13 +25,13 @@ $refville=addslashes($_POST['refville']);
 
 $sql1 = "SELECT * FROM quartier where id_quartier=$RefQuartier";
 $result1 = mysqli_query($link, $sql1);
-while ($row1 = mysql_fetch_assoc($result1)) {
+while ($row1 = mysqli_fetch_assoc($result1)) {
 $quartier=$row1['quartier'];
 }  
 
 $sql2 = "SELECT * FROM ville where refville=$refville";
 $result2 = mysqli_query($link, $sql2);
-while ($row2 = mysql_fetch_assoc($result2)) {
+while ($row2 = mysqli_fetch_assoc($result2)) {
 $ville=$row2['ville'];
 } 
     $m1v=$ville;
@@ -43,13 +43,13 @@ $ville=$row2['ville'];
   <?php
 require 'configuration.php';
 $sql = "SELECT * FROM  $tbl_contact c  where c.ville='$m1v' and  c.quartier='$m2q' and statut='6'   ORDER BY c.id ASC";  
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));
 
 	function stat_eda($mois,$annee,$tv_facturation, $id){
 	$sql = "SELECT SUM(cons) AS cons, SUM(totalht) AS totalht, SUM(tax) AS tax, SUM(totalttc) AS totalttc, SUM(ortc) AS ortc, SUM(impayee) AS impayee, SUM(Pre) AS Pre, SUM(totalnet) AS totalnet, RefLocalite , nserie , fannee , st 
 	FROM $tv_facturation where  st='E' and  fannee='$annee'  and nserie='$mois' and id='$id' "; 
-	$resultat = mysqli_query($link, $sql) or exit(mysql_error());
-	$nqt = mysql_fetch_assoc($resultat);
+	$resultat = mysqli_query($link, $sql) or exit(mysqli_error($link));
+	$nqt = mysqli_fetch_assoc($resultat);
 
 	if((!isset($nqt['cons'])|| empty($nqt['cons']))) { $qt=0; return $qt;}
 	else {$qt=$nqt['cons']; return $qt;}

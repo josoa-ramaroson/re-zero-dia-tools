@@ -3,8 +3,8 @@
 	function stat_eda1($mois,$annee,$tbl_production){
 	$sql = "SELECT * FROM $tbl_production where  mois=$mois and  annee=$annee ";
 
-	$resultat = mysqli_query($link, $sql) or exit(mysql_error());
-	$nqt = mysql_fetch_assoc($resultat);
+	$resultat = mysqli_query($link, $sql) or exit(mysqli_error($link));
+	$nqt = mysqli_fetch_assoc($resultat);
 
 	if((!isset($nqt['prod'])|| empty($nqt['prod']))) { $qt=0; return $qt;}
 	else {$qt=$nqt['prod']; return $qt;}

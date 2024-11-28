@@ -36,7 +36,7 @@ $reqfact=mysqli_query($link, $sqfact);
  
 $sqltclient = "SELECT * FROM $tbl_client where idtclient='$CodeTypeClts'";
 $resulttclient = mysqli_query($link, $sqltclient);
-$rowtclient = mysql_fetch_assoc($resulttclient);
+$rowtclient = mysqli_fetch_assoc($resulttclient);
 if ($rowtclient===FALSE) {}
 else 
  {
@@ -78,7 +78,7 @@ while($datafact=mysqli_fetch_array($reqfact)){ // Start looping table row
         </tr>
         <?php
 }
-mysql_close ();  
+mysqli_close($link);
 ?>
       </table>
       <p>&nbsp;</p>

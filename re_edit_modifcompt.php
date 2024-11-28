@@ -120,7 +120,7 @@ httpxml.send(null);
                 if (isset($_REQUEST["id"]))
                 $id = $_REQUEST["id"];
 $sql = "SELECT * FROM $tbl_contact where id='$id' and statut='6'";
-$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($link));  
 $datam=mysqli_fetch_array($req);
 ?></td>
         </tr>
@@ -235,7 +235,7 @@ $datam=mysqli_fetch_array($req);
 $T=$datam['Tarif'];
 $sql82 = ("SELECT * FROM tarif where idt='$T'");
 $result82 = mysqli_query($link, $sql82);
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 echo $row82['Libelle'];
 }
 
@@ -250,7 +250,7 @@ echo $row82['Libelle'];
               <?php
 			  $sql8 = ("SELECT * FROM tarif ORDER BY idt ASC");
 $result8 = mysqli_query($link, $sql8);
-while ($row8 = mysql_fetch_assoc($result8)) {
+while ($row8 = mysqli_fetch_assoc($result8)) {
 echo '<option value='.$row8['idt'].'> '.$row8['Libelle'].' </option>';
 }
 

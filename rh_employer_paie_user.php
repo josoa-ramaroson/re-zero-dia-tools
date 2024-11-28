@@ -395,7 +395,7 @@ while($datam=mysqli_fetch_array($req)){ // Start looping table row
    </tr>
    <?php
 }
-mysql_close ();  
+mysqli_close($link);
 ?>
 </table>
 <p>&nbsp;</p>

@@ -202,7 +202,7 @@ echo "<option value=$row[refville]>$row[ville]</option>";
 $sql82 = ("SELECT * FROM annee  ORDER BY annee ASC ");
 $result82 = mysqli_query($link, $sql82);
 
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 echo '<option> '.$row82['annee'].' </option>';
 }
 ?>
@@ -251,7 +251,7 @@ echo '<option> '.$row82['annee'].' </option>';
 $sql83 = ("SELECT * FROM commune  ORDER BY commune ASC ");
 $result83 = mysqli_query($link, $sql83);
 
-while ($row83 = mysql_fetch_assoc($result83)) {
+while ($row83 = mysqli_fetch_assoc($result83)) {
 echo '<option value= '.$row83['ref_com'].'> '.$row83['commune'].' </option>';
 }
 ?>
@@ -294,7 +294,7 @@ echo '<option value= '.$row83['ref_com'].'> '.$row83['commune'].' </option>';
 $sql82 = ("SELECT * FROM z_annee  ORDER BY annee ASC ");
 $result82 = mysqli_query($link, $sql82);
 
-while ($row82 = mysql_fetch_assoc($result82)) {
+while ($row82 = mysqli_fetch_assoc($result82)) {
 echo '<option> '.$row82['annee'].' </option>';
 }
 ?>
