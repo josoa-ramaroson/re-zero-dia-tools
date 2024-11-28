@@ -65,7 +65,7 @@ while($data5=mysqli_fetch_array($req5)){
           </tr>
           <tr>
             <td>&nbsp;</td>
-            <td><img src="codeBarre.php?Code=<?php=$Codebare?>" /></td>
+            <td><img src="codeBarre.php?Code=<?=$Codebare?>" /></td>
           </tr>
         </table></td>
       </tr>
@@ -277,7 +277,7 @@ while($data5=mysqli_fetch_array($req5)){
       <tr>
         <td width="57%"><p>Nom / Raison Sociale : <font color="#000000"><?php echo $data5['nomprenom'];?></font></p>
         <p>ADRESSE : <span style="width: 40%; text-align: left"><span style="width:36%"><?php echo $data5['ville'];?></span> - <span style="width:36%"><?php echo $data5['quartier'];?></span></span></p>
-        <p>  <img src="codeBarre.php?Code=<?php=$Codebare?>" /> DATE : </p></td>
+        <p>  <img src="codeBarre.php?Code=<?=$Codebare?>" /> DATE : </p></td>
         <td width="43%"><p><span style="width:36%">Montant total à payer </span>: <span style="width:36%"><?php echo $data5['totalnet'];?></span> KMF</p>
         <p>Montant paye: ...................KMF</p>
         <p>Solde à reporter:................KMF</p></td>

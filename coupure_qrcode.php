@@ -75,7 +75,7 @@ while($data=mysqli_fetch_array($req)){
             <td><h5> N° Client:
               <?php $idf=$data['idf']; $Codebare=$data['id']; echo $Codebare;?>
             </h5>
-			<img src="codeqrfonction_fact_paie.php?qr=<?php=$Codebare?>&idf=<?php=$idf?>" width="150" height="150"/>
+			<img src="codeqrfonction_fact_paie.php?qr=<?=$Codebare?>&idf=<?=$idf?>" width="150" height="150"/>
 			</td>
           </tr>
           <tr>

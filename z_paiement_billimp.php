@@ -55,7 +55,7 @@ while($data5=mysqli_fetch_array($req5)){
           </tr>
           <tr>
             <td>&nbsp;</td>
-            <td><img src="codeBarre.php?Code=<?php=$Codebare?>"/></td>
+            <td><img src="codeBarre.php?Code=<?=$Codebare?>"/></td>
           </tr>
         </table></td>
       </tr>

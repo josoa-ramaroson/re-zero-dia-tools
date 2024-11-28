@@ -84,7 +84,7 @@ $datam=mysqli_fetch_array($req5);
 	 $resomme=mysqli_query($link,$sqsomme);
 
 ?>
-<p align="left"> <font color="#000000"><strong><?php $Codebare=$datam['id_dem'];?> <img src="codeBarre.php?Code=<?php=$Codebare?>"></strong></font></p>
+<p align="left"> <font color="#000000"><strong><?php $Codebare=$datam['id_dem'];?> <img src="codeBarre.php?Code=<?=$Codebare?>"></strong></font></p>
 <p align="center">&nbsp;</p>
 <div class="panel panel-info">
   <div class="panel-body">

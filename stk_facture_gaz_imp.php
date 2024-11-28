@@ -177,7 +177,7 @@ mysqli_close($link);
     <td width="48%" align="center"><b><u>N° RECU </u></b></td>
   </tr>
   <tr>
-    <td align="center"><img src="codeBarre.php?Code=<?php=$Codebare?>" /></td>
+    <td align="center"><img src="codeBarre.php?Code=<?=$Codebare?>" /></td>
     <td><p>&nbsp;</p>
     <p align="center">SIGNATURE </p>
     <p>&nbsp;</p></td>

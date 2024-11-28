@@ -78,7 +78,7 @@ $datam=mysqli_fetch_array($req5);
     </div></td>
   </tr>
 </table>
-<p align="left"> <font color="#000000"><strong><?php $Codebare=$datam['id_dem'];?> <img src="codeBarre.php?Code=<?php=$Codebare?>"></strong></font></p>
+<p align="left"> <font color="#000000"><strong><?php $Codebare=$datam['id_dem'];?> <img src="codeBarre.php?Code=<?=$Codebare?>"></strong></font></p>
 <div class="panel panel-info">
   <div class="panel-body">
   

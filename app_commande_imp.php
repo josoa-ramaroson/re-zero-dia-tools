@@ -101,7 +101,7 @@ $datamT=mysqli_fetch_array($reqT);
   </tr>
 </table>
 <table width="100%" border="0">
-<p align="left"> <font color="#000000"><strong><?php $Codebare=$numero;?> <img src="codeBarre.php?Code=<?php=$Codebare?>"></strong></font></p>
+<p align="left"> <font color="#000000"><strong><?php $Codebare=$numero;?> <img src="codeBarre.php?Code=<?=$Codebare?>"></strong></font></p>
   <tr>
     <td width="5%">&nbsp;</td>
     

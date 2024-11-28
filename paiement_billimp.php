@@ -53,7 +53,7 @@ while($data5=mysqli_fetch_array($req5)){
           </tr>
           <tr>
             <td>&nbsp;</td>
-            <td><img src="codeBarre.php?Code=<?php=$Codebare?>"/></td>
+            <td><img src="codeBarre.php?Code=<?=$Codebare?>"/></td>
           </tr>
         </table></td>
       </tr>
@@ -119,7 +119,7 @@ while($data5=mysqli_fetch_array($req5)){
                 <td>SOLDE A REPORTER :<em> <b><?php echo $data5['report'];?></em> KMF</td>
               </tr>
             </table></td><?php $idf=$data5['idf'] ?>
-            <td width="35%"><img src="codeqrfonction_recus.php?qr=<?php=$Codebare?>&idf=<?php=$idf?>" width="100" height="100"/></td>
+            <td width="35%"><img src="codeqrfonction_recus.php?qr=<?=$Codebare?>&idf=<?=$idf?>" width="100" height="100"/></td>
             <td width="32%"><table width="101%" border="0.5" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="24%">LE : <em><?php echo $data5['date'];?></em></td>

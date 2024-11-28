@@ -205,7 +205,7 @@ pre .builtin { color:#FF0000;  }
                 <input type="button" name="button2" id="button2" value="Check the value" onClick="javascript:alert('Date select from '+this.form.date3.value+' to '+this.form.date4.value);">
               </p>
               <p><b>Code:</b></p>
-              <pre>&lt;?php					<br>      $date3_default = &quot;<?php=$date1;?>&quot;;<br>      $date4_default = &quot;<?php=$date2;?>&quot;;<br><br>	  $myCalendar = new tc_calendar(&quot;date3&quot;, true, false);<br>	  $myCalendar-&gt;setIcon(&quot;calendar/images/iconCalendar.gif&quot;);<br>	  $myCalendar-&gt;setDate(date('d', strtotime($date3_default))
+              <pre>&lt;?php					<br>      $date3_default = &quot;<?=$date1;?>&quot;;<br>      $date4_default = &quot;<?=$date2;?>&quot;;<br><br>	  $myCalendar = new tc_calendar(&quot;date3&quot;, true, false);<br>	  $myCalendar-&gt;setIcon(&quot;calendar/images/iconCalendar.gif&quot;);<br>	  $myCalendar-&gt;setDate(date('d', strtotime($date3_default))
             , date('m', strtotime($date3_default))
             , date('Y', strtotime($date3_default)));<br>	  $myCalendar-&gt;setPath(&quot;calendar/&quot;);<br>	  $myCalendar-&gt;setYearInterval(1970, 2020);<br>	  $myCalendar-&gt;setAlignment('left', 'bottom');<br>	  $myCalendar-&gt;setDatePair('date3', 'date4', $date4_default);<br>	  $myCalendar-&gt;writeScript();	  <br>	  <br>	  $myCalendar = new tc_calendar(&quot;date4&quot;, true, false);<br>	  $myCalendar-&gt;setIcon(&quot;calendar/images/iconCalendar.gif&quot;);<br>	  $myCalendar-&gt;setDate(date('d', strtotime($date4_default))
            , date('m', strtotime($date4_default))
