@@ -15,3 +15,7 @@ qrcode
 smileys
 sound
 upload
+.idea/modules.xml
+.idea/php.xml
+.idea/vcs.xml
+.idea/re-zero-dia-tools.iml
