@@ -1,4 +1,4 @@
-	  <?
+	  <?php
       if ($u_niveau==1) $type='clientèle';
 	  if ($u_niveau==2) $type='Facturation'; 
 	  if ($u_niveau==3) $type='Recouvrement';

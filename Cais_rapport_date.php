@@ -1,7 +1,7 @@
-<?
+<?php
 Require("session.php"); 
 ?>
-<?
+<?php
 require 'session_niveau_tresorie_rapport.php';
 ?>
 <?php
@@ -117,7 +117,7 @@ function barre_navigation ($nb_total,$nb_affichage_par_page,$debut,$nb_liens_dan
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
@@ -134,7 +134,7 @@ function barre_navigation ($nb_total,$nb_affichage_par_page,$debut,$nb_liens_dan
 <script language="javascript" src="calendar/calendar.js"></script>
 
 </head>
-<?
+<?php
 Require("bienvenue.php");    // on appelle la page contenant la fonction
 require 'fonction.php';
 ?>
@@ -159,8 +159,8 @@ $result1=mysqli_query($linki,$sql1);
 while($rows1=mysqli_fetch_array($result1)){ // Start looping table row 
 ?>     
     <tr bgcolor="#FFFFFF">
-      <td align="center"><? echo $rows1['date'];?></td>
-      <td align="center"><? $P=strrev(chunk_split(strrev($rows1['Paie']),3," "));   echo $P;?></td>
+      <td align="center"><?php echo $rows1['date'];?></td>
+      <td align="center"><?php $P=strrev(chunk_split(strrev($rows1['Paie']),3," "));   echo $P;?></td>
     </tr>
     <?php
 

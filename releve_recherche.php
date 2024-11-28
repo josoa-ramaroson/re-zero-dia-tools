@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -20,9 +20,9 @@ body,td,th {
 	color: #000;
 }
 </style>
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -80,13 +80,13 @@ $id=$data['id'];
 
 ?>
    <tr>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['id'];?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['bnom'];?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['nserie'].'/'.$data['fannee'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['n'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['nf'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['cons'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['totalttc'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['id'];?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['bnom'];?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['nserie'].'/'.$data['fannee'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['n'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['nf'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['cons'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['totalttc'];?></em></td>
    </tr>
    <?php
 }

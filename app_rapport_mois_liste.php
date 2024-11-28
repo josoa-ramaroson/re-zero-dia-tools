@@ -1,10 +1,10 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'rh_configuration_fonction.php';
 ?>
-<?
+<?php
 	if((($_SESSION['u_niveau'] != 40) ) && ($_SESSION['u_niveau'] != 90)) {
 	header("location:index.php?error=false");
 	exit;
@@ -13,13 +13,13 @@ require 'rh_configuration_fonction.php';
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 <script language="javascript" src="calendar/calendar.js"></script>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
 
 </head>
-<?
+<?php
 //Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -46,9 +46,9 @@ $req = mysql_query($sql);
    
       <table width="100%" border="0">
         <tr>
-          <td width="49%">Mois <? echo $mois.' / '.$annee;?></td>
+          <td width="49%">Mois <?php echo $mois.' / '.$annee;?></td>
           <td width="51%">MONTANT TOTAL : 
-          <? $P=strrev(chunk_split(strrev($rows2['prixt']),3," "));   echo $P;?></td>
+          <?php $P=strrev(chunk_split(strrev($rows2['prixt']),3," "));   echo $P;?></td>
           <td width="51%">&nbsp;</td>
         </tr>
       </table>
@@ -72,14 +72,14 @@ $req = mysql_query($sql);
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
     <tr>
-      <td align="center" bgcolor="#FFFFFF"><em><? echo $data['codecompte'];?></em></td>
-      <td align="center" bgcolor="#FFFFFF"><em><? echo $data['date_dem'];?></em></td>
-      <td align="center" bgcolor="#FFFFFF"><em><? echo $data['direction'];?></em></td>
-      <td align="center" bgcolor="#FFFFFF"><em><? echo $data['designation'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data['quantite'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data['prixu'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data['prixt'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data['fournisseur'];?></em></td>
+      <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['codecompte'];?></em></td>
+      <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['date_dem'];?></em></td>
+      <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['direction'];?></em></td>
+      <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['designation'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['quantite'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['prixu'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['prixt'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['fournisseur'];?></em></td>
     </tr>
   <?php
 }

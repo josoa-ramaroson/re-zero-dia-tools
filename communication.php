@@ -1,10 +1,10 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 require_once('calendar/classes/tc_calendar.php');
 ?>
-<?
+<?php
 if(($_SESSION['u_niveau'] != 30) && ($_SESSION['u_niveau'] != 7)) {
 	header("location:index.php?error=false");
 	exit;
@@ -13,7 +13,7 @@ if(($_SESSION['u_niveau'] != 30) && ($_SESSION['u_niveau'] != 7)) {
 
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
@@ -28,7 +28,7 @@ if(($_SESSION['u_niveau'] != 30) && ($_SESSION['u_niveau'] != 7)) {
 <script language="javascript" src="calendar/calendar.js"></script>
 
 </head>
-<?
+<?php
 Require("bienvenue.php");    // on appelle la page contenant la fonction
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -84,7 +84,7 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
           </tr>
           <tr>
             <td><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-              <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom;?>">
+              <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom;?>">
             </font></strong></font></strong></font></td>
             <td><input type="submit" name="upload" value="Enregistre"></td>
           </tr>
@@ -141,12 +141,12 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
     <tr>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><? echo $data['idcom'];?></div>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><?php echo $data['idcom'];?></div>
         <div align="left"></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['date'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['titre'];?></em></div></td>
- <td width="114"   style="background-color:#FFF;"><a href="communication_modifie.php?id=<? echo md5(microtime()).$data['idcom']; ?>" class="btn btn-xs btn-success">Modifier</a></td>
-      <td width="126"   style="background-color:#FFF;"><a href="communication_cancel.php?ID=<? echo md5(microtime()).$data['idcom']; ?>" onClick="return confirm('Etes-vous sûr de vouloir supprimer')" ; style="margin:5px"   class="btn btn-xs btn-danger" >Supprimer</a></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['date'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['titre'];?></em></div></td>
+ <td width="114"   style="background-color:#FFF;"><a href="communication_modifie.php?id=<?php echo md5(microtime()).$data['idcom']; ?>" class="btn btn-xs btn-success">Modifier</a></td>
+      <td width="126"   style="background-color:#FFF;"><a href="communication_cancel.php?ID=<?php echo md5(microtime()).$data['idcom']; ?>" onClick="return confirm('Etes-vous sûr de vouloir supprimer')" ; style="margin:5px"   class="btn btn-xs btn-danger" >Supprimer</a></td>
     </tr>
     <?php
 

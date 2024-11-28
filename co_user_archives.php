@@ -1,4 +1,4 @@
-<?
+<?php
 require 'fonction.php';
 require 'sessionclient.php';	
 ?>
@@ -6,8 +6,8 @@ require 'sessionclient.php';
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include("titre.php"); ?></title>
-<? include 'inc/head.php'; ?>
+<title><?php include("titre.php"); ?></title>
+<?php include 'inc/head.php'; ?>
 </head>
 <?php
 //$id=$_GET['id'];
@@ -38,7 +38,7 @@ $datam=mysql_fetch_array($resultm);
 	$nomclient=$datam['nomprenom'];
 ?>
 <body>
-<?
+<?php
 require "client_lient.php";
 ?>
 <table width="99%" border="0">
@@ -67,7 +67,7 @@ echo '<option> '.$row81['annee'].' </option>';
 ?>
                     </select>
                     </font><em>
-                    <input class="form-control" name="id" type="hidden" id="idp" value="<? echo $id;?>" />
+                    <input class="form-control" name="id" type="hidden" id="idp" value="<?php echo $id;?>" />
                     </em>
 <input type="submit" name="Cher" id="Cher" class="btn btn-sm btn-warning"value="Les factures electriques" />
                 </form></td>
@@ -112,20 +112,20 @@ while($rowsfac=mysql_fetch_array($resultfac)){
 ?>
                   <tr>
                     <td align="center" bgcolor="#FFFFFF"><em>                    
-                    <a href="<? if ($datam['Tarif']!=10){echo'z_co_billimp.php';} else { echo'z_co_billMTimp.php';}?>?idf=<? echo md5(microtime()).$rowsfac['idf'];?>&a=<? echo md5(microtime()).$ARCH;?>" target="_blank" ><? echo $rowsfac['nfacture'];?></a>
+                    <a href="<?php if ($datam['Tarif']!=10){echo'z_co_billimp.php';} else { echo'z_co_billMTimp.php';}?>?idf=<?php echo md5(microtime()).$rowsfac['idf'];?>&a=<?php echo md5(microtime()).$ARCH;?>" target="_blank" ><?php echo $rowsfac['nfacture'];?></a>
                    
                     </em></td>
-                    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['nserie'];?>/<? echo $rowsfac['fannee'];?></em></td>
-                    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['date'];?></em></td>
-                    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['id'];?></em></td>
-                    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['nf'];?></em></td>
-                    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['nf2'];?></em></td>
-                    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['totalttc'];?></em></td>
-                    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['ortc'];?></em></td>
-                    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['impayee'];?></em></td>
-                    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['Pre'];?></em></td>
-                    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['totalnet'];?></em></td>
-                    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['report'];?></em></td>
+                    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['nserie'];?>/<?php echo $rowsfac['fannee'];?></em></td>
+                    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['date'];?></em></td>
+                    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['id'];?></em></td>
+                    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['nf'];?></em></td>
+                    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['nf2'];?></em></td>
+                    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['totalttc'];?></em></td>
+                    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['ortc'];?></em></td>
+                    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['impayee'];?></em></td>
+                    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['Pre'];?></em></td>
+                    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['totalnet'];?></em></td>
+                    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['report'];?></em></td>
                   
                   </tr>
                   <?php
@@ -152,14 +152,14 @@ while($rowsfac=mysql_fetch_array($resultfac)){
 while($rowsp=mysql_fetch_array($resultpaie)){ 
 ?>
       <tr>
-        <td align="center" bgcolor="#FFFFFF"><em> <a href="z_paiement_billimp.php?idp=<? echo md5(microtime()).$rowsp['idp'];?>&a=<? echo md5(microtime()).$ARCH;?>" target="_blank" > <? echo $rowsp['nrecu'];?></a></em></td>
-        <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsp['nfacture'];?></em></td>
-        <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsp['nserie'];?>/<? echo $rowsp['fannee'];?></em></td>
-        <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsp['date'];?></em></td>
-        <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsp['Nomclient'];?></em></td>
-        <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsp['montant'];?></em></td>
-        <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsp['paiement'];?></em></td>
-        <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsp['report'];?></em></td>
+        <td align="center" bgcolor="#FFFFFF"><em> <a href="z_paiement_billimp.php?idp=<?php echo md5(microtime()).$rowsp['idp'];?>&a=<?php echo md5(microtime()).$ARCH;?>" target="_blank" > <?php echo $rowsp['nrecu'];?></a></em></td>
+        <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsp['nfacture'];?></em></td>
+        <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsp['nserie'];?>/<?php echo $rowsp['fannee'];?></em></td>
+        <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsp['date'];?></em></td>
+        <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsp['Nomclient'];?></em></td>
+        <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsp['montant'];?></em></td>
+        <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsp['paiement'];?></em></td>
+        <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsp['report'];?></em></td>
       </tr>
       <?php
 }
@@ -191,12 +191,12 @@ while($rowsp=mysql_fetch_array($resultpaie)){
 while($rowsfacd=mysql_fetch_array($resultfacd)){ 
 ?>
               <tr>
-                <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfacd['nfacture'];?></em></td>
-                <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfacd['date'];?></em></td>
-                <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfacd['id'];?></em></td>
-                <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfacd['totalttc'];?></em></td>
-                <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfacd['totalnet'];?></em></td>
-                <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfacd['report'];?></em></td>
+                <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfacd['nfacture'];?></em></td>
+                <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfacd['date'];?></em></td>
+                <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfacd['id'];?></em></td>
+                <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfacd['totalttc'];?></em></td>
+                <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfacd['totalnet'];?></em></td>
+                <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfacd['report'];?></em></td>
                 </tr>
               <?php
 }
@@ -218,13 +218,13 @@ while($rowsfacd=mysql_fetch_array($resultfacd)){
 while($rowspd=mysql_fetch_array($resultpaied)){ 
 ?>
                 <tr>
-                  <td align="center" bgcolor="#FFFFFF"><em> <a href="paiement_bill.php?idp=<? echo md5(microtime()).$rowspd['idp'];?>" target="_blank" > <? echo $rowspd['nrecu'];?></a></em></td>
-                  <td align="center" bgcolor="#FFFFFF"><em><? echo $rowspd['nfacture'];?></em></td>
-                  <td align="center" bgcolor="#FFFFFF"><em><? echo $rowspd['date'];?></em></td>
-                  <td align="center" bgcolor="#FFFFFF"><em><? echo $rowspd['Nomclient'];?></em></td>
-                  <td align="center" bgcolor="#FFFFFF"><em><? echo $rowspd['montant'];?></em></td>
-                  <td align="center" bgcolor="#FFFFFF"><em><? echo $rowspd['paiement'];?></em></td>
-                  <td align="center" bgcolor="#FFFFFF"><em><? echo $rowspd['report'];?></em></td>
+                  <td align="center" bgcolor="#FFFFFF"><em> <a href="paiement_bill.php?idp=<?php echo md5(microtime()).$rowspd['idp'];?>" target="_blank" > <?php echo $rowspd['nrecu'];?></a></em></td>
+                  <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowspd['nfacture'];?></em></td>
+                  <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowspd['date'];?></em></td>
+                  <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowspd['Nomclient'];?></em></td>
+                  <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowspd['montant'];?></em></td>
+                  <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowspd['paiement'];?></em></td>
+                  <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowspd['report'];?></em></td>
                 </tr>
                 <?php
 }

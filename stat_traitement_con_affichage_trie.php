@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 require 'fonction_niveau_statistique.php';
 ?>
 <html>
@@ -12,7 +12,7 @@ require 'fonction_niveau_statistique.php';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 require 'bienvenue.php';    // on appelle la page contenant la fonction
 
 $nbr=addslashes($_POST['nbr']);
@@ -59,7 +59,7 @@ $sqlA = "SELECT * FROM  $tbl_contact c  where c.ville='$m1v' and  c.quartier='$m
 $reqA = mysql_query($sqlA) or die('Erreur SQL !<br />'.$sqlA.'<br />'.mysql_error()); 
 
 ?>
-Base de connaissance  Ville : <em><? echo  $m1v;?></em> Quartier : <em><? echo $m2q;?></em></p>
+Base de connaissance  Ville : <em><?php echo  $m1v;?></em> Quartier : <em><?php echo $m2q;?></em></p>
 <p>&nbsp;</p>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
   <tr bgcolor="#3071AA">
@@ -83,21 +83,21 @@ Base de connaissance  Ville : <em><? echo  $m1v;?></em> Quartier : <em><? echo $
 while($dataA=mysql_fetch_array($reqA)){ // Start looping table row 
 ?>
   <tr>
-    <td align="center" ><em><a href="stat_graph_fac_rec_client.php?id=<? echo $dataA['id'];?>&annee=<? echo $annee;?>" target=_blank><? echo $dataA['id'];?> </a></em></td>
-    <td><em><? echo $dataA['nomprenom'];?></em></td>
-    <td align="center" ><em><? echo stat_eda(1,$annee,$tv_facturation,$dataA['id']);?></em></td>
-    <td align="center" ><em><? echo stat_eda(2,$annee,$tv_facturation,$dataA['id']);?></em></td>
-    <td align="center" ><em><? echo stat_eda(3,$annee,$tv_facturation,$dataA['id']);?></em></td>
-    <td align="center" ><em><? echo stat_eda(4,$annee,$tv_facturation,$dataA['id']);?></em></td>
-    <td align="center" ><em><? echo stat_eda(5,$annee,$tv_facturation,$dataA['id']);?></em></td>
-    <td align="center" ><em><? echo stat_eda(6,$annee,$tv_facturation,$dataA['id']);?></em></td>
-    <td align="center" ><em><? echo stat_eda(7,$annee,$tv_facturation,$dataA['id']);?></em></td>
-    <td align="center" ><em><? echo stat_eda(8,$annee,$tv_facturation,$dataA['id']);?></em></td>
-    <td align="center" ><em><? echo stat_eda(9,$annee,$tv_facturation,$dataA['id']);?></em></td>
-    <td align="center" ><em><? echo stat_eda(10,$annee,$tv_facturation,$dataA['id']);?></em></td>
-    <td align="center" ><em><? echo stat_eda(11,$annee,$tv_facturation,$dataA['id']);?></em></td>
-    <td align="center" ><em><? echo stat_eda(12,$annee,$tv_facturation,$dataA['id']);?></em></td>
-    <td align="center" ><em><? echo $dataA['alerte'];?></em></td>
+    <td align="center" ><em><a href="stat_graph_fac_rec_client.php?id=<?php echo $dataA['id'];?>&annee=<?php echo $annee;?>" target=_blank><?php echo $dataA['id'];?> </a></em></td>
+    <td><em><?php echo $dataA['nomprenom'];?></em></td>
+    <td align="center" ><em><?php echo stat_eda(1,$annee,$tv_facturation,$dataA['id']);?></em></td>
+    <td align="center" ><em><?php echo stat_eda(2,$annee,$tv_facturation,$dataA['id']);?></em></td>
+    <td align="center" ><em><?php echo stat_eda(3,$annee,$tv_facturation,$dataA['id']);?></em></td>
+    <td align="center" ><em><?php echo stat_eda(4,$annee,$tv_facturation,$dataA['id']);?></em></td>
+    <td align="center" ><em><?php echo stat_eda(5,$annee,$tv_facturation,$dataA['id']);?></em></td>
+    <td align="center" ><em><?php echo stat_eda(6,$annee,$tv_facturation,$dataA['id']);?></em></td>
+    <td align="center" ><em><?php echo stat_eda(7,$annee,$tv_facturation,$dataA['id']);?></em></td>
+    <td align="center" ><em><?php echo stat_eda(8,$annee,$tv_facturation,$dataA['id']);?></em></td>
+    <td align="center" ><em><?php echo stat_eda(9,$annee,$tv_facturation,$dataA['id']);?></em></td>
+    <td align="center" ><em><?php echo stat_eda(10,$annee,$tv_facturation,$dataA['id']);?></em></td>
+    <td align="center" ><em><?php echo stat_eda(11,$annee,$tv_facturation,$dataA['id']);?></em></td>
+    <td align="center" ><em><?php echo stat_eda(12,$annee,$tv_facturation,$dataA['id']);?></em></td>
+    <td align="center" ><em><?php echo $dataA['alerte'];?></em></td>
   </tr>
   <?php
 }

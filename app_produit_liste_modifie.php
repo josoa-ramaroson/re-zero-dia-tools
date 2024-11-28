@@ -1,8 +1,8 @@
-<?
+<?php
 require("session.php"); 
 require"fc-affichage.php";
 ?>
-<?
+<?php
 if(($_SESSION['u_niveau'] != 40)) {
 	header("location:index.php?error=false");
 	exit;
@@ -10,12 +10,12 @@ if(($_SESSION['u_niveau'] != 40)) {
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 
 </head>
-<?
+<?php
 require("bienvenue.php"); 
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -51,10 +51,10 @@ $rows3=mysql_fetch_array($result3);
           </tr>
           <tr>
             <td><em>
-              <input name="idp" type="hidden" id="idp" value="<? echo $rows3['idproduit'];?>">
+              <input name="idp" type="hidden" id="idp" value="<?php echo $rows3['idproduit'];?>">
             </em></td>
             <td><em>
-              <input class="form-control" name="mproduit" type="text" id="code2" value="<? echo $rows3['titre']; ?>" size="40" bgcolor="#FFFF00">
+              <input class="form-control" name="mproduit" type="text" id="code2" value="<?php echo $rows3['titre']; ?>" size="40" bgcolor="#FFFF00">
             </em></td>
                        
           </tr>
@@ -62,7 +62,7 @@ $rows3=mysql_fetch_array($result3);
                              <tr>
             <td>
              <td><em>
-              <input class="form-control" name="prix" type="text" id="prix" value="<? echo $rows3['prix']; ?>" size="40" bgcolor="#FFFF00" readonly>
+              <input class="form-control" name="prix" type="text" id="prix" value="<?php echo $rows3['prix']; ?>" size="40" bgcolor="#FFFF00" readonly>
             </em></td></td>
             <td>&nbsp;</td>
           </tr>
@@ -73,8 +73,8 @@ $rows3=mysql_fetch_array($result3);
           <td><strong>
             <select name="type" id="type">
             
-           <option value="<? echo $rows3['type'];?>" selected="selected">
-                <? $type=$rows3['type']; 
+           <option value="<?php echo $rows3['type'];?>" selected="selected">
+                <?php $type=$rows3['type']; 
 		  
 		  if ($type==0) echo 'ELECTRICITE';
 	      if ($type==1) echo 'GAZ'; 
@@ -152,12 +152,12 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
     <tr> 
-      <td height="29" align="center" bgcolor="#FFFFFF"> <div align="left"><? echo $data['idproduit'];?></div>
+      <td height="29" align="center" bgcolor="#FFFFFF"> <div align="left"><?php echo $data['idproduit'];?></div>
         <div align="left"></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['titre'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['prix'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><a href="app_produit_liste_modifie.php?id=<? echo $data['idproduit']; ?>" class="btn btn-xs btn-success"><? echo 'Modifier' ?></a></td>
-      <td width="50"   style="background-color:#FFF;"> <? /* <a href="stk_produit_cancel.php?ID=<? echo $data['idproduit']; ?>" onClick="return confirm('Etes-vous sûr de vouloir supprimer')" ; style="margin:5px" class="btn btn-xs btn-danger"> 
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['titre'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['prix'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><a href="app_produit_liste_modifie.php?id=<?php echo $data['idproduit']; ?>" class="btn btn-xs btn-success"><?php echo 'Modifier' ?></a></td>
+      <td width="50"   style="background-color:#FFF;"> <?php /* <a href="stk_produit_cancel.php?ID=<?php echo $data['idproduit']; ?>" onClick="return confirm('Etes-vous sï¿½r de vouloir supprimer')" ; style="margin:5px" class="btn btn-xs btn-danger"> 
         Supprimer <a> */ ?> </td> 
     </tr>
     <?php

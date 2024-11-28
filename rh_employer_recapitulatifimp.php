@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 require 'rh_configuration_fonction.php';
 ?>
-<?
+<?php
 	if((($_SESSION['u_niveau'] != 50) ) && ($_SESSION['u_niveau'] != 90)) {
 	header("location:index.php?error=false");
 	exit;
@@ -13,9 +13,9 @@ require 'rh_configuration_fonction.php';
 <head>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 </head>
-<?
+<?php
 //Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -31,7 +31,7 @@ $resultat2 = mysql_query($sql2);
 $data2=mysql_fetch_array($resultat2)	
 ?>
  </p>
-<p><em> RECAPITULATIF         <? $n1=$moispaie; 
+<p><em> RECAPITULATIF         <?php $n1=$moispaie;
 	  if ($n1==1) echo 'janvier';
 	  if ($n1==2) echo 'février'; 
 	  if ($n1==3) echo 'Mars';
@@ -44,7 +44,7 @@ $data2=mysql_fetch_array($resultat2)
 	  if ($n1==10) echo 'Octobre';
 	  if ($n1==11) echo 'Novembre'; 
 	  if ($n1==12) echo 'Decembre';  
-	  ?></em> - <em><? echo  $anneepaie;?></em></p>
+	  ?></em> - <em><?php echo  $anneepaie;?></em></p>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
    <tr bgcolor="#3071AA">
    <td width="10%" align="center"><font color="#FFFFFF" size="4"><strong>DIRECTION</strong></font></td>
@@ -61,15 +61,15 @@ $data2=mysql_fetch_array($resultat2)
 while($data=mysql_fetch_array($resultat)){ // Start looping table row 
 ?>
    <tr>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['direction'];?></em></td>
-     <td align="center" bgcolor="#CCCCCC"><em><? echo strrev(chunk_split(strrev($data['sbase']),3," ")); ?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data['SS']),3," ")); ?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data['SI']),3," "));?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data['SD']),3," "));?></em></td>
-     <td align="center" bgcolor="#CCCCCC"><em><? echo strrev(chunk_split(strrev($data['igr']),3," "));?></em></td>
-     <td align="center" bgcolor="#CCCCCC"><em><? echo strrev(chunk_split(strrev($data['retraite']),3," "));?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data['SR']),3," "));?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data['SNET']),3," "));?><em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['direction'];?></em></td>
+     <td align="center" bgcolor="#CCCCCC"><em><?php echo strrev(chunk_split(strrev($data['sbase']),3," ")); ?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data['SS']),3," ")); ?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data['SI']),3," "));?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data['SD']),3," "));?></em></td>
+     <td align="center" bgcolor="#CCCCCC"><em><?php echo strrev(chunk_split(strrev($data['igr']),3," "));?></em></td>
+     <td align="center" bgcolor="#CCCCCC"><em><?php echo strrev(chunk_split(strrev($data['retraite']),3," "));?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data['SR']),3," "));?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data['SNET']),3," "));?><em></td>
    </tr>
    <?php
 }
@@ -92,14 +92,14 @@ while($data=mysql_fetch_array($resultat)){ // Start looping table row
   </tr>
   <tr>
     <td align="center" bgcolor="#FFFFFF">TOTAL </td>
-    <td align="center" bgcolor="#CCCCCC"><em><? echo strrev(chunk_split(strrev($data2['sbase']),3," ")); ?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data2['SS']),3," ")); ?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data2['SI']),3," "));?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data2['SD']),3," "));?></em></td>
-    <td align="center" bgcolor="#CCCCCC"><em><? echo strrev(chunk_split(strrev($data2['igr']),3," "));?></em></td>
-    <td align="center" bgcolor="#CCCCCC"><em><? echo strrev(chunk_split(strrev($data2['retraite']),3," "));?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data2['SR']),3," "));?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data2['SNET']),3," "));?><em></td>
+    <td align="center" bgcolor="#CCCCCC"><em><?php echo strrev(chunk_split(strrev($data2['sbase']),3," ")); ?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data2['SS']),3," ")); ?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data2['SI']),3," "));?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data2['SD']),3," "));?></em></td>
+    <td align="center" bgcolor="#CCCCCC"><em><?php echo strrev(chunk_split(strrev($data2['igr']),3," "));?></em></td>
+    <td align="center" bgcolor="#CCCCCC"><em><?php echo strrev(chunk_split(strrev($data2['retraite']),3," "));?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data2['SR']),3," "));?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data2['SNET']),3," "));?><em></td>
   </tr>
   <?php
 mysql_close ();  

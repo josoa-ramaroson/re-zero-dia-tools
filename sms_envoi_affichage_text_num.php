@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 if(($_SESSION['u_niveau'] != 30)) {
@@ -8,7 +8,7 @@ if(($_SESSION['u_niveau'] != 30)) {
  include 'inc/head.php';
 ?>
 
-<?
+<?php
 	$id_nom=addslashes($_REQUEST['id_nom']);
 ?>
 
@@ -69,7 +69,7 @@ if(($_SESSION['u_niveau'] != 30)) {
                     </tr>
                     <tr>
                       <td><em><font color="#FF0000">
-                        <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>" />
+                        <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
                       </font></em></td>
                       <td></td>
                       <td><input type="submit" name="button" id="button" class="btn btn-sm btn-success" value="CONFIRMER L'ENVOI SMS"></td>

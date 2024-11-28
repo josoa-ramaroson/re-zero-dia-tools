@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'fonction.php';
@@ -6,14 +6,14 @@ require 'fonction.php';
 <html>
 <head>
 <title>
-<? include("titre.php"); ?></title>
-<? include 'inc/head.php'; ?>
+<?php include("titre.php"); ?></title>
+<?php include 'inc/head.php'; ?>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="calendar/calendar.js"></script>
 </head>
-<?
+<?php
 //require("bienvenue.php"); 
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -62,10 +62,10 @@ $req2=mysqli_query($linki,$sql2);
 while($data=mysqli_fetch_array($req)){ // Start looping table row 
 ?>
                 <tr>
-                  <td align="center" bgcolor="#FFFFFF"><? echo $data['annee'];?></td>
+                  <td align="center" bgcolor="#FFFFFF"><?php echo $data['annee'];?></td>
                   <td align="center" bgcolor="#FFFFFF"></td>
                   <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
-                  <td align="center" bgcolor="#FFFFFF"><? echo strrev(chunk_split(strrev($data['prix']),3," "));  ?></td>
+                  <td align="center" bgcolor="#FFFFFF"><?php echo strrev(chunk_split(strrev($data['prix']),3," "));  ?></td>
                 </tr>
                 <?php
 // Exit looping and close connection 
@@ -104,10 +104,10 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 while($data2=mysqli_fetch_array($req2)){ // Start looping table row 
 ?>
                 <tr>
-                  <td align="center" bgcolor="#FFFFFF"><? echo $data2['titre'];?></td>
-                  <td align="center" bgcolor="#FFFFFF"><? echo $data2['Qvente']; ?></td>
-                  <td align="center" bgcolor="#FFFFFF"><? echo $data2['PUnitaire']; ?></td>
-                  <td align="center" bgcolor="#FFFFFF"><? echo strrev(chunk_split(strrev($data2['prix2']),3," "));  ?></td>
+                  <td align="center" bgcolor="#FFFFFF"><?php echo $data2['titre'];?></td>
+                  <td align="center" bgcolor="#FFFFFF"><?php echo $data2['Qvente']; ?></td>
+                  <td align="center" bgcolor="#FFFFFF"><?php echo $data2['PUnitaire']; ?></td>
+                  <td align="center" bgcolor="#FFFFFF"><?php echo strrev(chunk_split(strrev($data2['prix2']),3," "));  ?></td>
                 </tr>
                 <?php
 // Exit looping and close connection 

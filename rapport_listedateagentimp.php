@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -53,14 +53,14 @@ $datatE=mysql_fetch_array($reqtE);
 while($datat=mysql_fetch_array($reqt)){ // Start looping table row 
 ?>
     <tr>
-      <td align="center" bgcolor="#FFFFFF"><? echo  $datat['id_nom']; ?></td>
-    <td align="center" bgcolor="#FFFFFF"><? echo  $datat['date']; ?></td>
-    <td align="center" bgcolor="#FFFFFF"><? $P=strrev(chunk_split(strrev($datat['Paie']),3," "));   echo $P;?></td>
-         <td align="center" bgcolor="#FFFFFF"><? $PE=strrev(chunk_split(strrev($datatE['PaieE']),3," "));   echo $PE;?></td>
-    <td align="center" bgcolor="#FFFFFF"><?  $P1=strrev(chunk_split(strrev($datat['ortc_dp']),3," "));   echo $P1;?></td>
+      <td align="center" bgcolor="#FFFFFF"><?php echo  $datat['id_nom']; ?></td>
+    <td align="center" bgcolor="#FFFFFF"><?php echo  $datat['date']; ?></td>
+    <td align="center" bgcolor="#FFFFFF"><?php $P=strrev(chunk_split(strrev($datat['Paie']),3," "));   echo $P;?></td>
+         <td align="center" bgcolor="#FFFFFF"><?php $PE=strrev(chunk_split(strrev($datatE['PaieE']),3," "));   echo $PE;?></td>
+    <td align="center" bgcolor="#FFFFFF"><?php  $P1=strrev(chunk_split(strrev($datat['ortc_dp']),3," "));   echo $P1;?></td>
    <td align="center" bgcolor="#FFFFFF">
-     <?  $P2=$datatE['PaieE']-$datat['ortc_dp']; $tax_dp=(round(0.03 *($P2),0)); echo $tax_dp; ?></td>
-	<td align="center" bgcolor="#FFFFFF"><? $P3=$datatE['PaieE']-$datat['ortc_dp']-$tax_dp;   echo $P3;?></td>
+     <?php  $P2=$datatE['PaieE']-$datat['ortc_dp']; $tax_dp=(round(0.03 *($P2),0)); echo $tax_dp; ?></td>
+	<td align="center" bgcolor="#FFFFFF"><?php $P3=$datatE['PaieE']-$datat['ortc_dp']-$tax_dp;   echo $P3;?></td>
    </tr>
   <?php
 }
@@ -84,15 +84,15 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 ?>
    
      
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['id'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['nfacture'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['Nomclient'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['nrecu'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['montant'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data['paiement']),3," "));?></em></td>
-	 <td align="center" bgcolor="#FFFFFF"><em><? echo $data['ortc_dp'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['tax_dp'];?></em></td>
-	 <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data['totalht_dp']),3," "));?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['id'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['nfacture'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['Nomclient'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['nrecu'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['montant'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data['paiement']),3," "));?></em></td>
+	 <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['ortc_dp'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['tax_dp'];?></em></td>
+	 <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data['totalht_dp']),3," "));?></em></td>
      </tr>
    <?php
 }

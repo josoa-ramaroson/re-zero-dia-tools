@@ -1,10 +1,10 @@
-<?
+<?php
 require 'session.php';
 ?>
 <html>
 <head>
-<title><? include 'titre.php'; ?></title>
-<? include 'inc/head.php'; ?>
+<title><?php include 'titre.php'; ?></title>
+<?php include 'inc/head.php'; ?>
 <?php
 require 'stat_variable_rec.php';
 ?>
@@ -111,7 +111,7 @@ $(function () {
 });
 		</script>
 </head>
-<?
+<?php
 require("bienvenue.php");    // on appelle la page contenant la fonction
 ?>
 

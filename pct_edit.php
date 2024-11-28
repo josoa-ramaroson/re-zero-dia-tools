@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -7,7 +7,7 @@ require 'session.php';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <?php
@@ -42,12 +42,12 @@ while($rowsact=mysql_fetch_array($resultact)){
 ?>
           </p>
             <table width="94%" border="0" align="center" cellpadding="0" cellspacing="0">
-              <tr bgcolor="<? gettatut($rowsact['suivi']); ?>">
-                <td width="52%"><li><? echo $rowsact['taches']; ?> &nbsp; <? echo $rowsact['statut']; ?> &nbsp;(<? echo $rowsact['date']; ?>)</li></td>
+              <tr bgcolor="<?php gettatut($rowsact['suivi']); ?>">
+                <td width="52%"><li><?php echo $rowsact['taches']; ?> &nbsp; <?php echo $rowsact['statut']; ?> &nbsp;(<?php echo $rowsact['date']; ?>)</li></td>
                 <td width="20%">&nbsp;</td>
                 <td width="28%">
-                <? if (($_SESSION['u_niveau']==10)&&  ($rowsact['suivi']!= 'Traité')){?>
-                <a href="pct_edit.php?id=<? echo md5(microtime()).$datso['id'];?>&amp;idpc=<? echo md5(microtime()).$rowsact['idpc'];?>" class="btn btn-sm btn-danger" >Mise à jours</a> <? } else {} ?></td>
+                <?php if (($_SESSION['u_niveau']==10)&&  ($rowsact['suivi']!= 'Traité')){?>
+                <a href="pct_edit.php?id=<?php echo md5(microtime()).$datso['id'];?>&amp;idpc=<?php echo md5(microtime()).$rowsact['idpc'];?>" class="btn btn-sm btn-danger" >Mise à jours</a> <?php } else {} ?></td>
               </tr>
             </table>
             <?php } 
@@ -61,17 +61,17 @@ while($rowsact=mysql_fetch_array($resultact)){
 			?></td>
           <td width="55%"><table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
             <tr>
-              <td width="12%"><input name="id" type="hidden" value="<? echo $datso['id']; ?>" />
-                <input name="idpc" type="hidden" value="<? echo $datso['idpc']; ?>" />
+              <td width="12%"><input name="id" type="hidden" value="<?php echo $datso['id']; ?>" />
+                <input name="idpc" type="hidden" value="<?php echo $datso['idpc']; ?>" />
                 <font size="2"><strong><font size="2"><strong><font color="#FF0000">
-                <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>" />
+                <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
                 </font></strong></font></strong></font></td>
               <td width="40%">&nbsp;</td>
             </tr>
             <tr>
               <td><strong><font color="#000000" size="2">Tache</font></strong></td>
               <td><strong>
-                <input name="taches" type="text" id="utilisateur2" value="<? echo $datso['taches'];?>" size="40" readonly="readonly" />
+                <input name="taches" type="text" id="utilisateur2" value="<?php echo $datso['taches'];?>" size="40" readonly="readonly" />
               </strong></td>
             </tr>
             <tr>
@@ -81,7 +81,7 @@ while($rowsact=mysql_fetch_array($resultact)){
             <tr>
               <td><strong><font size="2">Priorité</font></strong></td>
               <td><strong>
-                <input name="statut" type="text" id="statut" value="<? echo $datso['statut'];?>" size="40" readonly="readonly" />
+                <input name="statut" type="text" id="statut" value="<?php echo $datso['statut'];?>" size="40" readonly="readonly" />
                 </strong></td>
             </tr>
             <tr>
@@ -91,7 +91,7 @@ while($rowsact=mysql_fetch_array($resultact)){
             <tr>
               <td><strong><font size="2">Suivi</font></strong></td>
               <td><select name="suivi" size="1" id="suivi">
-               <option selected><? echo $datso['suivi']; ?></option>
+               <option selected><?php echo $datso['suivi']; ?></option>
                 <option>A faire </option>
                 <option>En cours </option>
                 <option>Traité </option>
@@ -105,7 +105,7 @@ while($rowsact=mysql_fetch_array($resultact)){
               <td><strong><font size="2">Agent </font></strong></td>
               <td><strong><font size="2">
                 <select name="realisateur" size="1" id="realisateur">
-                  <option selected="selected"><? echo $datso['realisateur'];?></option>
+                  <option selected="selected"><?php echo $datso['realisateur'];?></option>
                   <?php
 $sql9 = ("SELECT id_nom , u_niveau , u_login FROM $tbl_utilisateur where u_niveau='10' ORDER BY id_u ASC ");
 $result9 = mysql_query($sql9);

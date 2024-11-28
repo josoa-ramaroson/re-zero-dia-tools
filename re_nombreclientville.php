@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'fc-affichage.php';
@@ -7,7 +7,7 @@ require 'configuration.php';
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <<link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
@@ -24,10 +24,10 @@ require 'configuration.php';
 <script language="javascript" src="calendar/calendar.js"></script>
 
 </head>
-<?
+<?php
 Require("bienvenue.php");  // on appelle la page contenant la fonction
 ?>
-<?
+<?php
 $sql = "SELECT count(id) FROM $tbl_contact  WHERE statut='6' GROUP BY  ville";  
 
 $resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
@@ -66,9 +66,9 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
        <tr>
-        <td><? echo  $data['ville']; ?></td>
-        <td><? //echo  $data['quartier']; ?></td>
-        <td align="center"> (<? echo  $data['nbch']; ?>)</td>
+        <td><?php echo  $data['ville']; ?></td>
+        <td><?php //echo  $data['quartier']; ?></td>
+        <td align="center"> (<?php echo  $data['nbch']; ?>)</td>
       </tr>
       <?php
 

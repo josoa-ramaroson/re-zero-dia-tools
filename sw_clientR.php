@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if(($_SESSION['u_niveau'] != 1)&& ($_SESSION['u_niveau'] != 90)&& ($_SESSION['u_niveau'] != 91)&& ($_SESSION['u_niveau'] != 43) && ($_SESSION['u_niveau'] != 46)) {
 	header("location:index.php?error=false");
 	exit;
@@ -13,12 +13,12 @@ require 'fonction.php';
 <head>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 </head>
-<?
+<?php
 require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
-<?
+<?php
 $sql = "SELECT COUNT(*) AS actif FROM $tbl_contact  WHERE statut='6'";   
 $req=mysql_query($sql);
 $data= mysql_fetch_assoc($req);
@@ -160,17 +160,17 @@ $V8=$data18['v8'];
                 <td width="7%"> Resilié</td>
               </tr>
               <tr>
-                <td><? echo $ppolice;?></td>
-                <td><? echo $pdevis1;?></td>
-                <td><? echo $pdevis2;?></td>
-                <td><? echo $pbrancher;?></td>
-                <td><? echo $ffacture;?></td>
-                <td><? echo $Actif;?></td>
-                <td><? echo $mono;?></td>
-                <td><? echo $tri;?></td>
-                <td><? echo $cbt;?></td>
-                <td><? echo $cmt;?></td>
-                <td><? echo $Resilier;?></td>
+                <td><?php echo $ppolice;?></td>
+                <td><?php echo $pdevis1;?></td>
+                <td><?php echo $pdevis2;?></td>
+                <td><?php echo $pbrancher;?></td>
+                <td><?php echo $ffacture;?></td>
+                <td><?php echo $Actif;?></td>
+                <td><?php echo $mono;?></td>
+                <td><?php echo $tri;?></td>
+                <td><?php echo $cbt;?></td>
+                <td><?php echo $cmt;?></td>
+                <td><?php echo $Resilier;?></td>
               </tr>
             </table></td>
           </tr>

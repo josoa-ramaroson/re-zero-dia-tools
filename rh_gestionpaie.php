@@ -1,11 +1,11 @@
-<?
+<?php
 require 'session.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'fc-affichage.php';
 require 'fonction.php';
 require 'rh_configuration_fonction.php';
 ?>
-<?
+<?php
 	if($_SESSION['u_niveau'] != 50) {
 	header("location:index.php?error=false");
 	exit;
@@ -14,7 +14,7 @@ require 'rh_configuration_fonction.php';
 <html>
 <head>
 
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
@@ -102,14 +102,14 @@ httpxml.send(null);
 </script>
 
 </head>
-<?
+<?php
 Require("bienvenue.php");  // on appelle la page contenant la fonction
 ?>
  
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title"> <? echo $affichemois.' '.$anneepaie ; ?>&nbsp;</h3>
+    <h3 class="panel-title"> <?php echo $affichemois.' '.$anneepaie ; ?>&nbsp;</h3>
   </div>
   <div class="panel-body">
       <a href="rh_configuration.php" class="btn btn-sm btn-success" > Configuration</a> |

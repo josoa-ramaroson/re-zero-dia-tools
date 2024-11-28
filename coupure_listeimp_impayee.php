@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 ?>
@@ -42,10 +42,10 @@ LISTE DES COUPURES AVEC IMPAYEE :</p>
      <td width="13%">Somme Impayée</td>
    </tr>
    <tr>
-     <td><em><? echo  $m1v;?></em></td>
-     <td><em><? echo $m2q;?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPn),3," "));?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPi),3," "));?></em></td>
+     <td><em><?php echo  $m1v;?></em></td>
+     <td><em><?php echo $m2q;?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPn),3," "));?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPi),3," "));?></em></td>
    </tr>
  </table>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -61,13 +61,13 @@ LISTE DES COUPURES AVEC IMPAYEE :</p>
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
    <tr>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['id'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><?  $client=substr($data['nomprenom'],0,20); echo $client;?></em></td>
-      <td align="center"  bgcolor="#FFFFFF"><? $i=$data['impayee']; $p=$data['Pre']; echo $data['impayee'];?></em><em>
-        <? $s=$data['totalnet'];  $data['totalnet'];?>
-      <? $r=$data['report']; $data['report'];?>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['id'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php  $client=substr($data['nomprenom'],0,20); echo $client;?></em></td>
+      <td align="center"  bgcolor="#FFFFFF"><?php $i=$data['impayee']; $p=$data['Pre']; echo $data['impayee'];?></em><em>
+        <?php $s=$data['totalnet'];  $data['totalnet'];?>
+      <?php $r=$data['report']; $data['report'];?>
       </em></td>
-     <td align="center"  bgcolor="#FFFFFF"><? $c=$r-$s+$i; if ($c>1000) { echo $c;} else {}?></td>
+     <td align="center"  bgcolor="#FFFFFF"><?php $c=$r-$s+$i; if ($c>1000) { echo $c;} else {}?></td>
      <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
 
    </tr>

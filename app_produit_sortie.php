@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -10,7 +10,7 @@ require_once('calendar/classes/tc_calendar.php');
 	$datecaisse=mysqli_fetch_array($resultldate);
 	
 ?>
-<?
+<?php
 if(($_SESSION['u_niveau'] != 7)&& ($_SESSION['u_niveau'] != 40) &&($_SESSION['u_niveau']!= 45)&& ($_SESSION['u_niveau'] != 90)) {
 	header("location:index.php?error=false");
 	exit;
@@ -20,7 +20,7 @@ if(($_SESSION['u_niveau'] != 7)&& ($_SESSION['u_niveau'] != 40) &&($_SESSION['u_
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>
-<? include("titre.php"); ?></title>
+<?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
@@ -88,7 +88,7 @@ httpxml.send(null);
   }
 </script>
 </head>
-<?
+<?php
 require 'bienvenue.php';    // on appelle la page contenant la fonction
 
  //choix d espace de memoire pour les connection.---------------------------------------------------------------- 
@@ -129,7 +129,7 @@ require 'bienvenue.php';    // on appelle la page contenant la fonction
         </tr>
         <tr>
           <td><strong><font color="#000000">Date</font><font color="#FF0000">* </font></strong></td>
-          <td><input name="datev" class="form-control" type="text" id="datev" value="<? echo $datecaisse['datecaisse'];?>" size="30" readonly />
+          <td><input name="datev" class="form-control" type="text" id="datev" value="<?php echo $datecaisse['datecaisse'];?>" size="30" readonly />
             <?php
 					 /* $myCalendar = new tc_calendar("datev", true, false);
 					  $myCalendar->setIcon("calendar/images/iconCalendar.gif");
@@ -145,8 +145,8 @@ require 'bienvenue.php';    // on appelle la page contenant la fonction
           <td>&nbsp;</td>
           <td><strong><font color="#000000">Quantit&eacute;</font></strong><font color="#FF0000">*</font><strong><font color="#FF0000"></font></strong></td>
           <td>
-           <? if($_SESSION['u_niveau']==45) {$aff='';} else {$aff='readonly';} ?>
-          <input name="Qvente" class="form-control" type="text" id="Qvente2" value="" size="30" <? echo $aff;?> /></td>
+           <?php if($_SESSION['u_niveau']==45) {$aff='';} else {$aff='readonly';} ?>
+          <input name="Qvente" class="form-control" type="text" id="Qvente2" value="" size="30" <?php echo $aff;?> /></td>
           <td>&nbsp;</td>
           <td>Service </td>
           <td><select name="service" id="service">
@@ -184,7 +184,7 @@ echo '<option> '.$row2B['titre'].' </option>';
           </select></td>
           <td>&nbsp;</td>
           <td><strong>Réceptionner par <font color="#FF0000">*</font></strong></td>
-          <td><input name="nc" class="form-control"  type="text" id="Qvente" value="" size="30" <? echo $aff;?> /></td>
+          <td><input name="nc" class="form-control"  type="text" id="Qvente" value="" size="30" <?php echo $aff;?> /></td>
           <td>&nbsp;</td>
           <td><strong>Succursale</strong></td>
           <td><select name="a_nom" id="a_nom">
@@ -232,7 +232,7 @@ echo '<option> '.$row2['titre'].' </option>';
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-            <input name="id_nom" type="hidden" id="id_nom2" value="<? echo $id_nom; ?>" />
+            <input name="id_nom" type="hidden" id="id_nom2" value="<?php echo $id_nom; ?>" />
           </font><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font color="#FF0000">
           <input class="form-control" name="PUnitaire" type="hidden" id="PUnitaire" value="" size="20" readonly>
           </font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></td>
@@ -326,15 +326,15 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 
    $bgcolor = "#FFFFFF";  
 ?>
-  <tr bgcolor=<? echo "$bgcolor" ?>>
+  <tr bgcolor=<?php echo "$bgcolor" ?>>
     <td height="31" align="center"><div align="left"></div>
       <div align="left"></div></td>
-    <td align="center"><? echo $data['datev'];?></td>
-    <td align="center"><div><? echo $data['id_nom'];?></div></td>
-    <td align="center"><div><? echo $data['nc'];?></div></td>
-    <td align="center"><div><em><? echo $data['titre'];?></em></div></td>
-    <td align="center" ><div><em><? echo $data['Qvente'];?></em></div></td>
-    <td align="center"><em><? echo $data['service'];?></em></td>
+    <td align="center"><?php echo $data['datev'];?></td>
+    <td align="center"><div><?php echo $data['id_nom'];?></div></td>
+    <td align="center"><div><?php echo $data['nc'];?></div></td>
+    <td align="center"><div><em><?php echo $data['titre'];?></em></div></td>
+    <td align="center" ><div><em><?php echo $data['Qvente'];?></em></div></td>
+    <td align="center"><em><?php echo $data['service'];?></em></td>
   </tr>
   <?php
  $numboucle++;

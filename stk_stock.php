@@ -1,4 +1,4 @@
-<?
+<?php
 require("session.php"); 
 require 'fc-affichage.php';
 ?>
@@ -6,13 +6,13 @@ require 'fc-affichage.php';
 <html>
 <head>
 <title>
-<? include("titre.php"); ?></title>
+<?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="calendar/calendar.js"></script>
 </head>
-<?
+<?php
 require("bienvenue.php"); 
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -46,7 +46,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 	// 6 maroufchangement 1 par 5
    $nb_affichage_par_page = 50; 
   
-  // à garder important
+  // ï¿½ garder important
  // CREATE VIEW V_vente AS SELECT  titre, SUM(Qvente) AS qtvendu  FROM ginv_vente GROUP BY  titre;
  // CREATE VIEW V_enreg AS SELECT  titre, SUM(Quantite) AS qtenreg  FROM ginv_enreg GROUP BY  titre;
    
@@ -90,16 +90,16 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 
    $bgcolor = "#FFFFFF";
 ?>
-  <tr bgcolor=<? echo "$bgcolor" ?>>
-    <td height="36" align="center"> <div align="left"><em><? echo $data['thetitre'];?></em></div>
+  <tr bgcolor=<?php echo "$bgcolor" ?>>
+    <td height="36" align="center"> <div align="left"><em><?php echo $data['thetitre'];?></em></div>
       <div align="left"></div></td>
-    <td align="center"><div align="center"><em><? $qte=$data['qte'];  echo $qte;?></em></div></td>
+    <td align="center"><div align="center"><em><?php $qte=$data['qte'];  echo $qte;?></em></div></td>
     <td align="center" ><div align="center"><em>
-	<? if(!isset($data['qtv'])|| empty($data['qtv'])) { $qtv=0; echo $qtv; } else {$qtv=$data['qtv']; echo $qtv;}?>
+	<?php if(!isset($data['qtv'])|| empty($data['qtv'])) { $qtv=0; echo $qtv; } else {$qtv=$data['qtv']; echo $qtv;}?>
     
     </em></div></td>
   <td align="center" > <div align="center"><em>
-   <? $reste=$qte-$qtv; echo $reste; ?>
+   <?php $reste=$qte-$qtv; echo $reste; ?>
   </em></div></td>
     <td align="center"><div align="center"><em> </em></div></td>
 	

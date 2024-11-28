@@ -1,11 +1,11 @@
-<?
+<?php
 require 'session.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'fc-affichage.php';
 require 'fonction.php';
 require 'configuration.php';
 ?>
-<?
+<?php
 if(($_SESSION['u_niveau'] != 3)) {
 	header("location:index.php?error=false");
 	exit;
@@ -14,7 +14,7 @@ if(($_SESSION['u_niveau'] != 3)) {
 <html>
 <head>
 
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
@@ -102,7 +102,7 @@ httpxml.send(null);
 </script>
 
 </head>
-<?
+<?php
 Require("bienvenue.php");  // on appelle la page contenant la fonction
 ?>
  
@@ -155,7 +155,7 @@ echo "<option value=$row[refville]>$row[ville]</option>";
           <tr>
             <td width="47%"><table width="100%" border="0.5" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="52%"><? echo "<a class=\"$class6\" type=\"button\" href=\"penalite_ttclient.php\" onClick=\"return confirm('Etes-vous sûr de vouloir taxer les 1000FC ')\"> Penalité pour tous les clients </a> ";?></td>
+                <td width="52%"><?php echo "<a class=\"$class6\" type=\"button\" href=\"penalite_ttclient.php\" onClick=\"return confirm('Etes-vous sûr de vouloir taxer les 1000FC ')\"> Penalité pour tous les clients </a> ";?></td>
               </tr>
             </table></td>
           </tr>

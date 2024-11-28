@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if(($_SESSION['u_niveau'] != 7)) {
 	header("location:index.php?error=false");
 	exit;
@@ -11,12 +11,12 @@ require 'fonction.php';
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 
 </head>
-<?
+<?php
 require("bienvenue.php"); 
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -48,10 +48,10 @@ $rows3=mysql_fetch_array($result3);
           </tr>
           <tr>
             <td><em>
-              <input name="idtclient" type="hidden" id="idtclient" value="<? echo $rows3['idtclient'];?>">
+              <input name="idtclient" type="hidden" id="idtclient" value="<?php echo $rows3['idtclient'];?>">
             </em></td>
             <td><em>
-              <input class="form-control" name="TypeClts" type="text" id="TypeClts" value="<? echo $rows3['TypeClts']; ?>" size="40" bgcolor="#FFFF00">
+              <input class="form-control" name="TypeClts" type="text" id="TypeClts" value="<?php echo $rows3['TypeClts']; ?>" size="40" bgcolor="#FFFF00">
             </em></td>
           </tr>
           <tr>
@@ -114,10 +114,10 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
     <tr>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><? echo $data['idtclient'];?></div>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><?php echo $data['idtclient'];?></div>
         <div align="left"></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['TypeClts'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><p><a href="categorie_modifie.php?id=<? echo $data['idtclient']; ?>" class="btn btn-xs btn-success"><? echo 'Modifier' ?></a></p></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['TypeClts'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><p><a href="categorie_modifie.php?id=<?php echo $data['idtclient']; ?>" class="btn btn-xs btn-success"><?php echo 'Modifier' ?></a></p></td>
     </tr>
     <?php
 // Exit looping and close connection 

@@ -1,8 +1,8 @@
-<?
+<?php
 Require("session.php"); 
 require"fc-affichage.php";
 ?>
-<?
+<?php
 if(($_SESSION['u_niveau'] != 40)) {
 	header("location:index.php?error=false");
 	exit;
@@ -10,12 +10,12 @@ if(($_SESSION['u_niveau'] != 40)) {
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 
 </head>
-<?
+<?php
 Require("bienvenue.php"); 
 //$_SESSION['niveau'];
 ?>
@@ -62,7 +62,7 @@ Require("bienvenue.php");
         <tr>
           <td>&nbsp;</td>
           <td><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-            <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>">
+            <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>">
           </font></strong></font></strong></font></td>
         </tr>
         <tr>
@@ -129,11 +129,11 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 ?>
     <tr> 
       <td align="center" bgcolor="#FFFFFF"> <div align="left"></div>
-        <div align="left"><? echo $data['idproduit'];?></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['titre'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['prix'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><a href="stk_produitmodifie.php?id=<? echo $data['idproduit']; ?>" class="btn btn-xs btn-success"><? echo 'Modifier' ?></a></td>
-      <td width="50"   style="background-color:#FFF;"> <? /* <a href="stk_produit_cancel.php?ID=<? echo $data['idproduit']; ?>" onClick="return confirm('Etes-vous sûr de vouloir supprimer')" ; style="margin:5px" class="btn btn-xs btn-danger"> 
+        <div align="left"><?php echo $data['idproduit'];?></div></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['titre'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['prix'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><a href="stk_produitmodifie.php?id=<?php echo $data['idproduit']; ?>" class="btn btn-xs btn-success"><?php echo 'Modifier' ?></a></td>
+      <td width="50"   style="background-color:#FFF;"> <?php /* <a href="stk_produit_cancel.php?ID=<?php echo $data['idproduit']; ?>" onClick="return confirm('Etes-vous sï¿½r de vouloir supprimer')" ; style="margin:5px" class="btn btn-xs btn-danger">
         Supprimer <a> */ ?> </td> 
     </tr>
     <?php

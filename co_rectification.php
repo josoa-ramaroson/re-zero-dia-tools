@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
- <?
+ <?php
 if(($_SESSION['u_niveau'] != 7) && ($_SESSION['u_niveau'] != 8) && ($_SESSION['u_niveau'] != 43)&& ($_SESSION['u_niveau'] != 44) &&  ($_SESSION['u_niveau'] != 46) && ($_SESSION['u_niveau'] != 90)) {
 	header("location:index.php?error=false");
 	exit;
@@ -16,7 +16,7 @@ if(($_SESSION['u_niveau'] != 7) && ($_SESSION['u_niveau'] != 8) && ($_SESSION['u
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -52,20 +52,20 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
    <tr>
-     <td align="center" bgcolor="#FFFFFF"><em><a href="co_affichage_user.php?id=<? echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-default" ><? echo $data['id'];?></a></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['id_nom'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['ni'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['nf'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['ni2'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['nf2'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><a href="co_affichage_user.php?id=<?php echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-default" ><?php echo $data['id'];?></a></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['id_nom'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['ni'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['nf'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['ni2'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['nf2'];?></em></td>
      
-     <td align="center" bgcolor="#FFFFFF"><em> <a href="co_bill.php?idf=<? echo md5(microtime()).$data['idf'];?>" target="_blank" ><? echo $data['total'];?></a> </em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['date'].' '.$data['obs'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"> <? if (($_SESSION['niveau']==44) and ($data['controle']==1)) {?>
- <a href="co_rectification_upload.php?idr=<? echo md5(microtime()).$data['idr']; ?>&controle=<? $a='2';echo md5(microtime()).$a; ?>&ix=<? echo md5(microtime()).$id_nom; ?>" onClick="return confirm('Etes-vous sûr')" ; style="margin:5px"   class="btn btn-sm btn-danger" >Certifier</a><? } else { echo $data['certifier']; } ?></td>
+     <td align="center" bgcolor="#FFFFFF"><em> <a href="co_bill.php?idf=<?php echo md5(microtime()).$data['idf'];?>" target="_blank" ><?php echo $data['total'];?></a> </em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['date'].' '.$data['obs'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"> <?php if (($_SESSION['niveau']==44) and ($data['controle']==1)) {?>
+ <a href="co_rectification_upload.php?idr=<?php echo md5(microtime()).$data['idr']; ?>&controle=<?php $a='2';echo md5(microtime()).$a; ?>&ix=<?php echo md5(microtime()).$id_nom; ?>" onClick="return confirm('Etes-vous sûr')" ; style="margin:5px"   class="btn btn-sm btn-danger" >Certifier</a><?php } else { echo $data['certifier']; } ?></td>
      <td align="center" bgcolor="#FFFFFF">
-      <? if (($_SESSION['niveau']==43) and ($data['controle']==2)) {?>
- <a href="co_rectification_upload.php?idr=<? echo md5(microtime()).$data['idr']; ?>&controle=<? $a='3';echo md5(microtime()).$a; ?>&ix=<? echo md5(microtime()).$id_nom; ?>" onClick="return confirm('Etes-vous sûr')" ; style="margin:5px"   class="btn btn-sm btn-danger" >Valider</a> <? } else { echo $data['valider']; } ?></td>
+      <?php if (($_SESSION['niveau']==43) and ($data['controle']==2)) {?>
+ <a href="co_rectification_upload.php?idr=<?php echo md5(microtime()).$data['idr']; ?>&controle=<?php $a='3';echo md5(microtime()).$a; ?>&ix=<?php echo md5(microtime()).$id_nom; ?>" onClick="return confirm('Etes-vous sûr')" ; style="margin:5px"   class="btn btn-sm btn-danger" >Valider</a> <?php } else { echo $data['valider']; } ?></td>
    </tr>
    <?php
 }

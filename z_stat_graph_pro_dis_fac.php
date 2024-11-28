@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 ?>
 <!DOCTYPE HTML>
@@ -137,7 +137,7 @@ $(function () {
 });
 		</script>
 	</head>
-    <?
+    <?php
 require("bienvenue.php");    // on appelle la page contenant la fonction
 ?>
 	<body>

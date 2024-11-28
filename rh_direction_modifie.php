@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if(($_SESSION['u_niveau'] != 50)) {
 	header("location:index.php?error=false");
 	exit;
@@ -11,12 +11,12 @@ require 'fonction.php';
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 
 </head>
-<?
+<?php
 require("bienvenue.php"); 
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -46,15 +46,15 @@ $rows3=mysql_fetch_array($result3);
           </tr>
           <tr>
             <td><em>
-              <input name="idrh" type="hidden" id="idrh" value="<? echo $rows3['idrh'];?>">
+              <input name="idrh" type="hidden" id="idrh" value="<?php echo $rows3['idrh'];?>">
             </em></td>
             <td><em>
-              <input class="form-control" name="direction" type="text" id="direction" value="<? echo $rows3['direction']; ?>" size="40" bgcolor="#FFFF00">
+              <input class="form-control" name="direction" type="text" id="direction" value="<?php echo $rows3['direction']; ?>" size="40" bgcolor="#FFFF00">
             </em></td>
           </tr>
           <tr>
             <td><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-              <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>">
+              <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>">
             </font></strong></font></strong></font></td>
             <td>&nbsp;</td>
           </tr>
@@ -109,10 +109,10 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
   <tr>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><? echo $data['idrh'];?></div>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><?php echo $data['idrh'];?></div>
       <div align="left"></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['direction'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><p><a href="rh_direction_modifie.php?id=<? echo $data['idrh']; ?>" class="btn btn-xs btn-success"><? echo 'Modifier' ?></a></p></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['direction'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><p><a href="rh_direction_modifie.php?id=<?php echo $data['idrh']; ?>" class="btn btn-xs btn-success"><?php echo 'Modifier' ?></a></p></td>
   </tr>
   <?php
 
@@ -138,7 +138,7 @@ mysql_close ();
   </tr>
   <tr>
     <td height="21">
-    <?
+    <?php
 	function direction_eda($iddr,$tb_rhdirection){
 	
 	$sql = "SELECT * FROM $tb_rhdirection where  idrh=$iddr ";

@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -22,7 +22,7 @@ body,td,th {
 </style>
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 require 'bienvenue.php';    // on appelle la page contenant la fonction
 require 'configuration.php';
 $anneec=$annee_recouvrement;
@@ -165,22 +165,22 @@ $nomprenom=$data['nomprenom'];
 	 }
 	 
 ?>
-   <tr bgcolor="<? gettatut($data['bstatut']); ?>">
-     <td align="center" ><em><? echo $data['id'];?></em></td>
-     <td align="center" ><em><? echo $data['ville'];?></em></td>
-     <td align="center" ><em><? echo $data['quartier'];?></em></td>
-     <td align="center" ><em><? echo $data['nomprenom'];?></em></td>
-     <td align="center" ><em><? echo $data['totalttc'];?></em></td>
-     <td align="center" ><em><? echo $data['ortc'];?></em></td>
-     <td align="center" ><em><? echo $data['impayee'];?></em></td>
-     <td align="center" ><em><? echo $data['Pre'];?></em></td>
-     <td align="center" ><em><? echo $data['totalnet'];?></em></td>
+   <tr bgcolor="<?php gettatut($data['bstatut']); ?>">
+     <td align="center" ><em><?php echo $data['id'];?></em></td>
+     <td align="center" ><em><?php echo $data['ville'];?></em></td>
+     <td align="center" ><em><?php echo $data['quartier'];?></em></td>
+     <td align="center" ><em><?php echo $data['nomprenom'];?></em></td>
+     <td align="center" ><em><?php echo $data['totalttc'];?></em></td>
+     <td align="center" ><em><?php echo $data['ortc'];?></em></td>
+     <td align="center" ><em><?php echo $data['impayee'];?></em></td>
+     <td align="center" ><em><?php echo $data['Pre'];?></em></td>
+     <td align="center" ><em><?php echo $data['totalnet'];?></em></td>
      <td align="center" ><em>
      
-             <? if ($data['bstatut']!='couper' ) {?>
+             <?php if ($data['bstatut']!='couper' ) {?>
         
-        <a href="coupure_releveur_save.php?idf=<? echo md5(microtime()).$data['idf']; ?>&mr1=<? echo $mr1; ?>&bstatut=couper" class="btn btn-danger"> COUPER </a>
-        <? } else { echo $data['bstatut']; } ?> 
+        <a href="coupure_releveur_save.php?idf=<?php echo md5(microtime()).$data['idf']; ?>&mr1=<?php echo $mr1; ?>&bstatut=couper" class="btn btn-danger"> COUPER </a>
+        <?php } else { echo $data['bstatut']; } ?>
      
      
      </em></td>

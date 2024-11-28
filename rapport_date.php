@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -7,7 +7,7 @@ require_once('calendar/classes/tc_calendar.php');
 
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
@@ -23,11 +23,11 @@ require_once('calendar/classes/tc_calendar.php');
 </style>
 <script language="javascript" src="calendar/calendar.js"></script>
 </head>
-<?
+<?php
 Require("bienvenue.php");    // on appelle la page contenant la fonction
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
- <? require 'rapport_lien.php'; ?>
+ <?php require 'rapport_lien.php'; ?>
 <p><font size="2"><font size="2"><font size="2">
   <?php
  $date=$_POST['date']; 
@@ -65,7 +65,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 ?>
   </font></strong></font></font></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></p>
 
-<a href="rapport_dateimp.php?date=<? echo md5(microtime()).$date;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a></p>
+<a href="rapport_dateimp.php?date=<?php echo md5(microtime()).$date;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a></p>
 
   <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
     <tr bgcolor="#0000FF"> 
@@ -79,15 +79,15 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 ?>
     <tr bgcolor="#FFFFFF">
       <td align="center">&nbsp;</td>
-      <td> <? $n=$data['st']; 
+      <td> <?php $n=$data['st'];
                   if ($n=='E') echo 'FACTURATION CYCLIQUE';
                   if ($n=='P') echo 'POLICE D ABONNEMENT'; 
                   if ($n=='D') echo 'BRANCHEMENT';
                   if ($n=='F') echo 'FRAUDE'; 
 				  if ($n=='A') echo 'Autre (Chang Nom/compteur/Activation/Transfert)'; 
                   ?></td>
-      <td align="center"><? $P=strrev(chunk_split(strrev($data['Paie']),3," "));   echo $P;?></td>
-      <td align="center"><? echo $data['date'];?></td>
+      <td align="center"><?php $P=strrev(chunk_split(strrev($data['Paie']),3," "));   echo $P;?></td>
+      <td align="center"><?php echo $data['date'];?></td>
     </tr>
     <?php
 

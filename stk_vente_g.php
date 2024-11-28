@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -9,7 +9,7 @@ require_once('calendar/classes/tc_calendar.php');
 	$datecaisse=mysql_fetch_array($resultldate);
 	
 ?>
-<?
+<?php
 	if($_SESSION['u_niveau'] != 41) {
 	header("location:index.php?error=false");
 	exit;
@@ -18,13 +18,13 @@ require_once('calendar/classes/tc_calendar.php');
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>
-<? include("titre.php"); ?></title>
+<?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="calendar/calendar.js"></script>
 </head>
-<?
+<?php
 require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -44,7 +44,7 @@ require 'bienvenue.php';    // on appelle la page contenant la fonction
         </tr>
         <tr>
           <td><strong><font color="#000000">Date</font><font color="#FF0000">* </font></strong></td>
-          <td><input name="datev" type="text" id="datev" value="<? echo $datecaisse['datecaisse'];?>" size="30" readonly />
+          <td><input name="datev" type="text" id="datev" value="<?php echo $datecaisse['datecaisse'];?>" size="30" readonly />
 <div align="right"></div>
             <div align="center"></div></td>
           <td><strong><font color="#000000">Quantit&eacute;</font></strong><font color="#FF0000">*</font><strong><font color="#FF0000"> </font></strong></td>
@@ -110,7 +110,7 @@ echo '<option value='.$row4['id'].'>'.$row4['nomprenom'].'</option>';
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-            <input name="id_nom" type="hidden" id="id_nom2" value="<? echo $id_nom; ?>" />
+            <input name="id_nom" type="hidden" id="id_nom2" value="<?php echo $id_nom; ?>" />
           </font></strong></font></strong></font></td>
           <td>&nbsp;</td>
         </tr>
@@ -167,13 +167,13 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
   <tr>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><? echo $data['id_nom'];?>/<? echo $data['nc'];?></div>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><?php echo $data['id_nom'];?>/<?php echo $data['nc'];?></div>
       <div align="left"></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><? echo $data['datev'];?></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['titre'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="center"><em><? echo $data['Qvente'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="center"><em><? echo strrev(chunk_split(strrev($data['PUnitaire']),3," ")) ?> </em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data['PTotal']),3," ")) ?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><?php echo $data['datev'];?></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['titre'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="center"><em><?php echo $data['Qvente'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="center"><em><?php echo strrev(chunk_split(strrev($data['PUnitaire']),3," ")) ?> </em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data['PTotal']),3," ")) ?></em></td>
   </tr>
   <?php
 // Exit looping and close connection 

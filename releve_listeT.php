@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -9,7 +9,7 @@ require 'fonction.php';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 require 'bienvenue.php';    // on appelle la page contenant la fonction
 
 $RefQuartier=addslashes($_POST['quartier']);
@@ -51,7 +51,7 @@ $ville=$row2['ville'];
   </div>
 </div>
 
-<a href="releve_listeimpT.php?m1v=<? echo md5(microtime()).$m1v;?>&m2q=<? echo md5(microtime()).$m2q;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a>
+<a href="releve_listeimpT.php?m1v=<?php echo md5(microtime()).$m1v;?>&m2q=<?php echo md5(microtime()).$m2q;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a>
  <p>
    <?php
 require 'configuration.php';
@@ -64,7 +64,7 @@ $data7= mysql_fetch_assoc($req7);
 $cbt=$data7['bt']; 
 
 ?>
-CARNET DE RELEVES: Ville : <em><? echo  $m1v;?></em> Quartier : <em><? echo $m2q;?></em> -  Nombre des clients est : <? echo $cbt;?></p>
+CARNET DE RELEVES: Ville : <em><?php echo  $m1v;?></em> Quartier : <em><?php echo $m2q;?></em> -  Nombre des clients est : <?php echo $cbt;?></p>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
    <tr bgcolor="#3071AA">
      <td width="6%" align="center"><strong><font color="#FFFFFF">RANG</font></strong></td>
@@ -81,10 +81,10 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 ?>
    <tr>
      <td align="center" >&nbsp;</td>
-     <td align="center" ><em><? echo $data['id'];?></em></td>
-     <td><em><? echo $data['nomprenom'];?></em></td>
-     <td align="center" ><em><? echo $data['ncompteur'];?></em></td>
-     <td align="center" ><em><? echo $data['Indexinitial'];?></em></td>
+     <td align="center" ><em><?php echo $data['id'];?></em></td>
+     <td><em><?php echo $data['nomprenom'];?></em></td>
+     <td align="center" ><em><?php echo $data['ncompteur'];?></em></td>
+     <td align="center" ><em><?php echo $data['Indexinitial'];?></em></td>
      <td align="center" >&nbsp;</td>
      <td align="center" >&nbsp;</td>
      <td align="center" >&nbsp;</td>

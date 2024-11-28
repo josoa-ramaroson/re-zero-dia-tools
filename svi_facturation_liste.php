@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -9,7 +9,7 @@ require 'fonction.php';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -44,22 +44,22 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
    <?php
 while($data=mysql_fetch_array($req)){ // Start looping table row 
    ?>
-   <tr bgcolor="<? gettatut($data['etat']); ?>">
+   <tr bgcolor="<?php gettatut($data['etat']); ?>">
      <td align="center" >
-     <? if (($data['etat']!="facturé")and ($data['etat']!="Annuler")){?>
-     <a href="paiement_v.php?idf=<? echo md5(microtime()).$data['idf']; ?>" class="btn btn-sm btn-success">les détails</a><? } else {} ?>
+     <?php if (($data['etat']!="facturé")and ($data['etat']!="Annuler")){?>
+     <a href="paiement_v.php?idf=<?php echo md5(microtime()).$data['idf']; ?>" class="btn btn-sm btn-success">les détails</a><?php } else {} ?>
      
-            <? if (($data['etat']=="facturé") and ($_SESSION['u_niveau']==9)){?> <a href="sov_rectification.php?idf=<? echo md5(microtime()).$data['idf'];?>" class="btn btn-sm btn-warning" >Modification</a><? } else {} ?>
+            <?php if (($data['etat']=="facturé") and ($_SESSION['u_niveau']==9)){?> <a href="sov_rectification.php?idf=<?php echo md5(microtime()).$data['idf'];?>" class="btn btn-sm btn-warning" >Modification</a><?php } else {} ?>
             
      </td>
-     <td align="center" ><em><? echo $data['idf'];?></em></td>
-     <td align="center" ><em><? echo $data['id_nom'];?></em></td>
-     <td align="center" ><em><? echo $data['date'];?></em></td>
-     <td align="center" ><em><? echo $data['stlib'];?></em></td>
-     <td align="center"><em><? echo $data['libelle'];?></em></td>
-     <td align="center"><em><? echo $data['montant'];?></em></td>
-     <td align="center"><em><? echo $data['report'];?></em></td>
-     <td align="center"><em><? echo $data['etat'];?></em></td>
+     <td align="center" ><em><?php echo $data['idf'];?></em></td>
+     <td align="center" ><em><?php echo $data['id_nom'];?></em></td>
+     <td align="center" ><em><?php echo $data['date'];?></em></td>
+     <td align="center" ><em><?php echo $data['stlib'];?></em></td>
+     <td align="center"><em><?php echo $data['libelle'];?></em></td>
+     <td align="center"><em><?php echo $data['montant'];?></em></td>
+     <td align="center"><em><?php echo $data['report'];?></em></td>
+     <td align="center"><em><?php echo $data['etat'];?></em></td>
    </tr>
    <?php
 

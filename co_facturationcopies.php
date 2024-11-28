@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 ?>
 <?php
@@ -13,7 +13,7 @@ require_once('calendar/classes/tc_calendar.php');
 <script language="javascript" src="calendar/calendar.js"></script>
 <script type="text/javascript" src="js/validator.js"></script>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -93,17 +93,17 @@ $datam=mysql_fetch_array($resultm);
           <td>IDCLIENT</td>
           <td>&nbsp;</td>
           <td><strong>
-            <? echo $datam['id'];?>
+            <?php echo $datam['id'];?>
           </strong></td>
           <td>&nbsp;</td>
           <td>Police </td>
-          <td><strong><? echo $datam['Police'];?></strong></td>
+          <td><strong><?php echo $datam['Police'];?></strong></td>
         </tr>
         <tr>
           <td><strong><font size="2">Designation</font></strong></td>
           <td>&nbsp;</td>
           <td><strong>
-           <? echo $datam['Designation'];?>
+           <?php echo $datam['Designation'];?>
           </strong></td>
           <td>&nbsp;</td>
           <td><strong><font color="#000000" size="2">Reference géographique</font></strong></td>
@@ -112,7 +112,7 @@ $datam=mysql_fetch_array($resultm);
         <tr>
           <td><strong><font size="2">Nom et Prénom <font size="2"><font color="#FF0000"> *</font></font></font></strong></td>
           <td>&nbsp;</td>
-          <td><? echo $datam['nomprenom'];?>&nbsp;</td>
+          <td><?php echo $datam['nomprenom'];?>&nbsp;</td>
           <td>&nbsp;</td>
           <td>Réference </td>
           <td>&nbsp;</td>
@@ -120,79 +120,79 @@ $datam=mysql_fetch_array($resultm);
         <tr>
           <td><strong><font size="2">Email</font></strong></td>
           <td>&nbsp;</td>
-          <td><? echo $datam['email'];?>&nbsp;</td>
+          <td><?php echo $datam['email'];?>&nbsp;</td>
           <td>&nbsp;</td>
           <td><strong><font size="2">Type compteur</font></strong></td>
           <td><strong>
-            <? echo $datam['typecompteur'];?>
+            <?php echo $datam['typecompteur'];?>
           </strong></td>
         </tr>
         <tr>
           <td><strong>Titre </strong></td>
           <td>&nbsp;</td>
           <td><strong>
-            <? echo $datam['titre'];?>
+            <?php echo $datam['titre'];?>
           </strong></td>
           <td>&nbsp;</td>
           <td><strong><font size="2">N° Phase</font></strong></td>
           <td><strong>
-		   <? echo $datam['phase'];?>
+		   <?php echo $datam['phase'];?>
           </strong></td>
         </tr>
         <tr>
           <td><strong><font size="2">T&eacute;l&eacute;phone</font></strong></td>
           <td>&nbsp;</td>
           <td><strong>
-            <? echo $datam['tel'];?>
+            <?php echo $datam['tel'];?>
           </strong></td>
           <td>&nbsp;</td>
           <td><strong>Puissance</strong></td>
           <td><strong>
-			<? echo $datam['puissance'];?>
+			<?php echo $datam['puissance'];?>
           </strong></td>
         </tr>
         <tr>
           <td><strong><font size="2">Fax</font></strong></td>
           <td>&nbsp;</td>
           <td><strong>
-            <? echo $datam['fax'];?>
+            <?php echo $datam['fax'];?>
           </strong></td>
           <td>&nbsp;</td>
           <td><strong><font size="2">Calibre ( Amperage)</font></strong></td>
           <td><strong>
-			<? echo $datam['amperage'];?>
+			<?php echo $datam['amperage'];?>
           </strong></td>
         </tr>
         <tr>
           <td><strong><font size="2">Site Web</font></strong></td>
           <td>&nbsp;</td>
           <td><strong>
-            <? echo $datam['url'];?>
+            <?php echo $datam['url'];?>
           </strong></td>
           <td>&nbsp;</td>
           <td><strong><font size="2">Numero Compteur</font></strong></td>
           <td><strong>
-			<? echo $datam['ncompteur'];?>
+			<?php echo $datam['ncompteur'];?>
           </strong></td>
         </tr>
         <tr>
           <td><strong><font size="2">Ville</font></strong></td>
           <td>&nbsp;</td>
-          <td><strong><? echo $datam['ville'];?></strong></td>
+          <td><strong><?php echo $datam['ville'];?></strong></td>
           <td>&nbsp;</td>
           <td><strong><font size="2">Date de pose </font></strong></td>
           <td><strong><font size="2">
-			<? echo $datam['datepose'];?>
+			<?php echo $datam['datepose'];?>
           </font></strong></td>
         </tr>
         <tr>
           <td bgcolor="#FFFFFF"><strong><font size="2"><font size="2">Quartier</font></font></strong></td>
           <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><strong><? echo $datam['quartier'];?></strong></td>
+          <td bgcolor="#FFFFFF"><strong><?php echo $datam['quartier'];?></strong></td>
           <td>&nbsp;</td>
           <td>Statut</td>
           <td><strong>
-            <? echo $datam['statut'];?>
+            <?php echo $datam['statut'];?>
           </strong></td>
         </tr>
       </table>
@@ -230,17 +230,17 @@ $datam=mysql_fetch_array($resultm);
     </strong></td>
     <td width align="center">Impayée</td>
     <td width="14%"><strong>
-      <input name="impayee" type="text" class="form-control" id="impayee" value="<? 
+      <input name="impayee" type="text" class="form-control" id="impayee" value="<?php
 	 	  if(!isset($datap['report'])|| empty($datap['report'])){ echo 0;} else { echo $datap['report'];} ?>" size="20" readonly="readonly" />
     </strong></td>
     <td width="1%">&nbsp;</td>
     <td width="21%"><input type="submit" name="button" id="button" value="Enregistre le montant " />
-      <input name="id" type="hidden" value="<? echo $datam['acid']; ?>" />
-      <input name="idso" type="hidden" value="<? echo $datam['aciden']; ?>" />
+      <input name="id" type="hidden" value="<?php echo $datam['acid']; ?>" />
+      <input name="idso" type="hidden" value="<?php echo $datam['aciden']; ?>" />
       <input name="st" type="hidden" value="S" />
-      <input name="stlib" type="hidden" value="<? echo $datam['acraisonsociale']; ?>" />
+      <input name="stlib" type="hidden" value="<?php echo $datam['acraisonsociale']; ?>" />
       <font size="2"><strong><font size="2"><strong><font color="#FF0000">
-      <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>" />
+      <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
       </font></strong></font></strong></font></td>
   </tr>
 </table>
@@ -267,14 +267,14 @@ $datam=mysql_fetch_array($resultm);
 while($rowsfac=mysql_fetch_array($resultfac)){ 
 ?>
   <tr>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $rowsfac['idf'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $rowsfac['fannee'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $rowsfac['date'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['nfacture'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['montant'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['impayee'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['total'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['report'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $rowsfac['idf'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $rowsfac['fannee'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $rowsfac['date'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['nfacture'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['montant'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['impayee'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['total'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['report'];?></em></td>
     <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
   </tr>
   <?php

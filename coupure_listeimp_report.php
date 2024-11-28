@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 ?>
@@ -39,10 +39,10 @@ LISTE DES COUPURES AVEC REPORT : </p>
      <td width="16%">Somme Report </td>
    </tr>
    <tr>
-     <td><em><? echo  $m1v;?></em></td>
-     <td><em><? echo $m2q;?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPn),3," "));?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPr),3," "));?></em></td>
+     <td><em><?php echo  $m1v;?></em></td>
+     <td><em><?php echo $m2q;?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPn),3," "));?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPr),3," "));?></em></td>
    </tr>
  </table>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -57,10 +57,10 @@ LISTE DES COUPURES AVEC REPORT : </p>
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
    <tr>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['id'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><?  $client=substr($data['nomprenom'],0,20); echo $client;?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['totalnet'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['report'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['id'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php  $client=substr($data['nomprenom'],0,20); echo $client;?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['totalnet'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['report'];?></em></td>
      <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
    </tr>
    <?php

@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 if(($_SESSION['u_niveau'] != 2)) {
 	header("location:index.php?error=false");
 	exit;
@@ -15,7 +15,7 @@ if(($_SESSION['u_niveau'] != 2)) {
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -53,16 +53,16 @@ while($datafact=mysql_fetch_array($req)){ // Start looping table row
    <tr>
      <td align="center" bgcolor="#FFFFFF"><font color="#000000">
 	   
-	 <a href="co_bill.php?idf=<? echo md5(microtime()).$datafact['idf'];?>" class="btn btn-sm btn-default" target="_blank" ><img src="images/email.gif" width="20" height="20"></a></font></td>
+	 <a href="co_bill.php?idf=<?php echo md5(microtime()).$datafact['idf'];?>" class="btn btn-sm btn-default" target="_blank" ><img src="images/email.gif" width="20" height="20"></a></font></td>
      
-     <td  bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['nomprenom'];?></font></td>
-     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['ville'];?></font></td>
-     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['quartier'];?></font></td>
-     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['idf'];?></font></td>
-     <td align="center" bgcolor="#FFFFFF"><em><font color="#000000"><? echo $datafact['totalttc'];?></font></em></td>
-     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['impayee'];?></font></td>
-     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['Pre'];?></font></td>
-     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['totalnet'];?></font></td>
+     <td  bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['nomprenom'];?></font></td>
+     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['ville'];?></font></td>
+     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['quartier'];?></font></td>
+     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['idf'];?></font></td>
+     <td align="center" bgcolor="#FFFFFF"><em><font color="#000000"><?php echo $datafact['totalttc'];?></font></em></td>
+     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['impayee'];?></font></td>
+     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['Pre'];?></font></td>
+     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['totalnet'];?></font></td>
    </tr>
    <?php
 }

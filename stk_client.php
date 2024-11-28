@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if(($_SESSION['u_niveau'] != 41)) {
 	header("location:index.php?error=false");
 	exit;
@@ -16,7 +16,7 @@ require 'fonction.php';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -35,7 +35,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
           <td width="1%">&nbsp;</td>
           <td width="12%">&nbsp;</td>
           <td width="40%"><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-            <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>" />
+            <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
           </font></strong></font></strong></font></td>
         </tr>
         <tr>
@@ -190,13 +190,13 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
   <tr>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><a href="stk_user.php?id=<? echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-default" ><? echo $data['id'];?></a></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['nomprenom'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['surnom'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['tel'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['ville'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['quartier'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><a href="stk_user.php?id=<? echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-success" >Apperçu</a></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><a href="stk_user.php?id=<?php echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-default" ><?php echo $data['id'];?></a></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['nomprenom'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['surnom'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['tel'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['ville'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['quartier'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><a href="stk_user.php?id=<?php echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-success" >Apperçu</a></td>
   </tr>
   <?php
 }

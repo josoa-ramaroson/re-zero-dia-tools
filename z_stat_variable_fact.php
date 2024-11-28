@@ -1,4 +1,4 @@
-    <?
+    <?php
 	require 'fonction.php';
 	function stat_eda($mois,$annee,$dbbk,$ARCH,$tbl_fact,$linkibk){
 	$sql = "SELECT SUM(cons) AS cons, SUM(totalht) AS totalht, SUM(tax) AS tax, SUM(totalttc) AS totalttc, SUM(ortc) AS ortc, SUM(impayee) AS impayee, SUM(Pre) AS Pre, SUM(totalnet) AS totalnet,  nserie , fannee , st 
@@ -12,7 +12,7 @@
 	}	
 	?>
     
-        <?
+        <?php
 	require 'fonction.php';
 	$annee=$_REQUEST['annee']; 
 	$ARCH=$_REQUEST['annee'];

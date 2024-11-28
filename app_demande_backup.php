@@ -1,10 +1,10 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 require 'fc-affichage.php';
 require_once('calendar/classes/tc_calendar.php');
 ?>
-<?
+<?php
 	if((($_SESSION['u_niveau'] != 20) ) && ($_SESSION['u_niveau'] != 40) && ($_SESSION['u_niveau'] != 90)) {
 	header("location:index.php?error=false");
 	exit;
@@ -13,7 +13,7 @@ require_once('calendar/classes/tc_calendar.php');
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 <script language="javascript" src="calendar/calendar.js"></script>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
@@ -81,7 +81,7 @@ httpxml.send(null);
 </script>
 
 </head>
-<?
+<?php
 require 'bienvenue.php';    // on appelle la page contenant la fonction
 	$sqldate="SELECT * FROM $tbl_caisse "; //DESC  ASC
 	$resultldate=mysql_query($sqldate);
@@ -142,13 +142,13 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
     <tr>
-      <td height="33" align="center" bgcolor="#FFFFFF"><div align="left"><? echo $data['id_dem'];?></div>
+      <td height="33" align="center" bgcolor="#FFFFFF"><div align="left"><?php echo $data['id_dem'];?></div>
         <div align="left"></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['date_dem'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['nomprenom'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['direction'];?></em></div></td>
-      <td width="162"   style="background-color:#FFF;"><div align="left"><em><? echo $data['service'];?></em></div></td>
-      <td width="163"   style="background-color:#FFF;"><a href="app_demande_imp.php?<? echo md5(microtime());?>&id=<? echo md5(microtime()).$data['id_dem'];?>" target="_blank" class="btn btn-xs btn-success"> Visualiser les demandes</a>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['date_dem'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['nomprenom'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['direction'];?></em></div></td>
+      <td width="162"   style="background-color:#FFF;"><div align="left"><em><?php echo $data['service'];?></em></div></td>
+      <td width="163"   style="background-color:#FFF;"><a href="app_demande_imp.php?<?php echo md5(microtime());?>&id=<?php echo md5(microtime()).$data['id_dem'];?>" target="_blank" class="btn btn-xs btn-success"> Visualiser les demandes</a>
       
       </td>
     </tr>

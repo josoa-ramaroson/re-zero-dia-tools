@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 function barre_navigation ($nb_total,$nb_affichage_par_page,$debut, $refville , $RefQuartier, $nb_liens_dans_la_barre) { 
@@ -105,7 +105,7 @@ function barre_navigation ($nb_total,$nb_affichage_par_page,$debut, $refville , 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 require 'bienvenue.php';    // on appelle la page contenant la fonction
 
 
@@ -133,7 +133,7 @@ $ville=$row2['ville'];
 	//$m2q=addslashes($_REQUEST['m2q']);
 ?>
 <body>
-<p><a href="coupure_listeimp_report.php?m1v=<? echo md5(microtime()).$m1v;?>&m2q=<? echo md5(microtime()).$m2q;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a>Coupure des reports   <a href="coupure_listeimp_impayee.php?m1v=<? echo md5(microtime()).$m1v;?>&m2q=<? echo md5(microtime()).$m2q;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a>Coupure des impayees
+<p><a href="coupure_listeimp_report.php?m1v=<?php echo md5(microtime()).$m1v;?>&m2q=<?php echo md5(microtime()).$m2q;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a>Coupure des reports   <a href="coupure_listeimp_impayee.php?m1v=<?php echo md5(microtime()).$m1v;?>&m2q=<?php echo md5(microtime()).$m2q;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a>Coupure des impayees
 </p>
 <p>
   <?php
@@ -180,13 +180,13 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
      <td width="20%">Somme à couper</td>
    </tr>
    <tr>
-     <td><em><? echo  $m1v;?></em></td>
-     <td><em><? echo $m2q;?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPn),3," "));?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPi),3," "));?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPt),3," "));?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPr),3," "));?></em></td>
-     <td><em> <? echo strrev(chunk_split(strrev($tFPr-$tFPt+$tFPi),3," "));?> </em></td>
+     <td><em><?php echo  $m1v;?></em></td>
+     <td><em><?php echo $m2q;?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPn),3," "));?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPi),3," "));?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPt),3," "));?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPr),3," "));?></em></td>
+     <td><em> <?php echo strrev(chunk_split(strrev($tFPr-$tFPt+$tFPi),3," "));?> </em></td>
    </tr>
  </table>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -202,13 +202,13 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
    <?php
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
-   <tr bgcolor="<? gettatut($data['bstatut']); ?>">
-     <td align="center" ><em><? echo $data['id'];?></em></td>
-     <td align="center" ><em><? echo $data['nomprenom'];?></em></td>
-     <td align="center" ><em><? $i=$data['impayee']; echo $data['impayee'];?></em></td>
-     <td align="center" ><em><? $s=$data['totalnet']; echo $data['totalnet'];?></em></td>
-     <td align="center" ><em><? $r=$data['report']; echo $data['report'];?></em></td>
-     <td align="center" ><? $c=$r-$s+$i; if ($c>0) { echo $c;} else {}?></td>
+   <tr bgcolor="<?php gettatut($data['bstatut']); ?>">
+     <td align="center" ><em><?php echo $data['id'];?></em></td>
+     <td align="center" ><em><?php echo $data['nomprenom'];?></em></td>
+     <td align="center" ><em><?php $i=$data['impayee']; echo $data['impayee'];?></em></td>
+     <td align="center" ><em><?php $s=$data['totalnet']; echo $data['totalnet'];?></em></td>
+     <td align="center" ><em><?php $r=$data['report']; echo $data['report'];?></em></td>
+     <td align="center" ><?php $c=$r-$s+$i; if ($c>0) { echo $c;} else {}?></td>
      <td align="center" >&nbsp;</td>
           
    </tr>

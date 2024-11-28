@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if((($_SESSION['u_niveau'] != 40) ) && ($_SESSION['u_niveau'] != 90)) {
 	header("location:index.php?error=false");
 	exit;
@@ -11,12 +11,12 @@ require 'fonction.php';
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 
 </head>
-<?
+<?php
 //require("bienvenue.php"); // on appelle la page contenant la fonction
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -55,13 +55,13 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
     <tr> 
-      <td align="center" bgcolor="#FFFFFF"> <div align="left"><? echo $data['idapp_aut'];?></div>
+      <td align="center" bgcolor="#FFFFFF"> <div align="left"><?php echo $data['idapp_aut'];?></div>
         <div align="left"></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['date'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['service'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['Nature'];?></em></div></td>
-      <td width="281"   style="background-color:#FFF;"><em><? echo $data['Motif'];?></em></td>
-      <td width="98"   style="background-color:#FFF;"><? echo strrev(chunk_split(strrev($data['Montant']),3," "));?></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['date'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['service'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['Nature'];?></em></div></td>
+      <td width="281"   style="background-color:#FFF;"><em><?php echo $data['Motif'];?></em></td>
+      <td width="98"   style="background-color:#FFF;"><?php echo strrev(chunk_split(strrev($data['Montant']),3," "));?></td>
     </tr>
     <?php
 
@@ -78,7 +78,7 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 
   <tr bgcolor="#FFFFFF">
     <td align="center">&nbsp;</td>
-    <td align="center"><em><? echo $tPT;?></em></td>
+    <td align="center"><em><?php echo $tPT;?></em></td>
   </tr>
 </table>
 <p>&nbsp;</p>

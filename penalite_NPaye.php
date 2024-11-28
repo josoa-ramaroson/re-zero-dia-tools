@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 function barre_navigation ($nb_total,$nb_affichage_par_page,$debut,  $nb_liens_dans_la_barre) { 
@@ -105,7 +105,7 @@ function barre_navigation ($nb_total,$nb_affichage_par_page,$debut,  $nb_liens_d
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -143,17 +143,17 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
    <?php
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
-   <tr bgcolor="<? gettatut($data['bstatut']); ?>">
-     <td align="center" ><em><? echo $data['id'];?></em></td>
-     <td align="center" ><em><? echo $data['ville'];?></em></td>
-     <td align="center" ><em><? echo $data['quartier'];?></em></td>
-     <td align="center" ><em><? echo $data['nomprenom'];?></em></td>
-     <td align="center" ><em><? echo $data['totalttc'];?></em></td>
-     <td align="center" ><em><? echo $data['ortc'];?></em></td>
-     <td align="center" ><em><? echo $data['impayee'];?></em></td>
-     <td align="center" ><em><? echo $data['Pre'];?></em></td>
-     <td align="center" ><em><? echo $data['totalnet'];?></em></td>
-     <td align="center" ><em><? echo $data['bstatut'];?></em></td>
+   <tr bgcolor="<?php gettatut($data['bstatut']); ?>">
+     <td align="center" ><em><?php echo $data['id'];?></em></td>
+     <td align="center" ><em><?php echo $data['ville'];?></em></td>
+     <td align="center" ><em><?php echo $data['quartier'];?></em></td>
+     <td align="center" ><em><?php echo $data['nomprenom'];?></em></td>
+     <td align="center" ><em><?php echo $data['totalttc'];?></em></td>
+     <td align="center" ><em><?php echo $data['ortc'];?></em></td>
+     <td align="center" ><em><?php echo $data['impayee'];?></em></td>
+     <td align="center" ><em><?php echo $data['Pre'];?></em></td>
+     <td align="center" ><em><?php echo $data['totalnet'];?></em></td>
+     <td align="center" ><em><?php echo $data['bstatut'];?></em></td>
    </tr>
    <?php
 }

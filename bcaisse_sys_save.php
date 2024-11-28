@@ -1,4 +1,4 @@
-<?
+<?php
 	$login=addslashes($_POST['m1']);
 	$motdepasse=addslashes(md5($_POST['m2']));
 	require 'fonction.php';

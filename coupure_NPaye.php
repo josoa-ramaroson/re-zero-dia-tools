@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 function barre_navigation ($nb_total,$nb_affichage_par_page,$debut, $refville , $RefQuartier, $nb_liens_dans_la_barre) { 
@@ -105,7 +105,7 @@ function barre_navigation ($nb_total,$nb_affichage_par_page,$debut, $refville , 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>EDA</title>
 </head>
-<?
+<?php
 require 'bienvenue.php';    // on appelle la page contenant la fonction
 
 
@@ -133,9 +133,9 @@ $ville=$row2['ville'];
 	//$m2q=addslashes($_REQUEST['m2q']);
 ?>
 <body>
-<a href="coupure_listeimp.php?m1v=<? echo md5(microtime()).$m1v;?>&m2q=<? echo md5(microtime()).$m2q;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a> Coupure des impayees 
+<a href="coupure_listeimp.php?m1v=<?php echo md5(microtime()).$m1v;?>&m2q=<?php echo md5(microtime()).$m2q;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a> Coupure des impayees 
 
-<a href="coupure_qrcode.php?m1v=<? echo md5(microtime()).$m1v;?>&m2q=<? echo md5(microtime()).$m2q;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a> Liste en  QRCODE
+<a href="coupure_qrcode.php?m1v=<?php echo md5(microtime()).$m1v;?>&m2q=<?php echo md5(microtime()).$m2q;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a> Liste en  QRCODE
 
  <p><?php
 require 'configuration.php';
@@ -182,13 +182,13 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
      <td width="18%">Somme Total Net</td>
    </tr>
    <tr>
-     <td><em><? echo  $m1v;?></em></td>
-     <td><em><? echo $m2q;?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPn),3," "));?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFP),3," "));?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPo),3," "));?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPi),3," "));?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPt),3," "));?></em></td>
+     <td><em><?php echo  $m1v;?></em></td>
+     <td><em><?php echo $m2q;?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPn),3," "));?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFP),3," "));?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPo),3," "));?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPi),3," "));?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPt),3," "));?></em></td>
    </tr>
  </table>
  <p>&nbsp;</p>
@@ -206,14 +206,14 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
 
-   <tr bgcolor="<? gettatut($data['bstatut']); ?>">
-     <td align="center" ><em><? echo $data['id'];?></em></td>
-     <td ><em><? echo $data['nomprenom'];?></em></td>
-     <td align="center" ><em><? echo $data['totalttc'];?></em></td>
-     <td align="center" ><em><? echo $data['ortc'];?></em></td>
-     <td align="center" ><em><? echo $data['impayee'];?></em></td>
-     <td align="center" ><em><? echo $data['Pre'];?></em></td>
-     <td align="center" ><em><? echo $data['totalnet'];?></em></td>
+   <tr bgcolor="<?php gettatut($data['bstatut']); ?>">
+     <td align="center" ><em><?php echo $data['id'];?></em></td>
+     <td ><em><?php echo $data['nomprenom'];?></em></td>
+     <td align="center" ><em><?php echo $data['totalttc'];?></em></td>
+     <td align="center" ><em><?php echo $data['ortc'];?></em></td>
+     <td align="center" ><em><?php echo $data['impayee'];?></em></td>
+     <td align="center" ><em><?php echo $data['Pre'];?></em></td>
+     <td align="center" ><em><?php echo $data['totalnet'];?></em></td>
    </tr>
    <?php
 }

@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -9,7 +9,7 @@ require 'fonction.php';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -47,14 +47,14 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 ?>
    
      
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['id'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['date'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['nfacture'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['Nomclient'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['nrecu'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['montant'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['paiement'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><? echo $data['report'];?></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['id'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['date'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['nfacture'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['Nomclient'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['nrecu'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['montant'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['paiement'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><?php echo $data['report'];?></td>
    </tr>
    <?php
 }

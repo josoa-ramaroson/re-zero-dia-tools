@@ -1,4 +1,4 @@
-<? include 'inc/head.php'; ?>
+<?php include 'inc/head.php'; ?>
     <span style="width: 25%; color: #444444;"><img src="images/eda.png" width="143" height="63" /></span>
     <p>Liste des clients qui n'ont pas été facturé <br>
       <br>
@@ -21,7 +21,7 @@ $data7= mysql_fetch_assoc($req7);
 $cbt=$data7['bt'];
 
 ?>
-    </font></font></font>   Le nombre des clients qui n'ont pas été facturé est  de : <font color="#000000"><? echo $Nomimprime;?> sur  un total BT de : <? echo $cbt;?> soit environ : <? echo  round($Nomimprime*100/$cbt, 2);?> % Restant </font><br>
+    </font></font></font>   Le nombre des clients qui n'ont pas été facturé est  de : <font color="#000000"><?php echo $Nomimprime;?> sur  un total BT de : <?php echo $cbt;?> soit environ : <?php echo  round($Nomimprime*100/$cbt, 2);?> % Restant </font><br>
     </p>
 
     <nobreak>
@@ -39,11 +39,11 @@ while($data=mysql_fetch_array($reqfact)){ // Start looping table row
 ?>
         <tr>
           <td align="center" bgcolor="#FFFFFF"><strong>
-            <? echo $data['id'];?>
+            <?php echo $data['id'];?>
           </strong></td>
-          <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $data['nomprenom'];?></font></td>
-          <td align="center" bgcolor="#FFFFFF"><strong><? echo $data['ville'];?></strong></td>
-          <td align="center" bgcolor="#FFFFFF"><strong><? echo $data['quartier'];?></strong></td>
+          <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $data['nomprenom'];?></font></td>
+          <td align="center" bgcolor="#FFFFFF"><strong><?php echo $data['ville'];?></strong></td>
+          <td align="center" bgcolor="#FFFFFF"><strong><?php echo $data['quartier'];?></strong></td>
           <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
           <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
         </tr>

@@ -1,11 +1,11 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 require_once('calendar/classes/tc_calendar.php');
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <script language="javascript" src="calendar/calendar.js"></script>
@@ -20,7 +20,7 @@ require_once('calendar/classes/tc_calendar.php');
 }
 </style>
 </head>
-<?
+<?php
 Require("bienvenue.php");    // on appelle la page contenant la fonction
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -30,15 +30,15 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
    <a href="evenement_user.php" class="btn btn-xs btn-success" > <span class="glyphicon glyphicon-calendar"></span> Mon Agendat  </a> 
    <a href="evenement_cal_s.php" class="btn btn-xs btn-success" > <span class="glyphicon glyphicon-calendar"></span> Calendrier Global simplifier  </a>
       |
- <? if (($_SESSION['u_niveau']==7) or ($_SESSION['u_niveau']==8) or ($_SESSION['u_niveau']==9) or ($_SESSION['u_niveau']==43) or  ($_SESSION['u_niveau']==46) or  ($_SESSION['u_niveau']==90)){?> 
+ <?php if (($_SESSION['u_niveau']==7) or ($_SESSION['u_niveau']==8) or ($_SESSION['u_niveau']==9) or ($_SESSION['u_niveau']==43) or  ($_SESSION['u_niveau']==46) or  ($_SESSION['u_niveau']==90)){?>
 <a href="evenement_cal.php" class="btn btn-xs btn-success" > <span class="glyphicon glyphicon-calendar"></span> Calendrier Global </a> |
-<? }?> 
+<?php }?>
 
  </p>
 
 
 
-<? if ($_SESSION['u_niveau']==7){?>
+<?php if ($_SESSION['u_niveau']==7){?>
 <div class="panel panel-success">
   <div class="panel-heading">
     <h3 class="panel-title">Les  utilisateurs du systeme<font size="2"><font color="#FFFFFF"><font size="3"><font color="#000000"><strong><font size="5">
@@ -62,11 +62,11 @@ $result=mysql_query($sql);
 while($rows=mysql_fetch_array($result)){ // Start looping table row 
 ?>
       <tr>
-        <td bgcolor="#FFFFFF"><? echo $rows['u_nom']; ?></td>
-        <td bgcolor="#FFFFFF"><? echo $rows['u_prenom']; ?><br></td>
-        <td bgcolor="#FFFFFF"><? echo $rows['u_email']; ?></td>
-        <td bgcolor="#FFFFFF"><? echo $rows['u_login']; ?></td>
-        <td bgcolor="#FFFFFF"><? echo $rows['type']; ?></td>
+        <td bgcolor="#FFFFFF"><?php echo $rows['u_nom']; ?></td>
+        <td bgcolor="#FFFFFF"><?php echo $rows['u_prenom']; ?><br></td>
+        <td bgcolor="#FFFFFF"><?php echo $rows['u_email']; ?></td>
+        <td bgcolor="#FFFFFF"><?php echo $rows['u_login']; ?></td>
+        <td bgcolor="#FFFFFF"><?php echo $rows['type']; ?></td>
       </tr>
       <?php
 // Exit looping and close connection 
@@ -119,7 +119,7 @@ echo '<option> '.$row8['u_login'].' </option>';
       <table width="100%" border="0">
         <tr>
           <td width="16%">Login :</td>
-          <td width="18%"><input name="u_login" type="text" class="form-control" id="u_login" value="<? echo $id_nom; ?>" size="30"></td>
+          <td width="18%"><input name="u_login" type="text" class="form-control" id="u_login" value="<?php echo $id_nom; ?>" size="30"></td>
           <td width="2%">&nbsp;</td>
           <td width="64%">&nbsp;</td>
         </tr>
@@ -183,7 +183,7 @@ echo '<option value='.$rowrole['id_role'].'> '.$rowrole['nom_role'].' </option>'
             </select>
           </strong></font></td>
           <td width="2%"><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-            <input name="id_user" type="hidden" id="id_user" value="<? echo $id_user; ?>">
+            <input name="id_user" type="hidden" id="id_user" value="<?php echo $id_user; ?>">
           </font></strong></font></strong></font></td>
           <td width="64%"><input type="submit" name="Valider3" id="Valider3" value="Changer de role "></td>
         </tr>

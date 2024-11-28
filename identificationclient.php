@@ -1,4 +1,4 @@
-<?
+<?php
 	global $u_utilisateur;
 	$login=addslashes($_POST['m1']);
 	$pwd=addslashes($_POST['m2']);

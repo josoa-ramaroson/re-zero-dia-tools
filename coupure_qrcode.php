@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 ?>
@@ -6,19 +6,19 @@ require 'fonction.php';
 <html xmlns="http://www.w3.org/1999/xhtml">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <head>
-<title><? include 'titre.php'; ?></title>
-<? include 'inc/head.php'; ?>
+<title><?php include 'titre.php'; ?></title>
+<?php include 'inc/head.php'; ?>
 <style type="text/css">
 .centre {
 	text-align: center;
 }
 </style>
-<?
+<?php
 //require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 </head>
 
-<?
+<?php
     $m1v=substr($_REQUEST["m1v"],32);
 	$m2q=substr($_REQUEST["m2q"],32); 
 	require 'configuration.php';
@@ -41,7 +41,7 @@ $sqFP= "SELECT  COUNT(*) AS nbres, SUM(f.totalnet) AS totalnet , SUM(f.totalttc)
 <table width="99%" border="0">
    <tr>
      <td width="5%" height="93">&nbsp;</td>
-     <td width="45%"><h2>Nombre des clients : <? echo strrev(chunk_split(strrev($tFPn),3," "));?> résultat(s) </h2></td>
+     <td width="45%"><h2>Nombre des clients : <?php echo strrev(chunk_split(strrev($tFPn),3," "));?> résultat(s) </h2></td>
      <td width="3%"></td>
      <td width="16%">&nbsp;</td>
      <td width="1%" with="10%">&nbsp;</td>
@@ -73,19 +73,19 @@ while($data=mysqli_fetch_array($req)){
         <table width="78%" border="0.5" align="center" cellpadding="0" cellspacing="0">
           <tr>
             <td><h5> N° Client:
-              <? $idf=$data['idf']; $Codebare=$data['id']; echo $Codebare;?>
+              <?php $idf=$data['idf']; $Codebare=$data['id']; echo $Codebare;?>
             </h5>
-			<img src="codeqrfonction_fact_paie.php?qr=<?=$Codebare?>&idf=<?=$idf?>" width="150" height="150"/>
+			<img src="codeqrfonction_fact_paie.php?qr=<?php=$Codebare?>&idf=<?php=$idf?>" width="150" height="150"/>
 			</td>
           </tr>
           <tr>
 			</h4></td>
           </tr>
           <tr>
-            <td><h5><? echo $data['nomprenom'];?></h5></td>
+            <td><h5><?php echo $data['nomprenom'];?></h5></td>
           </tr>
           <tr>
-            <td><? echo $data['totalnet'];?> KMF </td>
+            <td><?php echo $data['totalnet'];?> KMF </td>
           </tr>
         </table>
         

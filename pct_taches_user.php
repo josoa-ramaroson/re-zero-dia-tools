@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if($_SESSION['u_niveau'] != 10) {
 	header("location:index.php?error=false");
 	exit;
@@ -16,7 +16,7 @@ require 'fonction.php';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -60,18 +60,18 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
   <?php
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
-  <tr bgcolor="<? gettatut($data['suivi']); ?>">
-    <td ><a href="pc_affichage_user.php?id=<? echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-danger" > <? echo $data['idpc']; ?></a>
+  <tr bgcolor="<?php gettatut($data['suivi']); ?>">
+    <td ><a href="pc_affichage_user.php?id=<?php echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-danger" > <?php echo $data['idpc']; ?></a>
       <div align="left"></div></td>
-    <td ><? echo $data['date']; ?></span></td>
-    <td ><? echo $data['ile']; ?></span></td>
-    <td ><? echo $data['agence']; ?></span></td>
-    <td ><? echo $data['utilisateur'];?></td>
-    <td ><? echo $data['nom'];?></td>
-    <td ><? echo $data['taches'];?></td>
-    <td ><? echo $data['statut'];?></td>
-    <td ><? echo $data['suivi'];?></td>
-    <td ><? echo $data['realisateur'];?></td>
+    <td ><?php echo $data['date']; ?></span></td>
+    <td ><?php echo $data['ile']; ?></span></td>
+    <td ><?php echo $data['agence']; ?></span></td>
+    <td ><?php echo $data['utilisateur'];?></td>
+    <td ><?php echo $data['nom'];?></td>
+    <td ><?php echo $data['taches'];?></td>
+    <td ><?php echo $data['statut'];?></td>
+    <td ><?php echo $data['suivi'];?></td>
+    <td ><?php echo $data['realisateur'];?></td>
   </tr>
   <?php
 

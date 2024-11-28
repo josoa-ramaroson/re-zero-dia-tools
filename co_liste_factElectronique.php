@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 if(($_SESSION['u_niveau'] != 2)) {
 	header("location:index.php?error=false");
 	exit;
@@ -15,7 +15,7 @@ if(($_SESSION['u_niveau'] != 2)) {
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -35,7 +35,7 @@ $sql = " SELECT * FROM $tbl_fact f , $tbl_contact c  where  c.email!='' and f.id
 $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
 ?>
 </p>
-<H1>ENVOI DES COURRIELS : <a href="#?&<? echo md5(microtime()); ?>" onClick="return !window.open(this.href, 'pop',  'width=600,height=370,left=120,top=120');" class="btn btn-sm btn-success"  target=_blank  >MASS-EMAIL </a></H1>
+<H1>ENVOI DES COURRIELS : <a href="#?&<?php echo md5(microtime()); ?>" onClick="return !window.open(this.href, 'pop',  'width=600,height=370,left=120,top=120');" class="btn btn-sm btn-success"  target=_blank  >MASS-EMAIL </a></H1>
 <p>&nbsp; </p>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
    <tr bgcolor="#3071AA">
@@ -54,18 +54,18 @@ while($datafact=mysql_fetch_array($req)){ // Start looping table row
      <td align="center" bgcolor="#FFFFFF"><font color="#000000">
 	   
     
-  <a href="http://client.sonelecanjouan.com/email_envoi.php?id=<? echo md5(microtime());?>&nomclient=<? echo $datafact['nomprenom'];?>&email=<? echo $datafact['email'];?>&montant=<? echo $datafact['totalnet'];?>&date=<? echo $datcoupure;?>" 
+  <a href="http://client.sonelecanjouan.com/email_envoi.php?id=<?php echo md5(microtime());?>&nomclient=<?php echo $datafact['nomprenom'];?>&email=<?php echo $datafact['email'];?>&montant=<?php echo $datafact['totalnet'];?>&date=<?php echo $datcoupure;?>"
   onclick="return !window.open(this.href, 'pop',  'width=600,height=370,left=120,top=120');"
   class="btn btn-sm btn-default" target="_blank" >
    
      <img src="images/email.gif" width="20" height="20"></a></font></td>
      
-     <td  bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['nomprenom'];?></font></td>
-     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['ville'];?></font></td>
-     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['quartier'];?></font></td>
-     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['idf'];?></font></td>
-     <td align="center" bgcolor="#FFFFFF"><em><font color="#000000"><? echo $datafact['email'];?></font></em></td>
-     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['totalnet'];?></font></td>
+     <td  bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['nomprenom'];?></font></td>
+     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['ville'];?></font></td>
+     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['quartier'];?></font></td>
+     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['idf'];?></font></td>
+     <td align="center" bgcolor="#FFFFFF"><em><font color="#000000"><?php echo $datafact['email'];?></font></em></td>
+     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['totalnet'];?></font></td>
    </tr>
    <?php
 }

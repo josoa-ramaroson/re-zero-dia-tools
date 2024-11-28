@@ -1,10 +1,10 @@
-<?
+<?php
 require 'session.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if(($_SESSION['u_niveau'] != 40) ) {
 	header("location:index.php?error=false");
 	exit;
@@ -13,7 +13,7 @@ require 'fonction.php';
 
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
@@ -29,7 +29,7 @@ require 'fonction.php';
 </style>
 <script language="javascript" src="calendar/calendar.js"></script>
 </head>
-<?
+<?php
 require("bienvenue.php"); // on appelle la page contenant la fonction
 	$sqldate="SELECT * FROM $tbl_app_caisse "; //DESC  ASC
 	$resultldate=mysql_query($sqldate);
@@ -51,7 +51,7 @@ require("bienvenue.php"); // on appelle la page contenant la fonction
                       </tr>
                       <tr>
                         <td><span class="panel-title">Date</span></td>
-                        <td><input name="date" type="text" id="date" value="<? echo $datecaisse['datecaisse'];?>" size="30" readonly /></td>
+                        <td><input name="date" type="text" id="date" value="<?php echo $datecaisse['datecaisse'];?>" size="30" readonly /></td>
                       </tr>
                       <tr>
                         <td>&nbsp;</td>
@@ -97,7 +97,7 @@ require("bienvenue.php"); // on appelle la page contenant la fonction
                       </tr>
                       <tr>
                         <td><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-                          <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>">
+                          <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>">
                         </font></strong></font></strong></font></td>
                         <td><input type="submit" name="Submit" value="Enregistrer" class="btn btn-primary" ></td>
                       </tr>
@@ -281,14 +281,14 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ 
 ?>
     <tr> 
-      <td align="center" bgcolor="#FFFFFF"> <div align="left"><? echo $data['idapp_aut'];?></div>
+      <td align="center" bgcolor="#FFFFFF"> <div align="left"><?php echo $data['idapp_aut'];?></div>
         <div align="left"></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['date'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['service'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['Nature'];?></em></div></td>
-      <td width="281"   style="background-color:#FFF;"><em><? echo $data['Motif'];?></em></td>
-      <td width="98"   style="background-color:#FFF;"><? echo $data['Montant'];?></td>
-      <td width="78"   style="background-color:#FFF;"><a href="app_aut_imp.php?id=<? echo md5(microtime()).$data['idapp_aut']; ?>"  style="margin:5px"   class="btn btn-xs btn-warning" target="_blank">IMPRIMER</a></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['date'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['service'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['Nature'];?></em></div></td>
+      <td width="281"   style="background-color:#FFF;"><em><?php echo $data['Motif'];?></em></td>
+      <td width="98"   style="background-color:#FFF;"><?php echo $data['Montant'];?></td>
+      <td width="78"   style="background-color:#FFF;"><a href="app_aut_imp.php?id=<?php echo md5(microtime()).$data['idapp_aut']; ?>"  style="margin:5px"   class="btn btn-xs btn-warning" target="_blank">IMPRIMER</a></td>
     </tr>
     <?php
 

@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -22,7 +22,7 @@ body,td,th {
 </style>
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -135,21 +135,21 @@ $nomprenom=$data['nomprenom'];
 	 
 ?>
     <tr>
-     <td align="center" ><div align="left"><em><? echo $id;?></em></div></td>
-     <td align="center" ><div align="left"><em><? echo $nomprenom;?></em></div></td>
-     <td align="center" ><div align="left"><em> <? $GSM=str_replace(' ', '', ($tel)); echo  $GSM;?></em></div></td>
-     <td align="center" ><div align="left"><em><? echo $ville;?></em></div></td>
-     <td align="center" ><div align="left"><em><? echo $quartier;?></em></div></td>
+     <td align="center" ><div align="left"><em><?php echo $id;?></em></div></td>
+     <td align="center" ><div align="left"><em><?php echo $nomprenom;?></em></div></td>
+     <td align="center" ><div align="left"><em> <?php $GSM=str_replace(' ', '', ($tel)); echo  $GSM;?></em></div></td>
+     <td align="center" ><div align="left"><em><?php echo $ville;?></em></div></td>
+     <td align="center" ><div align="left"><em><?php echo $quartier;?></em></div></td>
      <td align="center" >    
      
     
-     <a href="sms_envoi_affichage_text.php?id=<? echo md5(microtime()).$data['id']; ?>&id_nom=<? echo $id_nom;?>&GSM=<? echo $GSM;?>&<? echo md5(microtime()).$data['id'];?>"
+     <a href="sms_envoi_affichage_text.php?id=<?php echo md5(microtime()).$data['id']; ?>&id_nom=<?php echo $id_nom;?>&GSM=<?php echo $GSM;?>&<?php echo md5(microtime()).$data['id'];?>"
      
      onclick="return !window.open(this.href, 'pop',  'width=600,height=370,left=120,top=120');"
      
      
      
-      <? $n=$data['statut']; 
+      <?php $n=$data['statut'];
 	  if ($n==1) $codecouleur='btn btn-sm btn-default';
 	  if ($n==2) $codecouleur='btn btn-sm btn-warning'; 
 	  if ($n==3) $codecouleur='btn btn-sm btn-info';
@@ -159,7 +159,7 @@ $nomprenom=$data['nomprenom'];
 	  if ($n==7) $codecouleur='btn btn-sm btn-danger';
 	  ?>
         
-     class="<? echo $codecouleur; ?>"  target=_blank  >Envoi SMS</a>
+     class="<?php echo $codecouleur; ?>"  target=_blank  >Envoi SMS</a>
      
      
      

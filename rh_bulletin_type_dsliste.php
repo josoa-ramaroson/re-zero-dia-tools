@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 ?>
@@ -9,7 +9,7 @@ require 'fonction.php';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 //Require 'bienvenue.php';    // on appelle la page contenant la fonction
 require 'rh_configuration_fonction.php';
 
@@ -48,7 +48,7 @@ $resultat2 = mysql_query($sql2);
 $data2=mysql_fetch_array($resultat2)
 ?>
 </p>
-  <p align="center"><em>RECAPITULATIF POUR DIRECTION  </em> - <em><? echo  $m1d.' SERVICE '.$m2s ;?></em> - <span class="panel-title"><? echo $affichemois.' '.$anneepaie ; ?></span></p>
+  <p align="center"><em>RECAPITULATIF POUR DIRECTION  </em> - <em><?php echo  $m1d.' SERVICE '.$m2s ;?></em> - <span class="panel-title"><?php echo $affichemois.' '.$anneepaie ; ?></span></p>
   <p>&nbsp;</p>
   <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
     <tr bgcolor="#3071AA">
@@ -65,13 +65,13 @@ $data2=mysql_fetch_array($resultat2)
     <tr>
       <td align="center" bgcolor="#FFFFFF">TOTAL </td>
       <td align="center">&nbsp;</td>
-      <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $data2['direction'];?></font></td>
-      <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $data2['service'];?></font></td>
-      <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data2['SS']),3," ")); ?></em></td>
-      <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data2['SI']),3," "));?></em></td>
-      <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data2['SD']),3," "));?></em></td>
-      <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data2['SR']),3," "));?></em></td>
-      <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data2['SNET']),3," "));?><em></td>
+      <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $data2['direction'];?></font></td>
+      <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $data2['service'];?></font></td>
+      <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data2['SS']),3," ")); ?></em></td>
+      <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data2['SI']),3," "));?></em></td>
+      <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data2['SD']),3," "));?></em></td>
+      <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data2['SR']),3," "));?></em></td>
+      <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data2['SNET']),3," "));?><em></td>
     </tr>
 
   </table>
@@ -94,17 +94,17 @@ while($datafact=mysql_fetch_array($req)){ // Start looping table row
     <tr bgcolor="#FFFFFF">
      <td align="center"><font color="#000000">
      
-	 <? echo $datafact['matricule'];?>
+	 <?php echo $datafact['matricule'];?>
      
 	 </font></td>
-     <td ><font color="#000000"><? echo $datafact['nomprenom'];?></font></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['direction'];?></font></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['service'];?></font></td>
-     <td align="center" ><em><font color="#000000"><? echo $datafact['SS'];?></font></em></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['SI'];?></font></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['SD'];?></font></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['SR'];?></font></td>
-     <td align="center" ><? echo $datafact['SNET'];?></td>
+     <td ><font color="#000000"><?php echo $datafact['nomprenom'];?></font></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['direction'];?></font></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['service'];?></font></td>
+     <td align="center" ><em><font color="#000000"><?php echo $datafact['SS'];?></font></em></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['SI'];?></font></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['SD'];?></font></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['SR'];?></font></td>
+     <td align="center" ><?php echo $datafact['SNET'];?></td>
    </tr>
    <?php
 }

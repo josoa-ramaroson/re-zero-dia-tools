@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if(($_SESSION['u_niveau'] != 1)&& ($_SESSION['u_niveau'] != 42)&& ($_SESSION['u_niveau'] != 42)
 	    && ($_SESSION['u_niveau'] != 43) && ($_SESSION['u_niveau'] != 44)&& ($_SESSION['u_niveau'] != 90)&& ($_SESSION['u_niveau'] != 46)){
 	header("location:index.php?error=false");
@@ -14,9 +14,9 @@ require 'fonction.php';
 <head>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -50,12 +50,12 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
    <tr>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><a href="re_affichage_user.php?id=<? echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-default" ><? echo $data['id'];?></a></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['nomprenom'];?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['tel'];?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['ville'];?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['quartier'];?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><a href="re_affichage_user.php?id=<? echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-warning" >Aperçu</a></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><a href="re_affichage_user.php?id=<?php echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-default" ><?php echo $data['id'];?></a></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['nomprenom'];?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['tel'];?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['ville'];?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['quartier'];?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><a href="re_affichage_user.php?id=<?php echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-warning" >Aperçu</a></td>
    </tr>
    <?php
 }

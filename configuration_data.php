@@ -1,8 +1,8 @@
-<?
+<?php
 Require("session.php"); 
 require_once('calendar/classes/tc_calendar.php');
 ?>
-<?
+<?php
 if(($_SESSION['u_niveau'] != 8)) {
 	header("location:index.php?error=false");
 	exit;
@@ -118,7 +118,7 @@ function barre_navigation ($nb_total,$nb_affichage_par_page,$debut,$nb_liens_dan
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <script type="text/javascript">
@@ -199,7 +199,7 @@ httpxml.send(null);
 }
 </style>
 </head>
-<?
+<?php
 Require("bienvenue.php"); // on appelle la page contenant la fonction
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -221,7 +221,7 @@ Require("bienvenue.php"); // on appelle la page contenant la fonction
                       </tr>
                       <tr>
                         <td>Login</td>
-                        <td><input name="blogin" type="text" class="form-control" id="blogin" value="<? echo $id_nom; ?>" size="20" readonly></td>
+                        <td><input name="blogin" type="text" class="form-control" id="blogin" value="<?php echo $id_nom; ?>" size="20" readonly></td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
@@ -426,11 +426,11 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
     <tr> 
-      <td align="center" bgcolor="#FFFFFF"><? echo $data['idconf'];?>        <div align="left"></div></td>
-      <td align="center" bgcolor="#FFFFFF"><em><? echo $data['nserie'];?>/<? echo $data['annee'];?></em></td>
-      <td align="center" bgcolor="#FFFFFF"><em><? echo $data['date'];?></em></td>
-      <td align="center" bgcolor="#FFFFFF"><em><? echo $data['datelimite'];?></em></td>
-      <td align="center" bgcolor="#FFFFFF"><em><? echo $data['cserie'];?>/<? echo $annee_recouvrement;?></em></td>
+      <td align="center" bgcolor="#FFFFFF"><?php echo $data['idconf'];?>        <div align="left"></div></td>
+      <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['nserie'];?>/<?php echo $data['annee'];?></em></td>
+      <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['date'];?></em></td>
+      <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['datelimite'];?></em></td>
+      <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['cserie'];?>/<?php echo $annee_recouvrement;?></em></td>
     </tr>
     <?php
 

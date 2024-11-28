@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -7,7 +7,7 @@ require_once('calendar/classes/tc_calendar.php');
 
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
@@ -24,11 +24,11 @@ require_once('calendar/classes/tc_calendar.php');
 <script language="javascript" src="calendar/calendar.js"></script>
 
 </head>
-<?
+<?php
 Require("bienvenue.php");    // on appelle la page contenant la fonction
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
- <? //require 'rapport_lien.php'; ?>
+ <?php //require 'rapport_lien.php'; ?>
 <p><font size="2"><font size="2"><font size="2">
   <?php
  $date=$_POST['datec'];
@@ -73,7 +73,7 @@ $reqtE = mysql_query($sqltE);
 $datatE=mysql_fetch_array($reqtE);
 
 ?>
- <a href="rapport_agentimp.php?datec=<? echo md5(microtime()).$date;?>&agent=<? echo md5(microtime()).$agent;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a></p>
+ <a href="rapport_agentimp.php?datec=<?php echo md5(microtime()).$date;?>&agent=<?php echo md5(microtime()).$agent;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a></p>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
   <tr bgcolor="#3071AA">
     <td width="15%" align="center"><font color="#FFFFFF" size="4"><strong>AGENT ( VENDEUR)</strong></font></td>
@@ -88,14 +88,14 @@ $datatE=mysql_fetch_array($reqtE);
 while($datat=mysql_fetch_array($reqt)){ // Start looping table row 
 ?>
   <tr>
-    <td align="center" bgcolor="#FFFFFF"><? echo  $datat['id_nom']; ?></td>
-    <td align="center" bgcolor="#FFFFFF"><? echo  $datat['date']; ?></td>
-    <td align="center" bgcolor="#FFFFFF"><? $P=strrev(chunk_split(strrev($datat['Paie']),3," "));   echo $P;?></td>
-     <td align="center" bgcolor="#FFFFFF"><? $PE=strrev(chunk_split(strrev($datatE['PaieE']),3," "));   echo $PE;?></td>
-    <td align="center" bgcolor="#FFFFFF"><?  $P1=strrev(chunk_split(strrev($datat['ortc_dp']),3," "));   echo $P1;?></td>
+    <td align="center" bgcolor="#FFFFFF"><?php echo  $datat['id_nom']; ?></td>
+    <td align="center" bgcolor="#FFFFFF"><?php echo  $datat['date']; ?></td>
+    <td align="center" bgcolor="#FFFFFF"><?php $P=strrev(chunk_split(strrev($datat['Paie']),3," "));   echo $P;?></td>
+     <td align="center" bgcolor="#FFFFFF"><?php $PE=strrev(chunk_split(strrev($datatE['PaieE']),3," "));   echo $PE;?></td>
+    <td align="center" bgcolor="#FFFFFF"><?php  $P1=strrev(chunk_split(strrev($datat['ortc_dp']),3," "));   echo $P1;?></td>
    <td align="center" bgcolor="#FFFFFF">
-     <?  $P2=$datatE['PaieE']-$datat['ortc_dp']; $tax_dp=(round(0.03 *($P2),0)); echo $tax_dp; ?></td>
-	<td align="center" bgcolor="#FFFFFF"><? $P3=$datatE['PaieE']-$datat['ortc_dp']-$tax_dp;   echo $P3;?></td>
+     <?php  $P2=$datatE['PaieE']-$datat['ortc_dp']; $tax_dp=(round(0.03 *($P2),0)); echo $tax_dp; ?></td>
+	<td align="center" bgcolor="#FFFFFF"><?php $P3=$datatE['PaieE']-$datat['ortc_dp']-$tax_dp;   echo $P3;?></td>
   </tr>
   <?php
 }
@@ -112,15 +112,15 @@ while($datat=mysql_fetch_array($reqt)){ // Start looping table row
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
     <tr bgcolor="#FFFFFF">
-      <td> <? $n=$data['st']; 
+      <td> <?php $n=$data['st']; 
                   if ($n=='E') echo 'FACTURATION';
                   if ($n=='P') echo 'POLICE D ABONNEMENT'; 
                   if ($n=='D') echo 'BRANCHEMENT';
                   if ($n=='F') echo 'FRAUDE'; 
 				  if ($n=='A') echo 'Autre (Chang Nom/compteur/Activation/Transfert)'; 
                   ?></td>
-      <td align="center"><? $P=strrev(chunk_split(strrev($data['Paie']),3," "));   echo $P;?></td>
-      <td align="center"><? echo $data['date'];?></td>
+      <td align="center"><?php $P=strrev(chunk_split(strrev($data['Paie']),3," "));   echo $P;?></td>
+      <td align="center"><?php echo $data['date'];?></td>
     </tr>
     <?php
 

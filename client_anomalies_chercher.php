@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -23,7 +23,7 @@ body,td,th {
 </style>
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -133,15 +133,15 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
     <tr>
     
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $idclient;?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $idanomalie;?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $idclient;?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $idanomalie;?></em></div></td>
     <td align="center" bgcolor="#FFFFFF"><div align="left">
-      <? $idclient=$data['idclient']; $nom_prenom=Nom_prenom_client($idclient, $tbl_contact,$linki); echo $nom_prenom;?>
+      <?php $idclient=$data['idclient']; $nom_prenom=Nom_prenom_client($idclient, $tbl_contact,$linki); echo $nom_prenom;?>
     </div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['description'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['description'];?></em></div></td>
     <td align="center" bgcolor="#FFFFFF"><div align="left">
     
-     <a href="client_anomalies_resoudre_intervension.php?id=<? echo md5(microtime()).$data['idanomalie'];?>" class="btn btn-sm btn-info" > Intervension</a>
+     <a href="client_anomalies_resoudre_intervension.php?id=<?php echo md5(microtime()).$data['idanomalie'];?>" class="btn btn-sm btn-info" > Intervension</a>
      
     </div></td>
    </tr>

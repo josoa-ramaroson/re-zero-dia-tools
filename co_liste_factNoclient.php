@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 if(($_SESSION['u_niveau'] != 2)) {
 	header("location:index.php?error=false");
 	exit;
@@ -16,7 +16,7 @@ if(($_SESSION['u_niveau'] != 2)) {
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -47,7 +47,7 @@ $data7= mysql_fetch_assoc($req7);
 $cbt=$data7['bt']; 
 ?>
  
- </font>   Le nombre des clients qui n'ont pas été facturé est  de : <font color="#000000"><? echo $Nomimprime;?> sur  un total BT de : <? echo $cbt;?> soit environ : <? echo  round($Nomimprime*100/$cbt, 2);?> % Restant </font><br>
+ </font>   Le nombre des clients qui n'ont pas été facturé est  de : <font color="#000000"><?php echo $Nomimprime;?> sur  un total BT de : <?php echo $cbt;?> soit environ : <?php echo  round($Nomimprime*100/$cbt, 2);?> % Restant </font><br>
 </p>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
    <tr bgcolor="#3071AA">
@@ -64,11 +64,11 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 ?>
    <tr>
      <td align="center" bgcolor="#FFFFFF"><strong>
-       <? $idcl=$data['id']; echo $data['id'];?>
+       <?php $idcl=$data['id']; echo $data['id'];?>
      </strong></td>
-     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $data['nomprenom'];?></font></td>
-     <td align="center" bgcolor="#FFFFFF"><strong><? echo $data['ville'];?></strong></td>
-     <td align="center" bgcolor="#FFFFFF"><strong><? echo $data['quartier'];?></strong></td>
+     <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $data['nomprenom'];?></font></td>
+     <td align="center" bgcolor="#FFFFFF"><strong><?php echo $data['ville'];?></strong></td>
+     <td align="center" bgcolor="#FFFFFF"><strong><?php echo $data['quartier'];?></strong></td>
      <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
      <td align="center" bgcolor="#FFFFFF"><em></em></td>
      <td align="center" bgcolor="#FFFFFF"><p>&nbsp;</p>

@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 
@@ -101,7 +101,7 @@ function barre_navigation ($nb_total,$nb_affichage_par_page,$debut, $iddirection
    return $barre;   
 }  
 ?>
-<?
+<?php
 	if((($_SESSION['u_niveau'] != 50) ) && ($_SESSION['u_niveau'] != 90)) {
 	header("location:index.php?error=false");
 	exit;
@@ -113,7 +113,7 @@ function barre_navigation ($nb_total,$nb_affichage_par_page,$debut, $iddirection
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 require 'rh_configuration_fonction.php';
 
@@ -167,9 +167,9 @@ $sql = "SELECT * FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moi
 $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
 ?>
 </p>
- <p align="center"><em>RECAPITULATIF POUR DIRECTION  </em> - <em><? echo  $m1d.' SERVICE '.$m2s ;?></em> - <span class="panel-title"><? echo $affichemois.' '.$anneepaie ; ?></span></p>
+ <p align="center"><em>RECAPITULATIF POUR DIRECTION  </em> - <em><?php echo  $m1d.' SERVICE '.$m2s ;?></em> - <span class="panel-title"><?php echo $affichemois.' '.$anneepaie ; ?></span></p>
  <p align="center">&nbsp;</p>
-<p>IMPRIMER LA LISTE <a href="rh_bulletin_type_dsliste.php?<? echo md5(microtime())?>&direction=<? echo $iddirection;?>&subcat=<? echo $idservice;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a> IMPRIMER LES BULLETINS<a href="rh_bulletinds.php?<? echo md5(microtime())?>&direction=<? echo $iddirection;?>&subcat=<? echo $idservice;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a>
+<p>IMPRIMER LA LISTE <a href="rh_bulletin_type_dsliste.php?<?php echo md5(microtime())?>&direction=<?php echo $iddirection;?>&subcat=<?php echo $idservice;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a> IMPRIMER LES BULLETINS<a href="rh_bulletinds.php?<?php echo md5(microtime())?>&direction=<?php echo $iddirection;?>&subcat=<?php echo $idservice;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a>
    </p>
 </p>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -187,13 +187,13 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
   <tr>
     <td align="center" bgcolor="#FFFFFF">TOTAL </td>
     <td align="center">&nbsp;</td>
-    <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $data2['direction'];?></font></td>
-    <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $data2['service'];?></font></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data2['SS']),3," ")); ?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data2['SI']),3," "));?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data2['SD']),3," "));?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data2['SR']),3," "));?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo strrev(chunk_split(strrev($data2['SNET']),3," "));?><em></td>
+    <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $data2['direction'];?></font></td>
+    <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $data2['service'];?></font></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data2['SS']),3," ")); ?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data2['SI']),3," "));?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data2['SD']),3," "));?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data2['SR']),3," "));?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo strrev(chunk_split(strrev($data2['SNET']),3," "));?><em></td>
   </tr>
   <?php
 mysql_close ();  
@@ -215,20 +215,20 @@ mysql_close ();
    <?php
 while($datafact=mysql_fetch_array($req)){ // Start looping table row 
 ?>
-    <tr bgcolor="<? gettatut($datafact['SNET']); ?>">
+    <tr bgcolor="<?php gettatut($datafact['SNET']); ?>">
      <td align="center"><font color="#000000">
      
-	 <a href="rh_bulletinp.php?ipaie=<? echo md5(microtime()).$datafact['ipaie'];?>" class="btn btn-sm btn-warning" target="_blank" ><? echo $datafact['matricule'];?></a>
+	 <a href="rh_bulletinp.php?ipaie=<?php echo md5(microtime()).$datafact['ipaie'];?>" class="btn btn-sm btn-warning" target="_blank" ><?php echo $datafact['matricule'];?></a>
      
 	 </font></td>
-     <td ><font color="#000000"><? echo $datafact['nomprenom'];?></font></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['direction'];?></font></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['service'];?></font></td>
-     <td align="center" ><em><font color="#000000"><? echo $datafact['SS'];?></font></em></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['SI'];?></font></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['SD'];?></font></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['SR'];?></font></td>
-     <td align="center" ><? echo $datafact['SNET'];?></td>
+     <td ><font color="#000000"><?php echo $datafact['nomprenom'];?></font></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['direction'];?></font></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['service'];?></font></td>
+     <td align="center" ><em><font color="#000000"><?php echo $datafact['SS'];?></font></em></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['SI'];?></font></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['SD'];?></font></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['SR'];?></font></td>
+     <td align="center" ><?php echo $datafact['SNET'];?></td>
    </tr>
    <?php
 }

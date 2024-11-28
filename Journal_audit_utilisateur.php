@@ -1,4 +1,4 @@
- <?
+ <?php
  $le_path= $_SERVER['PHP_SELF']; // $path = /home/httpd/html/index.php
  $le_file = basename ($le_path);
  $date_Audit=date("y/m/d H:i:s"); 

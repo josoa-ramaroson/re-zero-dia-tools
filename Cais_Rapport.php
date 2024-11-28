@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'fonction.php';
 ?>
-<?
+<?php
 require 'session_niveau_tresorie_rapport.php';
 ?>
 <?php
@@ -12,13 +12,13 @@ require"fc-affichage.php";
 <html>
 <head>
 <title>
-<? include("titre.php"); ?></title>
+<?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="calendar/calendar.js"></script>
 </head>
-<?
+<?php
 require("bienvenue.php"); 
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">

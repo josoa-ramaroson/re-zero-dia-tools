@@ -1,9 +1,9 @@
-﻿<?
+﻿<?php
 require 'session.php';
 require 'fonction.php';
 require_once('calendar/classes/tc_calendar.php');
 ?>
-<?
+<?php
 	if($_SESSION['u_niveau'] != 20) {
 	header("location:index.php?error=false");
 	exit;
@@ -12,13 +12,13 @@ require_once('calendar/classes/tc_calendar.php');
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 <script language="javascript" src="calendar/calendar.js"></script>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
 
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -126,21 +126,21 @@ mysql_close();
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
         <tr>
-          <td bgcolor="#FFFFFF"><div align="left"> <? echo $data['Numcsave'];?> <BR>
+          <td bgcolor="#FFFFFF"><div align="left"> <?php echo $data['Numcsave'];?> <BR>
           </div></td>
-          <td bgcolor="#FFFFFF"><div align="left"> <? echo $data['Nomcl'];?> <BR>
+          <td bgcolor="#FFFFFF"><div align="left"> <?php echo $data['Nomcl'];?> <BR>
           </div></td>
-          <td bgcolor="#FFFFFF"><div align="left"> <? echo $data['Prenomcl'];?> <BR>
+          <td bgcolor="#FFFFFF"><div align="left"> <?php echo $data['Prenomcl'];?> <BR>
           </div></td>
-          <td bgcolor="#FFFFFF"><div align="left"> <? echo $data['Adressecl'];?> <BR>
+          <td bgcolor="#FFFFFF"><div align="left"> <?php echo $data['Adressecl'];?> <BR>
           </div></td>
-          <td bgcolor="#FFFFFF"><div align="left"> <? echo $data['Telephonecl'];?> <BR>
+          <td bgcolor="#FFFFFF"><div align="left"> <?php echo $data['Telephonecl'];?> <BR>
           </div></td>
-          <td bgcolor="#FFFFFF"><div align="left"> <? echo $data['Statutcl'];?> <BR>
+          <td bgcolor="#FFFFFF"><div align="left"> <?php echo $data['Statutcl'];?> <BR>
           </div></td>
-          <td bgcolor="#FFFFFF"><div align="left"> <? echo $data['Date'];?> <BR>
+          <td bgcolor="#FFFFFF"><div align="left"> <?php echo $data['Date'];?> <BR>
           </div></td>
-          <td bgcolor="#FFFFFF"><div align="left"><a href="compt_client_update.php?Numcsave=<? echo $data['Numcsave']; ?>" class="btn btn-sm btn-success" >Aperçu</a></div></td>
+          <td bgcolor="#FFFFFF"><div align="left"><a href="compt_client_update.php?Numcsave=<?php echo $data['Numcsave']; ?>" class="btn btn-sm btn-success" >Aperçu</a></div></td>
         </tr>
         <?php
 // Exit looping and close connection 

@@ -1,4 +1,4 @@
-<?
+<?php
    
    	global $u_utilisateur;
 	$u_login=addslashes($_POST['u_login']);

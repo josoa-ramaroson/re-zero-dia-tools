@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'fc-affichage.php';
 ?>
-<?
+<?php
 	if((($_SESSION['u_niveau'] != 50) ) && ($_SESSION['u_niveau'] != 90)) {
 	header("location:index.php?error=false");
 	exit;
@@ -13,7 +13,7 @@ require 'fc-affichage.php';
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script language="javascript" src="calendar/calendar.js"></script>
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <script type="text/javascript">
 function AjaxFunction()
@@ -88,7 +88,7 @@ function toggleBox(szDivID, iState)// 1 visible, 0 hidden
   }
 </script>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <?php
@@ -169,12 +169,12 @@ echo '<option> '.$row81['annee'].' </option>';
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
   <tr>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data['matricule'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['nomprenom'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data['date_entre'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data['date_sortie'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data['nbJours'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data['type'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['matricule'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['nomprenom'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['date_entre'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['date_sortie'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['nbJours'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['type'];?></em></td>
   </tr>
   <?php
 }

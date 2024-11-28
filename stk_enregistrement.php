@@ -4,7 +4,7 @@ require("session.php");
 require 'fonction.php';
 require"fc-affichage.php";
 ?>
-<?
+<?php
 if(($_SESSION['u_niveau'] != 7)&& ($_SESSION['u_niveau'] != 40) && ($_SESSION['u_niveau'] != 90)) {
 	header("location:index.php?error=false");
 	exit;
@@ -13,13 +13,13 @@ if(($_SESSION['u_niveau'] != 7)&& ($_SESSION['u_niveau'] != 40) && ($_SESSION['u
 <html>
 <head>
 <title>
-<? include("titre.php"); ?></title>
+<?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="calendar/calendar.js"></script>
 </head>
-<?
+<?php
 require("bienvenue.php"); 
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -35,7 +35,7 @@ require("bienvenue.php");
             <td width="9%">&nbsp;</td>
             <td width="35%">&nbsp;</td>
             <td width="14%">&nbsp;</td>
-            <td width="28%"><? if($_SESSION['u_niveau']==40) {$aff='';} else {$aff='readonly';} ?></td>
+            <td width="28%"><?php if($_SESSION['u_niveau']==40) {$aff='';} else {$aff='readonly';} ?></td>
             <td width="14%">&nbsp;</td>
           </tr>
           <tr> 
@@ -56,7 +56,7 @@ require("bienvenue.php");
               <div align="center"></div></td>
 			
             <td><strong><font color="#000000">Quantit&eacute;</font></strong><font color="#FF0000">*</font></td>
-            <td><input name="Quantite"  class="form-control" type="text" id="Quantite" value="" size="30" <? echo $aff;?>></td>
+            <td><input name="Quantite"  class="form-control" type="text" id="Quantite" value="" size="30" <?php echo $aff;?>></td>
             <td>&nbsp;</td>
           </tr>
           <tr> 
@@ -117,7 +117,7 @@ echo '<option> '.$row2['titre'].' </option>';
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-              <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>">
+              <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>">
             </font></strong></font></strong></font></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -179,13 +179,13 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 
    $bgcolor = "#FFFFFF";
 ?>
-    <tr bgcolor=<? echo "$bgcolor" ?>>
-   <td height="36" align="center"> <div align="left"><? echo $data['date'];?></div>
+    <tr bgcolor=<?php echo "$bgcolor" ?>>
+   <td height="36" align="center"> <div align="left"><?php echo $data['date'];?></div>
       <div align="left"></div></td>
-    <td align="center"><div align="left"><em><? echo $data['titre'];?></em></div></td>
-    <td align="center"><div align="left"><em><? echo $data['a_nom'];?></em></div></td>
-    <td align="center"><div align="center"><em><? echo $data['Validite'];?></em></div></td>
-    <td align="center"><div align="center"><em><? echo $data['Quantite'];?></em></div></td>
+    <td align="center"><div align="left"><em><?php echo $data['titre'];?></em></div></td>
+    <td align="center"><div align="left"><em><?php echo $data['a_nom'];?></em></div></td>
+    <td align="center"><div align="center"><em><?php echo $data['Validite'];?></em></div></td>
+    <td align="center"><div align="center"><em><?php echo $data['Quantite'];?></em></div></td>
     <td align="center"><div align="center"></div></td>
   </tr>
   <?php

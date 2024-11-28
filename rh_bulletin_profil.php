@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 
@@ -107,7 +107,7 @@ function barre_navigation ($nb_total,$nb_affichage_par_page,$debut, $matricule, 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 require 'rh_configuration_fonction.php';
 
@@ -124,7 +124,7 @@ $matricule= $rmat['matricule'];
     $m1p=$matricule;
 ?>
 <body>
-<a href="rh_bulletindp.php?<? echo md5(microtime());?>&matricule=<? echo $m1p;?>&<? echo md5(microtime());?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a>IMPRIMER LA TOTALITE DES BULLETIN 
+<a href="rh_bulletindp.php?<?php echo md5(microtime());?>&matricule=<?php echo $m1p;?>&<?php echo md5(microtime());?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a>IMPRIMER LA TOTALITE DES BULLETIN
 <p>
 <?php
 
@@ -140,7 +140,7 @@ $nb_affichage_par_page =12;
 $sql = "SELECT * FROM $tb_rhpaie where  matricule='$m1p' ORDER BY nomprenom ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //DESC
 $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
 ?>
-  Matricule : <? echo  $m1p ?></p>
+  Matricule : <?php echo  $m1p ?></p>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
    <tr bgcolor="#3071AA">
      <td width="4%" align="center">&nbsp;</td>
@@ -158,13 +158,13 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($datafact=mysql_fetch_array($req)){ // Start looping table row 
 ?>
 
-    <tr bgcolor="<? gettatut($datafact['SNET']); ?>">
+    <tr bgcolor="<?php gettatut($datafact['SNET']); ?>">
      <td align="center"><font color="#000000">
-           <a href="rh_bulletinp.php?ipaie=<? echo md5(microtime()).$datafact['ipaie'];?>" class="btn btn-sm btn-warning" target="_blank" > Cliquez ici </a></font></td>
-     <td align="center"><font color="#000000"><? echo $datafact['nomprenom'];?></font></td>
+           <a href="rh_bulletinp.php?ipaie=<?php echo md5(microtime()).$datafact['ipaie'];?>" class="btn btn-sm btn-warning" target="_blank" > Cliquez ici </a></font></td>
+     <td align="center"><font color="#000000"><?php echo $datafact['nomprenom'];?></font></td>
      <td align="center"><font color="#000000">
      
-     <? $n=$datafact['moispaie']; 
+     <?php $n=$datafact['moispaie'];
 	  if ($n==1) echo 'janvier';
 	  if ($n==2) echo 'février'; 
 	  if ($n==3) echo 'Mars';
@@ -179,16 +179,16 @@ while($datafact=mysql_fetch_array($req)){ // Start looping table row
 	  if ($n==12) echo 'Decembre';  
 	   
 	  ?>
-      <? echo $datafact['anneepaie'] ;?>
+      <?php echo $datafact['anneepaie'] ;?>
 
      </font></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['service'];?></font></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['indice'];?></font></td>
-     <td align="center" ><em><font color="#000000"><? echo $datafact['SS'];?></font></em></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['SI'];?></font></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['SD'];?></font></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['SR'];?></font></td>
-     <td align="center" ><? echo $datafact['SNET'];?>
+     <td align="center" ><font color="#000000"><?php echo $datafact['service'];?></font></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['indice'];?></font></td>
+     <td align="center" ><em><font color="#000000"><?php echo $datafact['SS'];?></font></em></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['SI'];?></font></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['SD'];?></font></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['SR'];?></font></td>
+     <td align="center" ><?php echo $datafact['SNET'];?>
      
 
      

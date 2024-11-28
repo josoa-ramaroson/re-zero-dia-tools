@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if(($_SESSION['u_niveau'] != 1)&& ($_SESSION['u_niveau'] != 90)&& ($_SESSION['u_niveau'] != 43) && ($_SESSION['u_niveau'] != 46)) {
 	header("location:index.php?error=false");
 	exit;
@@ -13,12 +13,12 @@ require 'fonction.php';
 <head>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 </head>
-<?
+<?php
 require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
-<?
+<?php
 $sql = "SELECT COUNT(*) AS actif FROM $tbl_contact  WHERE statut='6'";   
 $req=mysql_query($sql);
 $data= mysql_fetch_assoc($req);
@@ -177,17 +177,17 @@ $V12=$data112['v12'];
                 <td width="7%"> Resilié</td>
               </tr>
               <tr>
-                <td><? echo $ppolice;?></td>
-                <td><? echo $pdevis1;?></td>
-                <td><? echo $pdevis2;?></td>
-                <td><? echo $pbrancher;?></td>
-                <td><? echo $ffacture;?></td>
-                <td><? echo $Actif;?></td>
-                <td><? echo $mono;?></td>
-                <td><? echo $tri;?></td>
-                <td><? echo $cbt;?></td>
-                <td><? echo $cmt;?></td>
-                <td><? echo $Resilier;?></td>
+                <td><?php echo $ppolice;?></td>
+                <td><?php echo $pdevis1;?></td>
+                <td><?php echo $pdevis2;?></td>
+                <td><?php echo $pbrancher;?></td>
+                <td><?php echo $ffacture;?></td>
+                <td><?php echo $Actif;?></td>
+                <td><?php echo $mono;?></td>
+                <td><?php echo $tri;?></td>
+                <td><?php echo $cbt;?></td>
+                <td><?php echo $cmt;?></td>
+                <td><?php echo $Resilier;?></td>
               </tr>
             </table></td>
           </tr>
@@ -209,62 +209,62 @@ $V12=$data112['v12'];
             <td width="47%"><table width="100%" border="0">
               <tr>
                 <td width="8%" height="34">Elec BT Triphasé</td>
-                <td width="10%"><? echo $V1;?></td>
+                <td width="10%"><?php echo $V1;?></td>
                 <td width="9%">&nbsp;</td>
                 </tr>
               <tr>
                 <td height="32" bgcolor="#CCCCCC">Elec BT Monophasé Domestique</td>
-                <td bgcolor="#CCCCCC"><? echo $V2;?></td>
+                <td bgcolor="#CCCCCC"><?php echo $V2;?></td>
                 <td bgcolor="#CCCCCC">&nbsp;</td>
                 </tr>
               <tr>
                 <td height="32">Mosquée</td>
-                <td><? echo $V3;?></td>
+                <td><?php echo $V3;?></td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
                 <td height="34" bgcolor="#CCCCCC">BT Mono Pomoni</td>
-                <td bgcolor="#CCCCCC"><? echo $V4;?></td>
+                <td bgcolor="#CCCCCC"><?php echo $V4;?></td>
                 <td bgcolor="#CCCCCC">&nbsp;</td>
               </tr>
               <tr>
                 <td height="33">BT Tri Pomoni</td>
-                <td><? echo $V5;?></td>
+                <td><?php echo $V5;?></td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
                 <td height="37" bgcolor="#CCCCCC">BT Mono Agent</td>
-                <td bgcolor="#CCCCCC"><? echo $V6;?></td>
+                <td bgcolor="#CCCCCC"><?php echo $V6;?></td>
                 <td bgcolor="#CCCCCC">&nbsp;</td>
               </tr>
               <tr>
                 <td height="40">BT Mono Agent P</td>
-                <td><? echo $V7;?></td>
+                <td><?php echo $V7;?></td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
                 <td height="36" bgcolor="#CCCCCC">BT Mono Agent retraité</td>
-                <td bgcolor="#CCCCCC"><? echo $V8;?></td>
+                <td bgcolor="#CCCCCC"><?php echo $V8;?></td>
                 <td bgcolor="#CCCCCC">&nbsp;</td>
               </tr>
               <tr>
                 <td height="34">BT Mono Retraité P</td>
-                <td><? echo $V9;?></td>
+                <td><?php echo $V9;?></td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
                 <td height="35" bgcolor="#CCCCCC">MT</td>
-                <td bgcolor="#CCCCCC"><? echo $V10;?></td>
+                <td bgcolor="#CCCCCC"><?php echo $V10;?></td>
                 <td bgcolor="#CCCCCC">&nbsp;</td>
               </tr>
               <tr>
                 <td height="47">BT Mono Agent Couple</td>
-                <td><? echo $V11;?></td>
+                <td><?php echo $V11;?></td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
                 <td height="37" bgcolor="#CCCCCC">BT Tri 500</td>
-                <td bgcolor="#CCCCCC"><? echo $V12;?></td>
+                <td bgcolor="#CCCCCC"><?php echo $V12;?></td>
                 <td bgcolor="#CCCCCC">&nbsp;</td>
               </tr>
             </table></td>

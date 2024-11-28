@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 ?>
@@ -42,13 +42,13 @@ $sqFP="SELECT  COUNT(*) AS nbres, SUM(f.totalnet) AS totalnet , SUM(f.totalttc) 
      <td width="19%">Somme Total Net</td>
    </tr>
    <tr>
-     <td><em><? echo  $m1v;?></em></td>
-     <td><em><? echo $m2q;?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPn),3," "));?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFP),3," "));?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPo),3," "));?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPi),3," "));?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPt),3," "));?></em></td>
+     <td><em><?php echo  $m1v;?></em></td>
+     <td><em><?php echo $m2q;?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPn),3," "));?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFP),3," "));?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPo),3," "));?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPi),3," "));?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPt),3," "));?></em></td>
    </tr>
 </table>
 <p>&nbsp;</p>
@@ -66,12 +66,12 @@ $sqFP="SELECT  COUNT(*) AS nbres, SUM(f.totalnet) AS totalnet , SUM(f.totalttc) 
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
    <tr>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['id'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['nomprenom'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['totalttc'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['ortc'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['impayee'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['totalnet'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['id'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['nomprenom'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['totalttc'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['ortc'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['impayee'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['totalnet'];?></em></td>
      <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
    </tr>
    <?php

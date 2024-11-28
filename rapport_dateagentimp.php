@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -7,7 +7,7 @@ require_once('calendar/classes/tc_calendar.php');
 
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
@@ -24,11 +24,11 @@ require_once('calendar/classes/tc_calendar.php');
 <script language="javascript" src="calendar/calendar.js"></script>
 
 </head>
-<?
+<?php
 //Require("bienvenue.php");    // on appelle la page contenant la fonction
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
- <? //require 'rapport_lien.php'; ?>
+ <?php //require 'rapport_lien.php'; ?>
 <p><font size="2"><font size="2"><font size="2">
   <?php
  $date=substr($_REQUEST["dateA"],32);
@@ -78,9 +78,9 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
     <tr bgcolor="#FFFFFF">
-      <td align="center"><? echo $data['date'];?></td>
-      <td align="center"> <? echo  $data['id_nom']; ?></td>
-      <td align="center"><? $P=strrev(chunk_split(strrev($data['Paie']),3," "));   echo $P;?></td>
+      <td align="center"><?php echo $data['date'];?></td>
+      <td align="center"> <?php echo  $data['id_nom']; ?></td>
+      <td align="center"><?php $P=strrev(chunk_split(strrev($data['Paie']),3," "));   echo $P;?></td>
       <td align="center">&nbsp;</td>
     </tr>
     <?php

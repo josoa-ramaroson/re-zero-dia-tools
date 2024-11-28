@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 function barre_navigation ($nb_total,$nb_affichage_par_page,$debut, $refville , $RefQuartier, $nb_liens_dans_la_barre) { 
@@ -100,7 +100,7 @@ function barre_navigation ($nb_total,$nb_affichage_par_page,$debut, $refville , 
 }  
 ?>
 
-<?
+<?php
 if(($_SESSION['u_niveau'] != 30)) {
 	header("location:index.php?error=false");
 	exit;
@@ -113,7 +113,7 @@ if(($_SESSION['u_niveau'] != 30)) {
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>EDA</title>
 </head>
-<?
+<?php
 require 'bienvenue.php';    // on appelle la page contenant la fonction
 
 
@@ -184,13 +184,13 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
      <td width="16%">Date limite </td>
    </tr>
    <tr>
-     <td><em><? echo  $m1v;?></em></td>
-     <td><em><? echo $m2q;?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPn),3," "));?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFP),3," "));?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPi),3," "));?></em></td>
-     <td><em><? echo strrev(chunk_split(strrev($tFPt),3," "));?></em></td>
-     <td><em><? echo $datcoupure;?></em></td>
+     <td><em><?php echo  $m1v;?></em></td>
+     <td><em><?php echo $m2q;?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPn),3," "));?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFP),3," "));?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPi),3," "));?></em></td>
+     <td><em><?php echo strrev(chunk_split(strrev($tFPt),3," "));?></em></td>
+     <td><em><?php echo $datcoupure;?></em></td>
    </tr>
  </table>
  <p>&nbsp;</p>
@@ -209,16 +209,16 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
 
-   <tr bgcolor="<? gettatut($data['bstatut']); ?>">
-     <td height="35" align="center" ><em><? echo $data['id'];?></em></td>
-     <td align="center" ><em><? $GSM=str_replace(' ', '', ($data['tel'])); echo  $GSM;?></em></td>
-     <td align="center" ><em><? echo $data['nomprenom'];?></em></td>
-     <td align="center" ><em><? echo $data['totalttc'];?></em></td>
-     <td align="center" ><em><? echo $data['impayee'];?></em></td>
-     <td align="center" ><em><? echo $data['Pre'];?></em></td>
-     <td align="center" ><em><? echo $data['totalnet'];?></em></td>
+   <tr bgcolor="<?php gettatut($data['bstatut']); ?>">
+     <td height="35" align="center" ><em><?php echo $data['id'];?></em></td>
+     <td align="center" ><em><?php $GSM=str_replace(' ', '', ($data['tel'])); echo  $GSM;?></em></td>
+     <td align="center" ><em><?php echo $data['nomprenom'];?></em></td>
+     <td align="center" ><em><?php echo $data['totalttc'];?></em></td>
+     <td align="center" ><em><?php echo $data['impayee'];?></em></td>
+     <td align="center" ><em><?php echo $data['Pre'];?></em></td>
+     <td align="center" ><em><?php echo $data['totalnet'];?></em></td>
      <td align="center" >
-     <a href="sms_envoi_affichage.php?id=<? echo md5(microtime()).$data['id']; ?>&GSM=<? echo $GSM;?>&MT=<? echo $data['totalnet'];?>&date=<? echo $datcoupure;?>&id_nom=<? echo $id_nom;?>&<? echo md5(microtime()).$data['id']; ?>" 
+     <a href="sms_envoi_affichage.php?id=<?php echo md5(microtime()).$data['id']; ?>&GSM=<?php echo $GSM;?>&MT=<?php echo $data['totalnet'];?>&date=<?php echo $datcoupure;?>&id_nom=<?php echo $id_nom;?>&<?php echo md5(microtime()).$data['id']; ?>"
      
      onclick="return !window.open(this.href, 'pop',  'width=600,height=370,left=120,top=120');"
      class="btn btn-sm btn-success" target=_blank  >Envoi SMS</a>

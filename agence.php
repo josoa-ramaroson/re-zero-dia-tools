@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if(($_SESSION['u_niveau'] != 7) ) {
 	header("location:index.php?error=false");
 	exit;
@@ -11,12 +11,12 @@ require 'fonction.php';
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 
 </head>
-<?
+<?php
 Require("bienvenue.php"); // on appelle la page contenant la fonction
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -66,7 +66,7 @@ Require("bienvenue.php"); // on appelle la page contenant la fonction
                       </tr>
                       <tr>
                         <td><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-                          <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>">
+                          <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>">
                         </font></strong></font></strong></font></td>
                         <td><p>&nbsp;</p>
                           <p>
@@ -129,14 +129,14 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
     <tr> 
-      <td align="center" bgcolor="#FFFFFF"> <div align="left"><? echo $data['id_a'];?></div>
+      <td align="center" bgcolor="#FFFFFF"> <div align="left"><?php echo $data['id_a'];?></div>
         <div align="left"></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['a_nom'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['a_adresse'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['a_tel'];?></em></div></td>
-      <td width="162"   style="background-color:#FFF;"><div align="left"><em><? echo $data['a_statut'];?></em></div></td>
-      <td width="163"   style="background-color:#FFF;"><a href="agence_modifie.php?id=<? echo md5(microtime()).$data['id_a']; ?>" class="btn btn-xs btn-success">Modifier</a></td>
-      <td width="163"   style="background-color:#FFF;"><a href="agence_cancel.php?ID=<? echo md5(microtime()).$data['id_a']; ?>" onClick="return confirm('Etes-vous sûr de vouloir supprimer')" ; style="margin:5px"   class="btn btn-xs btn-danger" >Supprimer</a></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['a_nom'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['a_adresse'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['a_tel'];?></em></div></td>
+      <td width="162"   style="background-color:#FFF;"><div align="left"><em><?php echo $data['a_statut'];?></em></div></td>
+      <td width="163"   style="background-color:#FFF;"><a href="agence_modifie.php?id=<?php echo md5(microtime()).$data['id_a']; ?>" class="btn btn-xs btn-success">Modifier</a></td>
+      <td width="163"   style="background-color:#FFF;"><a href="agence_cancel.php?ID=<?php echo md5(microtime()).$data['id_a']; ?>" onClick="return confirm('Etes-vous sï¿½r de vouloir supprimer')" ; style="margin:5px"   class="btn btn-xs btn-danger" >Supprimer</a></td>
     </tr>
     <?php
 

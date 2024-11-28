@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 ?>
@@ -9,7 +9,7 @@ require 'fonction.php';
 <title>Document sans titre</title>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <?php
@@ -43,14 +43,14 @@ $_SESSION['id_nom']=$id_nom;
 while($rowsfac=mysql_fetch_array($resultfac)){ 
 ?>
   <tr>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['idf'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['date'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['id_nom'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['stlib'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['nfacture'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['libelle'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['montant'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['report'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['idf'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['date'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['id_nom'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['stlib'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['nfacture'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['libelle'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['montant'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['report'];?></em></td>
   </tr>
   <?php
 }

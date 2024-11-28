@@ -1,9 +1,9 @@
-﻿<?
+﻿<?php
 require 'session.php';
 require 'fonction.php';
 require_once('calendar/classes/tc_calendar.php');
 ?>
-<?
+<?php
 	if($_SESSION['u_niveau'] != 20) {
 	header("location:index.php?error=false");
 	exit;
@@ -12,12 +12,12 @@ require_once('calendar/classes/tc_calendar.php');
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 <script language="javascript" src="calendar/calendar.js"></script>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 
 
@@ -179,7 +179,7 @@ echo '<option> '.$rowS['Nomcl'].' '.$rowS['Prenomcl'].' </option>';
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td><em><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-            <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>" />
+            <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
             </font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></em></td>
         </tr>
         <tr> 

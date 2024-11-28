@@ -1,4 +1,4 @@
-    <?
+    <?php
 	require 'fonction.php';
 	function compt_bilpassif($Compte,$annee,$tb_ecriture){
 	$sql = "SELECT SUM(TTC) AS TTC FROM $tb_ecriture where  Compte=$Compte and  YEAR(Date)=$annee and   mo='D' ";
@@ -13,7 +13,7 @@
 	?>
     
     
-    <?
+    <?php
 	//$annee=$_REQUEST['annee'];
 	//$anneecomptable='2015';
 

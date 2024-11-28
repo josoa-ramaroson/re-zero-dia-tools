@@ -1,10 +1,10 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
 
-<?
+<?php
 require 'session_niveau_trasfertmagasin.php';    // on appelle la page contenant la fonction
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -13,12 +13,12 @@ require 'session_niveau_trasfertmagasin.php';    // on appelle la page contenant
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
 
-<? require 'app_transfert_menu.php';?>
+<?php require 'app_transfert_menu.php';?>
 
   <?php
 require 'fonction.php';
@@ -64,26 +64,26 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
   <?php
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
-  <tr bgcolor="<? gettatut($data['statut']); ?>">
-    <td ><? echo $data['idtansft']; ?>
+  <tr bgcolor="<?php gettatut($data['statut']); ?>">
+    <td ><?php echo $data['idtansft']; ?>
       <div align="left"></div></td>
-    <td ><? echo $data['Sdate']; ?></span></td>
-    <td ><? echo $data['Stitre'];?></td>
-    <td ><? echo $data['Qvente'];?></td>
-    <td ><? echo $data['Snumero'];?></td>
-    <td ><? echo $data['Sid_nom'];?></td>
-    <td ><? echo $data['Edate']; ?></span></td>
-    <td ><? echo $data['Etitre'];?></td>
+    <td ><?php echo $data['Sdate']; ?></span></td>
+    <td ><?php echo $data['Stitre'];?></td>
+    <td ><?php echo $data['Qvente'];?></td>
+    <td ><?php echo $data['Snumero'];?></td>
+    <td ><?php echo $data['Sid_nom'];?></td>
+    <td ><?php echo $data['Edate']; ?></span></td>
+    <td ><?php echo $data['Etitre'];?></td>
     <td >  
- <? if ((($_SESSION['u_niveau']==40)||($_SESSION['u_niveau']==40)) and ($data['statut']==1)) {?>
+ <?php if ((($_SESSION['u_niveau']==40)||($_SESSION['u_niveau']==40)) and ($data['statut']==1)) {?>
       
- <a href="app_transfert_etape_confstatut.php?id=<? echo md5(microtime()).$data['idtansft']; ?>&satut=<? $a='2';echo md5(microtime()).$a;?>&d=<? echo  md5(microtime()).$datecaisse['datecaisse'];?>&ti=<? echo  md5(microtime()).$data['Etitre'];?>&q=<? echo  $data['Qvente'];?>&id_nom=<? echo  $id_nom;?>&agence=<? echo  md5(microtime()).$data['agence'];?>" onClick="return confirm('Etes-vous sûr d'avoir receptioner cette quantité de stock )" ; style="margin:5px"   class="btn btn-sm btn-danger" >Confirmation</a><? } else { } ?>
+ <a href="app_transfert_etape_confstatut.php?id=<?php echo md5(microtime()).$data['idtansft']; ?>&satut=<?php $a='2';echo md5(microtime()).$a;?>&d=<?php echo  md5(microtime()).$datecaisse['datecaisse'];?>&ti=<?php echo  md5(microtime()).$data['Etitre'];?>&q=<?php echo  $data['Qvente'];?>&id_nom=<?php echo  $id_nom;?>&agence=<?php echo  md5(microtime()).$data['agence'];?>" onClick="return confirm('Etes-vous sûr d'avoir receptioner cette quantité de stock )" ; style="margin:5px"   class="btn btn-sm btn-danger" >Confirmation</a><?php } else { } ?>
  </td>
     <td >&nbsp;</td>
-    <td width="50" ><? if (($data['Sid_nom']==$id_nom) and ($data['statut']==1)) {?>
+    <td width="50" ><?php if (($data['Sid_nom']==$id_nom) and ($data['statut']==1)) {?>
       
- <a href="app_produit_sortie_cancel.php?ID=<? echo md5(microtime()).$data['idcsortie']; ?>&d=<? echo  md5(microtime());?>" 
- onClick="return confirm('Etes-vous sûr d'avoir RETOURNER cette quantité de stock )" ; style="margin:5px"   class="btn btn-sm btn-danger">Retour</a><? } else { } ?>
+ <a href="app_produit_sortie_cancel.php?ID=<?php echo md5(microtime()).$data['idcsortie']; ?>&d=<?php echo  md5(microtime());?>"
+ onClick="return confirm('Etes-vous sûr d'avoir RETOURNER cette quantité de stock )" ; style="margin:5px"   class="btn btn-sm btn-danger">Retour</a><?php } else { } ?>
     </td>
   </tr>
   <?php

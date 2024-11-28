@@ -1,4 +1,4 @@
-<?
+<?php
 include('codeBarreC128.class.php');
 $Codebare=addslashes($_REQUEST['Code']);
 $code = new codeBarreC128("$Codebare");

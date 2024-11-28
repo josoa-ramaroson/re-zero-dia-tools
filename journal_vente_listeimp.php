@@ -54,16 +54,16 @@ $reqfact=mysql_query($sqfact);
 while($datafact=mysql_fetch_array($reqfact)){ // Start looping table row 
 ?>
         <tr class="taille">
-          <td bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['id'];?></font></td>
-          <td bgcolor="#FFFFFF"><? echo $datafact['nomprenom'];?></font></td>
-          <td bgcolor="#FFFFFF"><em><font color="#000000"><? echo $datafact['n'];?></font></em></td>
-          <td bgcolor="#FFFFFF"><em><font color="#000000"><? echo $datafact['nf'];?></font></em></td>
-          <td bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['cons'];?></font></td>
-          <td bgcolor="#FFFFFF"><p><font color="#000000"><? echo $datafact['totalht'];?></font></p></td>
-          <td bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['totalttc'];?></font></td>
-          <td bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['ortc'];?></font></td>
-          <td bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['impayee'];?></font></td>
-          <td bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['totalnet'];?></font></td>
+          <td bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['id'];?></font></td>
+          <td bgcolor="#FFFFFF"><?php echo $datafact['nomprenom'];?></font></td>
+          <td bgcolor="#FFFFFF"><em><font color="#000000"><?php echo $datafact['n'];?></font></em></td>
+          <td bgcolor="#FFFFFF"><em><font color="#000000"><?php echo $datafact['nf'];?></font></em></td>
+          <td bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['cons'];?></font></td>
+          <td bgcolor="#FFFFFF"><p><font color="#000000"><?php echo $datafact['totalht'];?></font></p></td>
+          <td bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['totalttc'];?></font></td>
+          <td bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['ortc'];?></font></td>
+          <td bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['impayee'];?></font></td>
+          <td bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['totalnet'];?></font></td>
         </tr>
         <?php
 }

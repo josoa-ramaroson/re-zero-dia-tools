@@ -1,8 +1,8 @@
-﻿<?
+﻿<?php
 require 'session.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if($_SESSION['u_niveau'] != 20) {
 	header("location:index.php?error=false");
 	exit;
@@ -11,7 +11,7 @@ require 'fonction.php';
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 <script type="text/javascript">
 function AjaxFunction()
 {
@@ -85,7 +85,7 @@ httpxml.send(null);
 </script>
 
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -99,7 +99,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
       <tr> 
         <td width="84%"> <div align=""> 
             <form action="compt_plan_chercher.php" method="post" name="testform" id="form2">
-                       <? require 'compt_plan_listecompte.php'; ?>
+                       <?php require 'compt_plan_listecompte.php'; ?>
               <p>&nbsp;</p>
             </form>
           </div></td>
@@ -121,11 +121,11 @@ while($row=mysql_fetch_array($resultat)){ // Start looping table row
 ?>
               <tr> 
                 <td bgcolor="#FFFFFF"><div align="left"> 
-                    <? echo $row['Code'];?>
+                    <?php echo $row['Code'];?>
                     <BR>
                   </div></td>
                 <td align="" bgcolor="#FFFFFF"><em> 
-                  <? echo $row['Description'];?>
+                  <?php echo $row['Description'];?>
                   </em></td>
               </tr>
               <?php

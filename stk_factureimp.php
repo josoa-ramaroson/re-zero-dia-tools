@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title><? include 'titre.php'; ?></title>
-<? include 'inc/head.php'; ?>
+<title><?php include 'titre.php'; ?></title>
+<?php include 'inc/head.php'; ?>
 <style type="text/css">
 .centre {
 	text-align: center;
@@ -46,20 +46,20 @@ while($data5=mysql_fetch_array($req5)){
         <td><table width="93%" border="0.5" align="center" cellpadding="0" cellspacing="0">
           <tr>
             <td width="29%">Nom du client :</td>
-            <td width="71%"><font color="#000000"><? $nomprenom=addslashes($data5['nomprenom']); echo $data5['nomprenom'];?></font></td>
+            <td width="71%"><font color="#000000"><?php $nomprenom=addslashes($data5['nomprenom']); echo $data5['nomprenom'];?></font></td>
           </tr>
           <tr>
             <td>Adresse :</td>
-            <td><span style="width: 40%; text-align: left"><span style="width:36%"><? $quartier=addslashes($data5['quartier']); echo $data5['quartier'];?></span> <span style="width:36%"><? echo $data5['ville'];?> 
+            <td><span style="width: 40%; text-align: left"><span style="width:36%"><?php $quartier=addslashes($data5['quartier']); echo $data5['quartier'];?></span> <span style="width:36%"><?php echo $data5['ville'];?>
             </span></span></td>
           </tr>
           <tr>
             <td>ID Client :</td>
-            <td><span style="width:36%"><? $Codebare=$data5['id']; echo $data5['id'];?></span></td>
+            <td><span style="width:36%"><?php $Codebare=$data5['id']; echo $data5['id'];?></span></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
-            <td><img src="codeBarre.php?Code=<?=$Codebare?>" /></td>
+            <td><img src="codeBarre.php?Code=<?php=$Codebare?>" /></td>
           </tr>
         </table></td>
       </tr>
@@ -74,8 +74,8 @@ while($data5=mysql_fetch_array($req5)){
 <table cellspacing="0" style="width: 100%; text-align: left;font-size: 10pt">
   <tr>
     <td style="width:50%;"></td>
-    <td style="width:50%; "><p><h2> Etabli par : <? echo $m3;?></h2></p>
-    <p> <h2>le <? echo $m2;?> </h2> 
+    <td style="width:50%; "><p><h2> Etabli par : <?php echo $m3;?></h2></p>
+    <p> <h2>le <?php echo $m2;?> </h2>
     </p></td>
   </tr>
 </table>
@@ -100,11 +100,11 @@ $req=mysql_query($sql);
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
   <tr>
-    <td style="width: 40%; text-align: left"><font color="#000000"><em><? echo $data['titre'];?></em></font></td>
-    <td style="width: 13%"><font color="#000000"><em><? echo strrev(chunk_split(strrev($data['PUnitaire']),3," ")) ?></em></font></td>
-    <td style="width: 10%"><font color="#000000"><em><? echo $data['Qvente'];?></em></font></td>
+    <td style="width: 40%; text-align: left"><font color="#000000"><em><?php echo $data['titre'];?></em></font></td>
+    <td style="width: 13%"><font color="#000000"><em><?php echo strrev(chunk_split(strrev($data['PUnitaire']),3," ")) ?></em></font></td>
+    <td style="width: 10%"><font color="#000000"><em><?php echo $data['Qvente'];?></em></font></td>
     <td style="width: 13%"><p>&nbsp;</p>
-      <p><font color="#000000"><em><? echo strrev(chunk_split(strrev($data['PTotal']),3," ")) ?></em></font></p>
+      <p><font color="#000000"><em><?php echo strrev(chunk_split(strrev($data['PTotal']),3," ")) ?></em></font></p>
     <p>&nbsp;</p></td>
   </tr>
   <?php
@@ -127,7 +127,7 @@ $totalttc= $Totaldevis;
 $totalnet= $Totaldevis;
 ?>
     <td width="81%" align="right"><b>TOTAL </b></td>
-    <td width="19%" align="center"> <b><? echo  strrev(chunk_split(strrev($Totaldevis),3," ")); ?> </b></td>
+    <td width="19%" align="center"> <b><?php echo  strrev(chunk_split(strrev($Totaldevis),3," ")); ?> </b></td>
   </tr>
 </table>
   <?php

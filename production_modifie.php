@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if($_SESSION['u_niveau'] != 70) {
 	header("location:index.php?error=false");
 	exit;
@@ -11,12 +11,12 @@ require 'fonction.php';
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 
 </head>
-<?
+<?php
 Require("bienvenue.php");    // on appelle la page contenant la fonction
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -41,7 +41,7 @@ $rows3=mysql_fetch_array($result3);
         <td width="30%"><em>
           <font color="#000000">
           <select name="mois" size="1" id="mois">
-            <option value="<? echo $rows3['mois']; ?>" selected><? 
+            <option value="<?php echo $rows3['mois']; ?>" selected><?php 
 			
 			$n=$rows3['mois']; 
 	  if ($n==1) echo 'janvier';
@@ -73,7 +73,7 @@ $rows3=mysql_fetch_array($result3);
           </select>
         </font></em></td>
         <td width="21%"><strong>Gazoi</strong></td>
-        <td width="33%"><input name="gazoil" type="text" id="gazoil" value="<? echo $rows3['gazoil']; ?> " size="30"></td>
+        <td width="33%"><input name="gazoil" type="text" id="gazoil" value="<?php echo $rows3['gazoil']; ?> " size="30"></td>
       </tr>
       <tr>
         <td>&nbsp;</td>
@@ -86,7 +86,7 @@ $rows3=mysql_fetch_array($result3);
         <td><em>
            <font color="#000000">
           <select name="annee" size="1" id="annee">
-          <option  selected><? echo $rows3['annee']; ?></option>
+          <option  selected><?php echo $rows3['annee']; ?></option>
             <?php
 $sql82 = ("SELECT * FROM annee  ORDER BY annee ASC ");
 $result82 = mysql_query($sql82);
@@ -98,7 +98,7 @@ echo '<option> '.$row82['annee'].' </option>';
           </select>
         </font></em></td>
         <td><strong>Huile</strong></td>
-        <td><input name="Huile" type="text" id="Huile" value="<? echo $rows3['Huile']; ?>" size="30"></td>
+        <td><input name="Huile" type="text" id="Huile" value="<?php echo $rows3['Huile']; ?>" size="30"></td>
       </tr>
       <tr>
         <td>&nbsp;</td>
@@ -109,7 +109,7 @@ echo '<option> '.$row82['annee'].' </option>';
       <tr>
         <td><strong>Production (Kwh)</strong></td>
         <td><em>
-          <input name="prod" type="text" id="prod" value="<? echo $rows3['prod']; ?>" size="30">
+          <input name="prod" type="text" id="prod" value="<?php echo $rows3['prod']; ?>" size="30">
         </em></td>
         <td><strong>Centrale</strong></td>
         <td><select name="centrale" id="centrale">
@@ -124,7 +124,7 @@ echo '<option> '.$row82['annee'].' </option>';
       </tr>
       <tr>
         <td><strong>Distribution (Kwh)</strong></td>
-        <td><input name="dist" type="text" id="dist" value="<? echo $rows3['dist']; ?>" size="30"></td>
+        <td><input name="dist" type="text" id="dist" value="<?php echo $rows3['dist']; ?>" size="30"></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
@@ -136,10 +136,10 @@ echo '<option> '.$row82['annee'].' </option>';
       </tr>
       <tr>
         <td><strong>Perte Aux (Kwh)</strong></td>
-        <td><input name="auxi" type="text" disabled id="auxi" value="<? echo $rows3['auxi']; ?>" size="30"></td>
+        <td><input name="auxi" type="text" disabled id="auxi" value="<?php echo $rows3['auxi']; ?>" size="30"></td>
         <td><em>
-          <input name="idp" type="hidden" id="idp" value="<? echo $rows3['id'];?>">
-          <input name="id_nom" type="hidden" id="id_nom" value="<? echo $rows3['id_nom'];?>">
+          <input name="idp" type="hidden" id="idp" value="<?php echo $rows3['id'];?>">
+          <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $rows3['id_nom'];?>">
         </em></td>
         <td><input type="submit" name="Submit3" value="Valider votre modification"></td>
       </tr>
@@ -194,9 +194,9 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
   <tr>
-    <td align="center" bgcolor="#FFFFFF"><? echo $data['id'];?>
+    <td align="center" bgcolor="#FFFFFF"><?php echo $data['id'];?>
       <div align="left"></div></td>
-    <td align="center" bgcolor="#FFFFFF"><? $n=$data['mois']; 
+    <td align="center" bgcolor="#FFFFFF"><?php $n=$data['mois']; 
 	  if ($n==1) echo 'janvier';
 	  if ($n==2) echo 'Février'; 
 	  if ($n==3) echo 'Mars';
@@ -210,10 +210,10 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 	  if ($n==11) echo 'Novembre';  
 	  if ($n==12) echo 'Decembre'; 
 	  ?></td>
-    <td align="center" bgcolor="#FFFFFF"><? echo $data['annee'];?></td>
-    <td width="213"   style="background-color:#FFF;"><em><? echo $data['prod'];?></em></td>
-    <td width="148"   style="background-color:#FFF;"><em><? echo $data['dist'];?></em></td>
-    <td width="74"   style="background-color:#FFF;"><a href="production_modifie.php?id=<? echo  md5(microtime()).$data['id']; ?>"  class="btn btn-xs btn-success"><? echo 'Modifier' ?></a></td>
+    <td align="center" bgcolor="#FFFFFF"><?php echo $data['annee'];?></td>
+    <td width="213"   style="background-color:#FFF;"><em><?php echo $data['prod'];?></em></td>
+    <td width="148"   style="background-color:#FFF;"><em><?php echo $data['dist'];?></em></td>
+    <td width="74"   style="background-color:#FFF;"><a href="production_modifie.php?id=<?php echo  md5(microtime()).$data['id']; ?>"  class="btn btn-xs btn-success"><?php echo 'Modifier' ?></a></td>
   </tr>
   <?php
 

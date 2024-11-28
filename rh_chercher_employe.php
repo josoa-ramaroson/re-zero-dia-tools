@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if((($_SESSION['u_niveau'] != 50) ) && ($_SESSION['u_niveau'] != 90)) {
 	header("location:index.php?error=false");
 	exit;
@@ -26,9 +26,9 @@ body,td,th {
 	color: #000;
 }
 </style>
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -156,21 +156,21 @@ $nomprenom=$data['nomprenom'];
 	 }
 ?>
    <tr>
-     <td align="center" bgcolor="#FFFFFF"><div align="left">         <? $filename = 'upload/employer/'.$data['idrhp'].'.jpg'; ?>
+     <td align="center" bgcolor="#FFFFFF"><div align="left">         <?php $filename = 'upload/employer/'.$data['idrhp'].'.jpg'; ?>
 									<div class="row">
-										<? if (file_exists($filename) == true) { ?>
-	<img class="pix" width="100" src="<? echo $filename; ?>" alt="<? echo $data['nomprenom']; ?>" />
-										<? } else { ?>
-                             <? if ($data['sex'] == 'Masculin') { $picture='homme.jpg';} else {$picture='femme.jpg';} ?>
+										<?php if (file_exists($filename) == true) { ?>
+	<img class="pix" width="100" src="<?php echo $filename; ?>" alt="<?php echo $data['nomprenom']; ?>" />
+										<?php } else { ?>
+                             <?php if ($data['sex'] == 'Masculin') { $picture='homme.jpg';} else {$picture='femme.jpg';} ?>
                                     
-	<img class="pix" height="100" width="100" src="upload/employer/<? echo $picture; ?>" alt="<? echo $data['nomprenom']; ?> 
+	<img class="pix" height="100" width="100" src="upload/employer/<?php echo $picture; ?>" alt="<?php echo $data['nomprenom']; ?>
 	" />
-										<? } ?></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $nomprenom;?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $matricule;?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $direction;?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $service;?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><a href="rh_employer_user.php?id=<? echo md5(microtime()).$data['idrhp']; ?>" class="btn btn-sm btn-success" >Aperçu</a></td>
+										<?php } ?></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $nomprenom;?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $matricule;?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $direction;?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $service;?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><a href="rh_employer_user.php?id=<?php echo md5(microtime()).$data['idrhp']; ?>" class="btn btn-sm btn-success" >Aperçu</a></td>
    </tr>
    <?php
 }

@@ -1,10 +1,10 @@
-<?
+<?php
 require 'session.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if(($_SESSION['u_niveau'] != 2) && ($_SESSION['u_niveau'] != 43) && ($_SESSION['u_niveau'] != 8) && ($_SESSION['u_niveau'] != 3)    && ($_SESSION['u_niveau'] != 90) && ($_SESSION['u_niveau'] != 91) && ($_SESSION['u_niveau'] != 80) && ($_SESSION['u_niveau'] != 46)) {
 	header("location:index.php?error=false");
 	exit;
@@ -12,7 +12,7 @@ require 'fonction.php';
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
@@ -29,7 +29,7 @@ require 'fonction.php';
 <script language="javascript" src="calendar/calendar.js"></script>
 
 </head>
-<?
+<?php
 require("bienvenue.php");    // on appelle la page contenant la fonction
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -108,7 +108,7 @@ $sqFSN="SELECT  SUM(Pre) AS Pre, totalnet, report, RefLocalite , nserie , fannee
 ?>
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title">Rapport d'activité <? echo $annee; ?></h3>
+    <h3 class="panel-title">Rapport d'activité <?php echo $annee; ?></h3>
   </div>
   <div class="panel-body">
     <table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#000000">
@@ -124,9 +124,9 @@ $sqFSN="SELECT  SUM(Pre) AS Pre, totalnet, report, RefLocalite , nserie , fannee
               </tr>
               <tr>
                 <td>Facturation</td>
-                <td><? echo strrev(chunk_split(strrev($tFSl),3," ")) ;?></td>
-                <td><? echo strrev(chunk_split(strrev($C),3," ")) ;?></td>
-                <td><? echo strrev(chunk_split(strrev($tFSlN),3," ")) ;?></td>
+                <td><?php echo strrev(chunk_split(strrev($tFSl),3," ")) ;?></td>
+                <td><?php echo strrev(chunk_split(strrev($C),3," ")) ;?></td>
+                <td><?php echo strrev(chunk_split(strrev($tFSlN),3," ")) ;?></td>
               </tr>
             </table></td>
           </tr>

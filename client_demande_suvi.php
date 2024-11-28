@@ -1,20 +1,20 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <script language="javascript" src="calendar/calendar.js"></script>
 
 </head>
-<?
+<?php
 require("bienvenue.php");    // on appelle la page contenant la fonction
 ?>
-<?
+<?php
 $service=$_SESSION['u_niveau'];
 
 $sql = "SELECT *FROM $tb_echangagent where service='$service' ORDER BY idv  DESC";  
@@ -40,11 +40,11 @@ $req = mysql_query($sql)
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
                 <tr>
-                <td><p><? echo $data['dated'];?></p></td>
-                  <td><? echo $data['id_client'];?></td>
-                  <td><? echo $data['nom_client'];?></td>
-                  <td><? echo $data['note'];?>
-                  <? 
+                <td><p><?php echo $data['dated'];?></p></td>
+                  <td><?php echo $data['id_client'];?></td>
+                  <td><?php echo $data['nom_client'];?></td>
+                  <td><?php echo $data['note'];?>
+                  <?php
 				  $tr=$data['Nsend'];
 				  $Banque=$data['Banque'];
 				  
@@ -53,18 +53,18 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
                   if ($data['service']==20) {echo $data['montant'];  echo "N°de Transaction $tr de la banque $Banque ";}
                   if ($data['service']==44) {echo $data['Probleme'];}
                   ?></td>
-                  <td><? $idv=$data['idv']; echo $data['idv'];?></td>
+                  <td><?php $idv=$data['idv']; echo $data['idv'];?></td>
                                     
                   <td>
-                   <?
+                   <?php
 				   
 				   $sqlr="SELECT * FROM $tb_echangreponse WHERE idv='$idv'" ;
 				   $resu= mysql_query($sqlr);
 				   $suivi=mysql_fetch_array($resu);
 
 				  if ($suivi===FALSE){?>
-                  <a href="client_reponse.php?idv=<? echo md5(microtime()).$data['idv']; ?>" class="btn btn-xs btn-success">Realiser la tache</a>
-                  <? } else { 
+                  <a href="client_reponse.php?idv=<?php echo md5(microtime()).$data['idv']; ?>" class="btn btn-xs btn-success">Realiser la tache</a>
+                  <?php } else {
 				  
 				  echo $suivi['nom'];
 				  

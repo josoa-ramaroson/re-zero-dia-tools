@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if($_SESSION['u_niveau'] != 70) {
 	header("location:index.php?error=false");
 	exit;
@@ -11,12 +11,12 @@ require 'fonction.php';
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 
 </head>
-<?
+<?php
 Require("bienvenue.php");    // on appelle la page contenant la fonction
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -122,7 +122,7 @@ echo '<option> '.$row82['annee'].' </option>';
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-              <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>">
+              <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>">
             </font></strong></font></strong></font></td>
             <td>&nbsp;</td>
           </tr>
@@ -183,9 +183,9 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
   <tr>
-    <td align="center" bgcolor="#FFFFFF"><? echo $data['id'];?>      <div align="left"></div></td>
+    <td align="center" bgcolor="#FFFFFF"><?php echo $data['id'];?>      <div align="left"></div></td>
     <td align="center" bgcolor="#FFFFFF">
-    <? $n=$data['mois']; 
+    <?php $n=$data['mois'];
 	  if ($n==1) echo 'janvier';
 	  if ($n==2) echo 'Février'; 
 	  if ($n==3) echo 'Mars';
@@ -200,10 +200,10 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 	  if ($n==12) echo 'Decembre'; 
 	  ?>
       </td>
-    <td align="center" bgcolor="#FFFFFF"><? echo $data['annee'];?></td>
-    <td width="213"   style="background-color:#FFF;"><em><? echo $data['prod'];?></em></td>
-    <td width="148"   style="background-color:#FFF;"><em><? echo $data['dist'];?></em></td>
-    <td width="74"   style="background-color:#FFF;"><a href="production_modifie.php?id=<? echo  md5(microtime()).$data['id']; ?>"  class="btn btn-xs btn-success"><? echo 'Modifier' ?></a></td>
+    <td align="center" bgcolor="#FFFFFF"><?php echo $data['annee'];?></td>
+    <td width="213"   style="background-color:#FFF;"><em><?php echo $data['prod'];?></em></td>
+    <td width="148"   style="background-color:#FFF;"><em><?php echo $data['dist'];?></em></td>
+    <td width="74"   style="background-color:#FFF;"><a href="production_modifie.php?id=<?php echo  md5(microtime()).$data['id']; ?>"  class="btn btn-xs btn-success"><?php echo 'Modifier' ?></a></td>
   </tr>
   <?php
 

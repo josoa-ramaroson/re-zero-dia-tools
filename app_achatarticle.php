@@ -1,10 +1,10 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 require 'fc-affichage.php';
 require_once('calendar/classes/tc_calendar.php');
 ?>
-<?
+<?php
 	if($_SESSION['u_niveau'] != 40) {
 	header("location:index.php?error=false");
 	exit;
@@ -13,7 +13,7 @@ require_once('calendar/classes/tc_calendar.php');
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 <script language="javascript" src="calendar/calendar.js"></script>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
@@ -81,7 +81,7 @@ httpxml.send(null);
 </script>
 
 </head>
-<?
+<?php
 require 'bienvenue.php';  
 	$sqldate="SELECT * FROM $tbl_app_caisse "; //DESC  ASC
 	$resultldate=mysql_query($sqldate);
@@ -98,7 +98,7 @@ require 'bienvenue.php';
         <tr>
           <td width="11%"><strong><font size="2">Date</font></strong></td>
           <td width="1%">&nbsp;</td>
-          <td width="35%"><input name="date_dem" type="text" id="date_dem" value="<? echo $datecaisse['datecaisse'];?>" size="30" readonly /></td>
+          <td width="35%"><input name="date_dem" type="text" id="date_dem" value="<?php echo $datecaisse['datecaisse'];?>" size="30" readonly /></td>
           <td width="1%">&nbsp;</td>
           <td width="12%"><strong><font size="2">Direction</font></strong></td>
           <td width="40%"><?Php
@@ -203,7 +203,7 @@ echo '<option value='.$rowPC['Code'].'> '.$rowPC['Code'].' '.$rowPC['Description
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-            <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>" />
+            <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
           </font></strong></font></strong></font></td>
           <td><strong><span style="font-size:8.5pt;font-family:Arial">
             <input type="submit" name="Submit" value="Enregistrer" class="btn btn-sm btn-primary"/>
@@ -259,15 +259,15 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ 
 ?>
     <tr>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><? echo $data['codecompte'];?></div>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><?php echo $data['codecompte'];?></div>
         <div align="left"></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['date_dem'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['fournisseur'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['direction'];?></em></div></td>
-      <td width="179"   style="background-color:#FFF;"><div align="left"><em><? echo $data['designation'];?></em></div></td>
-      <td align="center" width="101"   style="background-color:#FFF;"><? echo $data['quantite'];?></td>
-      <td align="center" width="107"   style="background-color:#FFF;"><? echo $data['prixu'];?></td>
-      <td align="center" width="107"   style="background-color:#FFF;"><? echo $data['prixt'];?></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['date_dem'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['fournisseur'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['direction'];?></em></div></td>
+      <td width="179"   style="background-color:#FFF;"><div align="left"><em><?php echo $data['designation'];?></em></div></td>
+      <td align="center" width="101"   style="background-color:#FFF;"><?php echo $data['quantite'];?></td>
+      <td align="center" width="107"   style="background-color:#FFF;"><?php echo $data['prixu'];?></td>
+      <td align="center" width="107"   style="background-color:#FFF;"><?php echo $data['prixt'];?></td>
     </tr>
     <?php
 

@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 function barre_navigation ($nb_total,$nb_affichage_par_page,$debut, $valeuretat , $nb_liens_dans_la_barre) { 
@@ -105,7 +105,7 @@ function barre_navigation ($nb_total,$nb_affichage_par_page,$debut, $valeuretat 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -205,22 +205,22 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
    <?php
 while($data=mysql_fetch_array($req)){ // Start looping table row 
    ?>
-   <tr bgcolor="<? gettatut($data['etat']); ?>">
-     <td align="center" ><? if (($data['etat']!="facture")and ($data['etat']!="Annuler")){?>
-       <a href="paiement_penalite.php?idf=<? echo md5(microtime()).$data['idf']; ?>" class="btn btn-sm btn-success"> les détails</a>
-       <? } else {} ?>
+   <tr bgcolor="<?php gettatut($data['etat']); ?>">
+     <td align="center" ><?php if (($data['etat']!="facture")and ($data['etat']!="Annuler")){?>
+       <a href="paiement_penalite.php?idf=<?php echo md5(microtime()).$data['idf']; ?>" class="btn btn-sm btn-success"> les détails</a>
+       <?php } else {} ?>
        
-       <? if (($data['etat']=="facture") and ($_SESSION['u_niveau']==8)){?> <a href="cov_modification.php?idf=<? echo md5(microtime()).$data['idf'];?>" class="btn btn-sm btn-warning" >Modification</a><? } else {} ?>
+       <?php if (($data['etat']=="facture") and ($_SESSION['u_niveau']==8)){?> <a href="cov_modification.php?idf=<?php echo md5(microtime()).$data['idf'];?>" class="btn btn-sm btn-warning" >Modification</a><?php } else {} ?>
        
        </td>
-     <td align="center" ><em><a href="re_affichage_user.php?id=<? echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-default" ><? echo $data['idf'];?></a></em></td>
-     <td align="center" ><em><? echo $data['id_nom'];?></em></td>
-     <td align="center" ><em><? echo $data['date'];?></em></td>
-     <td align="center" ><em><? echo $data['bnom'];?></em></td>
-     <td align="center"><em><? echo $data['libelle'];?></em></td>
-     <td align="center"><em><? echo $data['totalnet'];?></em></td>
-     <td align="center"><em><? echo $data['report'];?></em></td>
-     <td align="center"><em><? echo $data['etat'];?></em></td>
+     <td align="center" ><em><a href="re_affichage_user.php?id=<?php echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-default" ><?php echo $data['idf'];?></a></em></td>
+     <td align="center" ><em><?php echo $data['id_nom'];?></em></td>
+     <td align="center" ><em><?php echo $data['date'];?></em></td>
+     <td align="center" ><em><?php echo $data['bnom'];?></em></td>
+     <td align="center"><em><?php echo $data['libelle'];?></em></td>
+     <td align="center"><em><?php echo $data['totalnet'];?></em></td>
+     <td align="center"><em><?php echo $data['report'];?></em></td>
+     <td align="center"><em><?php echo $data['etat'];?></em></td>
    </tr>
    <?php
 

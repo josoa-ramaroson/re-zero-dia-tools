@@ -1,8 +1,8 @@
-<?
+<?php
 Require("session.php"); 
 require_once('calendar/classes/tc_calendar.php');
 ?>
-<?
+<?php
 	if($_SESSION['u_niveau'] != 40) {
 	header("location:index.php?error=false");
 	exit;
@@ -118,7 +118,7 @@ function barre_navigation ($nb_total,$nb_affichage_par_page,$debut,$nb_liens_dan
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <script type="text/javascript">
@@ -194,7 +194,7 @@ httpxml.send(null);
 </script>
 <script language="javascript" src="calendar/calendar.js"></script>
 </head>
-<?
+<?php
 Require("bienvenue.php"); // on appelle la page contenant la fonction
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -213,7 +213,7 @@ Require("bienvenue.php"); // on appelle la page contenant la fonction
                       </tr>
                       <tr>
                         <td>Login</td>
-                        <td><input name="blogin" type="text" class="form-control" id="blogin" value="<? echo $id_nom; ?>" size="50" readonly></td>
+                        <td><input name="blogin" type="text" class="form-control" id="blogin" value="<?php echo $id_nom; ?>" size="50" readonly></td>
                       </tr>
                       <tr>
                         <td>&nbsp;</td>
@@ -243,7 +243,7 @@ Require("bienvenue.php"); // on appelle la page contenant la fonction
                       <tr>
                         <td>&nbsp;</td>
                         <td><font color="#FF0000">
-                          <input name="verification" type="hidden" id="verification" value="<? 
+                          <input name="verification" type="hidden" id="verification" value="<?php 
 						  
 	$sqfac="SELECT * FROM $tbl_app_caisse";
 	$resultfac=mysql_query($sqfac);
@@ -305,9 +305,9 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
     <tr> 
-      <td align="center" bgcolor="#FFFFFF"><? echo $data['idcaisse'];?>        <div align="left"></div></td>
-      <td align="center" bgcolor="#FFFFFF"><em><? echo $data['blogin'];?></em></td>
-      <td align="center" bgcolor="#FFFFFF"><em><? echo $data['datecaisse'];?></em></td>
+      <td align="center" bgcolor="#FFFFFF"><?php echo $data['idcaisse'];?>        <div align="left"></div></td>
+      <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['blogin'];?></em></td>
+      <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['datecaisse'];?></em></td>
       <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
     </tr>
     <?php

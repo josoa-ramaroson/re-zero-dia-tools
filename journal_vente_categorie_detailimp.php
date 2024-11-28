@@ -32,7 +32,7 @@ $reqfact=mysql_query($sqfact);
     <p><font size="2"><font size="2"><font size="2">
     <span style="width: 25%; color: #444444;"><img src="images/eda.png" width="143" height="63" /></span></font></font></font></p>
     <p> Categorie : <em>
-    <? //$CodeTypeClts;
+    <?php //$CodeTypeClts;
  
 $sqltclient = "SELECT * FROM $tbl_client where idtclient='$CodeTypeClts'";
 $resulttclient = mysql_query($sqltclient);
@@ -66,14 +66,14 @@ echo $TypeClts=$rowtclient['TypeClts'];
 while($datafact=mysql_fetch_array($reqfact)){ // Start looping table row 
 ?>
         <tr class="taille">
-          <td bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['id'];?></font></td>
-          <td bgcolor="#FFFFFF"><? echo $datafact['nomprenom'];?></font></td>
-          <td bgcolor="#FFFFFF"><? echo $datafact['ville'];?></font></td>
-          <td bgcolor="#FFFFFF"><? echo $datafact['quartier'];?></font></td>
-          <td  bgcolor="#FFFFFF"><em><font color="#000000"><? echo $datafact['n'];?></font></em></td>
-          <td  bgcolor="#FFFFFF"><em><font color="#000000"><? echo $datafact['nf'];?></font></em></td>
-          <td bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['cons'];?></font></td>
-          <td  bgcolor="#FFFFFF"><p><font color="#000000"><? echo $datafact['totalht'];?></font></p>
+          <td bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['id'];?></font></td>
+          <td bgcolor="#FFFFFF"><?php echo $datafact['nomprenom'];?></font></td>
+          <td bgcolor="#FFFFFF"><?php echo $datafact['ville'];?></font></td>
+          <td bgcolor="#FFFFFF"><?php echo $datafact['quartier'];?></font></td>
+          <td  bgcolor="#FFFFFF"><em><font color="#000000"><?php echo $datafact['n'];?></font></em></td>
+          <td  bgcolor="#FFFFFF"><em><font color="#000000"><?php echo $datafact['nf'];?></font></em></td>
+          <td bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['cons'];?></font></td>
+          <td  bgcolor="#FFFFFF"><p><font color="#000000"><?php echo $datafact['totalht'];?></font></p>
           <p>&nbsp;</p></td>
         </tr>
         <?php

@@ -40,11 +40,11 @@ while($data=mysql_fetch_array($reqfact)){ // Start looping table row
 ?>
         <tr>
           <td align="center" bgcolor="#FFFFFF"><strong>
-            <? echo $data['id'];?>
+            <?php echo $data['id'];?>
           </strong></td>
-          <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $data['nomprenom'];?></font></td>
-          <td align="center" bgcolor="#FFFFFF"><strong><? echo $data['ville'];?></strong></td>
-          <td align="center" bgcolor="#FFFFFF"><strong><? echo $data['quartier'];?></strong></td>
+          <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $data['nomprenom'];?></font></td>
+          <td align="center" bgcolor="#FFFFFF"><strong><?php echo $data['ville'];?></strong></td>
+          <td align="center" bgcolor="#FFFFFF"><strong><?php echo $data['quartier'];?></strong></td>
           <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
           <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
         </tr>

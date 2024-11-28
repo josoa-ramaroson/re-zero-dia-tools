@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'fc-affichage.php';
@@ -9,7 +9,7 @@ require 'rh_configuration_fonction.php';
 <html>
 <head>
 
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
@@ -27,7 +27,7 @@ require 'rh_configuration_fonction.php';
 <script language="javascript" src="calendar/calendar.js"></script>
 
 </head>
-<?
+<?php
 Require("bienvenue.php");  // on appelle la page contenant la fonction
 ?>
  

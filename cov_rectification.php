@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -9,7 +9,7 @@ require 'fonction.php';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -42,16 +42,16 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
    <tr>
-     <td align="center" bgcolor="#FFFFFF"><em><a href="re_affichage_user.php?id=<? echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-default" ><? echo $data['id'];?></a></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['id_nom'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['ni'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['nf'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['date'].' '.$data['obs'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"> <? if (($_SESSION['niveau']==44) and ($data['controle']==1)) {?>
- <a href="cov_rectification_upload.php?idr=<? echo md5(microtime()).$data['idr']; ?>&controle=<? $a='2';echo md5(microtime()).$a; ?>&ix=<? echo md5(microtime()).$id_nom; ?>" onClick="return confirm('Etes-vous sûr')" ; style="margin:5px"   class="btn btn-sm btn-danger" >Certifier</a><? } else { echo $data['certifier']; } ?></td>
+     <td align="center" bgcolor="#FFFFFF"><em><a href="re_affichage_user.php?id=<?php echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-default" ><?php echo $data['id'];?></a></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['id_nom'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['ni'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['nf'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['date'].' '.$data['obs'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"> <?php if (($_SESSION['niveau']==44) and ($data['controle']==1)) {?>
+ <a href="cov_rectification_upload.php?idr=<?php echo md5(microtime()).$data['idr']; ?>&controle=<?php $a='2';echo md5(microtime()).$a; ?>&ix=<?php echo md5(microtime()).$id_nom; ?>" onClick="return confirm('Etes-vous sûr')" ; style="margin:5px"   class="btn btn-sm btn-danger" >Certifier</a><?php } else { echo $data['certifier']; } ?></td>
      <td align="center" bgcolor="#FFFFFF">
-      <? if (($_SESSION['niveau']==43) and ($data['controle']==2)) {?>
- <a href="cov_rectification_upload.php?idr=<? echo md5(microtime()).$data['idr']; ?>&controle=<? $a='3';echo md5(microtime()).$a; ?>&ix=<? echo md5(microtime()).$id_nom; ?>" onClick="return confirm('Etes-vous sûr')" ; style="margin:5px"   class="btn btn-sm btn-danger" >Valider</a> <? } else { echo $data['valider']; } ?></td>
+      <?php if (($_SESSION['niveau']==43) and ($data['controle']==2)) {?>
+ <a href="cov_rectification_upload.php?idr=<?php echo md5(microtime()).$data['idr']; ?>&controle=<?php $a='3';echo md5(microtime()).$a; ?>&ix=<?php echo md5(microtime()).$id_nom; ?>" onClick="return confirm('Etes-vous sûr')" ; style="margin:5px"   class="btn btn-sm btn-danger" >Valider</a> <?php } else { echo $data['valider']; } ?></td>
    </tr>
    <?php
 }

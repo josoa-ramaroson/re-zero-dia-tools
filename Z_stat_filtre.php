@@ -1,17 +1,17 @@
-<?
+<?php
 require 'session.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'fc-affichage.php';
 require 'fonction.php';
 require 'configuration.php';
 ?>
-<?
+<?php
 require 'fonction_niveau_statistique.php';
 ?>
 <html>
 <head>
 
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
@@ -100,10 +100,10 @@ httpxml.send(null);
 </script>
 
 </head>
-<?
+<?php
 require("bienvenue.php");  // on appelle la page contenant la fonction
 ?>
-<?
+<?php
 $sql = "SELECT COUNT(*) AS actif FROM $tbl_contact  WHERE statut='6'";   
 $req=mysqli_query($linki,$sql);
 $data= mysqli_fetch_assoc($req);
@@ -175,15 +175,15 @@ $cmt=$data8['mt'];
                 <td width="13%">Client Resilié</td>
               </tr>
               <tr>
-                <td><? echo $ppolice;?></td>
-                <td><? echo $pdevis1;?></td>
-                <td><? echo $pdevis2;?></td>
-                <td><? echo $pbrancher;?></td>
-                <td><? echo $ffacture;?></td>
-                <td><? echo $Actif;?></td>
-                <td><? echo $cbt;?></td>
-                <td><? echo $cmt;?></td>
-                <td><? echo $Resilier;?></td>
+                <td><?php echo $ppolice;?></td>
+                <td><?php echo $pdevis1;?></td>
+                <td><?php echo $pdevis2;?></td>
+                <td><?php echo $pbrancher;?></td>
+                <td><?php echo $ffacture;?></td>
+                <td><?php echo $Actif;?></td>
+                <td><?php echo $cbt;?></td>
+                <td><?php echo $cmt;?></td>
+                <td><?php echo $Resilier;?></td>
               </tr>
             </table></td>
           </tr>

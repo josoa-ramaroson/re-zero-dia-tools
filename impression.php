@@ -1,11 +1,11 @@
-<?
+<?php
 require 'session.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'fc-affichage.php';
 require 'fonction.php';
 require 'configuration.php';
 ?>
-<?
+<?php
 if(($_SESSION['u_niveau'] != 2)) {
 	header("location:index.php?error=false");
 	exit;
@@ -14,7 +14,7 @@ if(($_SESSION['u_niveau'] != 2)) {
 <html>
 <head>
 
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <script type="text/javascript">
@@ -103,10 +103,10 @@ httpxml.send(null);
 <script language="javascript" src="calendar/calendar.js"></script>
 
 </head>
-<?
+<?php
 Require("bienvenue.php");  // on appelle la page contenant la fonction
 ?>
-<?
+<?php
 $sql = "SELECT count(*) FROM $tbl_fact  WHERE fannee='$anneec' and nserie='$nserie' and st='E' ";  
 
 $resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
@@ -222,10 +222,10 @@ echo "<option value=$row[refville]>$row[ville]</option>";
       <?php
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
-       <tr bgcolor="<? gettatut($data['bstatut']); ?>">
-        <td align="center"><? echo  $data['ville']; ?></td>
-        <td align="center"><? echo  $data['quartier']; ?></td>
-        <td align="center"><? echo  $data['impression']; ?> (<? echo  $data['nbch']; ?>)</td>
+       <tr bgcolor="<?php gettatut($data['bstatut']); ?>">
+        <td align="center"><?php echo  $data['ville']; ?></td>
+        <td align="center"><?php echo  $data['quartier']; ?></td>
+        <td align="center"><?php echo  $data['impression']; ?> (<?php echo  $data['nbch']; ?>)</td>
       </tr>
       <?php
 

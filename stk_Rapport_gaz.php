@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'fonction.php';
 ?>
-<?
+<?php
 	if($_SESSION['u_niveau'] != 41) {
 	header("location:index.php?error=false");
 	exit;
@@ -12,13 +12,13 @@ require 'fonction.php';
 <html>
 <head>
 <title>
-<? include("titre.php"); ?></title>
+<?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="calendar/calendar.js"></script>
 </head>
-<?
+<?php
 require("bienvenue.php"); 
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -107,16 +107,16 @@ while($data5=mysql_fetch_array($req5)){ // Start looping table row
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
           <tr> 
-            <td bgcolor="#FFFFFF"><div align="left"><strong></strong><? echo $data['nc'];?><BR>
+            <td bgcolor="#FFFFFF"><div align="left"><strong></strong><?php echo $data['nc'];?><BR>
               </div></td>
-            <td align="center" bgcolor="#FFFFFF"><? echo $data5['nomprenom'];?> <div align="left"></div>
+            <td align="center" bgcolor="#FFFFFF"><?php echo $data5['nomprenom'];?> <div align="left"></div>
               <div align="left"></div></td>
-            <td align="center" bgcolor="#FFFFFF"> <a href="stk_factureimp.php?m1=<? echo $_SESSION["nc"];?>&m2=<? echo $data['datev'];?>&m3=<? echo $id_nom;?>" target="_blank" > 
-              </a><? echo $data5['tel'];?> </td>
-            <td align="center" bgcolor="#FFFFFF"><?  echo $data5['adresse'];?> 
+            <td align="center" bgcolor="#FFFFFF"> <a href="stk_factureimp.php?m1=<?php echo $_SESSION["nc"];?>&m2=<?php echo $data['datev'];?>&m3=<?php echo $id_nom;?>" target="_blank" >
+              </a><?php echo $data5['tel'];?> </td>
+            <td align="center" bgcolor="#FFFFFF"><?php  echo $data5['adresse'];?>
               <div align="left"></div></td>
-            <td align="center" bgcolor="#FFFFFF"><a href="stk_facture_gaz_imp.php?m1=<? echo $_SESSION["nc"];?>&m2=<? echo $data['datev'];?>&m3=<? echo $id_nom;?>" target="_blank" ><? echo $data['datev'];?></a></td>
-            <td align="center" bgcolor="#FFFFFF"><? echo strrev(chunk_split(strrev($data['prix']),3," "));  ?></td>
+            <td align="center" bgcolor="#FFFFFF"><a href="stk_facture_gaz_imp.php?m1=<?php echo $_SESSION["nc"];?>&m2=<?php echo $data['datev'];?>&m3=<?php echo $id_nom;?>" target="_blank" ><?php echo $data['datev'];?></a></td>
+            <td align="center" bgcolor="#FFFFFF"><?php echo strrev(chunk_split(strrev($data['prix']),3," "));  ?></td>
           </tr>
           <?php 
 }

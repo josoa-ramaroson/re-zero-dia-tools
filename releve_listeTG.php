@@ -1,8 +1,8 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 ?>
-<? //include 'inc/head.php'; ?>
+<?php //include 'inc/head.php'; ?>
 <html>
 <head>
 <head>
@@ -26,7 +26,7 @@ $cbt=$data7['bt'];
 
 ?>
  <H2> <p align="center" >  CARNET DES RELEVES </p> </H2></p>
-<p><em><? //echo $m1v;?></em> - : <em><? // echo $m2q;?> </em> -   Nombre des clients est : <? echo $cbt;?> </p>
+<p><em><?php //echo $m1v;?></em> - : <em><?php // echo $m2q;?> </em> -   Nombre des clients est : <?php echo $cbt;?> </p>
 <table width="100%" border="1" align="center" cellpadding="1" cellspacing="1" bgcolor="#FFFFFF">
    <tr bgcolor="#3071AA">
      <td width="7%" align="center"><font color="#FFFFFF" size="4"><strong>Ville</strong></font></td>
@@ -43,12 +43,12 @@ $cbt=$data7['bt'];
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
    <tr>
-     <td height="61" align="center" ><?echo $data['ville']; ?></td>
-	      <td height="61" align="center" ><?echo $data['quartier']; ?></td>
-     <td align="center" ><em><? echo $data['id'];?></em></td>
-     <td ><em><? echo $data['nomprenom'];?></em></td>
-	 <td align="center" ><em><? echo $data['ncompteur'];?></em></td>
-     <td align="center" ><em><? echo $data['Indexinitial'];?></em></td>
+     <td height="61" align="center" ><?phpecho $data['ville']; ?></td>
+	      <td height="61" align="center" ><?phpecho $data['quartier']; ?></td>
+     <td align="center" ><em><?php echo $data['id'];?></em></td>
+     <td ><em><?php echo $data['nomprenom'];?></em></td>
+	 <td align="center" ><em><?php echo $data['ncompteur'];?></em></td>
+     <td align="center" ><em><?php echo $data['Indexinitial'];?></em></td>
      <td align="center" >&nbsp;</td>
      <td align="center" ><p>&nbsp;</p>
      <p>&nbsp;</p></td>

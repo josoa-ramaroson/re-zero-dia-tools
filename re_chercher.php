@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -20,9 +20,9 @@ body,td,th {
 	color: #000;
 }
 </style>
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -161,15 +161,15 @@ $nomprenom=$data['nomprenom'];
 
 ?>
    <tr>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $id;?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $nomprenom;?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $Police;?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $adresse;?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $ville;?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $quartier;?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><a href="re_affichage_user.php?id=<? echo md5(microtime()).$data['id']; ?>" 
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $id;?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $nomprenom;?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $Police;?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $adresse;?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $ville;?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $quartier;?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><a href="re_affichage_user.php?id=<?php echo md5(microtime()).$data['id']; ?>"
      
-      <? $n=$data['statut']; 
+      <?php $n=$data['statut'];
 	  if ($n==1) $codecouleur='btn btn-sm btn-default';
 	  if ($n==2) $codecouleur='btn btn-sm btn-warning'; 
 	  if ($n==3) $codecouleur='btn btn-sm btn-info';
@@ -179,7 +179,7 @@ $nomprenom=$data['nomprenom'];
 	  if ($n==7) $codecouleur='btn btn-sm btn-danger';
 	  ?>
         
-     class="<? echo $codecouleur; ?>" >Aperçu</a></td>
+     class="<?php echo $codecouleur; ?>" >Aperçu</a></td>
    </tr>
    <?php
 }

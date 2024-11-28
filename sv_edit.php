@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -7,7 +7,7 @@ require 'session.php';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <?php
@@ -27,9 +27,9 @@ while($rowsaut=mysql_fetch_array($resultaut)){
           <td width="45%"><table width="101%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
             <tr>
               <td width="36%"><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-                  <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>" />
+                  <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
                 </font><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-                <input name="id" type="hidden" id="id" value="<? echo md5(microtime()).$id; ?>" />
+                <input name="id" type="hidden" id="id" value="<?php echo md5(microtime()).$id; ?>" />
                 </font></strong></font></strong></font></strong></font></strong></font></td>
               <td width="64%">&nbsp;</td>
             </tr>
@@ -38,37 +38,37 @@ while($rowsaut=mysql_fetch_array($resultaut)){
                 <label for="checkbox_row_4">PlombCPT1</label>
               </strong></td>
               <td><strong>
-                <input name="c1" type="text" id="c1" value="<? echo $rowsaut['c1']; ?>" size="40" />
+                <input name="c1" type="text" id="c1" value="<?php echo $rowsaut['c1']; ?>" size="40" />
               </strong></td>
             </tr>
             <tr>
               <td><strong>PlombCPT2</strong></td>
               <td><strong>
-                <input name="c2" type="text" id="c2" value="<? echo $rowsaut['c2']; ?>" size="40" />
+                <input name="c2" type="text" id="c2" value="<?php echo $rowsaut['c2']; ?>" size="40" />
               </strong></td>
             </tr>
             <tr>
               <td><strong>PlombCPT3</strong></td>
               <td><strong>
-                <input name="c3" type="text" id="c3" value="<? echo $rowsaut['c3']; ?>" size="40" />
+                <input name="c3" type="text" id="c3" value="<?php echo $rowsaut['c3']; ?>" size="40" />
               </strong></td>
             </tr>
             <tr>
               <td><strong>PlombCPT4</strong></td>
               <td><strong>
-                <input name="c4" type="text" id="c4" value="<? echo $rowsaut['c4']; ?>" size="40" />
+                <input name="c4" type="text" id="c4" value="<?php echo $rowsaut['c4']; ?>" size="40" />
               </strong></td>
             </tr>
             <tr>
               <td><strong>PlombD1J1</strong></td>
               <td><strong>
-                <input name="d1" type="text" id="d1" value="<? echo $rowsaut['d1']; ?>" size="40" />
+                <input name="d1" type="text" id="d1" value="<?php echo $rowsaut['d1']; ?>" size="40" />
               </strong></td>
             </tr>
             <tr>
               <td><strong>PlombD1J2</strong></td>
               <td><strong>
-                <input name="d2" type="text" id="d2" value="<? echo $rowsaut['d2']; ?>" size="40" />
+                <input name="d2" type="text" id="d2" value="<?php echo $rowsaut['d2']; ?>" size="40" />
               </strong></td>
             </tr>
             <tr>

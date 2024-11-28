@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 $nserie1=substr($_REQUEST["ns"],32);
@@ -10,7 +10,7 @@ $annee1rp=substr($_REQUEST["an"],32);
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 //Require("bienvenue.php");  // on appelle la page contenant la fonction
 ?>
 <body>
@@ -24,7 +24,7 @@ $req=mysql_query($sql);
 ?>
  </p>
  <p>&nbsp; </p>
-<H2> <p align="center" >  RECAPITULATIF RECOUVREMENT PAR SECTEUR  <? echo $nserie1.'/'.$annee1rp;?></p> </H2>
+<H2> <p align="center" >  RECAPITULATIF RECOUVREMENT PAR SECTEUR  <?php echo $nserie1.'/'.$annee1rp;?></p> </H2>
 <table width="100%" border="1" align="center" cellpadding="1" cellspacing="0" bgcolor="#CCCCCC">
    <tr bgcolor="#3071AA">
     <td width="15%" align="center"><strong><font color="#FFFFFF" size="4">SECTEUR</font></strong></td>
@@ -40,7 +40,7 @@ $req=mysql_query($sql);
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
    <tr>
-     <td  bgcolor="#FFFFFF"><em><? $RefCommune=$data['refcommune'];
+     <td  bgcolor="#FFFFFF"><em><?php $RefCommune=$data['refcommune'];
 	 
 	 $sql3 = "SELECT * FROM commune where ref_com=$RefCommune";
 $result3 = mysql_query($sql3);
@@ -49,13 +49,13 @@ echo $secteur=$row3['commune'];
 }
 	 
 	 ?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['nbres'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['totalttc'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['ortc'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><? echo $data['impayee'];?></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['Pre'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['totalnet'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['report'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['nbres'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['totalttc'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['ortc'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><?php echo $data['impayee'];?></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['Pre'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['totalnet'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['report'];?></em></td>
    </tr>
    <?php
 }  
@@ -74,7 +74,7 @@ $req2=mysql_query($sql2);
 ?>
 </p>
 <H2>
-  <p align="center" > RECAPITULATIF RECOUVREMENT PAR VILLE  <? echo $nserie1.'/'.$annee1rp; ?></p>
+  <p align="center" > RECAPITULATIF RECOUVREMENT PAR VILLE  <?php echo $nserie1.'/'.$annee1rp; ?></p>
 </H2>
 <table width="100%" border="1" align="center" cellpadding="1" cellspacing="0" bgcolor="#CCCCCC">
   <tr bgcolor="#3071AA">
@@ -92,7 +92,7 @@ while($data2=mysql_fetch_array($req2)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF"><em>
-      <? $RefLocalite=$data2['RefLocalite'];
+      <?php $RefLocalite=$data2['RefLocalite'];
 	 
 	 $sql32 = "SELECT * FROM ville where refville=$RefLocalite";
 $result32 = mysql_query($sql32);
@@ -102,13 +102,13 @@ echo $ville=$row32['ville'];
 	 
 	 ?>
     </em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data2['nbres'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data2['totalttc'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><? echo $data2['impayee'];?></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data2['ortc'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data2['Pre'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data2['totalnet'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data2['report'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data2['nbres'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data2['totalttc'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><?php echo $data2['impayee'];?></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data2['ortc'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data2['Pre'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data2['totalnet'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data2['report'];?></em></td>
   </tr>
   <?php
 }  
@@ -124,7 +124,7 @@ $req33i=mysql_query($sql33i);
 ?>
 </p>
 <H2>
-  <p align="center" >   TOTAL A RECOUVRER DES MOSQUEES  <? echo $nserie1.'/'.$annee1rp; ?></p>
+  <p align="center" >   TOTAL A RECOUVRER DES MOSQUEES  <?php echo $nserie1.'/'.$annee1rp; ?></p>
 </H2>
 <table width="100%" border="1" align="center" cellpadding="1" cellspacing="0" bgcolor="#CCCCCC">
   <tr bgcolor="#96d947">
@@ -142,13 +142,13 @@ while($data33i=mysql_fetch_array($req33i)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF">&nbsp;</td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33i['nbres'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33i['totalttc'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><? echo $data33i['impayee'];?></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33i['ortc'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33i['Pre'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33i['totalnet'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33i['report'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33i['nbres'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33i['totalttc'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><?php echo $data33i['impayee'];?></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33i['ortc'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33i['Pre'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33i['totalnet'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33i['report'];?></em></td>
   </tr>
   <?php
 }  
@@ -162,7 +162,7 @@ $req33A=mysql_query($sql33A);
 ?>
 </p>
 <H2>
-  <p align="center" >   TOTAL A RECOUVRER DES AGENTS &amp; RETRAITES <? echo $nserie1.'/'.$annee1rp; ?></p>
+  <p align="center" >   TOTAL A RECOUVRER DES AGENTS &amp; RETRAITES <?php echo $nserie1.'/'.$annee1rp; ?></p>
 </H2>
 <table width="100%" border="1" align="center" cellpadding="1" cellspacing="0" bgcolor="#CCCCCC">
   <tr bgcolor="#96d947">
@@ -180,13 +180,13 @@ while($data33A=mysql_fetch_array($req33A)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF">&nbsp;</td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33A['nbres'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33A['totalttc'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><? echo $data33A['impayee'];?></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33A['ortc'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33A['Pre'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33A['totalnet'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33A['report'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33A['nbres'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33A['totalttc'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><?php echo $data33A['impayee'];?></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33A['ortc'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33A['Pre'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33A['totalnet'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33A['report'];?></em></td>
   </tr>
   <?php
 }  
@@ -200,7 +200,7 @@ $req33T=mysql_query($sql33T);
 ?>
 </p>
 <H2>
-  <p align="center" > TOTAL DES TRIPHASES <? echo $nserie1.'/'.$annee1rp; ?></p>
+  <p align="center" > TOTAL DES TRIPHASES <?php echo $nserie1.'/'.$annee1rp; ?></p>
 </H2>
 <table width="100%" border="1" align="center" cellpadding="1" cellspacing="0" bgcolor="#CCCCCC">
   <tr bgcolor="#96d947">
@@ -218,13 +218,13 @@ while($data33T=mysql_fetch_array($req33T)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF">&nbsp;</td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33T['nbres'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33T['totalttc'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><? echo $data33T['impayee'];?></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33T['ortc'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33T['Pre'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33T['totalnet'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33T['report'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33T['nbres'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33T['totalttc'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><?php echo $data33T['impayee'];?></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33T['ortc'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33T['Pre'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33T['totalnet'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33T['report'];?></em></td>
   </tr>
   <?php
 }  
@@ -238,7 +238,7 @@ $req33B=mysql_query($sql33B);
 ?>
 </p>
 <H2>
-  <p align="center" > TOTAL A RECOUVRER DES BASES TENSION - MONOPHASE <? echo $nserie1.'/'.$annee1rp; ?></p>
+  <p align="center" > TOTAL A RECOUVRER DES BASES TENSION - MONOPHASE <?php echo $nserie1.'/'.$annee1rp; ?></p>
 </H2>
 <table width="100%" border="1" align="center" cellpadding="1" cellspacing="0" bgcolor="#CCCCCC">
   <tr bgcolor="#96d947">
@@ -256,13 +256,13 @@ while($data33B=mysql_fetch_array($req33B)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF">&nbsp;</td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33B['nbres'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33B['totalttc'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><? echo $data33B['impayee'];?></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33B['ortc'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33B['Pre'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33B['totalnet'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33B['report'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33B['nbres'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33B['totalttc'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><?php echo $data33B['impayee'];?></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33B['ortc'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33B['Pre'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33B['totalnet'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33B['report'];?></em></td>
   </tr>
   <?php
 }  
@@ -276,7 +276,7 @@ $req33M=mysql_query($sql33M);
 ?>
 </p>
 <H2>
-  <p align="center" > TOTAL A RECOUVRER DES MOYENS TENSION <? echo $nserie1.'/'.$annee1rp; ?></p>
+  <p align="center" > TOTAL A RECOUVRER DES MOYENS TENSION <?php echo $nserie1.'/'.$annee1rp; ?></p>
 </H2>
 <table width="100%" border="1" align="center" cellpadding="1" cellspacing="0" bgcolor="#CCCCCC">
   <tr bgcolor="#96d947">
@@ -294,13 +294,13 @@ while($data33M=mysql_fetch_array($req33M)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF">&nbsp;</td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33M['nbres'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33M['totalttc'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><? echo $data33M['impayee'];?></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33M['ortc'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33M['Pre'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33M['totalnet'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data33M['report'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33M['nbres'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33M['totalttc'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><?php echo $data33M['impayee'];?></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33M['ortc'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33M['Pre'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33M['totalnet'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data33M['report'];?></em></td>
   </tr>
   <?php
 }  
@@ -315,7 +315,7 @@ $req3=mysql_query($sql3);
 ?>
 </p>
 <H2>
-  <p align="center" >  MONTANT TOTAL A RECOUVRER   <? echo $nserie1.'/'.$annee1rp; ?></p>
+  <p align="center" >  MONTANT TOTAL A RECOUVRER   <?php echo $nserie1.'/'.$annee1rp; ?></p>
   <p align="center" >&nbsp;</p>
 </H2>
 <table width="100%" border="1" align="center" cellpadding="1" cellspacing="0" bgcolor="#CCCCCC">
@@ -334,13 +334,13 @@ while($data3=mysql_fetch_array($req3)){ // Start looping table row
 ?>
   <tr>
     <td height="43"  bgcolor="#FFFFFF">&nbsp;</td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data3['nbres'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data3['totalttc'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><? echo $data3['impayee'];?></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data3['ortc'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data3['Pre'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data3['totalnet'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data3['report'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data3['nbres'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data3['totalttc'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><?php echo $data3['impayee'];?></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data3['ortc'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data3['Pre'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data3['totalnet'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data3['report'];?></em></td>
   </tr>
   <?php
 }  

@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -10,12 +10,12 @@ require 'fonction.php';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
 
-<? require 'client_anomalies_menu.php';?>
+<?php require 'client_anomalies_menu.php';?>
 
   <?php
 require 'fonction.php';
@@ -63,17 +63,17 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
   <?php
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
-  <tr bgcolor="<? gettatut($data['statut']); ?>">
-    <td > <? echo $data['idanomalie']; ?></td>
-    <td ><? echo $data['datetinfo']; ?></span></td>
-    <td ><? $idclient=$data['idclient']; $nom_prenom=Nom_prenom_client($idclient, $tbl_contact,$linki); echo $nom_prenom;?>     - (<? echo $idclient; ?>) </td>
-    <td ><? echo $data['description'];?></td>
-     <td ><? echo $data['service'];?></td>
-    <td ><? echo $data['niveau'];?></td>
-    <td ><? echo $data['statut'];?></td>
+  <tr bgcolor="<?php gettatut($data['statut']); ?>">
+    <td > <?php echo $data['idanomalie']; ?></td>
+    <td ><?php echo $data['datetinfo']; ?></span></td>
+    <td ><?php $idclient=$data['idclient']; $nom_prenom=Nom_prenom_client($idclient, $tbl_contact,$linki); echo $nom_prenom;?>     - (<?php echo $idclient; ?>) </td>
+    <td ><?php echo $data['description'];?></td>
+     <td ><?php echo $data['service'];?></td>
+    <td ><?php echo $data['niveau'];?></td>
+    <td ><?php echo $data['statut'];?></td>
     <td >
     
-    <a href="client_anomalies_resoudre_intervension.php?id=<? echo md5(microtime()).$data['idanomalie']; ?>" class="btn btn-sm btn-success" > Les  intervensions</a>
+    <a href="client_anomalies_resoudre_intervension.php?id=<?php echo md5(microtime()).$data['idanomalie']; ?>" class="btn btn-sm btn-success" > Les  intervensions</a>
       <div align="left"></div>
       
     </td>

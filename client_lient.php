@@ -1,6 +1,6 @@
 <img src="images/eda.png" width="249" height="97" />
 <p>
-<?
+<?php
 $class='btn btn-primary';
 $class2='btn btn-success';
 $class3='btn btn-warning';

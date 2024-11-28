@@ -1,8 +1,8 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if($_SESSION['u_niveau'] != 20) {
 	header("location:index.php?error=false");
 	exit;
@@ -11,9 +11,9 @@ require 'fonction.php';
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -87,11 +87,11 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 ?>
               <tr> 
                 <td bgcolor="#FFFFFF"><div align="left"> 
-                    <? echo $data['Numc'];?>
+                    <?php echo $data['Numc'];?>
                     <BR>
                   </div></td>
                 <td align="" bgcolor="#FFFFFF"><em> 
-                  <? echo $data['Description'];?>
+                  <?php echo $data['Description'];?>
                   </em></td>
               </tr>
               <?php

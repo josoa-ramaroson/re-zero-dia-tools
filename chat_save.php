@@ -1,4 +1,4 @@
-<?
+<?php
 // Enregistrer des informations
 $SID1=addslashes($_POST['SID1']);
 $SID2=addslashes($_POST['SID2']);

@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -9,7 +9,7 @@ require 'fonction.php';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -43,17 +43,17 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
    <?php
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
-   <tr bgcolor="<? gettatut($data['bstatut']); ?>">
-     <td align="center" ><? echo $data['ville'];?></td>
-     <td align="center" ><? echo $data['quartier'];?></td>
-     <td align="center" ><em><? echo $data['Nomclient'];?></em></td>
-     <td align="center" ><em><? echo $data['montant'];?></em></td>
-     <td align="center" ><em><? echo $data['paiement'];?></em></td>
-     <td align="center" ><? echo $data['report'];?></td>
-     <td align="center" >             <? if ($data['bstatut']!='retablie' ) {?>
+   <tr bgcolor="<?php gettatut($data['bstatut']); ?>">
+     <td align="center" ><?php echo $data['ville'];?></td>
+     <td align="center" ><?php echo $data['quartier'];?></td>
+     <td align="center" ><em><?php echo $data['Nomclient'];?></em></td>
+     <td align="center" ><em><?php echo $data['montant'];?></em></td>
+     <td align="center" ><em><?php echo $data['paiement'];?></em></td>
+     <td align="center" ><?php echo $data['report'];?></td>
+     <td align="center" >             <?php if ($data['bstatut']!='retablie' ) {?>
         
-        <a href="coupure_remise_save.php?idf=<? echo md5(microtime()).$data['idf']; ?>" class="btn btn-warning"> REMISE </a>
-        <? } else { echo $data['bstatut']; } ?> </td>
+        <a href="coupure_remise_save.php?idf=<?php echo md5(microtime()).$data['idf']; ?>" class="btn btn-warning"> REMISE </a>
+        <?php } else { echo $data['bstatut']; } ?> </td>
    </tr>
    <?php
 }

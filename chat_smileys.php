@@ -1,4 +1,4 @@
-<?
+<?php
 //$message = str_replace(':)' ,'<img src="smileys/0100.gif"/>',$message);
 
 $message = str_replace('sourire' ,'<img src="smileys/1.gif" width=25 height=25 />',$message);

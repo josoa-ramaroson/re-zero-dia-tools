@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 if(($_SESSION['u_niveau'] != 7)) {
 	header("location:index.php?error=false");
 	exit;
@@ -11,12 +11,12 @@ if(($_SESSION['u_niveau'] != 7)) {
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 
 </head>
-<?
+<?php
 Require("bienvenue.php");    // on appelle la page contenant la fonction
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -64,11 +64,11 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
       <tr bgcolor=<?php gettatut2($data['u_niveau']); ?>>
-        <td align="center" ><? echo $data['agence'];?></td>
-        <td width="213"   ><em><? echo $data['u_nom'].' '.$data['u_prenom'];?></em></td>
-        <td width="148"   ><em><? echo $data['mobile'];?></em></td>
+        <td align="center" ><?php echo $data['agence'];?></td>
+        <td width="213"   ><em><?php echo $data['u_nom'].' '.$data['u_prenom'];?></em></td>
+        <td width="148"   ><em><?php echo $data['mobile'];?></em></td>
         <td width="143"   ><em>
-          <? require 'fonction_niveau_affichage.php'; ?>
+          <?php require 'fonction_niveau_affichage.php'; ?>
         </em></td>
         <td width="143"   >&nbsp;</td>
         </tr>

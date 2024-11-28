@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 require 'configuration.php';
@@ -15,7 +15,7 @@ require_once('calendar/classes/tc_calendar.php');
 <script language="javascript" src="calendar/calendar.js"></script>
 <script type="text/javascript" src="js/validator.js"></script>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -66,7 +66,7 @@ $datam=mysql_fetch_array($req);
           <td width="11%">ID_CLIENT</td>
           <td width="1%">&nbsp;</td>
           <td width="35%"><strong>
-            <? echo $datam['id'];?>
+            <?php echo $datam['id'];?>
             </strong></td>
           <td width="1%">&nbsp;</td>
           <td width="12%">&nbsp;</td>
@@ -76,22 +76,22 @@ $datam=mysql_fetch_array($req);
           <td><strong><font size="2">Designation</font></strong></td>
           <td>&nbsp;</td>
           <td><strong>
-           <? echo $datam['Designation'];?>
+           <?php echo $datam['Designation'];?>
           </strong></td>
           <td>&nbsp;</td>
           <td><strong><font color="#000000" size="2">Ville</font></strong></td>
           <td><strong>
-           <? echo $datam['ville'];?>
+           <?php echo $datam['ville'];?>
           </strong></td>
         </tr>
         <tr>
           <td><strong><font size="2">Nom et Prénom <font size="2"><font color="#FF0000"> *</font></font></font></strong></td>
           <td>&nbsp;</td>
-          <td><? echo $datam['nomprenom'];?>&nbsp;</td>
+          <td><?php echo $datam['nomprenom'];?>&nbsp;</td>
           <td>&nbsp;</td>
           <td><strong><font size="2">Quartier</font></strong></td>
           <td><strong>
-            <? echo $datam['quartier'];?>
+            <?php echo $datam['quartier'];?>
           </strong></td>
         </tr>
       </table>
@@ -107,7 +107,7 @@ $datam=mysql_fetch_array($req);
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td width="6%">Date :</td>
-    <td width="17%"><input name="date" type="text" id="date" value="<? echo $datecaisse['datecaisse'];?>" size="30" readonly="readonly" /></td>
+    <td width="17%"><input name="date" type="text" id="date" value="<?php echo $datecaisse['datecaisse'];?>" size="30" readonly="readonly" /></td>
     <td width="0%">&nbsp;</td>
     <td width="4%">Libelle</td>
     <td width="3%">&nbsp;</td>
@@ -127,13 +127,13 @@ echo '<option> '.$row2['libelle'].' </option>';
     <td width="3%">&nbsp;</td>
     <td width="23%"><input type="submit" name="button" id="button" value="Enregistre le montant " />
       <font size="2"><strong><font size="2"><strong><font color="#FF0000">
-      <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>" />
+      <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
       </font><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-      <input name="id" type="hidden" id="id" value="<? echo $datam['id']; ?>" />
+      <input name="id" type="hidden" id="id" value="<?php echo $datam['id']; ?>" />
       </font><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-      <input name="nomprenom" type="hidden" id="nomprenom" value="<? echo $datam['nomprenom']; ?>" />
+      <input name="nomprenom" type="hidden" id="nomprenom" value="<?php echo $datam['nomprenom']; ?>" />
       </font></strong></font></strong></font></strong></font></strong></font><font size="2"><strong><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-      <input name="quartier" type="hidden" id="quartier" value="<? echo $datam['quartier']; ?>" />
+      <input name="quartier" type="hidden" id="quartier" value="<?php echo $datam['quartier']; ?>" />
       </font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></td>
   </tr>
 </table>

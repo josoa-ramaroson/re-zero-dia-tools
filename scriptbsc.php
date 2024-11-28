@@ -1,4 +1,4 @@
-<?
+<?php
  $fichier="cle.crt";
  if($fp=fopen("$fichier","r"))
  {

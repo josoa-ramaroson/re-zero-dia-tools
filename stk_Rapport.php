@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'fonction.php';
@@ -9,13 +9,13 @@ require"fc-affichage.php";
 <html>
 <head>
 <title>
-<? include("titre.php"); ?></title>
+<?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="calendar/calendar.js"></script>
 </head>
-<?
+<?php
 require("bienvenue.php"); 
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -88,10 +88,10 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 ?>
   <tr> 
     <td align="center" bgcolor="#FFFFFF"> <div align="left"></div>
-      <div align="left"><em><? echo $data['thetitre'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="center"><em><? echo $data['qte'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="center"><em><? echo $data['qtv'];?></em></div></td>
-  <td align="center" bgcolor="#FFFFFF"> <div align="center"><em><? echo $data['reste'];?></em></div></td>
+      <div align="left"><em><?php echo $data['thetitre'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="center"><em><?php echo $data['qte'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="center"><em><?php echo $data['qtv'];?></em></div></td>
+  <td align="center" bgcolor="#FFFFFF"> <div align="center"><em><?php echo $data['reste'];?></em></div></td>
     <td align="center" bgcolor="#FFFFFF"><div align="center"><em> </em></div></td>
 	
   </tr>

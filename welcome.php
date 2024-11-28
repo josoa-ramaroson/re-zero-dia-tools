@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 require 'fc-affichage.php';
@@ -49,7 +49,7 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 ?>
   <tr>
     <td>&nbsp;</td>
-    <td align="center"><strong><font color="#000000"><? echo $data['detail']; ?></font></strong></td>
+    <td align="center"><strong><font color="#000000"><?php echo $data['detail']; ?></font></strong></td>
     <td>&nbsp;</td>
   </tr>
 </table>

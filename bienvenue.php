@@ -1,7 +1,7 @@
 <html>
 <head>
-<title><? include 'titre.php'; ?></title>
-<? include 'inc/head.php'; ?>
+<title><?php include 'titre.php'; ?></title>
+<?php include 'inc/head.php'; ?>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 </head>
 <BODY BGCOLOR="#ffffff" LEFTMARGIN="0" TOPMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0">
@@ -19,7 +19,7 @@ require 'fonctionidentif.php';
     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td>
-            <? include "menu.php"; ?>
+            <?php include "menu.php"; ?>
           </td>
         </tr>
       </table> </td>

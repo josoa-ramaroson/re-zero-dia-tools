@@ -1,4 +1,4 @@
-<?
+<?php
 require 'sessionclient.php';
 require 'fc-affichage.php';
 require_once('calendar/classes/tc_calendar.php');
@@ -6,14 +6,14 @@ require 'fonction.php';
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
-<? include 'inc/head.php'; ?>
+<title><?php include("titre.php"); ?></title>
+<?php include 'inc/head.php'; ?>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <script language="javascript" src="calendar/calendar.js"></script>
 
 </head>
-<?
+<?php
 $idc=substr($_REQUEST["idr"],32);
 $nomclient=$_REQUEST["nc"];
 require "client_lient.php";
@@ -38,9 +38,9 @@ $req = mysql_query($sql)
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
                 <tr>
-                  <td><? echo $data['dated'];?></td>
-                  <td><? echo $data['note'];?>  
-                 <? 
+                  <td><?php echo $data['dated'];?></td>
+                  <td><?php echo $data['note'];?>
+                 <?php
 				  $tr=$data['Nsend'];
 				  $Banque=$data['Banque'];
 				  
@@ -52,7 +52,7 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
                   </td>
                   <td>
                   
-                   <?
+                   <?php
 				   $idv=$data['idv'];
 				   $sqlr="SELECT * FROM $tb_echangreponse WHERE idv='$idv'" ;
 				   $resu= mysql_query($sqlr);

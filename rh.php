@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 require_once('calendar/classes/tc_calendar.php');
@@ -69,7 +69,7 @@ httpxml.send(null);
 </script>
 
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>

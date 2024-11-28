@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -10,7 +10,7 @@ require 'fonction.php';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -52,14 +52,14 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
   <tr>
-    <td  bgcolor="#FFFFFF"><? echo $data['id']; ?>
+    <td  bgcolor="#FFFFFF"><?php echo $data['id']; ?>
       <div align="left"></div></td>
-    <td  bgcolor="#FFFFFF"><span style="background-color:#FFF;"><? echo $data['ile'].'-'.$data['ville']; ?></span></td>
-    <td  bgcolor="#FFFFFF"><span style="background-color:#FFF;"><? echo $data['agence']; ?></span></td>
-    <td width="176"   style="background-color:#FFF;"><? echo $data['nom'];?></td>
-    <td width="157"   style="background-color:#FFF;"><? echo $data['utilisation'];?></td>
-    <td width="124"   style="background-color:#FFF;"><? echo $data['utilisateur'];?></td>
-    <td width="166"   style="background-color:#FFF;"><a href="pc_affichage_user.php?id=<? echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-success" >Apperçu</a></td>
+    <td  bgcolor="#FFFFFF"><span style="background-color:#FFF;"><?php echo $data['ile'].'-'.$data['ville']; ?></span></td>
+    <td  bgcolor="#FFFFFF"><span style="background-color:#FFF;"><?php echo $data['agence']; ?></span></td>
+    <td width="176"   style="background-color:#FFF;"><?php echo $data['nom'];?></td>
+    <td width="157"   style="background-color:#FFF;"><?php echo $data['utilisation'];?></td>
+    <td width="124"   style="background-color:#FFF;"><?php echo $data['utilisateur'];?></td>
+    <td width="166"   style="background-color:#FFF;"><a href="pc_affichage_user.php?id=<?php echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-success" >Apperçu</a></td>
   </tr>
   <?php
 

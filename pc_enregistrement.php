@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if($_SESSION['u_niveau'] != 10) {
 	header("location:index.php?error=false");
 	exit;
@@ -11,10 +11,10 @@ require 'fonction.php';
 ?>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -32,7 +32,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
               <td width="1%">:</td>
               <td width="28%"><input name="nom" type="text" id="nom2" />
                 <font size="2"><strong><font size="2"><strong><font color="#FF0000">
-                <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>" />
+                <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
                 </font></strong></font></strong></font></td>
               <td width="1%">&nbsp;</td>
               <td width="18%"><font size="2"><strong>Souris</strong></font></td>
@@ -313,14 +313,14 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
   <tr>
-    <td height="25"  bgcolor="#FFFFFF"><? echo $data['id']; ?>
+    <td height="25"  bgcolor="#FFFFFF"><?php echo $data['id']; ?>
       <div align="left"></div></td>
-    <td  bgcolor="#FFFFFF"><? echo $data['ile']; ?></td>
-    <td  bgcolor="#FFFFFF"><? echo $data['ville']; ?></td>
-    <td width="307"   style="background-color:#FFF;"><? echo $data['agence']; ?></td>
-    <td width="150"   style="background-color:#FFF;"><? echo $data['utilisation'];?></td>
-    <td width="159"   style="background-color:#FFF;"><? echo $data['utilisateur'];?></td>
-    <td width="161"   style="background-color:#FFF;"><a href="pc_affichage_user.php?id=<? echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-success" >Apperçu</a></td>
+    <td  bgcolor="#FFFFFF"><?php echo $data['ile']; ?></td>
+    <td  bgcolor="#FFFFFF"><?php echo $data['ville']; ?></td>
+    <td width="307"   style="background-color:#FFF;"><?php echo $data['agence']; ?></td>
+    <td width="150"   style="background-color:#FFF;"><?php echo $data['utilisation'];?></td>
+    <td width="159"   style="background-color:#FFF;"><?php echo $data['utilisateur'];?></td>
+    <td width="161"   style="background-color:#FFF;"><a href="pc_affichage_user.php?id=<?php echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-success" >Apperçu</a></td>
   </tr>
   <?php
 

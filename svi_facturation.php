@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 require_once('calendar/classes/tc_calendar.php');
@@ -11,7 +11,7 @@ require_once('calendar/classes/tc_calendar.php');
 <script language="javascript" src="calendar/calendar.js"></script>
 <script type="text/javascript" src="js/validator.js"></script>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -99,22 +99,22 @@ $datam=mysql_fetch_array($resultm);
           <td>SIDCLIENT</td>
           <td>&nbsp;</td>
           <td><strong>
-            <? echo $datam['auid'];?>
+            <?php echo $datam['auid'];?>
           </strong></td>
           <td>&nbsp;</td>
           <td>SIDTransport</td>
-          <td><strong><? echo $datam['auidau'];?></strong></td>
+          <td><strong><?php echo $datam['auidau'];?></strong></td>
         </tr>
         <tr>
           <td><strong><font size="2">Nom et Prénom <font size="2"><font color="#FF0000"> *</font></font></font></strong></td>
           <td>&nbsp;</td>
-          <td><? echo $datam['conomprenom'];?></td>
+          <td><?php echo $datam['conomprenom'];?></td>
           <td>&nbsp;</td>
           <td><strong>
             <label for="checkbox_row_4">Matricule</label>
           </strong></td>
           <td><strong>
-           <? echo $datam['aumatricule'];?>
+           <?php echo $datam['aumatricule'];?>
           </strong></td>
         </tr>
       </table>
@@ -162,12 +162,12 @@ echo '<option> '.$row2['libelle'].' </option>';
     <td width="12%">&nbsp;</td>
     <td width="1%">&nbsp;</td>
     <td width="22%"><input type="submit" name="button" id="button" value="Enregistre le montant " />
-      <input name="id" type="hidden" value="<? echo $datam['auid']; ?>" />
-      <input name="idso" type="hidden" value="<? echo $datam['auidau']; ?>" />
+      <input name="id" type="hidden" value="<?php echo $datam['auid']; ?>" />
+      <input name="idso" type="hidden" value="<?php echo $datam['auidau']; ?>" />
       <input name="st" type="hidden" value="Ti" />
-      <input name="stlib" type="hidden" value="<? echo $datam['aumatricule']; ?>" />
+      <input name="stlib" type="hidden" value="<?php echo $datam['aumatricule']; ?>" />
       <font size="2"><strong><font size="2"><strong><font color="#FF0000">
-      <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>" />
+      <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
       </font></strong></font></strong></font></td>
   </tr>
 </table>
@@ -226,7 +226,7 @@ echo '<option> '.$row2['libelle'].' </option>';
       <td width="22%"><input type="submit" name="button2" id="button2" value="Enregistre le montant " />
         <input name="st" type="hidden" id="st" value="Ti" />
         <font size="2"><strong><font size="2"><strong><font color="#FF0000">
-          <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>" />
+          <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
         </font></strong></font></strong></font></td>
     </tr>
   </table>

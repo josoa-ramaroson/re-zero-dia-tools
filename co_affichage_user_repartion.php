@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
@@ -9,7 +9,7 @@ require 'fonction.php';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -57,17 +57,17 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
    <tr>
-     <td align="center"><div align="left"><em><? echo $data['id'];?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['nomprenom'];?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?  $ville=$data['ville']; echo $data['ville'];?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['quartier'];?></em></div></td>
+     <td align="center"><div align="left"><em><?php echo $data['id'];?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['nomprenom'];?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php  $ville=$data['ville']; echo $data['ville'];?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['quartier'];?></em></div></td>
      <td align="center" bgcolor="#FFFFFF"><div>
      
- <a href="co_affichage_user_repartion_save.php?quartier=<? echo $RefQuartier;?>&refville=<? echo $RefLocalite;?>&id=<? echo $data['id'];?>&id_nom=<? echo $id_nom; ?>&nomprenom=<? echo $data['nomprenom'];?>&date=<? echo $datecaisse['datecaisse'];?>"
+ <a href="co_affichage_user_repartion_save.php?quartier=<?php echo $RefQuartier;?>&refville=<?php echo $RefLocalite;?>&id=<?php echo $data['id'];?>&id_nom=<?php echo $id_nom; ?>&nomprenom=<?php echo $data['nomprenom'];?>&date=<?php echo $datecaisse['datecaisse'];?>"
  
  
  
-  class="btn btn-sm btn-warning"> <? echo $quartier;?> </a>
+  class="btn btn-sm btn-warning"> <?php echo $quartier;?> </a>
   
      </div></td>
     
@@ -75,18 +75,18 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
      
      <div>
        
-        <?    
+        <?php    
      	if(!isset($RefQuartier_1)|| empty($RefQuartier_1)) {
  } else {?>
  
- <a href="co_affichage_user_repartion_save.php?quartier=<? echo $RefQuartier_1;?>&refville=<? echo $RefLocalite_1;?>&id=<? echo $data['id'];?>&id_nom=<? echo $id_nom; ?>&nomprenom=<? echo $data['nomprenom'];?>&date=<? echo $datecaisse['datecaisse'];?>"
+ <a href="co_affichage_user_repartion_save.php?quartier=<?php echo $RefQuartier_1;?>&refville=<?php echo $RefLocalite_1;?>&id=<?php echo $data['id'];?>&id_nom=<?php echo $id_nom; ?>&nomprenom=<?php echo $data['nomprenom'];?>&date=<?php echo $datecaisse['datecaisse'];?>"
        
        
        
        
-       class="btn btn-sm btn-info"> <? echo $quartier_1;?> </a>   
+       class="btn btn-sm btn-info"> <?php echo $quartier_1;?> </a>   
        
-    <? }?>   
+    <?php }?>   
        
        
        
@@ -98,17 +98,17 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
      
      <div>
      
-      <?    
+      <?php    
      	if(!isset($RefQuartier_2)|| empty($RefQuartier_2)) {
  } else {?>
      
- <a href="co_affichage_user_repartion_save.php?quartier=<? echo $RefQuartier_2;?>&refville=<? echo $RefLocalite_2;?>&id=<? echo $data['id'];?>&id_nom=<? echo $id_nom; ?>&nomprenom=<? echo $data['nomprenom'];?>&date=<? echo $datecaisse['datecaisse'];?>"
+ <a href="co_affichage_user_repartion_save.php?quartier=<?php echo $RefQuartier_2;?>&refville=<?php echo $RefLocalite_2;?>&id=<?php echo $data['id'];?>&id_nom=<?php echo $id_nom; ?>&nomprenom=<?php echo $data['nomprenom'];?>&date=<?php echo $datecaisse['datecaisse'];?>"
        
        
        
        
-       class="btn btn-sm btn-primary"> <? echo $quartier_2;?> </a>   
-       <? }?>   
+       class="btn btn-sm btn-primary"> <?php echo $quartier_2;?> </a>   
+       <?php }?>   
        
      
       </div>

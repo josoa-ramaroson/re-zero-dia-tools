@@ -1,4 +1,4 @@
-﻿<?
+﻿<?php
 $class='btn btn-primary';
 $class2='btn btn-success';
 $class3='btn btn-warning';
@@ -311,7 +311,7 @@ echo "<a class=\"$class\" type=\"button\" href=\"deconnexion.php?id=$idss\"> Dec
 
 ?>
 
-<?
+<?php
 if ( ($_SESSION['u_niveau'] == 104) ){
 echo "<nav class=\"navbar navbar-inverse\">";
 echo "<ul class=\"nav navbar-nav\">";

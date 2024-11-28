@@ -1,8 +1,8 @@
-﻿<?
+﻿<?php
 require 'session.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if((($_SESSION['u_niveau'] != 20) ) && ($_SESSION['u_niveau'] != 90)) {
 	header("location:index.php?error=false");
 	exit;
@@ -11,9 +11,9 @@ require 'fonction.php';
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 $annee=$_POST['annee'];
 ?>
@@ -52,20 +52,20 @@ $annee=$_POST['annee'];
 ?>
               <tr> 
                 <td bgcolor="#FFFFFF"><div align=""> 
-                    <? echo $data['Compte'];?>
+                    <?php echo $data['Compte'];?>
                     <BR>
                   </div></td>
                 <td bgcolor="#FFFFFF"><div align=""> 
-                    <? echo $data['Description'];?>
+                    <?php echo $data['Description'];?>
                     <BR>
                   </div></td>
                 <td bgcolor="#FFFFFF"><div align=""> 
-                    <? //echo $data['Debit'];?>
-                    <? echo $dee ;?>
+                    <?php //echo $data['Debit'];?>
+                    <?php echo $dee ;?>
                     <BR>
                   </div></td>
                 <td bgcolor="#FFFFFF"><div align=""> 
-                    <? echo $de ;?>
+                    <?php echo $de ;?>
                     kmf<BR>
                     <?php
 // Exit looping and close connection 

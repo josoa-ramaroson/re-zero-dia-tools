@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 require_once('calendar/classes/tc_calendar.php');
 ?>
-<?
+<?php
 	if($_SESSION['u_niveau'] != 50) {
 	header("location:index.php?error=false");
 	exit;
@@ -12,7 +12,7 @@ require_once('calendar/classes/tc_calendar.php');
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 <script language="javascript" src="calendar/calendar.js"></script>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
@@ -80,7 +80,7 @@ httpxml.send(null);
 </script>
 
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -100,7 +100,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
           <td width="1%">&nbsp;</td>
           <td width="12%">&nbsp;</td>
           <td width="40%"><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-            <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>" />
+            <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
           </font><font size="2"><strong><font size="2"><strong><font size="2"><strong><font color="#FF0000">
           </font></strong></font></strong></font></strong></font></strong></font></strong></font></td>
         </tr>
@@ -233,7 +233,7 @@ echo "<option>$row[ville]</option>";
             <input name="tel" type="text" id="tel" size="40" />
           </strong></td>
           <td>&nbsp;</td>
-          <td><? // <strong><font size="2">Date d'inactivité</font></strong> ?></td>
+          <td><?php // <strong><font size="2">Date d'inactivité</font></strong> ?></td>
           <td><?php /*
 					  $myCalendar = new tc_calendar("dinactivite", true, false);
 					  $myCalendar->setIcon("calendar/images/iconCalendar.gif");

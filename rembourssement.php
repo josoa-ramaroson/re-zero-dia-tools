@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if($_SESSION['u_niveau'] != 6) {
 	header("location:index.php?error=false");
 	exit;
@@ -21,7 +21,7 @@ require_once('calendar/classes/tc_calendar.php');
 <script language="javascript" src="calendar/calendar.js"></script>
 <script type="text/javascript" src="js/validator.js"></script>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -107,15 +107,15 @@ $resultfac = mysql_query($sqfac) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql
 while($rowsfac=mysql_fetch_array($resultfac)){ 
 ?>
   <tr>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['id'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $rowsfac['id_nom'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $rowsfac['date'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $rowsfac['Nomclient'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['nfacture'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em> <a href="rembourssement_billimp.php?idp=<? echo md5(microtime()).$rowsfac['idp'];?>" target="_blank" > <? echo $rowsfac['nrecu'];?></a> </em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo ($rowsfac['montant']-$rowsfac['rembourser']);?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['rembourser'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['montant'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['id'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $rowsfac['id_nom'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $rowsfac['date'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $rowsfac['Nomclient'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['nfacture'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em> <a href="rembourssement_billimp.php?idp=<?php echo md5(microtime()).$rowsfac['idp'];?>" target="_blank" > <?php echo $rowsfac['nrecu'];?></a> </em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo ($rowsfac['montant']-$rowsfac['rembourser']);?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['rembourser'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['montant'];?></em></td>
   </tr>
   <?php
 }

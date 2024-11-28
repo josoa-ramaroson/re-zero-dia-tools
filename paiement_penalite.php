@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -8,7 +8,7 @@ require 'session.php';
 <title>Document sans titre</title>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <?php
@@ -44,23 +44,23 @@ require 'fonction.php';
 while($rowsfac=mysql_fetch_array($resultfac)){ 
 ?>
   <tr>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['idp'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $rowsfac['date'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $rowsfac['Nomclient'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['nfacture'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['idp'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $rowsfac['date'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $rowsfac['Nomclient'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['nfacture'];?></em></td>
     <td align="center" bgcolor="#FFFFFF"><em>
     
 
-<? if ($rowsfac['id']<500000) { ?>
- <a href="paiement_bill.php?idp=<? echo md5(microtime()).$rowsfac['idp'];?>" target="_blank" > <? echo $rowsfac['idp'];?></a>
-<? } else {?>
-<a href="paiement_billimpG.php?idp=<? echo md5(microtime()).$rowsfac['idp'];?>" target="_blank" > <? echo $rowsfac['idp'];?></a><? } ?> 
+<?php if ($rowsfac['id']<500000) { ?>
+ <a href="paiement_bill.php?idp=<?php echo md5(microtime()).$rowsfac['idp'];?>" target="_blank" > <?php echo $rowsfac['idp'];?></a>
+<?php } else {?>
+<a href="paiement_billimpG.php?idp=<?php echo md5(microtime()).$rowsfac['idp'];?>" target="_blank" > <?php echo $rowsfac['idp'];?></a><?php } ?>
     
     </em></td>
     
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['montant'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['paiement'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $rowsfac['report'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['montant'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['paiement'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['report'];?></em></td>
   </tr>
   <?php
 }

@@ -1,4 +1,4 @@
-    <?
+    <?php
 	require 'fonction.php';
 	function stat_eda3($mois,$annee,$tbl_production){
 	$sql = "SELECT * FROM $tbl_production where  mois=$mois and  annee=$annee ";
@@ -12,7 +12,7 @@
 	}	
 	?>
     
-        <?
+        <?php
 	//$annee=$_POST['annee']; 
 	require 'fonction.php';
 	$annee=$_REQUEST['annee'];

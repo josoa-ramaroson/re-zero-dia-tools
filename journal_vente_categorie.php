@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 ?>
@@ -8,7 +8,7 @@ require 'fonction.php';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 
 
@@ -38,7 +38,7 @@ $CodeTypeClts=addslashes($_REQUEST['CodeTypeClts']);
 
 ?>
 <body>
-<a href="journal_vente_categorieimp.php?m1v=<? echo md5(microtime()).$m1v;?>&m2q=<? echo md5(microtime()).$m2q;?>&c=<? echo md5(microtime()).$CodeTypeClts;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a>
+<a href="journal_vente_categorieimp.php?m1v=<?php echo md5(microtime()).$m1v;?>&m2q=<?php echo md5(microtime()).$m2q;?>&c=<?php echo md5(microtime()).$CodeTypeClts;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a>
 <p>
 <?php
 require 'configuration.php';
@@ -47,7 +47,7 @@ $sql = " SELECT * FROM $tbl_fact f , $tbl_contact c  where f.id=c.id and f.nseri
 $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
  
 ?>
- Ville : <em><? echo  $m1v;?></em> Quartier : <em><? echo $m2q;?></em> Categorie : <em><? //$CodeTypeClts;
+ Ville : <em><?php echo  $m1v;?></em> Quartier : <em><?php echo $m2q;?></em> Categorie : <em><?php //$CodeTypeClts;
  
 $sqltclient = "SELECT * FROM $tbl_client where idtclient='$CodeTypeClts'";
 $resulttclient = mysql_query($sqltclient);
@@ -72,15 +72,15 @@ echo $TypeClts=$rowtclient['TypeClts'];
    <?php
 while($datafact=mysql_fetch_array($req)){ // Start looping table row 
 ?>
-    <tr bgcolor="<? gettatut($datafact['totalht']); ?>">
+    <tr bgcolor="<?php gettatut($datafact['totalht']); ?>">
      <td align="center"><font color="#000000">
-	 <a href="co_bill.php?idf=<? echo md5(microtime()).$datafact['idf'];?>" class="btn btn-sm btn-default" target="_blank" ><? echo $datafact['id'];?></a>
+	 <a href="co_bill.php?idf=<?php echo md5(microtime()).$datafact['idf'];?>" class="btn btn-sm btn-default" target="_blank" ><?php echo $datafact['id'];?></a>
 	 </font></td>
-     <td ><font color="#000000"><? echo $datafact['nomprenom'];?></font></td>
-     <td align="center" ><em><font color="#000000"><? echo $datafact['n'];?></font></em></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['nf'];?></font></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['cons'];?></font></td>
-     <td align="center" ><font color="#000000"><? echo $datafact['totalht'];?></font></td>
+     <td ><font color="#000000"><?php echo $datafact['nomprenom'];?></font></td>
+     <td align="center" ><em><font color="#000000"><?php echo $datafact['n'];?></font></em></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['nf'];?></font></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['cons'];?></font></td>
+     <td align="center" ><font color="#000000"><?php echo $datafact['totalht'];?></font></td>
    </tr>
    <?php
 }

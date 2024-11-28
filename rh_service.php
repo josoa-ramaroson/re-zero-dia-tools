@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if(($_SESSION['u_niveau'] != 50)) {
 	header("location:index.php?error=false");
 	exit;
@@ -12,12 +12,12 @@ require 'fonction.php';
 
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 
 </head>
-<?
+<?php
 Require("bienvenue.php"); 
 //$_SESSION['niveau'];
 ?>
@@ -59,7 +59,7 @@ echo '<option  value= '.$row2['idrh'].'> '.$row2['direction'].' </option>';
           </tr>
         <tr> 
           <td><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-            <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>">
+            <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>">
           </font></strong></font></strong></font></td>
           <td>&nbsp;</td>
           </tr>
@@ -120,12 +120,12 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 ?>
 
     <tr> 
-      <td align="center" bgcolor="#FFFFFF"> <div align="left"><? echo $data['idser'];?></div>
+      <td align="center" bgcolor="#FFFFFF"> <div align="left"><?php echo $data['idser'];?></div>
         <div align="left"></div></td>
       <td align="center" bgcolor="#FFFFFF"><div align="left"><em>
-	  <? $bb1=$data['iddr'];  $dd=direction_eda($bb1,$tb_rhdirection); echo $dd; ?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['service'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><p><a href="rh_service_modifie.php?id=<? echo $data['idser']; ?>" class="btn btn-xs btn-success"><? echo 'Modifier' ?></a></p></td>
+	  <?php $bb1=$data['iddr'];  $dd=direction_eda($bb1,$tb_rhdirection); echo $dd; ?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['service'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><p><a href="rh_service_modifie.php?id=<?php echo $data['idser']; ?>" class="btn btn-xs btn-success"><?php echo 'Modifier' ?></a></p></td>
     </tr>
     
    
@@ -153,7 +153,7 @@ mysql_close ();
   </tr>
   <tr> 
     <td height="21"> 
-              <?
+              <?php
 	function direction_eda($iddr,$tb_rhdirection){
 	
 	$sql = "SELECT * FROM $tb_rhdirection where  idrh=$iddr ";

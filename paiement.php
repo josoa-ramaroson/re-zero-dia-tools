@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 if(($_SESSION['u_niveau'] != 4)) {
 	header("location:index.php?error=false");
 	exit;
@@ -15,7 +15,7 @@ if(($_SESSION['u_niveau'] != 4)) {
 <title>Document sans titre</title>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 
     //choix d espace de memoire pour les connection.---------------------------------------------------------------- 
@@ -136,23 +136,23 @@ $resultfac = mysql_query($sqfac) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql
   <?php
 while($rowsfac=mysql_fetch_array($resultfac)){ 
 ?>
-  <tr bgcolor="<? gettatut($rowsfac['type']); ?>">
-    <td align="center" ><em><? echo $rowsfac['id'];?></em></td>
-    <td align="center" ><div align="left"><em><? echo $rowsfac['id_nom'];?></em></div></td>
-    <td align="center" ><div align="left"><em><? echo $rowsfac['date'];?></em></div></td>
-    <td align="center" ><div align="left"><em><? echo $rowsfac['Nomclient'];?></em></div></td>
-    <td align="center" ><em><? echo $rowsfac['nfacture'];?></em></td>
+  <tr bgcolor="<?php gettatut($rowsfac['type']); ?>">
+    <td align="center" ><em><?php echo $rowsfac['id'];?></em></td>
+    <td align="center" ><div align="left"><em><?php echo $rowsfac['id_nom'];?></em></div></td>
+    <td align="center" ><div align="left"><em><?php echo $rowsfac['date'];?></em></div></td>
+    <td align="center" ><div align="left"><em><?php echo $rowsfac['Nomclient'];?></em></div></td>
+    <td align="center" ><em><?php echo $rowsfac['nfacture'];?></em></td>
     <td align="center" ><em>
     
-<? if ($rowsfac['id']<500000) { ?>
-<a href="paiement_billimp.php?idp=<? echo md5(microtime()).$rowsfac['idp'];?>" target="_blank" > <? echo $rowsfac['idp'];?></a>
-<? } else {?>
-<a href="paiement_billimpG.php?idp=<? echo md5(microtime()).$rowsfac['idp'];?>" target="_blank" > <? echo $rowsfac['idp'];?></a><? } ?> 
+<?php if ($rowsfac['id']<500000) { ?>
+<a href="paiement_billimp.php?idp=<?php echo md5(microtime()).$rowsfac['idp'];?>" target="_blank" > <?php echo $rowsfac['idp'];?></a>
+<?php } else {?>
+<a href="paiement_billimpG.php?idp=<?php echo md5(microtime()).$rowsfac['idp'];?>" target="_blank" > <?php echo $rowsfac['idp'];?></a><?php } ?>
     
     </em></td>
-    <td align="center" ><em><? echo $rowsfac['montant'];?></em></td>
-    <td align="center" ><em><? echo $rowsfac['paiement'];?></em></td>
-    <td align="center" ><em><? echo $rowsfac['report'];?></em></td>
+    <td align="center" ><em><?php echo $rowsfac['montant'];?></em></td>
+    <td align="center" ><em><?php echo $rowsfac['paiement'];?></em></td>
+    <td align="center" ><em><?php echo $rowsfac['report'];?></em></td>
   </tr>
   <?php
 }

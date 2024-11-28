@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'fc-affichage.php';
 ?>
-<?
+<?php
 	if((($_SESSION['u_niveau'] != 50) ) && ($_SESSION['u_niveau'] != 90)) {
 	header("location:index.php?error=false");
 	exit;
@@ -13,7 +13,7 @@ require 'fc-affichage.php';
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script language="javascript" src="calendar/calendar.js"></script>
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <script type="text/javascript">
 function AjaxFunction()
@@ -88,7 +88,7 @@ function toggleBox(szDivID, iState)// 1 visible, 0 hidden
   }
 </script>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <?php
@@ -102,20 +102,20 @@ $datam=mysql_fetch_array($resultm);
 	
 ?>
 <body>
-<? if ($_SESSION['u_niveau']==50){?>
+<?php if ($_SESSION['u_niveau']==50){?>
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title">GESTION DES CONGES</h3>
   </div>
   <div class="panel-body">
    
- <a href="rh_employer_edit.php?id=<? echo md5(microtime()).$datam['idrhp'];?>" class="btn btn-sm btn-success" >Edit l'employé</a>
+ <a href="rh_employer_edit.php?id=<?php echo md5(microtime()).$datam['idrhp'];?>" class="btn btn-sm btn-success" >Edit l'employé</a>
      | 
 <a href="#" onClick="toggleBox('activite',1);" class="btn btn-sm btn-success">Information Administratif </a> |
 
 <a href="rh_employer_affichage.php" class="btn btn-sm btn-success">Afficher les employés </a> |
 
-<a href="rh_employer_user_conge.php?id=<? echo md5(microtime()).$datam['idrhp'];?>" class="btn btn-sm btn-success">Planning des congés </a> | 
+<a href="rh_employer_user_conge.php?id=<?php echo md5(microtime()).$datam['idrhp'];?>" class="btn btn-sm btn-success">Planning des congés </a> |
       
 
      </div>
@@ -135,7 +135,7 @@ $datam=mysql_fetch_array($resultm);
             <tr>
               <td width="11%">&nbsp;</td>
               <td width="1%">&nbsp;</td>
-              <td width="35%"><strong> <? echo $datam['idrhp'];?> </strong></td>
+              <td width="35%"><strong> <?php echo $datam['idrhp'];?> </strong></td>
               <td width="1%">&nbsp;</td>
               <td width="12%">&nbsp;</td>
               <td width="40%">&nbsp;</td>
@@ -143,57 +143,57 @@ $datam=mysql_fetch_array($resultm);
             <tr>
               <td><strong><font size="2">Designation</font></strong></td>
               <td>&nbsp;</td>
-              <td><strong> <? echo $datam['Designation'];?> </strong></td>
+              <td><strong> <?php echo $datam['Designation'];?> </strong></td>
               <td>&nbsp;</td>
               <td><strong><font size="2">Niveau d'etude</font></strong></td>
-              <td><strong><? echo $datam['niveau'];?></strong></td>
+              <td><strong><?php echo $datam['niveau'];?></strong></td>
             </tr>
             <tr>
               <td><strong><font size="2">Nom et Prénom <font size="2"><font color="#FF0000"> *</font></font></font></strong></td>
               <td>&nbsp;</td>
-              <td><? echo $datam['nomprenom'];?>&nbsp;</td>
+              <td><?php echo $datam['nomprenom'];?>&nbsp;</td>
               <td>&nbsp;</td>
               <td><strong><font size="2">Specialisation</font></strong></td>
-              <td><strong><? echo $datam['specialisation'];?></strong></td>
+              <td><strong><?php echo $datam['specialisation'];?></strong></td>
             </tr>
             <tr>
               <td><strong><font size="2">Situation familiale</font></strong></td>
               <td>&nbsp;</td>
-              <td><? echo $datam['stfamille'];?></td>
+              <td><?php echo $datam['stfamille'];?></td>
               <td>&nbsp;</td>
               <td><strong><font size="2">Matricule</font></strong></td>
-              <td><strong><? echo $matricule=$datam['matricule'];?></strong></td>
+              <td><strong><?php echo $matricule=$datam['matricule'];?></strong></td>
             </tr>
             <tr>
               <td><strong><font size="2">Ville</font></strong></td>
               <td>&nbsp;</td>
-              <td><strong><? echo $datam['ville'];?></strong></td>
+              <td><strong><?php echo $datam['ville'];?></strong></td>
               <td>&nbsp;</td>
               <td><strong><font size="2">Direction</font></strong></td>
-              <td><strong><? echo $datam['direction'];?></strong></td>
+              <td><strong><?php echo $datam['direction'];?></strong></td>
             </tr>
             <tr>
               <td><strong><font size="2">T&eacute;l&eacute;phone</font></strong></td>
               <td>&nbsp;</td>
-              <td><strong><? echo $datam['tel'];?></strong></td>
+              <td><strong><?php echo $datam['tel'];?></strong></td>
               <td>&nbsp;</td>
               <td><strong><font size="2">Service</font></strong></td>
-              <td><strong><? echo $datam['service'];?></strong></td>
+              <td><strong><?php echo $datam['service'];?></strong></td>
             </tr>
           </table></td>
           <td width="2%">&nbsp;</td>
           <td width="10%">
           
-         <? $filename = 'upload/employer/'.$datam['idrhp'].'.jpg'; ?>
+         <?php $filename = 'upload/employer/'.$datam['idrhp'].'.jpg'; ?>
 									<div class="row">
-										<? if (file_exists($filename) == true) { ?>
-	<img class="pix" width="100" src="<? echo $filename; ?>" alt="<? echo $datam['nomprenom']; ?>" />
-										<? } else { ?>
-                             <? if ($datam['sex'] == 'Masculin') { $picture='homme.jpg';} else {$picture='femme.jpg';} ?>
+										<?php if (file_exists($filename) == true) { ?>
+	<img class="pix" width="100" src="<?php echo $filename; ?>" alt="<?php echo $datam['nomprenom']; ?>" />
+										<?php } else { ?>
+                             <?php if ($datam['sex'] == 'Masculin') { $picture='homme.jpg';} else {$picture='femme.jpg';} ?>
                                     
-	<img class="pix" height="100" width="100" src="upload/employer/<? echo $picture; ?>" alt="<? echo $datam['nomprenom']; ?> 
+	<img class="pix" height="100" width="100" src="upload/employer/<?php echo $picture; ?>" alt="<?php echo $datam['nomprenom']; ?>
 	" />
-										<? } ?>
+										<?php } ?>
           
           
           </td>
@@ -203,7 +203,7 @@ $datam=mysql_fetch_array($resultm);
   </tr>
 </table>
 <p>
-  <? if ($_SESSION['u_niveau']==50){?>
+  <?php if ($_SESSION['u_niveau']==50){?>
 </p>
 <p>&nbsp;</p>
 <div class="panel panel-info">
@@ -216,12 +216,12 @@ $datam=mysql_fetch_array($resultm);
         <tr>
           <td width="11%">Nombre des jours</td>
           <td width="23%"><strong>
-            <input class="form-control" name="nconge" type="text" id="nconge" value="<? echo $datam['nconge'];?>" size="40" />
+            <input class="form-control" name="nconge" type="text" id="nconge" value="<?php echo $datam['nconge'];?>" size="40" />
           </strong></td>
           <td width="4%"><strong>
-            <input name="id" type="hidden" id="id" value="<? echo $datam['idrhp'];?>" size="10" readonly />
+            <input name="id" type="hidden" id="id" value="<?php echo $datam['idrhp'];?>" size="10" readonly />
             <font size="2"><strong><font size="2"><strong><font color="#FF0000">
-            <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>" />
+            <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
           </font></strong></font></strong></font></strong></td>
           <td width="40%"><strong><span style="font-size:8.5pt;font-family:Arial">
             <input type="submit" name="Submit2" value="Enregistrer les mises à jours des congés" class="btn btn-info" />
@@ -249,11 +249,11 @@ $datam=mysql_fetch_array($resultm);
                 <td width="14%">&nbsp;</td>
                 <td width="13%">&nbsp;</td>
                 <td width="13%">&nbsp;</td>
-                <td width="12%"><input name="nomprenom" type="hidden" id="dentre" value="<? echo $datam['nomprenom']; ?>">
-                <input name="matricule" type="hidden" id="iddossier" value="<? echo $datam['matricule']; ?>">
+                <td width="12%"><input name="nomprenom" type="hidden" id="dentre" value="<?php echo $datam['nomprenom']; ?>">
+                <input name="matricule" type="hidden" id="iddossier" value="<?php echo $datam['matricule']; ?>">
                 <font color="#FF0000">
-                <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>">
-                <input name="id" type="hidden" id="id" value="<? echo $datam['idrhp']; ?>">
+                <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>">
+                <input name="id" type="hidden" id="id" value="<?php echo $datam['idrhp']; ?>">
                 </font></td>
                 <td width="6%">&nbsp;</td>
                 <td width="12%">&nbsp;</td>
@@ -327,12 +327,12 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
   <tr>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data['matricule'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['nomprenom'];?></em></div></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data['date_entre'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data['date_sortie'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data['nbJours'];?></em></td>
-    <td align="center" bgcolor="#FFFFFF"><em><? echo $data['type'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['matricule'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['nomprenom'];?></em></div></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['date_entre'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['date_sortie'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['nbJours'];?></em></td>
+    <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['type'];?></em></td>
   </tr>
   <?php
 }

@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 function barre_navigation ($nb_total,$nb_affichage_par_page,$debut, $refville , $RefQuartier, $nb_liens_dans_la_barre) { 
@@ -105,7 +105,7 @@ function barre_navigation ($nb_total,$nb_affichage_par_page,$debut, $refville , 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 
 
@@ -159,7 +159,7 @@ echo '<option value= '.$row83['ref_com'].'> '.$row83['commune'].' </option>';
     </div></td>
     <td width="2%">&nbsp;</td>
     <td width="2%">&nbsp;</td>
-    <td width="44%"><a href="journal_vente_mois_listeimp.php?m1v=<? echo md5(microtime()).$m1v;?>&ref_com=<? echo md5(microtime()).$ref_com;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a></td>
+    <td width="44%"><a href="journal_vente_mois_listeimp.php?m1v=<?php echo md5(microtime()).$m1v;?>&ref_com=<?php echo md5(microtime()).$ref_com;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a></td>
   </tr>
   <tr>
     <td>&nbsp;</td>

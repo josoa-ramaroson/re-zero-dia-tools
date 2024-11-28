@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if((($_SESSION['u_niveau'] != 50) ) && ($_SESSION['u_niveau'] != 90)) {
 	header("location:index.php?error=false");
 	exit;
@@ -13,9 +13,9 @@ require 'fonction.php';
 <head>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 </head>
-<?
+<?php
 require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -76,22 +76,22 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
    <tr>
-     <td align="center" bgcolor="#FFFFFF">         <? $filename = 'upload/employer/'.$data['idrhp'].'.jpg'; ?>
+     <td align="center" bgcolor="#FFFFFF">         <?php $filename = 'upload/employer/'.$data['idrhp'].'.jpg'; ?>
 									<div class="row">
-										<? if (file_exists($filename) == true) { ?>
-	<img class="pix" width="100" src="<? echo $filename; ?>" alt="<? echo $data['nomprenom']; ?>" />
-										<? } else { ?>
-                                <? if ($data['sex'] == 'Masculin') { $picture='homme.jpg';} else {$picture='femme.jpg';} ?>
+										<?php if (file_exists($filename) == true) { ?>
+	<img class="pix" width="100" src="<?php echo $filename; ?>" alt="<?php echo $data['nomprenom']; ?>" />
+										<?php } else { ?>
+                                <?php if ($data['sex'] == 'Masculin') { $picture='homme.jpg';} else {$picture='femme.jpg';} ?>
                                         
-	<img class="pix" height="100" width="100" src="upload/employer/<? echo $picture; ?>" alt="<? echo $data['nomprenom']; ?>" />
-										<? } ?></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['matricule'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['nomprenom'];?></em> (<? echo $data['tel'];?>)</div>
+	<img class="pix" height="100" width="100" src="upload/employer/<?php echo $picture; ?>" alt="<?php echo $data['nomprenom']; ?>" />
+										<?php } ?></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['matricule'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['nomprenom'];?></em> (<?php echo $data['tel'];?>)</div>
      </td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['titre'];?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['direction'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['service'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><a href="rh_employer_user.php?id=<? echo md5(microtime()).$data['idrhp']; ?>" class="btn btn-sm btn-success" >Aperçu</a></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['titre'];?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['direction'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['service'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><a href="rh_employer_user.php?id=<?php echo md5(microtime()).$data['idrhp']; ?>" class="btn btn-sm btn-success" >Aperçu</a></td>
    </tr>
    <?php
 }

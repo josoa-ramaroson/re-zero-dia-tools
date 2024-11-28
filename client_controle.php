@@ -1,4 +1,4 @@
-<?
+<?php
 require 'sessionclient.php';
 require 'fc-affichage.php';
 require_once('calendar/classes/tc_calendar.php');
@@ -6,14 +6,14 @@ require 'fonction.php';
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
-<? include 'inc/head.php'; ?>
+<title><?php include("titre.php"); ?></title>
+<?php include 'inc/head.php'; ?>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 <script language="javascript" src="calendar/calendar.js"></script>
 
 </head>
-<?
+<?php
 $idc=substr($_REQUEST["idr"],32);
 $nomclient=$_REQUEST["nc"];
 require "client_lient.php";
@@ -48,9 +48,9 @@ require "client_lient.php";
                       <tr>
                         <td>&nbsp;</td>
                         <td><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-                          <input name="id_client" type="hidden" id="id_client" value="<? echo $idc; ?>">
+                          <input name="id_client" type="hidden" id="id_client" value="<?php echo $idc; ?>">
                         </font><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-                        <input name="nom_client" type="hidden" id="nom_client" value="<? echo $nomclient; ?>">
+                        <input name="nom_client" type="hidden" id="nom_client" value="<?php echo $nomclient; ?>">
                         </font></strong></font></strong></font></strong></font></strong></font></td>
                       </tr>
                       <tr>

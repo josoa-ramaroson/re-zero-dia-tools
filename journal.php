@@ -1,11 +1,11 @@
-<?
+<?php
 require 'session.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'fc-affichage.php';
 require 'fonction.php';
 require 'configuration.php';
 ?>
-<?
+<?php
 if(($_SESSION['u_niveau'] != 2) && ($_SESSION['u_niveau'] != 5) && ($_SESSION['u_niveau'] != 43) && ($_SESSION['u_niveau'] != 8)&& ($_SESSION['u_niveau'] != 3) && ($_SESSION['u_niveau'] != 90) && ($_SESSION['u_niveau'] != 91) && ($_SESSION['u_niveau'] != 80)&& ($_SESSION['u_niveau'] != 46) ) {
 	header("location:index.php?error=false");
 	exit;
@@ -14,7 +14,7 @@ if(($_SESSION['u_niveau'] != 2) && ($_SESSION['u_niveau'] != 5) && ($_SESSION['u
 <html>
 <head>
 
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
@@ -103,7 +103,7 @@ httpxml.send(null);
 </script>
 
 </head>
-<?
+<?php
 Require("bienvenue.php");  // on appelle la page contenant la fonction
 ?>
  
@@ -123,13 +123,13 @@ Require("bienvenue.php");  // on appelle la page contenant la fonction
       <a href="rapport_facturationimpMTd.php" class="btn btn-sm btn-success" target="_blank" > KWh MT Détail</a> |
       <a href="co_categorie.php" class="btn btn-sm btn-success" > Facturation / Etablissement</a> |
 	  
-	  <? if ($_SESSION['u_niveau']== 3){?>
+	  <?php if ($_SESSION['u_niveau']== 3){?>
       <a href="rapport_penalite.php" class="btn btn-sm btn-success" > Recouvrement Penalité 1000 </a> |
-	   <? } else { }?>
+	   <?php } else { }?>
 	  
-      <? if ($_SESSION['u_niveau']== 2){?>
+      <?php if ($_SESSION['u_niveau']== 2){?>
       <a href="client_demande_suvi.php" class="btn btn-sm btn-success" > Demande des clients </a> |
-      <? } else { }?>
+      <?php } else { }?>
     </form>
   </div>
 </div>

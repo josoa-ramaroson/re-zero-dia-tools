@@ -35,7 +35,7 @@ $reqfact=mysql_query($sqfact);
     <span style="width: 25%; color: #444444;"><img src="images/eda.png" width="143" height="63" /></span></font></font></font></p>
     <p><font size="2"><font size="2"><font size="2" class="taille">Journal des ventes 
     </font></font></font>Ville : <?php echo  $m1v;  ?>  Quartier : <?php echo  $m1v;  ?> Categorie : <em>
-    <? //$CodeTypeClts;
+    <?php //$CodeTypeClts;
  
 $sqltclient = "SELECT * FROM $tbl_client where idtclient='$CodeTypeClts'";
 $resulttclient = mysql_query($sqltclient);
@@ -67,12 +67,12 @@ echo $TypeClts=$rowtclient['TypeClts'];
 while($datafact=mysql_fetch_array($reqfact)){ // Start looping table row 
 ?>
         <tr class="taille">
-          <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['id'];?></font></td>
-          <td bgcolor="#FFFFFF"><? echo $datafact['nomprenom'];?></font></td>
-          <td align="center" bgcolor="#FFFFFF"><em><font color="#000000"><? echo $datafact['n'];?></font></em></td>
-          <td align="center" bgcolor="#FFFFFF"><em><font color="#000000"><? echo $datafact['nf'];?></font></em></td>
-          <td align="center" bgcolor="#FFFFFF"><font color="#000000"><? echo $datafact['cons'];?></font></td>
-          <td align="center" bgcolor="#FFFFFF"><p><font color="#000000"><? echo $datafact['totalht'];?></font></p>
+          <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['id'];?></font></td>
+          <td bgcolor="#FFFFFF"><?php echo $datafact['nomprenom'];?></font></td>
+          <td align="center" bgcolor="#FFFFFF"><em><font color="#000000"><?php echo $datafact['n'];?></font></em></td>
+          <td align="center" bgcolor="#FFFFFF"><em><font color="#000000"><?php echo $datafact['nf'];?></font></em></td>
+          <td align="center" bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['cons'];?></font></td>
+          <td align="center" bgcolor="#FFFFFF"><p><font color="#000000"><?php echo $datafact['totalht'];?></font></p>
           <p>&nbsp;</p></td>
         </tr>
         <?php

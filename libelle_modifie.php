@@ -1,16 +1,16 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
 <html>
 <head>
-<title><? include("titre.php"); ?></title>
+<title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
 <script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
 
 </head>
-<?
+<?php
 Require("bienvenue.php");    // on appelle la page contenant la fonction
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -37,7 +37,7 @@ $rows3=mysql_fetch_array($result3);
               <tr>
                 <td width="19%"><span class="panel-title">Libelle </span></td>
                 <td width="81%"><em>
-                  <input class="form-control" name="libelle" type="text" id="libelle" value="<? echo $rows3['libelle']; ?> " size="50">
+                  <input class="form-control" name="libelle" type="text" id="libelle" value="<?php echo $rows3['libelle']; ?> " size="50">
                 </em></td>
               </tr>
               <tr>
@@ -47,7 +47,7 @@ $rows3=mysql_fetch_array($result3);
               <tr>
                 <td><span class="panel-title">Statut</span></td>
                 <td><select name="categorie" id="categorie">
-				  <option value="<? echo $rows3['categorie']; ?>" selected>  <? $n=$rows3['categorie']; 
+				  <option value="<?php echo $rows3['categorie']; ?>" selected>  <?php $n=$rows3['categorie']; 
                   if ($n=='P') echo 'Police';
                   if ($n=='D') echo 'Devis & Branchement'; 
                   if ($n=='E') echo 'Facturation';
@@ -66,8 +66,8 @@ $rows3=mysql_fetch_array($result3);
               </tr>
               <tr>
                 <td><em>
-                  <input name="id_nom" type="hidden" id="id_nom" value="<? echo $rows3['id_nom'];?>">
-                  <input name="idL" type="hidden" id="idL" value="<? echo $rows3['idL'];?>">
+                  <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $rows3['id_nom'];?>">
+                  <input name="idL" type="hidden" id="idL" value="<?php echo $rows3['idL'];?>">
                 </em></td>
                 <td>&nbsp;</td>
               </tr>
@@ -127,10 +127,10 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
     <tr>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><? echo $data['idL'];?></div>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><?php echo $data['idL'];?></div>
         <div align="left"></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['libelle'];?></em></div></td>
-      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? $n=$rows3['categorie']; 
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['libelle'];?></em></div></td>
+      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php $n=$rows3['categorie']; 
                   if ($n=='P') echo 'Police';
                   if ($n=='D') echo 'Devis & Branchement'; 
                   if ($n=='E') echo 'Facturation';
@@ -139,8 +139,8 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
                   ?></em></div></td>
       <td align="center" bgcolor="#FFFFFF"><div align="left"></div></td>
       <td width="162"   style="background-color:#FFF;"><div align="left"></div></td>
-      <td width="163"   style="background-color:#FFF;"><a href="libelle_modifie.php?id=<? echo md5(microtime()).$data['idL']; ?>" class="btn btn-xs btn-success">Modifier</a></td>
-      <td width="163"   style="background-color:#FFF;"><a href="libelle_cancel.php?ID=<? echo md5(microtime()).$data['idL']; ?>" onClick="return confirm('Etes-vous sûr de vouloir supprimer')" ; style="margin:5px"   class="btn btn-xs btn-danger" >Supprimer</a></td>
+      <td width="163"   style="background-color:#FFF;"><a href="libelle_modifie.php?id=<?php echo md5(microtime()).$data['idL']; ?>" class="btn btn-xs btn-success">Modifier</a></td>
+      <td width="163"   style="background-color:#FFF;"><a href="libelle_cancel.php?ID=<?php echo md5(microtime()).$data['idL']; ?>" onClick="return confirm('Etes-vous sûr de vouloir supprimer')" ; style="margin:5px"   class="btn btn-xs btn-danger" >Supprimer</a></td>
     </tr>
     <?php
 

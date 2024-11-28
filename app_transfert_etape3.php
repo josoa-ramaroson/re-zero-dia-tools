@@ -1,10 +1,10 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
 
-<?
+<?php
 require 'session_niveau_trasfertmagasin.php';    // on appelle la page contenant la fonction
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -13,12 +13,12 @@ require 'session_niveau_trasfertmagasin.php';    // on appelle la page contenant
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
 
-<? require 'app_transfert_menu.php';?>
+<?php require 'app_transfert_menu.php';?>
 
   <?php
 require 'fonction.php';
@@ -64,17 +64,17 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
   <?php
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
-  <tr bgcolor="<? gettatut($data['statut']); ?>">
-    <td ><? echo $data['idtansft']; ?>      <div align="left"></div></td>
-    <td ><? echo $data['Sdate']; ?></span></td>
-    <td ><? echo $data['Stitre'];?></td>
-    <td ><? echo $data['Qvente'];?></td>
-    <td ><? echo $data['Snumero'];?></td>
-    <td ><? echo $data['Sid_nom'];?></td>
-    <td ><? echo $data['Edate']; ?></span></td>
-    <td ><? echo $data['Etitre'];?></td>
-    <td ><? echo $data['Eid_nom'];?></td>
-    <td ><? echo $data['Cid_nom'];?></td>
+  <tr bgcolor="<?php gettatut($data['statut']); ?>">
+    <td ><?php echo $data['idtansft']; ?>      <div align="left"></div></td>
+    <td ><?php echo $data['Sdate']; ?></span></td>
+    <td ><?php echo $data['Stitre'];?></td>
+    <td ><?php echo $data['Qvente'];?></td>
+    <td ><?php echo $data['Snumero'];?></td>
+    <td ><?php echo $data['Sid_nom'];?></td>
+    <td ><?php echo $data['Edate']; ?></span></td>
+    <td ><?php echo $data['Etitre'];?></td>
+    <td ><?php echo $data['Eid_nom'];?></td>
+    <td ><?php echo $data['Cid_nom'];?></td>
     <td width="50" >&nbsp;</td>
   </tr>
   <?php

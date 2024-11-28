@@ -1,8 +1,8 @@
-<?
+<?php
 require 'session.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 	if($_SESSION['u_niveau'] != 1) {
 	header("location:index.php?error=false");
 	exit;
@@ -11,7 +11,7 @@ require 'fonction.php';
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 <script type="text/javascript">
 function AjaxFunction()
 {
@@ -85,7 +85,7 @@ httpxml.send(null);
 </script>
 
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -103,7 +103,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
           <td width="1%">&nbsp;</td>
           <td width="12%">&nbsp;</td>
           <td width="40%"><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-            <input name="id_nom" type="hidden" id="id_nom" value="<? echo $id_nom; ?>" />
+            <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
           </font><font size="2"><strong><font size="2"><strong><font size="2"><strong><font color="#FF0000">
           </font></strong></font></strong></font></strong></font></strong></font></strong></font></td>
         </tr>

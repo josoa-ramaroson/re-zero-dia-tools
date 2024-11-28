@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 ?>
 <html>
 <head>
-<title><? include 'titre.php'; ?></title>
+<title><?php include 'titre.php'; ?></title>
 <?php
 require 'z_stat_variable_fact.php';
 require 'z_stat_variable_rec.php';
@@ -85,7 +85,7 @@ $(function () {
 });
 		</script>
 </head>
-<?
+<?php
 require("bienvenue.php");    // on appelle la page contenant la fonction
 ?>
 

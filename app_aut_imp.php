@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title><? include 'titre.php'; ?></title>
-<? include 'inc/head.php'; ?>
+<title><?php include 'titre.php'; ?></title>
+<?php include 'inc/head.php'; ?>
 <style type="text/css">
 .centre {
 	text-align: center;
@@ -39,31 +39,31 @@ while($data5=mysql_fetch_array($req5)){
       <tr>
         <td width="47%"><table width="100%" border="0.5" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="76%">DATE :<em> <? echo $data5['date'];?> </em></td>
+            <td width="76%">DATE :<em> <?php echo $data5['date'];?> </em></td>
             </tr>
           <tr>
             <td>&nbsp;</td>
             </tr>
           <tr>
-            <td>SERVICE DEMANDEUR : <em><? echo $data5['service'];?> </em></td>
+            <td>SERVICE DEMANDEUR : <em><?php echo $data5['service'];?> </em></td>
             </tr>
           <tr>
             <td>&nbsp;</td>
             </tr>
           <tr>
-            <td>NATURE DE LA DEPENSE :<em> <b><? echo $data5['Nature'];?></em></td>
+            <td>NATURE DE LA DEPENSE :<em> <b><?php echo $data5['Nature'];?></em></td>
             </tr>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td>MOTIF : <strong> <em><? echo $data5['Motif'];?></em></strong></td>
-          </tr>
           <tr>
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td>MONTANT : <em><? echo  strrev(chunk_split(strrev($data5['Montant']),3," "));?></em></td>
+            <td>MOTIF : <strong> <em><?php echo $data5['Motif'];?></em></strong></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>MONTANT : <em><?php echo  strrev(chunk_split(strrev($data5['Montant']),3," "));?></em></td>
           </tr>
         </table></td>
       </tr>

@@ -1,4 +1,4 @@
-<?
+<?php
 require 'session.php';
 require_once('calendar/classes/tc_calendar.php');
 require 'fonction.php';
@@ -101,7 +101,7 @@ function barre_navigation ($nb_total,$nb_affichage_par_page,$debut, $refville , 
    return $barre;   
 } 
 ?>
-<?
+<?php
 if(($_SESSION['u_niveau'] != 44)) {
 	header("location:index.php?error=false");
 	exit;
@@ -111,7 +111,7 @@ if(($_SESSION['u_niveau'] != 44)) {
 <head>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><? include 'titre.php' ?></title>
+<title><?php include 'titre.php' ?></title>
 <script type="text/javascript">
 function AjaxFunction()
 {
@@ -184,7 +184,7 @@ httpxml.send(null);
   }
 </script>
 </head>
-<?
+<?php
 Require 'bienvenue.php';  
 
 $RefQuartier=addslashes($_REQUEST['quartier']);
@@ -230,7 +230,7 @@ $sqFP="SELECT  COUNT(*) AS nbres FROM $tbl_contact c, $tbl_plombage p where c.st
 
 
 ?>
- <a href="plombage_compt_vqimp.php?m1v=<? echo md5(microtime()).$m1v;?>&m2q=<? echo md5(microtime()).$m2q;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a>
+ <a href="plombage_compt_vqimp.php?m1v=<?php echo md5(microtime()).$m1v;?>&m2q=<?php echo md5(microtime()).$m2q;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a>
  </p>
 <table width="100%" border="0">
   <tr>
@@ -239,9 +239,9 @@ $sqFP="SELECT  COUNT(*) AS nbres FROM $tbl_contact c, $tbl_plombage p where c.st
     <td width="20%">Nombre des clients</td>
   </tr>
   <tr>
-    <td><em><? echo  $m1v;?></em></td>
-    <td><em><? echo $m2q;?></em></td>
-    <td><em><? echo strrev(chunk_split(strrev($tFPn),3," "));?></em></td>
+    <td><em><?php echo  $m1v;?></em></td>
+    <td><em><?php echo $m2q;?></em></td>
+    <td><em><?php echo strrev(chunk_split(strrev($tFPn),3," "));?></em></td>
   </tr>
 </table>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -262,17 +262,17 @@ $sqFP="SELECT  COUNT(*) AS nbres FROM $tbl_contact c, $tbl_plombage p where c.st
 while($data=mysql_fetch_array($req)){ // Start looping table row 
 ?>
    <tr>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><a href="re_affichage_user.php?id=<? echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-default" ><? $idv=$data['id']; echo $data['id'];?></a></em></div></td>
-            <td align="center" bgcolor="<? gettatut(stat_eda2($tbl_plombcont,$tbl_plombage,$idv)); ?>"><em><? echo stat_eda2($tbl_plombcont,$tbl_plombage,$idv);?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['nomprenom'];?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['ncompteur'];?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['c1'];?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><? echo $data['c2'];?></em></div></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['c3'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['c4'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['d1'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><em><? echo $data['d2'];?></em></td>
-     <td align="center" bgcolor="#FFFFFF"><a href="re_affichage_user.php?id=<? echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-success" >Aperçu</a></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><a href="re_affichage_user.php?id=<?php echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-default" ><?php $idv=$data['id']; echo $data['id'];?></a></em></div></td>
+            <td align="center" bgcolor="<?php gettatut(stat_eda2($tbl_plombcont,$tbl_plombage,$idv)); ?>"><em><?php echo stat_eda2($tbl_plombcont,$tbl_plombage,$idv);?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['nomprenom'];?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['ncompteur'];?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['c1'];?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['c2'];?></em></div></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['c3'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['c4'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['d1'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['d2'];?></em></td>
+     <td align="center" bgcolor="#FFFFFF"><a href="re_affichage_user.php?id=<?php echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-success" >Aperçu</a></td>
    </tr>
    <?php
 }

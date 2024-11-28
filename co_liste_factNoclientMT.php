@@ -1,9 +1,9 @@
-<?
+<?php
 require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
 ?>
-<?
+<?php
 if(($_SESSION['u_niveau'] != 2)) {
 	header("location:index.php?error=false");
 	exit;
@@ -15,7 +15,7 @@ if(($_SESSION['u_niveau'] != 2)) {
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Document sans titre</title>
 </head>
-<?
+<?php
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <body>
@@ -50,11 +50,11 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 ?>
    <tr>
      <td align="center" bgcolor="#FFFFFF"><strong>
-       <? $idcl=$data['id']; echo $data['id'];?>
+       <?php $idcl=$data['id']; echo $data['id'];?>
      </strong></td>
-     <td bgcolor="#FFFFFF"><font color="#000000"><? echo $data['nomprenom'];?></font></td>
-     <td bgcolor="#FFFFFF"><strong><? echo $data['ville'];?></strong></td>
-     <td bgcolor="#FFFFFF"><strong><? echo $data['quartier'];?></strong></td>
+     <td bgcolor="#FFFFFF"><font color="#000000"><?php echo $data['nomprenom'];?></font></td>
+     <td bgcolor="#FFFFFF"><strong><?php echo $data['ville'];?></strong></td>
+     <td bgcolor="#FFFFFF"><strong><?php echo $data['quartier'];?></strong></td>
      <td bgcolor="#FFFFFF">&nbsp;</td>
      <td bgcolor="#FFFFFF">&nbsp;</td>
    </tr>
