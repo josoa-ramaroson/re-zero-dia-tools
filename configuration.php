@@ -1,7 +1,7 @@
 <?php
 //----------------parametre de configuration--------
 $sqlconf = "SELECT * FROM $tbl_config";
-$resultconf = mysql_query($sqlconf);
+$resultconf = mysqli_query($link, $sqlconf);
 while ($rowconf = mysql_fetch_assoc($resultconf)) {
 $anneec=$rowconf['annee'];
 $ci=$rowconf['ci'];

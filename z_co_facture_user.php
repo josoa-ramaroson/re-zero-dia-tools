@@ -17,11 +17,11 @@ $ARCH=$_REQUEST['annee'];
 //$id=substr($_REQUEST["id"],32);
 
 $sqlm="SELECT * FROM $db.$tbl_contact WHERE id='$id'";
-$resultm=mysqli_query($linki,$sqlm);
+$resultm=mysqli_query($link,$sqlm);
 $datam=mysqli_fetch_array($resultm);
 
 	/*$sqact="SELECT * FROM $tbl_activite WHERE id='$id'";
-	 $resultact=mysql_query($sqact);*/
+	 $resultact=mysqli_query($link, $sqact);*/
 	 
 	 	 
 	$sqfac="SELECT * FROM $dbbk.z_"."$ARCH"."_$tbl_fact WHERE id='$id' and st='E' ORDER BY idf desc";

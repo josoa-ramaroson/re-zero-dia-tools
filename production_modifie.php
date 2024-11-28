@@ -33,9 +33,9 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
 //$id=$_GET['id'];
 $id=substr($_REQUEST["id"],32);
 $sql3="SELECT * FROM $tbl_production WHERE id='$id'";
-$result3=mysql_query($sql3);
+$result3=mysqli_query($link, $sql3);
 
-$rows3=mysql_fetch_array($result3);
+$rows3=mysqli_fetch_array($result3);
 ?>
         </font>Mois </strong></td>
         <td width="30%"><em>
@@ -89,7 +89,7 @@ $rows3=mysql_fetch_array($result3);
           <option  selected><?php echo $rows3['annee']; ?></option>
             <?php
 $sql82 = ("SELECT * FROM annee  ORDER BY annee ASC ");
-$result82 = mysql_query($sql82);
+$result82 = mysqli_query($link, $sql82);
 
 while ($row82 = mysql_fetch_assoc($result82)) {
 echo '<option> '.$row82['annee'].' </option>';
@@ -155,10 +155,10 @@ echo '<option> '.$row82['annee'].' </option>';
   
 $sql = "SELECT count(*) FROM $tbl_production";  
 
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
  // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -178,7 +178,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tbl_production  ORDER BY id DESC LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC
  
 // on ex?cute la requ?te  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
 </font></strong></font></font></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></p>
 <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -191,7 +191,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
     <td width="74" align="center" bgcolor="#3071AA">&nbsp;</td>
   </tr>
   <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
   <tr>
     <td align="center" bgcolor="#FFFFFF"><?php echo $data['id'];?>

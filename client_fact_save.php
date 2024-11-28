@@ -12,7 +12,7 @@ $sqlp="INSERT INTO $tb_echangagent  (id_client   , nom_client   ,service,  index
                     VALUES       ('$id_client','$nom_client',  '2' ,'$indexc', '$dated' , '$note')";
 					
 													
-$r=mysql_query($sqlp);
+$r=mysqli_query($link, $sqlp);
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ini_set('SMTP','smtp.comorestelecom.km');

@@ -35,8 +35,8 @@ require_once('calendar/classes/tc_calendar.php');
 Require("bienvenue.php");    // on appelle la page contenant la fonction
 $id=substr($_REQUEST["id"],32);
 $sqlm="SELECT * FROM $tbl_appbonachat WHERE id_dem='$id'";
-$resultm=mysql_query($sqlm);
-$datam=mysql_fetch_array($resultm);
+$resultm=mysqli_query($link, $sqlm);
+$datam=mysqli_fetch_array($resultm);
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
 <table width="100%" border="0">
@@ -173,7 +173,7 @@ $datam=mysql_fetch_array($resultm);
 <p>
   <?php
 	 $sqact="SELECT * FROM $tbl_appbonachatp WHERE id_dem='$id'";
-	 $resultact=mysql_query($sqact);
+	 $resultact=mysqli_query($link, $sqact);
 
 ?>
 <table width="100%" border="1" cellpadding="0" cellspacing="0">
@@ -187,7 +187,7 @@ $datam=mysql_fetch_array($resultm);
   </tr>
 </table>
   <?php
-while($rowsact=mysql_fetch_array($resultact)){
+while($rowsact=mysqli_fetch_array($resultact)){
 	 
 ?>
 </p>

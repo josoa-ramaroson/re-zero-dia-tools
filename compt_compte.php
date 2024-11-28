@@ -22,7 +22,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
     <h3 class="panel-title">Les Comptes 
       <?php
 $req1="SELECT * FROM $compte  ";
-$req=mysql_query($req1);
+$req=mysqli_query($link, $req1);
 ?>
     </h3>
   </div>
@@ -83,7 +83,7 @@ $req=mysql_query($req1);
                   </strong></font></td>
               </tr>
               <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
               <tr> 
                 <td bgcolor="#FFFFFF"><div align="left"> 

@@ -7,14 +7,14 @@ $Montant=addslashes($_POST['Montant']);
 $id_nom=addslashes($_POST['id_nom']);
 
 require 'fonction.php';
-$link = mysql_connect ($host,$user,$pass);
-mysql_select_db($db);
+$link = mysqli_connect ($host,$user,$pass);
+mysqli_select_db($link, $db);
 
 $sqlp="INSERT INTO $tbl_appaut   ( id_nom   , service    ,  Nature   , Motif  , Montant ,date )
                     VALUES       ('$id_nom','$service',  '$Nature' ,'$Motif' ,'$Montant','$date')";
 					
 													
-$r=mysql_query($sqlp)
+$r=mysqli_query($link, $sqlp)
 or die(mysql_error());
 mysql_close($link);
 

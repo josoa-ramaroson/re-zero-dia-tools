@@ -126,8 +126,8 @@ $matricule=addslashes($_REQUEST['matricule']);
 <?php
 
 $sql = "SELECT count(*) FROM $tb_rhpaie where matricule='$m1p'";  
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
-$nb_total = mysql_fetch_array($resultat);  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$nb_total = mysqli_fetch_array($resultat);  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
 }  
@@ -135,7 +135,7 @@ else {
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page =12; 
 $sql = "SELECT * FROM $tb_rhpaie where  matricule='$m1p' ORDER BY nomprenom ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //DESC
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
   Matricule : <?php echo  $m1p ?></p>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -152,7 +152,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
      <td width="12%" align="center"><font color="#FFFFFF"><strong>SALAIRE NET</strong></font></td>
    </tr>
    <?php
-while($datafact=mysql_fetch_array($req)){ // Start looping table row 
+while($datafact=mysqli_fetch_array($req)){ // Start looping table row 
 ?>
 
     <tr bgcolor="<?php gettatut($datafact['SNET']); ?>">

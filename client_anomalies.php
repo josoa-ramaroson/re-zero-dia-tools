@@ -115,13 +115,13 @@ require("bienvenue.php");    // on appelle la page contenant la fonction
                 $idclient = $_REQUEST["idclient"];
 				
 $sqlrech = "SELECT * FROM $tbl_contact where id='$idclient'";
-$reqrech = mysqli_query($linki,$sqlrech) or die('Erreur SQL !<br />'.$sqlrech.'<br />'.mysqli_error());  
+$reqrech = mysqli_query($link,$sqlrech) or die('Erreur SQL !<br />'.$sqlrech.'<br />'.mysqli_error());
 $datarech=mysqli_fetch_array($reqrech);
 
 
-    function Nom_prenom_client($LE_idclient, $tbl_contact,$linki){
+    function Nom_prenom_client($LE_idclient, $tbl_contact,$link){
 	$sqld7 = "SELECT * FROM  $tbl_contact where id='$LE_idclient'";
-	$resultatd7 = mysqli_query($linki,$sqld7); 
+	$resultatd7 = mysqli_query($link,$sqld7);
 	$nqtd7 = mysqli_fetch_assoc($resultatd7);
 	if((!isset($nqtd7['nomprenom'])|| empty($nqtd7['nomprenom']))) { $qt7=''; return $qt7;}
 	else {$qt7=$nqtd7['nomprenom']; return $qt7;}
@@ -155,7 +155,7 @@ $datarech=mysqli_fetch_array($reqrech);
         </tr>
         <tr>
           <td><strong>Nom et prenom</strong></td>
-          <td><input name="nompassager" type="text" class="form-control" id="nompassager" value="<?php $idclient=$datarech['id']; $nom_prenom=Nom_prenom_client($idclient, $tbl_contact,$linki); echo $nom_prenom;?>" size="40" readonly /></td>
+          <td><input name="nompassager" type="text" class="form-control" id="nompassager" value="<?php $idclient=$datarech['id']; $nom_prenom=Nom_prenom_client($idclient, $tbl_contact,$link); echo $nom_prenom;?>" size="40" readonly /></td>
           <td>&nbsp;</td>
           <td>Service</td>
           <td><input name="service" type="text" class="form-control" id="service" size="40" /></td>

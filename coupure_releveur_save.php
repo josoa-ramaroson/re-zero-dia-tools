@@ -1,14 +1,14 @@
 <?php
 	require 'fonction.php';
-    $link = mysql_connect ($host,$user,$pass);
-    mysql_select_db($db);
+    $link = mysqli_connect ($host,$user,$pass);
+    mysqli_select_db($link, $db);
 
 $mr1=addslashes($_REQUEST['mr1']);
 $bstatut=addslashes($_REQUEST['bstatut']);
 $idf=substr($_REQUEST["idf"],32);
 
 $sql1 = "SELECT * FROM $tbl_fact where idf=$idf";
-$result1 = mysql_query($sql1);
+$result1 = mysqli_query($link, $sql1);
 while ($row1 = mysql_fetch_assoc($result1)) {
 $totalneti=$row1['totalnet'];
 $reporti=$row1['report'];
@@ -29,7 +29,7 @@ $report=$reporti;
 
 #---------------------------------------------------3 
 $sqlp="update  $tbl_fact  set   bstatut='$bstatut' , Pre='$Pre' , totalnet='$totalnet' , report='$report' WHERE  idf='$idf'";
-$resultp=mysql_query($sqlp);
+$resultp=mysqli_query($link, $sqlp);
 if($resultp){
 }
 else {

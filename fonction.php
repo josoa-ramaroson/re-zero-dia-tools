@@ -7,23 +7,23 @@
 		$dbbk='edabk';
 		
 	
-		$link = mysql_connect ($host,$user,$pass);
-		mysql_set_charset('utf8',$link);
-		mysql_select_db($db);
+		$link = mysqli_connect ($host,$user,$pass);
+		// mysql_set_charset('utf8',$link);
+		mysqli_select_db($link, $db);
 
 //		$link = mysqli_connect ($host,$user,$pass);
-//		mysql_set_charset('utf8',$link);
-//		mysql_select_db($db);
+//		// mysql_set_charset('utf8',$link);
+//		mysqli_select_db($link, $db);
 		
 		$linkibk = mysqli_connect($host,$user,$pass,$dbbk ) or die(mysqli_error($linkibk));
-		mysqli_set_charset($linkibk, 'utf8');
+		// mysqli_set_charset($linkibk, 'utf8');
 		global $linkibk;
 		
 		
 		//immigration vers Mysqli
-		$linki=mysqli_connect($host,$user,$pass,$db) or die(mysqli_error($linki));
-		mysqli_set_charset($linki, 'utf8');
-		global $linki;
+		$link=mysqli_connect($host,$user,$pass,$db) or die(mysqli_error($link));
+		// mysqli_set_charset($link, 'utf8');
+		global $link;
 		
 		
 		//MENU_DEROULANTE_VILLE ET QUARTIER____
@@ -38,7 +38,7 @@
 		/*
 		
 	    $sqfonc_para="SELECT * FROM  fonction_systeme ";
-		$resultfonc_para=mysqli_query($linki,$sqfonc_para);
+		$resultfonc_para=mysqli_query($link,$sqfonc_para);
 		$R_fonc_parametre=mysqli_fetch_array($resultfonc_para);
 		
 		$annee1_fon_para=$R_fonc_parametre['annee1'];

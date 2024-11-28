@@ -22,7 +22,7 @@ require 'rh_configuration_fonction.php';
 <p>
   <?php
 $sql = "SELECT * FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie' ORDER BY matricule ASC "; //DESC 
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
  </p>
 <p align="center"><em>ETAT SALAIRE
@@ -51,11 +51,11 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
      <td width="12%" align="center"><font color="#FFFFFF"><strong>Net à payer </strong></font></td>
   </tr>
    <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 $idrh=$data['idrh'];
 $sqlconnect="SELECT * FROM $tb_rhpersonnel  WHERE idrhp=$idrh";
-$resultconnect=mysql_query($sqlconnect);
-$rmat=mysql_fetch_array($resultconnect);
+$resultconnect=mysqli_query($link, $sqlconnect);
+$rmat=mysqli_fetch_array($resultconnect);
 $nCPP= $rmat['CPP'];
 
 ?>

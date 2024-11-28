@@ -18,8 +18,8 @@ $output = fopen('php://output', 'w');
 
 
 fputcsv($output, array( ));
-$rows = mysqli_query($linki,"SELECT * FROM $tbl_contact  where miseajours=1 and syn=1");
+$rows = mysqli_query($link,"SELECT * FROM $tbl_contact  where miseajours=1 and syn=1");
 while ($row = mysqli_fetch_assoc($rows)) fputcsv($output, $row);
 
-mysqli_close($linki);
+mysqli_close($link);
 ?>

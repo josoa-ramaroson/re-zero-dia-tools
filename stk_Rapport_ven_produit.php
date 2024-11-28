@@ -26,7 +26,7 @@ require('stk_Rapport_lien.php');
   <?php
 $titre=addslashes($_POST['titre1']); 
 $sql1="SELECT * FROM ginv_vente where  titre='$titre' ";
-$req=mysql_query($sql1);
+$req=mysqli_query($link, $sql1);
 ?>
   </font></strong></font></font></font></font></p>
 <p><font size="2"><font size="2"><font size="2"><font size="2"><strong><font color="#0000FF"> 
@@ -49,7 +49,7 @@ $req=mysql_query($sql1);
               Unitaire </strong></font></td>
           </tr>
           <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row 
 ?>
           <tr> 
             <td bgcolor="#FFFFFF"><div align="left"><strong><em><?php echo $data['id_nom'];?></em></strong><BR>
@@ -74,12 +74,12 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 <?php
 $tbl_name="ginv_vente"; // Table name 
 $sql2="SELECT datev, titre,  SUM(Qvente) AS qtvendu , SUM(PTotal) AS prix  FROM $tbl_name where  titre='$titre'  GROUP BY titre";
-$result2=mysql_query($sql2);
+$result2=mysqli_query($link, $sql2);
 ?>
 </font></strong></font></font></font></font>
 <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
   <?php
-while($rows2=mysql_fetch_array($result2)){ // Start looping table row 
+while($rows2=mysqli_fetch_array($result2)){ // Start looping table row 
 ?>
   <tr> 
     <td width="82%" bgcolor="#FFFFFF"><div align="right"><strong>Total </strong><BR>

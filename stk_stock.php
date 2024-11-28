@@ -27,10 +27,10 @@ SELECT e.titre , SUM(e.Quantite) AS qtenreg FROM $tbl_enreg e GROUP BY e.titre
 
 
 // on ex?cute cette requ?te  
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
 // on r?cup?re le nombre d'?l?ments ? afficher  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
  // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -63,7 +63,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT e.titre as thetitre, SUM(e.qtenreg) AS qte , SUM(v.qtvendu) AS qtv , SUM(e.qtenreg)-SUM(v.qtvendu) as reste
 FROM $tv_enreg e LEFT JOIN $tv_vente v ON e.titre=v.titre GROUP BY  e.titre ORDER BY e.titre  asc LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;
 
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
   <strong> SUIVI DE STOCK</strong></font><strong></strong></strong></font></font><strong></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font> 
   </strong> produit &agrave; vendre</p>
@@ -81,7 +81,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
   </tr>
   <?php
   $numboucle=0;
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
  if($numboucle %2 == 0) 
  
    $bgcolor = "#00CCFF"; 

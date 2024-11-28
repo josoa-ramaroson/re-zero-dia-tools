@@ -82,7 +82,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
       <td> <?php  $RefCommune=$data['refcommune'];
 	  
 $sql3 = "SELECT * FROM commune where ref_com=$RefCommune";
-$result3 = mysqli_query($linki,$sql3);
+$result3 = mysqli_query($link,$sql3);
 while ($row3 = mysqli_fetch_assoc($result3)) {
 echo $secteur=$row3['commune'];
 } 	 ?>

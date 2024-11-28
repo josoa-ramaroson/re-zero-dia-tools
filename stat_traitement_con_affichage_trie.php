@@ -24,13 +24,13 @@ $RefCommune=substr($RefQuartier,0,3);
 $refville=addslashes($_POST['refville']);
 
 $sql1 = "SELECT * FROM quartier where id_quartier=$RefQuartier";
-$result1 = mysql_query($sql1);
+$result1 = mysqli_query($link, $sql1);
 while ($row1 = mysql_fetch_assoc($result1)) {
 $quartier=$row1['quartier'];
 }  
 
 $sql2 = "SELECT * FROM ville where refville=$refville";
-$result2 = mysql_query($sql2);
+$result2 = mysqli_query($link, $sql2);
 while ($row2 = mysql_fetch_assoc($result2)) {
 $ville=$row2['ville'];
 } 
@@ -47,7 +47,7 @@ require 'configuration.php';
 	function stat_eda($mois,$annee,$tv_facturation, $id){
 	$sql = "SELECT SUM(cons) AS cons, SUM(totalht) AS totalht, SUM(tax) AS tax, SUM(totalttc) AS totalttc, SUM(ortc) AS ortc, SUM(impayee) AS impayee, SUM(Pre) AS Pre, SUM(totalnet) AS totalnet, RefLocalite , nserie , fannee , st 
 	FROM $tv_facturation where  st='E' and  fannee='$annee'  and nserie='$mois' and id='$id' "; 
-	$resultat = mysql_query($sql) or exit(mysql_error()); 
+	$resultat = mysqli_query($link, $sql) or exit(mysql_error());
 	$nqt = mysql_fetch_assoc($resultat);
 
 	if((!isset($nqt['cons'])|| empty($nqt['cons']))) { $qt=0; return $qt;}
@@ -56,7 +56,7 @@ require 'configuration.php';
 	}	
 	
 $sqlA = "SELECT * FROM  $tbl_contact c  where c.ville='$m1v' and  c.quartier='$m2q' and statut='6' and alerte='$nbr'   ORDER BY c.id ASC";  
-$reqA = mysql_query($sqlA) or die('Erreur SQL !<br />'.$sqlA.'<br />'.mysql_error()); 
+$reqA = mysqli_query($link, $sqlA) or die('Erreur SQL !<br />'.$sqlA.'<br />'.mysql_error());
 
 ?>
 Base de connaissance  Ville : <em><?php echo  $m1v;?></em> Quartier : <em><?php echo $m2q;?></em></p>
@@ -80,7 +80,7 @@ Base de connaissance  Ville : <em><?php echo  $m1v;?></em> Quartier : <em><?php 
     <td width="8%" align="center">&nbsp;</td>
   </tr>
   <?php
-while($dataA=mysql_fetch_array($reqA)){ // Start looping table row 
+while($dataA=mysqli_fetch_array($reqA)){ // Start looping table row
 ?>
   <tr>
     <td align="center" ><em><a href="stat_graph_fac_rec_client.php?id=<?php echo $dataA['id'];?>&annee=<?php echo $annee;?>" target=_blank><?php echo $dataA['id'];?> </a></em></td>

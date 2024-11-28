@@ -21,8 +21,8 @@
 	
 	// affichage des informations personnel de la personne  
 	$sqlSID2 = "SELECT * FROM $tbl_utilisateur where id_u=$sd";
-	$reqSID2 = mysql_query($sqlSID2); 
-	while($dataSID2=mysql_fetch_array($reqSID2)){
+	$reqSID2 = mysqli_query($link, $sqlSID2);
+	while($dataSID2=mysqli_fetch_array($reqSID2)){
 ?>
 		<div class="row header">
 			<h3>Vous dialoguez à / You interact with</h3>
@@ -52,25 +52,25 @@ $_SESSION['SID2']=$_GET['sid2'];
 $sql = "SELECT count(*) FROM $tbl_message ";  
 
 
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
    
 $sql = "SELECT * FROM $tbl_message  where (SID1=$sid1 and SID2=$sid2) or (SID1=$sid2 and SID2=$sid1) ORDER BY id_chat  ASC ";  //ASC DESC
 
    
 //$sql = "SELECT * FROM $tbl_message  where (SID1=$sid1 and SID2=$sid2) or (SID1=$sid2 and SID2=$sid1) ORDER BY id_chat   DESC  LIMIT 20";  //ASC DESC
  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
-while($data=mysql_fetch_array($req)){ 
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+while($data=mysqli_fetch_array($req)){
 ?>  
 
 <?php
 // Afficher les noms des personnes qui dialoguent 
 $SID=$data['SID1'];
 $sqlSID = "SELECT * FROM $tbl_utilisateur where id_u=$SID";
-$reqSID = mysql_query($sqlSID);
-while($dataSID=mysql_fetch_array($reqSID)){
+$reqSID = mysqli_query($link, $sqlSID);
+while($dataSID=mysqli_fetch_array($reqSID)){
 ?>
 				<div class="sub-row">	
 					<?php if ($SID==$_SESSION['SID1']){ ?>

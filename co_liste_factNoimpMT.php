@@ -20,7 +20,7 @@ require 'fonction.php';
 require 'configuration.php';
 
 $sqfact="SELECT * FROM $tbl_contact where statut='6'  and Tarif=10 and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec'  and nserie='$nserie') ORDER BY id  ASC";
-$reqfact=mysql_query($sqfact);
+$reqfact=mysqli_query($link, $sqfact);
 ?>
     </font></font></font><br>
     </p>
@@ -36,7 +36,7 @@ $reqfact=mysql_query($sqfact);
           <td width="12%" align="center"><font color="#FFFFFF"><strong>INDEX NUIT</strong></font></td>
         </tr>
         <?php
-while($data=mysql_fetch_array($reqfact)){ // Start looping table row 
+while($data=mysqli_fetch_array($reqfact)){ // Start looping table row 
 ?>
         <tr>
           <td align="center" bgcolor="#FFFFFF"><strong>

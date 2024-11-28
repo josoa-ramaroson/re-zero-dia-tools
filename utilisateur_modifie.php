@@ -33,9 +33,9 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
 //$id=$_GET['id'];
 $id=substr($_REQUEST["id"],32);
 $sql3="SELECT * FROM $tbl_utilisateur WHERE id_u='$id'";
-$result3=mysql_query($sql3);
+$result3=mysqli_query($link, $sql3);
 
-$rows3=mysql_fetch_array($result3);
+$rows3=mysqli_fetch_array($result3);
 ?>
         </font>Nom</strong></td>
         <td width="30%"><em>
@@ -93,7 +93,7 @@ $rows3=mysql_fetch_array($result3);
           <option value="<?php echo $rows3['agence']; ?>" selected><?php echo $rows3['agence']; ?></option>
           <?php
 $sql2 = ("SELECT a_nom  FROM $tbl_agence ORDER BY a_nom  ASC ");
-$result2 = mysql_query($sql2);
+$result2 = mysqli_query($link, $sql2);
 while ($row2 = mysql_fetch_assoc($result2)) {
 echo '<option> '.$row2['a_nom'].' </option>';
 }
@@ -127,10 +127,10 @@ echo '<option> '.$row2['a_nom'].' </option>';
   <?php
 $sql = "SELECT count(*) FROM $tbl_utilisateur ";  
 
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
  // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -150,7 +150,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tbl_utilisateur  ORDER BY id_u DESC LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC
  
 // on ex?cute la requ?te  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
   </font></strong></font></font></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></p>
 <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -165,7 +165,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
     <td width="68" align="center" bgcolor="#3071AA">&nbsp;</td>
   </tr>
   <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
   <tr>
     <td align="center" bgcolor="#FFFFFF"><?php echo $data['id_u'];?>      <div align="left"></div></td>

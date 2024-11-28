@@ -14,17 +14,17 @@ $sqlp="INSERT INTO $tbl_client_anom_suivi    ( id_nom   , idanomalie     ,realis
                     VALUES                  ('$id_nom' ,'$idanomalie', '$realisateur', '$taches' ,'$statut' ,'$dateinfo')";
 					
 													
-$r=mysqli_query($linki,$sqlp)
+$r=mysqli_query($link,$sqlp)
 or die(mysqli_error());
 
 
 	$sqlcon="update $tbl_client_anom set statut='$statut' where idanomalie='$idanomalie'";
-    $connection=mysqli_query($linki,$sqlcon);
+    $connection=mysqli_query($link,$sqlcon);
 	
 
 
 
-mysqli_close($linki);
+mysqli_close($link);
 
 ?>
 <?php

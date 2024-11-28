@@ -32,7 +32,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 $mr1=addslashes($_POST['mr1']);
 
 $sql = "SELECT * FROM $tbl_contact where  id='$mr1' and statut='6' and  Tarif!='10' and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec'  and nserie='$nserie')";  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
 	//recherche du repport 
 ?>
@@ -43,7 +43,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
      <td width="53%" align="center">&nbsp;</td>
   </tr>
    <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
    <tr>
      <td align="center" bgcolor="#FFFFFF"><form name="form1" method="post" action="">
@@ -88,13 +88,13 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 	  
 	 //recherche du repport 
 	 $sqlp = "SELECT * FROM $tbl_fact WHERE id='$idcl' and st='E' ORDER BY idf desc limit 0,1";  
-	 $resultp=mysql_query($sqlp);
-	 $datap=mysql_fetch_array($resultp);
+	 $resultp=mysqli_query($link, $sqlp);
+	 $datap=mysqli_fetch_array($resultp);
 			
 	//affichage des facturations
 	$sqfac="SELECT * FROM $tbl_fact  WHERE id='$idcl' and  st='E' ORDER BY idf desc limit 0,1";
-	$resultfac=mysql_query($sqfac);
-	$datindex=mysql_fetch_array($resultfac);
+	$resultfac=mysqli_query($link, $sqfac);
+	$datindex=mysqli_fetch_array($resultfac);
 			?>
      </form></td>
      <td align="center" bgcolor="#FFFFFF"><form name="form2" method="post" action="co_facturation_save.php">

@@ -8,7 +8,7 @@ $organisme=addslashes($_POST['organisme']);
 
 $sqlp="INSERT INTO $tbl_caisse_lieu ( id_nom  , organisme)
                     VALUES      ('$id_nom','$organisme')";								
-$r=mysqli_query($linki,$sqlp)
+$r=mysqli_query($link,$sqlp)
 or die(mysqli_error());
 
 

@@ -15,13 +15,13 @@ header("location: tarif.php");
 #---------------------------------------------------3 
 
 $sqlp="update $tbl_tarif set  id_nom='$id_nom', t1='$t1' , t2='$t2' ,  q='$q' ,datetime='$datetime' WHERE  idt='$id'";
-$resultp=mysqli_query($linki,$sqlp);
+$resultp=mysqli_query($link,$sqlp);
 if($resultp){
 }
 else {
 echo "ERROR";
 }
-mysqli_close($linki);
+mysqli_close($link);
 ?>
 <?php
 header("location: tarif.php");

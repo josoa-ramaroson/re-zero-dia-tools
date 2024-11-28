@@ -30,7 +30,7 @@ require_once('calendar/classes/tc_calendar.php');
                      <option  value = '<?php echo $id_nom; ?>' selected><?php echo $nom.''.$prenom ; ?></option>
                        <?php
 $sql8 = "SELECT * FROM $tbl_utilisateur where (privileges !=7 and privileges !=6) and statut like 'Operationnel' ORDER BY id_nom ASC ";
-$result8 = mysqli_query($linki,$sql8);
+$result8 = mysqli_query($link,$sql8);
 
 while ($row8 = mysqli_fetch_assoc($result8)) {
 //echo '<option> '.$row8['u_login'].' </option>';
@@ -325,7 +325,7 @@ $date2=$datecalendrier;
 $_SESSION['datecalendrier']=$date2;
 	
 $sql = "SELECT * FROM $tb_evenement where datev='$date2'  and  id_nom='$id_nom' ORDER BY heures "; // DESC ASC  
-$req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$req = mysqli_query($link,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());
 
 ?>     
      
@@ -363,8 +363,8 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
      <td align="center" >
          
     <?php $sqldate="SELECT * FROM $tbl_caisse "; //DESC  ASC
-	$resultldate=mysql_query($sqldate);
-	$datecaisse=mysql_fetch_array($resultldate);
+	$resultldate=mysqli_query($link, $sqldate);
+	$datecaisse=mysqli_fetch_array($resultldate);
 	$dateJour=$datecaisse['datecaisse'];
 	$dareRDV=$data['datev'];
     ?>
@@ -379,7 +379,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
    
    $numboucle++;
 }	
-mysqli_close ($linki);  
+mysqli_close ($link);
 
 }
 else {

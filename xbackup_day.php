@@ -44,25 +44,25 @@ require 'xbackup_menu.php';
 	 $table1=$_REQUEST["table"];
 	 
      //Connexion à la base
-     $db = mysql_connect($server, $user, $password) or die(mysql_error());
-     mysql_select_db($database, $db) or die(mysql_error());
+     $db = mysqli_connect($server, $user, $password) or die(mysql_error());
+     mysqli_select_db($database, $db) or die(mysql_error());
       
 
     
  	$sql = "SHOW TABLES FROM $database WHERE Tables_in_$database='$table1'" ;
 	 
-     $tables = mysql_query($sql) or die(mysql_error());
+     $tables = mysqli_query($link, $sql) or die(mysql_error());
       
    
-     for ($i=0; $i<$ignore; $i++) ($donnees = mysql_fetch_array($tables));
+     for ($i=0; $i<$ignore; $i++) ($donnees = mysqli_fetch_array($tables));
       
   
-     while ($donnees = mysql_fetch_array($tables))
+     while ($donnees = mysqli_fetch_array($tables))
      {
 	 
       $table = $donnees[0];
       $sql = 'SHOW CREATE TABLE '.$table;
-      $res = mysql_query($sql) or die(mysql_error().$sql);
+      $res = mysqli_query($link, $sql) or die(mysql_error().$sql);
       if ($res)
       {
        
@@ -77,14 +77,14 @@ require 'xbackup_menu.php';
 	   
        $fp = gzopen($backup_file, 'w');
       
-       $tableau = mysql_fetch_array($res);
+       $tableau = mysqli_fetch_array($res);
        $tableau[1] .= ";\n";
        $insertions = $tableau[1];
        gzwrite($fp, $insertions);
       
-       $req_table = mysql_query('SELECT * FROM '.$table) or die(mysql_error());
+       $req_table = mysqli_query($link, 'SELECT * FROM '.$table) or die(mysql_error());
        $nbr_champs = mysql_num_fields($req_table);
-       while ($ligne = mysql_fetch_array($req_table))
+       while ($ligne = mysqli_fetch_array($req_table))
        {
         $insertions = 'INSERT INTO '.$table.' VALUES (';
         for ($i=0; $i<$nbr_champs; $i++)

@@ -22,7 +22,7 @@ $ville=addslashes($_POST['ville']);
 $pays=addslashes($_POST['pays']);
 
 
-mysql_query("INSERT INTO $tb_comptf (Numf,Societef,Adressef,Telephonef,Statutf,Date , personne , Telephonem , faxe , email , web ,ville ,pays) 
+mysqli_query($link, "INSERT INTO $tb_comptf (Numf,Societef,Adressef,Telephonef,Statutf,Date , personne , Telephonem , faxe , email , web ,ville ,pays) 
 VALUE ('$Numf','$Societef','$Adressef','$Telephonef','$Statutf','$Date', '$personne' , '$Telephonem' , '$faxe' , '$email' , '$web' , '$ville' , '$pays')");
 mysql_close();
 

@@ -10,7 +10,7 @@ $sqlp="INSERT INTO $tb_echangagent  (id_client   , nom_client   ,service,  Probl
                     VALUES       ('$id_client','$nom_client',  '$service' ,'$Probleme', '$dated' , '$note')";
 					
 													
-$r=mysql_query($sqlp);
+$r=mysqli_query($link, $sqlp);
 
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

@@ -30,11 +30,11 @@ $service=$_POST['service'];
 $sql = "SELECT * FROM $tbl_appaut where  MONTH(date)=$mois and YEAR(date)=$annee  and  service='$service' ORDER BY idapp_aut DESC ";  //ASC
  
 // on ex?cute la requ?te  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
 
 	$sqPT="SELECT SUM(Montant) AS montant  FROM $tbl_appaut where  MONTH(date)=$mois and YEAR(date)=$annee  and  service='$service' "; 
-	$RPT = mysql_query($sqPT); 
+	$RPT = mysqli_query($link, $sqPT);
 	$AFPT = mysql_fetch_assoc($RPT);
 	$tPT=$AFPT['montant']; 
 	
@@ -53,7 +53,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
       <td width="98" bgcolor="#3071AA" ><font color="#FFFFFF">Montant</font></td>
     </tr>
     <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
     <tr> 
       <td align="center" bgcolor="#FFFFFF"> <div align="left"><?php echo $data['idapp_aut'];?></div>

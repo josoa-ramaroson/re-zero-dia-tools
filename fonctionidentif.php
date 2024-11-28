@@ -1,12 +1,12 @@
 <?php 
 $_POST['m1']=$_SESSION['u_login'];
 require 'fonction.php';
-$link = mysql_connect ($host,$user,$pass);
-mysql_select_db($db);
+$link = mysqli_connect ($host,$user,$pass);
+mysqli_select_db($link, $db);
 $sql="SELECT * FROM $tbl_utilisateur WHERE u_login LIKE '$_POST[m1]'";
 
-$resultat=mysql_query($sql) or die("Invalid query");
-while($u_utilisateur=mysql_fetch_array($resultat))
+$resultat=mysqli_query($link, $sql) or die("Invalid query");
+while($u_utilisateur=mysqli_fetch_array($resultat))
 {
 $id_user=$u_utilisateur['id_u'];
 $nom=$u_utilisateur['u_nom'];

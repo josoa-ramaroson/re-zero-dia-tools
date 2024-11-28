@@ -47,8 +47,8 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
   //$db1=$_POST['db1'];
   //$db2=$_POST['db2'];
   $req2="SELECT Compte , Description , SUM(compt_ecriture.Credit)AS compte_ecripture ,SUM(compt_ecriture.Debit)AS compte_ecripture1  FROM $tb_ecriture where Description='CAISSE' and Date BETWEEN '$db1'  and '$db2' " ;
-  $req=mysql_query($req2);
- while ($data3=mysql_fetch_array($req)){ // Start looping table row 
+  $req=mysqli_query($link, $req2);
+ while ($data3=mysqli_fetch_array($req)){ // Start looping table row
 $ct=$data3['compte_ecripture'];
 $dt=$data3['compte_ecripture1'];
 $tt=$dt-$ct;
@@ -89,8 +89,8 @@ $tt=$dt-$ct;
   //$db1=$_POST['db1'];
   //$db2=$_POST['db2'];
   $req2="SELECT Compte , Description , SUM(compt_ecriture.Credit)AS compte_ecripture ,SUM(compt_ecriture.Debit)AS compte_ecripture1  FROM $tb_ecriture where Description='BANQUES' and Date BETWEEN '$db1'  and '$db2' " ;
-  $req=mysql_query($req2);
- while ($data3=mysql_fetch_array($req)){ // Start looping table row 
+  $req=mysqli_query($link, $req2);
+ while ($data3=mysqli_fetch_array($req)){ // Start looping table row
 $ct=$data3['compte_ecripture'];
 $dt=$data3['compte_ecripture1'];
 $tt=$dt-$ct;

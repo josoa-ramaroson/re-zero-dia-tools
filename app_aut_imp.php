@@ -18,13 +18,13 @@
     <td width="53%"><h1 class="centre"> AUTORISATION DE DEPENSES<span style="width: 75%; font-size: 24px;">
       <?php
 require 'fonction.php';
-$link = mysql_connect ($host,$user,$pass); 
-mysql_select_db($db);
+$link = mysqli_connect ($host,$user,$pass); 
+mysqli_select_db($link, $db);
 $id=substr($_REQUEST["id"],32);
 $sql5="SELECT * FROM $tbl_appaut WHERE idapp_aut='$id'";
-$req5=mysql_query($sql5);
+$req5=mysqli_query($link, $sql5);
 
-while($data5=mysql_fetch_array($req5)){
+while($data5=mysqli_fetch_array($req5)){
 ?>
     </span></h1></td>
   </tr>

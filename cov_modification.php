@@ -28,9 +28,9 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
 
 $idf=substr($_REQUEST["idf"],32);
 $sql3="SELECT * FROM $tbl_fact WHERE idf='$idf'";
-$result3=mysql_query($sql3);
+$result3=mysqli_query($link, $sql3);
 
-$rows3=mysql_fetch_array($result3);
+$rows3=mysqli_fetch_array($result3);
 ?>
         </font>Indication</strong></td>
         <td width="30%"><em>

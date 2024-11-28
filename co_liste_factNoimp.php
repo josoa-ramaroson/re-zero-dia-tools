@@ -8,15 +8,15 @@ require 'fonction.php';
 require 'configuration.php';
 
 $sqfact="SELECT * FROM $tbl_contact where statut='6' and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec'  and nserie='$nserie') ORDER BY id  ASC";
-$reqfact=mysql_query($sqfact);
+$reqfact=mysqli_query($link, $sqfact);
 
 $sqlT = "SELECT COUNT(*) AS Nomimprime FROM $tbl_contact where statut='6' and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec'  and nserie='$nserie')";   
-$reqT=mysql_query($sqlT);
+$reqT=mysqli_query($link, $sqlT);
 $datanombre= mysql_fetch_assoc($reqT);
 $Nomimprime=$datanombre['Nomimprime'];
 
 $sql7 = "SELECT COUNT(*) AS bt FROM $tbl_contact  WHERE statut='6' and Tarif!='10'";   
-$req7=mysql_query($sql7);
+$req7=mysqli_query($link, $sql7);
 $data7= mysql_fetch_assoc($req7);
 $cbt=$data7['bt'];
 
@@ -35,7 +35,7 @@ $cbt=$data7['bt'];
           <td width="12%" align="center"><font color="#FFFFFF"><strong>INDEX</strong></font></td>
         </tr>
         <?php
-while($data=mysql_fetch_array($reqfact)){ // Start looping table row 
+while($data=mysqli_fetch_array($reqfact)){ // Start looping table row 
 ?>
         <tr>
           <td align="center" bgcolor="#FFFFFF"><strong>

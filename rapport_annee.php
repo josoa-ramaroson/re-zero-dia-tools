@@ -32,15 +32,15 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
   <?php
 $annee=$_POST['mannee'];  
 // Connect to server and select databse.
-mysql_connect ($host,$user,$pass)or die("cannot connect"); 
-mysql_select_db($db)or die("cannot select DB");
+mysqli_connect ($host,$user,$pass)or die("cannot connect");
+mysqli_select_db($db)or die("cannot select DB");
   
 $sql = "SELECT count(*) FROM $tbl_paiement";  
 
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
  // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -59,34 +59,34 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT SUM(paiement) AS Paie, st, date FROM $tbl_paiement where YEAR(date)='$annee' GROUP BY  st  LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC  DESC
 
 // on ex?cute la requ?te  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()); 
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
 	
 	
 
 	$sqPS="SELECT SUM(paiement) AS Paie , st FROM $tbl_paiement where st='E' and fannee='$annee' "; 
-	$RPS = mysql_query($sqPS); 
+	$RPS = mysqli_query($link, $sqPS);
 	$AFPS = mysql_fetch_assoc($RPS);
 	$tPS=$AFPS['Paie']; 
 	
 	$sqPP="SELECT SUM(paiement) AS Paie , st FROM $tbl_paiement where st='P' and  fannee='$annee'"; 
-	$RPP = mysql_query($sqPP); 
+	$RPP = mysqli_query($link, $sqPP);
 	$AFPP = mysql_fetch_assoc($RPP);
 	$tPPP=$AFPP['Paie'];
 	
     $sqPD="SELECT SUM(paiement) AS Paie , st FROM $tbl_paiement where st='D' and  fannee='$annee'"; 
-	$RPD = mysql_query($sqPD); 
+	$RPD = mysqli_query($link, $sqPD);
 	$AFPD = mysql_fetch_assoc($RPD);
 	$tPPD=$AFPD['Paie'];
 	
 	$sqPF="SELECT SUM(paiement) AS Paie , st FROM $tbl_paiement where st='F' and  fannee='$annee'"; 
-	$RPF = mysql_query($sqPF); 
+	$RPF = mysqli_query($link, $sqPF);
 	$AFPF = mysql_fetch_assoc($RPF);
 	$tPPF=$AFPF['Paie'];
 	
 		
 	$sqPA="SELECT SUM(paiement) AS Paie , st FROM $tbl_paiement where st='A' and  fannee='$annee'"; 
-	$RPA = mysql_query($sqPA); 
+	$RPA = mysqli_query($link, $sqPA);
 	$AFPA = mysql_fetch_assoc($RPA);
 	$tPPA=$AFPA['Paie'];
 	
@@ -94,7 +94,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 	
 	
 	$sqFS="SELECT SUM(totalttc) AS fact , SUM(ortc) AS fortc, SUM(impayee) AS fimp, SUM(Pre) AS DPre , SUM(totalnet) AS ft, st FROM $tbl_fact  where st='E' and  fannee='$annee'"; 
-	$RFS = mysql_query($sqFS); 
+	$RFS = mysqli_query($link, $sqFS);
 	$AFFS = mysql_fetch_assoc($RFS);
 	$tFS=$AFFS['fact']; 
 	$tFSi=$AFFS['fimp'];
@@ -103,27 +103,27 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 	$tFSt=$AFFS['ft'];
 	
 	$sqFP="SELECT SUM(totalttc) AS fact , SUM(totalnet) AS ft, st FROM $tbl_fact   where st='P' and  fannee='$annee'"; 
-	$RFP = mysql_query($sqFP); 
+	$RFP = mysqli_query($link, $sqFP);
 	$AFP = mysql_fetch_assoc($RFP);
 	$tFP=$AFP['fact']; 
 	$tFPt=$AFP['ft']; 
 	
 	
 	$sqFD="SELECT SUM(totalttc) AS fact , SUM(totalnet) AS ft, st FROM $tbl_fact   where st='D' and  fannee='$annee'"; 
-	$RFD = mysql_query($sqFD); 
+	$RFD = mysqli_query($link, $sqFD);
 	$AFD = mysql_fetch_assoc($RFD);
 	$tFD=$AFD['fact']; 
 	$tFDt=$AFD['ft']; 
  
  
  	$sqFF="SELECT SUM(totalttc) AS fact , SUM(totalnet) AS ft, st FROM $tbl_fact   where st='F' and  fannee='$annee'"; 
-	$RFF = mysql_query($sqFF); 
+	$RFF = mysqli_query($link, $sqFF);
 	$AFF = mysql_fetch_assoc($RFF);
 	$tFF=$AFF['fact']; 
 	$tFFt=$AFF['ft'];
 	
 	$sqFA="SELECT SUM(totalttc) AS fact , SUM(totalnet) AS ft, st FROM $tbl_fact   where st='A' and  fannee='$annee'"; 
-	$RFA = mysql_query($sqFA); 
+	$RFA = mysqli_query($link, $sqFA);
 	$AFA = mysql_fetch_assoc($RFA);
 	$tFA=$AFA['fact']; 
 	$tFAt=$AFA['ft'];

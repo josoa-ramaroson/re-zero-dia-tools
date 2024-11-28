@@ -194,13 +194,13 @@ $RefCommune=substr($RefQuartier,0,3);
 $refville=addslashes($_REQUEST['refville']);
 
 $sql1 = "SELECT * FROM quartier where id_quartier=$RefQuartier";
-$result1 = mysql_query($sql1);
+$result1 = mysqli_query($link, $sql1);
 while ($row1 = mysql_fetch_assoc($result1)) {
 $quartier=$row1['quartier'];
 }  
 
 $sql2 = "SELECT * FROM ville where refville=$refville";
-$result2 = mysql_query($sql2);
+$result2 = mysqli_query($link, $sql2);
 while ($row2 = mysql_fetch_assoc($result2)) {
 $ville=$row2['ville'];
 } 
@@ -212,8 +212,8 @@ $ville=$row2['ville'];
 <p>
   <?php
 $sql = "SELECT count(*) FROM $tbl_contact c, $tbl_plombage p where statut='6' and  p.id=c.id and  c.ville='$m1v' and  c.quartier='$m2q'";  
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
-$nb_total = mysql_fetch_array($resultat);  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$nb_total = mysqli_fetch_array($resultat);
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
 }  
@@ -221,10 +221,10 @@ else {
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 50; 
 $sql = "SELECT * FROM $tbl_contact c, $tbl_plombage p where c.statut='6' and  p.id=c.id and  c.ville='$m1v' and  c.quartier='$m2q' ORDER BY nomprenom ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
 $sqFP="SELECT  COUNT(*) AS nbres FROM $tbl_contact c, $tbl_plombage p where c.statut='6' and  p.id=c.id and  c.ville='$m1v' and  c.quartier='$m2q'"; 
-	$RFP = mysql_query($sqFP); 
+	$RFP = mysqli_query($link, $sqFP);
 	$AFP = mysql_fetch_assoc($RFP);
 	$tFPn=$AFP['nbres'];
 
@@ -259,7 +259,7 @@ $sqFP="SELECT  COUNT(*) AS nbres FROM $tbl_contact c, $tbl_plombage p where c.st
      <td width="10%" align="center">&nbsp;</td>
   </tr>
    <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
    <tr>
      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><a href="re_affichage_user.php?id=<?php echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-default" ><?php $idv=$data['id']; echo $data['id'];?></a></em></div></td>
@@ -283,8 +283,8 @@ mysql_free_result ($resultat);
 
 		function stat_eda2($tbl_plombcont,$tbl_plombage,$idv){ 
 		$sqlv="SELECT COUNT(*) AS nombre FROM $tbl_plombcont ct, $tbl_plombage p  WHERE ct.idclient=p.id and ct.idclient='$idv'" ;
-        $rev = mysql_query($sqlv); 
-	    $nqtv = mysql_fetch_array($rev);
+        $rev = mysqli_query($link, $sqlv);
+	    $nqtv = mysqli_fetch_array($rev);
         if((!isset($nqtv['nombre'])|| empty($nqtv['nombre']))) { $qt=''; return $qt; } else {$qt=$nqtv['nombre']; return $qt;}
 		} 
 		

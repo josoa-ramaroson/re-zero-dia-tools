@@ -33,15 +33,15 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
   <?php
  $date=$_POST['dated']; 
 // Connect to server and select databse.
-mysql_connect ($host,$user,$pass)or die("cannot connect"); 
-mysql_select_db($db)or die("cannot select DB");
+mysqli_connect ($host,$user,$pass)or die("cannot connect");
+mysqli_select_db($db)or die("cannot select DB");
   
 $sql = "SELECT count(*) FROM $tv_paiement where date='$date' GROUP BY refcommune ";  
 
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
  // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -61,7 +61,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT SUM(paiement) AS Paie, id_nom , refcommune,  date FROM $tv_paiement where date='$date' GROUP BY refcommune  LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC  DESC
 
 // on ex?cute la requ?te  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()); 
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
 ?>
   </font></strong></font></font></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></p>
@@ -76,14 +76,14 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
       <td width="217" align="center" bgcolor="#3071AA">&nbsp;</td>
     </tr>
     <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
     <tr bgcolor="#FFFFFF">
       <td align="center"><?php echo $data['date'];?></td>
       <td> <?php  $RefCommune=$data['refcommune'];
 	  
 $sql3 = "SELECT * FROM commune where ref_com=$RefCommune";
-$result3 = mysql_query($sql3);
+$result3 = mysqli_query($link, $sql3);
 while ($row3 = mysql_fetch_assoc($result3)) {
 echo $secteur=$row3['commune'];
 } 	 ?>

@@ -23,12 +23,12 @@ require 'rh_configuration_fonction.php';
   <?php
 
 $sql="SELECT SUM(sbase) AS sbase , SUM(SS) AS SS , SUM(SI) AS SI, SUM(SD) AS SD, SUM(SR) AS SR, SUM(SNET) AS SNET, moispaie ,anneepaie , direction,  SUM(igr) AS igr ,  SUM(retraite) AS retraite   FROM $tb_rhpaie   where anneepaie='$anneepaie' and moispaie='$moispaie' GROUP BY  direction"; 
-$resultat = mysql_query($sql);
+$resultat = mysqli_query($link, $sql);
 	
 
 $sql2="SELECT SUM(sbase) AS sbase , SUM(SS) AS SS , SUM(SI) AS SI, SUM(SD) AS SD, SUM(SR) AS SR, SUM(SNET) AS SNET, moispaie ,anneepaie , direction,  SUM(igr) AS igr ,  SUM(retraite) AS retraite   FROM $tb_rhpaie   where anneepaie='$anneepaie' and moispaie='$moispaie'"; 
-$resultat2 = mysql_query($sql2);	
-$data2=mysql_fetch_array($resultat2)	
+$resultat2 = mysqli_query($link, $sql2);
+$data2=mysqli_fetch_array($resultat2)
 ?>
  </p>
 <p><em> RECAPITULATIF         <?php $n1=$moispaie;
@@ -58,7 +58,7 @@ $data2=mysql_fetch_array($resultat2)
      <td width="15%" align="center"><font color="#FFFFFF"><strong>NET A PAYER </strong></font></td>
   </tr>
    <?php
-while($data=mysql_fetch_array($resultat)){ // Start looping table row 
+while($data=mysqli_fetch_array($resultat)){ // Start looping table row
 ?>
    <tr>
      <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['direction'];?></em></td>

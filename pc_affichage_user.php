@@ -15,8 +15,8 @@ require 'fonction.php';
 //$id=$_GET['id'];
 $id=substr($_REQUEST["id"],32);
 $sqlm="SELECT * FROM $tbl_pc WHERE id='$id'";
-$resultm=mysql_query($sqlm);
-$datam=mysql_fetch_array($resultm);
+$resultm=mysqli_query($link, $sqlm);
+$datam=mysqli_fetch_array($resultm);
 ?>
 <body>
 <script type="text/javascript"> 
@@ -153,11 +153,11 @@ function toggleBox(szDivID, iState)// 1 visible, 0 hidden
     <td height="50" bgcolor="#FFFFFF">  <p>
       <?php
 	 $sqact="SELECT * FROM $tbl_pctaches WHERE id='$id'";
-	 $resultact=mysql_query($sqact);
+	 $resultact=mysqli_query($link, $sqact);
 
 ?>
       <?php
-while($rowsact=mysql_fetch_array($resultact)){
+while($rowsact=mysqli_fetch_array($resultact)){
 	 
 ?>
       </p>

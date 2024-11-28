@@ -21,17 +21,17 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <?php
 	 $sqlana="SELECT * FROM $tbl_releve_bach WHERE  id_nom='$id_nom' and miseajours!=1 and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec' and nserie='$nserie')";
-	 $resultana=mysqli_query($linki,$sqlana);
+	 $resultana=mysqli_query($link,$sqlana);
 
 	$sql5="DELETE FROM $tbl_releve_bachtemp WHERE miseajours=1";
-    $result5=mysqli_query($linki,$sql5);
+    $result5=mysqli_query($link,$sql5);
 	
 	$sqlDEL="DELETE FROM $tbl_releve_bach WHERE miseajours=1";
-    $resultDEL=mysqli_query($linki,$sqlDEL);
+    $resultDEL=mysqli_query($link,$sqlDEL);
 	
 	 $sql6="SELECT * FROM $tbl_seq_transf  WHERE  n_transfert=2";
-    $result6=mysql_query($sql6);
-	$affichedate=mysql_fetch_array($result6)
+    $result6=mysqli_query($link, $sql6);
+	$affichedate=mysqli_fetch_array($result6)
 ?>
 <body>
 <script type="text/javascript"> 
@@ -169,7 +169,7 @@ while($client=mysqli_fetch_array($resultana)){
               <td height="39"><?php echo $client['n']; ?></td>
               <td height="39"><?php echo $client['valeur']; ?></td>
               <td height="39"><?php echo $client['valeur']-$client['n'];?></td>
-              <td height="39"><?php $impayee=impaye($client['id'], $tbl_fact,$linki); echo $impayee[0];?></td>
+              <td height="39"><?php $impayee=impaye($client['id'], $tbl_fact,$link); echo $impayee[0];?></td>
               <td><em><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font color="#FF0000">
                 <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
                 <input name="id" type="hidden" id="id" value="<?php echo $client['id'];?>" size="30" readonly/>
@@ -199,10 +199,10 @@ while($client=mysqli_fetch_array($resultana)){
           </tr>
           <?php }
 		  
-    function impaye($idclient, $tbl_fact,$linki){
+    function impaye($idclient, $tbl_fact,$link){
     $sqlp = "SELECT * FROM $tbl_fact WHERE id='$idclient' and st='E' ORDER BY idf desc limit 0,1";  
-	$resultp=mysql_query($sqlp);
-	$datap=mysql_fetch_array($resultp);	
+	$resultp=mysqli_query($link, $sqlp);
+	$datap=mysqli_fetch_array($resultp);	
 
 	if((!isset($datap['report'])|| empty($datap['report']))) 
 	{ //$qt2='0'.'_'.$datap['idf']; return $qt2;

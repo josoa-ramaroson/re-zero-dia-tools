@@ -149,10 +149,10 @@ $mois3=$_POST['mois3'];
 $annee=$_POST['annee'];  
   
 $sql1="SELECT SUM(Montant) AS Paie, date , MONTH(date)  FROM $tbl_caisse_ver where YEAR(date)=$annee  and MONTH(date) >= '$mois2'  and  MONTH(date)<='$mois3' GROUP BY MONTH(date)";
-$result1=mysqli_query($linki,$sql1);
+$result1=mysqli_query($link,$sql1);
 
 $sql2="SELECT SUM(Montant) AS Paie, date , MONTH(date)  FROM $tbl_caisse_ver where YEAR(date)=$annee  and MONTH(date) >= '$mois2'  and  MONTH(date)<='$mois3'";
-$result2=mysqli_query($linki,$sql2);
+$result2=mysqli_query($link,$sql2);
 $rows2=mysqli_fetch_array($result2);
 
 ?>

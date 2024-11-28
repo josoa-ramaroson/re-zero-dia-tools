@@ -23,7 +23,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
     <h3 class="panel-title">DEPENSES ( Veuillez choisir le compte à Debiter 
       <?php
 $req1="SELECT * FROM $plan  ";
-$req=mysql_query($req1);
+$req=mysqli_query($link, $req1);
 ?>
       )</h3>
   </div>

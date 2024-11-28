@@ -1,14 +1,14 @@
 <?php
     require 'fonction.php';
-    $link = mysql_connect ($host,$user,$pass);
-    mysql_select_db($db);
+    $link = mysqli_connect ($host,$user,$pass);
+    mysqli_select_db($link, $db);
 	
 $iddr=addslashes($_POST['iddr']);
 $service=addslashes($_POST['service']);
 
 #---------------------------------------------------3 
 $sqlp="INSERT INTO $tb_rhservice (iddr, service) VALUES ('$iddr', '$service' )";
-$resultp=mysql_query($sqlp);
+$resultp=mysqli_query($link, $sqlp);
 if($resultp){
 }
 else {

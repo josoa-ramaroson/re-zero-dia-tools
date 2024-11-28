@@ -129,7 +129,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
                      <select name="annee" size="1" id="annee">
                        <?php
 $sql81 = ("SELECT * FROM z_annee  ORDER BY annee ASC ");
-$result81 = mysql_query($sql81);
+$result81 = mysqli_query($link, $sql81);
 
 while ($row81 = mysql_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
@@ -179,8 +179,8 @@ echo '<option> '.$row81['annee'].' </option>';
 $valeuretat=$_REQUEST['etat'];
 
 $sql = "SELECT count(*) FROM $tbl_fact where st='A' and libelle='Gaz' and etat='$valeuretat' ";  
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
-$nb_total = mysql_fetch_array($resultat);  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$nb_total = mysqli_fetch_array($resultat);  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
 }  
@@ -188,7 +188,7 @@ else {
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 100; 
 $sql = "SELECT * FROM $tbl_fact where st='A' and libelle='Gaz' and etat='$valeuretat' ORDER BY idf desc LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
 ?>
  </p>
  <table width="98%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -204,7 +204,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
      <td width="9%" align="center"><strong><font color="#FFFFFF">Statut</font></strong></td>
    </tr>
    <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row 
    ?>
    <tr bgcolor="<?php gettatut($data['etat']); ?>">
      <td align="center" ><?php if (($data['etat']!="facture")and ($data['etat']!="Annuler")){?>

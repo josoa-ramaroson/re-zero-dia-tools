@@ -8,7 +8,7 @@ $id_nom=addslashes($_POST['id_nom']);
  
 #---------------------------------------------------3 
 $sqlp="update  $tbl_libelle  set  id_nom='$id_nom', libelle='$libelle' , categorie='$categorie'    WHERE  idL='$idL'";
-$resultp=mysql_query($sqlp);
+$resultp=mysqli_query($link, $sqlp);
 if($resultp){
 }
 else {

@@ -71,7 +71,7 @@ require("bienvenue.php");
             <td><select name="titre" id="titre">
                 <?php
 $sql2 = ("SELECT titre  FROM $tbl_produit ORDER BY titre  ASC ");
-$result2 = mysql_query($sql2);
+$result2 = mysqli_query($link, $sql2);
 while ($row2 = mysql_fetch_assoc($result2)) {
 echo '<option> '.$row2['titre'].' </option>';
 }
@@ -132,10 +132,10 @@ echo '<option> '.$row2['titre'].' </option>';
 $sql = "SELECT count(*) FROM $tbl_enreg ";  
 
 // on ex?cute cette requ?te  
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
 // on r?cup?re le nombre d'?l?ments ? afficher  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);  
  // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -155,7 +155,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tbl_enreg  ORDER BY date  DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
  
 // on ex?cute la requ?te  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
   </font></strong></font></font></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></p>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -170,7 +170,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
   </tr>
   <?php
     $numboucle=0;
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row 
  if($numboucle %2 == 0) 
  
    $bgcolor = "#00CCFF"; 

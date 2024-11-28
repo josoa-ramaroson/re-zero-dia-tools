@@ -38,7 +38,7 @@ $sql11 = "SELECT  v.cons1,  v.cons2,  v.cons,  v.mont1, v.mont2, v.puisct,  v.to
 	
 }
 
-$req11=mysqli_query($linki,$sql11);
+$req11=mysqli_query($link,$sql11);
 
 
 
@@ -71,7 +71,7 @@ while($data11=mysqli_fetch_array($req11)){ // Start looping table row
       <?php $RefLocalite=$data11['RefLocalite'];
 	 
 	 $sql322 = "SELECT * FROM ville where refville=$RefLocalite";
-$result322 = mysqli_query($linki,$sql322);
+$result322 = mysqli_query($link,$sql322);
 while ($row322 = mysqli_fetch_assoc($result322)) {
 echo $ville=$row322['ville'];
 }
@@ -113,8 +113,8 @@ $sql33 = "SELECT  COUNT(*) AS nbres, SUM(f.cons1) AS cons1, SUM(f.cons2) AS cons
 $sql4 = "SELECT COUNT(*) AS nbtotal FROM $dbbk.z_"."$ARCH"."_$tbl_fact f , $db.$tbl_contact c  where  c.id=f.id and f.fannee='$annee1f'  and f.nserie='$nserie1'";
 
 }
-$req33=mysqli_query($linki,$sql33);
-$req4=mysqli_query($linki,$sql4);
+$req33=mysqli_query($link,$sql33);
+$req4=mysqli_query($link,$sql4);
 while($data4=mysqli_fetch_array($req4)){$nbt=$data4['nbtotal'];}
 
 ?>
@@ -167,7 +167,7 @@ $nb= $data33['nbres'];
   </tr>
   <tr>
     <td height="21"><?php
-	mysqli_close ($linki);
+	mysqli_close ($link);
 include_once('pied.php');
 ?></td>
   </tr>

@@ -24,13 +24,13 @@ $m3=$_GET['m3'];
 
 require 'fonction.php';
 require 'configuration.php';
-$link = mysql_connect ($host,$user,$pass); 
-mysql_select_db($db);
+$link = mysqli_connect ($host,$user,$pass); 
+mysqli_select_db($link, $db);
 
 $sql5="SELECT * FROM $tbl_clientgaz where  id='$m1'";
-$req5=mysql_query($sql5);
+$req5=mysqli_query($link, $sql5);
 
-while($data5=mysql_fetch_array($req5)){
+while($data5=mysqli_fetch_array($req5)){
 ?>
     </span></h1></td>
   </tr>
@@ -79,7 +79,7 @@ while($data5=mysql_fetch_array($req5)){
 <font size="2"><font size="2"><font size="2">
 <?php
 $sql="SELECT * FROM $tbl_vente where nc='$m1' and  datev='$m2'  ";
-$req=mysql_query($sql);
+$req=mysqli_query($link, $sql);
 ?>
 </font></font></font><br />
 <table border="1" cellspacing="0" style="width: 100%; border: solid 1px black; background: #E7E7E7; text-align: center; font-size: 10pt;">
@@ -92,7 +92,7 @@ $req=mysql_query($sql);
 </table>
 <table border="1" cellspacing="0" style="width: 100%; border: solid 1px black; background: #F7F7F7; text-align: center; font-size: 10pt;">
   <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
   <tr>
     <td style="width: 40%; text-align: left"><font color="#000000"><em><?php echo $data['titre'];?></em></font></td>
@@ -110,13 +110,13 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 <p>
   <?php
 $sql2="SELECT  SUM(PTotal) AS prix  FROM $tbl_vente where  nc='$m1' and  datev='$m2' GROUP BY datev";
-$result2=mysql_query($sql2);
+$result2=mysqli_query($link, $sql2);
 ?>
 </p>
 <table width="100%" border="0">
   <tr>
     <?php
-while($rows2=mysql_fetch_array($result2)){ // Start looping table row 
+while($rows2=mysqli_fetch_array($result2)){ // Start looping table row
 $Totaldevis=$rows2['prix'];
 $totalttc= $Totaldevis;
 $totalnet= $Totaldevis;
@@ -129,8 +129,8 @@ $totalnet= $Totaldevis;
 }
 //---------FACTURATION DEVIS---------------------------------
 $sqlmaxf="SELECT MAX(idf) AS Maxa_id FROM $tbl_fact";
-$resultmaxf=mysql_query($sqlmaxf);
-$rowsmaxf=mysql_fetch_array($resultmaxf);
+$resultmaxf=mysqli_query($link, $sqlmaxf);
+$rowsmaxf=mysqli_fetch_array($resultmaxf);
 if ($rowsmaxf) {
 $Max_idf = $rowsmaxf['Maxa_id']+1;
 }
@@ -148,13 +148,13 @@ $etat='facture';
 $date=$m2;
 
 $valeur_existant = "SELECT COUNT(*) AS nb , idf FROM $tbl_fact  WHERE st='A' and id='$m1' and date='$m2'";
-$sqLvaleur = mysql_query($valeur_existant)or exit(mysql_error()); 
+$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysql_error());
 $nb = mysql_fetch_assoc($sqLvaleur);
 
 if($nb['nb'] == 1)
 { 	
 $sql3="update  $tbl_fact  set date='$date', totalttc='$totalttc', totalnet='$totalnet', report='$totalnet' WHERE  st='A' and id='$m1' and date='$m2' and etat='facture'";
-    $result3=mysql_query($sql3);
+    $result3=mysqli_query($link, $sql3);
 $Codebare=$nb['idf'];
 }
 else 
@@ -162,7 +162,7 @@ else
 $sql2="INSERT INTO $tbl_fact 
 ( id, ci , st, id_nom, bnom, bquartier, nfacture, fannee, date, libelle, totalttc, totalnet, report, etat) VALUES
 ( '$m1', '$ci', '$st', '$m3', '$nomprenom', '$quartier', '$nfacture', '$fannee', '$date', '$libelle','$totalttc', '$totalnet', '$totalnet', 'facture')";
-$result2=mysql_query($sql2);
+$result2=mysqli_query($link, $sql2);
 $Codebare=$Max_idf;
 }
 

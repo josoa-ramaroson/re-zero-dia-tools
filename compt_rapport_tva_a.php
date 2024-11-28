@@ -41,8 +41,8 @@ $annee=$_POST['annee'];
               </tr>
   <?php
   $req2="select * from $tb_ecriture where  YEAR(Date)=$annee  and Description= 'TVA' " ;
-  $req=mysql_query($req2);
- while ($data=mysql_fetch_array($req)){ // Start looping table row 
+  $req=mysqli_query($link, $req2);
+ while ($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
               <tr> 
                 <td height="27" bgcolor="#FFFFFF"> <div align=""> 

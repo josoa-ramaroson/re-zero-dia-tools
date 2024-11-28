@@ -16,13 +16,13 @@ header("location: app_caisse.php");
 else
 {
 $valeur_existant = "SELECT COUNT(*) AS nb FROM $tbl_app_caisse ";
-$sqLvaleur = mysql_query($valeur_existant)or exit(mysql_error()); 
+$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysql_error());
 $nb = mysql_fetch_assoc($sqLvaleur);
 
 if($nb['nb'] == 1)
 {
 $sqlp="update  $tbl_app_caisse  set  datecaisse='$date' , blogin='$blogin' , date_verif='$date' ";
-$resultp=mysql_query($sqlp);
+$resultp=mysqli_query($link, $sqlp);
 
 header("location: app_caisse.php");
 }
@@ -31,7 +31,7 @@ else
 
 $sqlp="INSERT INTO $tbl_app_caisse ( blogin  ,  datecaisse ,date_verif )
                     VALUES      ('$blogin','$date' , '$date')";								
-$r=mysql_query($sqlp)
+$r=mysqli_query($link, $sqlp)
 or die(mysql_error());
 
 mysql_close($link);

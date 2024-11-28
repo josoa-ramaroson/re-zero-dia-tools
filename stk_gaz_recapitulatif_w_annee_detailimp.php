@@ -29,10 +29,10 @@ require 'fonction.php';
 $annee=substr($_REQUEST["annee"],32);
 
 $sql1="SELECT MONTHNAME(datev) AS mois, YEAR(datev) AS annee , SUM(PTotal) AS prix  FROM $tbl_vente  where type=1  and YEAR(datev)=$annee GROUP BY YEAR(datev) ";
-$req=mysqli_query($linki,$sql1);
+$req=mysqli_query($link,$sql1);
 
 $sql2="SELECT titre  , SUM(Qvente) AS Qvente ,  PUnitaire , SUM(PTotal) AS prix2 FROM $tbl_vente  where type=1 and  YEAR(datev)=$annee GROUP BY titre ";
-$req2=mysqli_query($linki,$sql2);
+$req2=mysqli_query($link,$sql2);
 
 ?>
   </font></strong></font></font></font></font></p>

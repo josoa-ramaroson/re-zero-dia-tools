@@ -11,11 +11,11 @@ $anneeuser=$_REQUEST["annee"];
 $moisuser=$_REQUEST["mois"];
 $jouruser=$_REQUEST["jour"];
 ?>
-<H1>PLANNING DE  <?php echo personne($nom_cal, $tbl_utilisateur , $linki); ?></H1>
+<H1>PLANNING DE  <?php echo personne($nom_cal, $tbl_utilisateur , $link); ?></H1>
   <?php
 require 'fonction.php';	
 $sql = "SELECT * FROM $tb_evenement where  id_nom='$nom_cal' and DAY(datev)=$jouruser and  MONTH(datev)=$moisuser and YEAR(datev)=$anneeuser ORDER BY heures "; // DESC ASC  
-$req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$req = mysqli_query($link,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
 
 ?>
 </CENTER>
@@ -51,8 +51,8 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
     <td align="center" >
         
     <?php $sqldate="SELECT * FROM $tbl_caisse "; //DESC  ASC
-	$resultldate=mysql_query($sqldate);
-	$datecaisse=mysql_fetch_array($resultldate);
+	$resultldate=mysqli_query($link, $sqldate);
+	$datecaisse=mysqli_fetch_array($resultldate);
 	$dateJour=$datecaisse['datecaisse'];
 	$dareRDV=$data['datev'];
     ?>
@@ -66,7 +66,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
    
    $numboucle++;
 }	
-mysqli_close ($linki);  
+mysqli_close ($link);  
 
 ?>
 </table>

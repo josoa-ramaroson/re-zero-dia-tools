@@ -25,14 +25,14 @@ $matricule=addslashes($_REQUEST['matricule']);
 $m1p=$matricule;
 
 $sql5="SELECT * FROM $tb_rhpaie where matricule='$m1p' ORDER BY ipaie ASC";
-$req5=mysql_query($sql5);
+$req5=mysqli_query($link, $sql5);
 
-while($datam=mysql_fetch_array($req5)){ // Start looping table row
+while($datam=mysqli_fetch_array($req5)){ // Start looping table row
 
 $idrh=$datam['idrh'];
 $sqlconnect="SELECT * FROM $tb_rhpersonnel  WHERE idrhp=$idrh";
-$resultconnect=mysql_query($sqlconnect);
-$rmat=mysql_fetch_array($resultconnect);
+$resultconnect=mysqli_query($link, $sqlconnect);
+$rmat=mysqli_fetch_array($resultconnect);
 //$nconge= $rmat['nconge'];
 $nCPP= $rmat['CPP'];
 ?>

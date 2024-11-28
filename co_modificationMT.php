@@ -26,12 +26,12 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
           <?php
 $idf=substr($_REQUEST["idf"],32);
 $sql3="SELECT * FROM $tbl_fact WHERE idf='$idf'";
-$result3=mysql_query($sql3);
-$rows3=mysql_fetch_array($result3);
+$result3=mysqli_query($link, $sql3);
+$rows3=mysqli_fetch_array($result3);
 
 	$sqldate="SELECT * FROM $tbl_caisse "; //DESC  ASC
-	$resultldate=mysql_query($sqldate);
-	$datecaisse=mysql_fetch_array($resultldate);
+	$resultldate=mysqli_query($link, $sqldate);
+	$datecaisse=mysqli_fetch_array($resultldate);
 	
 ?>
         </font>Indication</strong></td>
@@ -127,7 +127,7 @@ $rows3=mysql_fetch_array($result3);
         <td><font color="#FF0000">
           <?php $idt=$rows3['id'];
 $sql82 ="SELECT * FROM $tbl_contact where id='$idt'";
-$result82 = mysql_query($sql82);
+$result82 = mysqli_query($link, $sql82);
 while ($row82 = mysql_fetch_assoc($result82)) {
 $Tarif=$row82['Tarif'];
 $chtaxe=$row82['chtaxe'];

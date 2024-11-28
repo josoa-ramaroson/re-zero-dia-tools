@@ -5,7 +5,7 @@ $id=addslashes($_POST['id']);
 $id_u=addslashes($_POST['id_u']);
 
 $sql9 ="SELECT id_u, u_nom , u_prenom  FROM $tbl_utilisateur  where id_u='$id_u'";
-$result9 = mysql_query($sql9);
+$result9 = mysqli_query($link, $sql9);
 
 while ($row9 = mysql_fetch_assoc($result9)) {
 $utilisateur=$row9['u_nom'].' '.$row9['u_prenom'];
@@ -13,7 +13,7 @@ $utilisateur=$row9['u_nom'].' '.$row9['u_prenom'];
 $sql="update $tbl_pc  set  utilisateur='$utilisateur', id_u='$id_u' WHERE id='$id' ";
 
 
-$result=mysql_query($sql);
+$result=mysqli_query($link, $sql);
    if($result){
 	   //SUCCESS
 	   $idr=md5(microtime()).$id;

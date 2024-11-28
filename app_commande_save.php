@@ -26,13 +26,13 @@ $idservice=addslashes($_POST['subcat']);
  
 
 $sql1 = "SELECT * FROM $tb_rhservice where idser=$idservice";
-$result1 = mysqli_query($linki,$sql1);
+$result1 = mysqli_query($link,$sql1);
 while ($row1 = mysqli_fetch_assoc($result1)) {
 $service=$row1['service'];
 }  
 
 $sql2 = "SELECT * FROM $tb_rhdirection where idrh=$iddirection";
-$result2 = mysqli_query($linki,$sql2);
+$result2 = mysqli_query($link,$sql2);
 while ($row2 = mysqli_fetch_assoc($result2)) {
 $direction=$row2['direction'];
 } 
@@ -50,9 +50,9 @@ $sql="INSERT INTO $tbl_appcommande ( id_nom , date_dem, nomprenom, direction, se
 
 VALUES
 ('$id_nom' ,  '$date_dem', '$nomprenom', '$direction', '$service', '$statut', '$num')";
-$result=mysqli_query($linki,$sql);
+$result=mysqli_query($link,$sql);
 
-mysqli_close($linki); 
+mysqli_close($link);
 ?>
 <?php
 header("location:app_commande.php");

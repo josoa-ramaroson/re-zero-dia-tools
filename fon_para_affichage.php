@@ -21,7 +21,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 <?php
 require 'fonction.php';
 $sqlm="SELECT * FROM  fonction_systeme";
-$resultm=mysqli_query($linki, $sqlm);
+$resultm=mysqli_query($link, $sqlm);
 $datam=mysqli_fetch_array($resultm);
 ?>
 <body>

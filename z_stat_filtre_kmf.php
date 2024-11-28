@@ -36,7 +36,7 @@ else
 {
 $sql11 = "SELECT  COUNT(*) AS nbres, SUM(f.cons1) AS cons1, SUM(f.cons2) AS cons2, SUM(f.cons) AS cons, SUM(f.mont1) AS mont1,SUM(f.mont2) AS mont2,SUM(f.puisct) AS puisct, SUM(f.totalht) AS totalht, SUM(f.tax) AS tax, SUM(f.totalttc) AS totalttc, SUM(f.ortc) AS ortc, SUM(f.impayee) AS impayee, SUM(f.Pre) AS Pre, SUM(f.totalnet) AS totalnet, c.refcommune , f.nserie , f.fannee , c.Tarif , f.st FROM z_"."$ARCH"."_$tbl_fact f , $tbl_contact c  where  c.id=f.id and f.fannee='$annee1f'  and f.nserie='$nserie1' and f.totalttc  > '$CA' and  '$CB' > f.totalttc  GROUP BY c.refcommune "; 
 }
-$req11=mysql_query($sql11);
+$req11=mysqli_query($link, $sql11);
 ?>
 </p>
 <H2>
@@ -57,14 +57,14 @@ $req11=mysql_query($sql11);
     <td width="15%" align="center"><font color="#FFFFFF"><strong>Montant TTC</strong></font></td>
   </tr>
   <?php
-while($data11=mysql_fetch_array($req11)){ // Start looping table row 
+while($data11=mysqli_fetch_array($req11)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF"><em>
       <?php $RefCommune=$data11['refcommune'];
 	 
 	 $sql3 = "SELECT * FROM commune where ref_com=$RefCommune";
-$result3 = mysql_query($sql3);
+$result3 = mysqli_query($link, $sql3);
 while ($row3 = mysql_fetch_assoc($result3)) {
 echo $secteur=$row3['commune'];
 }
@@ -100,7 +100,7 @@ else
 {
 $sql22 = "SELECT  COUNT(*) AS nbres, SUM(f.cons1) AS cons1, SUM(f.cons2) AS cons2, SUM(f.cons) AS cons, SUM(f.mont1) AS mont1,SUM(f.mont2) AS mont2,SUM(f.puisct) AS puisct, SUM(f.totalht) AS totalht, SUM(f.tax) AS tax, SUM(f.totalttc) AS totalttc, SUM(f.ortc) AS ortc, SUM(f.impayee) AS impayee, SUM(f.Pre) AS Pre, SUM(f.totalnet) AS totalnet, c.RefLocalite , f.nserie , f.fannee , c.Tarif , f.st FROM z_"."$ARCH"."_$tbl_fact f , $tbl_contact c  where  c.id=f.id and fannee='$annee1f'  and f.nserie='$nserie1' and f.totalttc > '$CA' and  '$CB' > f.totalttc GROUP BY c.RefLocalite ";
 }
-$req22=mysql_query($sql22);
+$req22=mysqli_query($link, $sql22);
 ?>
 </p>
 <H2>
@@ -121,14 +121,14 @@ $req22=mysql_query($sql22);
     <td width="15%" align="center"><font color="#FFFFFF"><strong>Montant TTC</strong></font></td>
   </tr>
   <?php
-while($data22=mysql_fetch_array($req22)){ // Start looping table row 
+while($data22=mysqli_fetch_array($req22)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF"><em>
       <?php $RefLocalite=$data22['RefLocalite'];
 	 
 	 $sql322 = "SELECT * FROM ville where refville=$RefLocalite";
-$result322 = mysql_query($sql322);
+$result322 = mysqli_query($link, $sql322);
 while ($row322 = mysql_fetch_assoc($result322)) {
 echo $ville=$row322['ville'];
 }
@@ -167,9 +167,9 @@ $sql33 = "SELECT  COUNT(*) AS nbres, SUM(f.cons1) AS cons1, SUM(f.cons2) AS cons
 
 $sql4 = "SELECT COUNT(*) AS nbtotal FROM z_"."$ARCH"."_$tbl_fact f , $tbl_contact c  where  c.id=f.id and f.fannee='$annee1f'  and f.nserie='$nserie1'";
 }
-$req33=mysql_query($sql33);
-$req4=mysql_query($sql4);
-while($data4=mysql_fetch_array($req4)){$nbt=$data4['nbtotal'];}
+$req33=mysqli_query($link, $sql33);
+$req4=mysqli_query($link, $sql4);
+while($data4=mysqli_fetch_array($req4)){$nbt=$data4['nbtotal'];}
 
 ?>
 </p>
@@ -191,7 +191,7 @@ while($data4=mysql_fetch_array($req4)){$nbt=$data4['nbtotal'];}
     <td width="20%" align="center"><font color="#FFFFFF"><strong>Montant TTC</strong></font></td>
   </tr>
   <?php
-while($data33=mysql_fetch_array($req33)){ // Start looping table row 
+while($data33=mysqli_fetch_array($req33)){ // Start looping table row
 $nb= $data33['nbres'];
 ?>
   <tr>

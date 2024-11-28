@@ -34,13 +34,13 @@ require 'fonction.php';
 require 'configuration.php';
 
 $sql5="SELECT * FROM $tbl_contact where id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec') ORDER BY id ASC";
-$result5 = mysql_query($sql5);
+$result5 = mysqli_query($link, $sql5);
 while ($row5 = mysql_fetch_assoc($result5)) {
 echo '<option value='.$row5['id'].'>'.$row5['id'].'</option>';
 }
 $id=$_POST['id'];
 $sql4 = "SELECT * FROM $tbl_contact where id='$id'";
-$result4 = mysql_query($sql4);
+$result4 = mysqli_query($link, $sql4);
 while ($row4 = mysql_fetch_assoc($result4)) {
 $id=$row4['id'];
 }  
@@ -54,17 +54,17 @@ $id=$row4['id'];
 //echo $iden;
 //echo $id;
 $sqlm="SELECT * FROM $tbl_contact WHERE id='$id'";
-$resultm=mysql_query($sqlm);
-$datam=mysql_fetch_array($resultm);
+$resultm=mysqli_query($link, $sqlm);
+$datam=mysqli_fetch_array($resultm);
 
 	//affichage des facturations
 	$sqfac="SELECT * FROM $tbl_fact WHERE id='$id' and idso='$id' and id!='0' and id!='0' and  st='S' ORDER BY idf desc";
-	$resultfac=mysql_query($sqfac);
+	$resultfac=mysqli_query($link, $sqfac);
 	
 	//recherche du repport 
 	$sqlp = "SELECT * FROM $tbl_paiement WHERE id='$id' and idso='$id' and st='S' ORDER BY idp desc limit 0,1";  
-	$resultp=mysql_query($sqlp);
-	$datap=mysql_fetch_array($resultp);
+	$resultp=mysqli_query($link, $sqlp);
+	$datap=mysqli_fetch_array($resultp);
 	 
 ?></td>
         </tr>
@@ -264,7 +264,7 @@ $datam=mysql_fetch_array($resultm);
     <td width="11%" align="center" bgcolor="#FFFFFF">&nbsp;</td>
   </tr>
   <?php
-while($rowsfac=mysql_fetch_array($resultfac)){ 
+while($rowsfac=mysqli_fetch_array($resultfac)){
 ?>
   <tr>
     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $rowsfac['idf'];?></em></div></td>

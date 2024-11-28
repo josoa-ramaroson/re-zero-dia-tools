@@ -25,8 +25,8 @@ $output = fopen('php://output', 'w');
 
 //fputcsv($output, array('idf','id', 'Police', 'ci' , 'st', 'id_nom', 'bnom', 'bquartier', 'nfacture', 'fannee', 'nserie', 'date', 'datelimite', 'libelle' , 'nf' , 'n',  'nf2', 'n2' , 'cons', 'cons1', 'cons2', 't1', 't2', 'mont1', 'mont2', 'puisct', 'totalht', 'tax' , 'totalttc', 'ortc', 'impayee' , 'Pre', 'totalnet' , 'report', 'etat', 'bstatut', 'impression','coefTi' , 'miseajours'));
 fputcsv($output, array( ));
-$rows = mysqli_query($linki,"SELECT `id_nom`,`date_dem`,`direction`,`service`,`designation`,`quantite`,`prixu`,`prixt` FROM $tbl_appbonachatp where  YEAR(date_dem)='$annee' and direction='$direction' and  service='$service' order by direction ,service");
+$rows = mysqli_query($link,"SELECT `id_nom`,`date_dem`,`direction`,`service`,`designation`,`quantite`,`prixu`,`prixt` FROM $tbl_appbonachatp where  YEAR(date_dem)='$annee' and direction='$direction' and  service='$service' order by direction ,service");
 while ($row = mysqli_fetch_assoc($rows)) fputcsv($output, $row);
 
-mysqli_close($linki);
+mysqli_close($link);
 ?>

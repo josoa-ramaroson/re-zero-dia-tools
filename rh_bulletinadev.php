@@ -20,9 +20,9 @@ require 'fonction.php';
 require 'rh_configuration_fonction.php';
 
 $sql5="SELECT * FROM  $tb_rhpaie where  idrh=1  and anneepaie='$anneepaie' and moispaie='$moispaie'";
-$req5=mysql_query($sql5);
+$req5=mysqli_query($link, $sql5);
 
-while($datam=mysql_fetch_array($req5)){ // Start looping table row
+while($datam=mysqli_fetch_array($req5)){ // Start looping table row
 ?>
     </span></h1>
     <p align="center">&nbsp;</p></td>

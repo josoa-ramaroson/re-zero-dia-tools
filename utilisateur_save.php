@@ -1,7 +1,7 @@
 <?php
 require 'fonction.php';
-$link = mysql_connect ($host,$user,$pass);
-mysql_select_db($db);
+$link = mysqli_connect ($host,$user,$pass);
+mysqli_select_db($link, $db);
 
 //------------identification du maximun -----------
 $u_nom=addslashes($_POST['u_nom']);
@@ -24,7 +24,7 @@ $sqlp="INSERT INTO $tbl_utilisateur ( id_nom   , u_nom   ,u_prenom,  u_email, u_
 
  VALUES ('$id_nom' ,'$u_nom','$u_prenom',  '$u_email', '$u_login', '$u_pwd', '$u_niveau' ,'$type' , '$titre','$mobile' ,'$statut', '$agence', '$datetime')";
 				 
-$r=mysql_query($sqlp);
+$r=mysqli_query($link, $sqlp);
 mysql_close($link);
 ?>
 <?php

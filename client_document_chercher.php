@@ -66,7 +66,7 @@ $mr1=addslashes($_POST['mr1']);
 $s=explode(" ",$mr1);
 
 $sql = "SELECT count(*) FROM $tbl_client_doc ";  
-$resultat = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$resultat = mysqli_query($link,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());
 $nb_total = mysqli_fetch_array($resultat);  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -89,12 +89,12 @@ foreach($s as $mot) {
 
 $sql.=" 0  ORDER BY idclient ASC ";  
 
-$req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$req = mysqli_query($link,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());
 
 
-    function Nom_prenom_client($LE_idclient, $tbl_contact,$linki){
+    function Nom_prenom_client($LE_idclient, $tbl_contact,$link){
 	$sqld7 = "SELECT * FROM  $tbl_contact where id='$LE_idclient'";
-	$resultatd7 = mysqli_query($linki,$sqld7); 
+	$resultatd7 = mysqli_query($link,$sqld7);
 	$nqtd7 = mysqli_fetch_assoc($resultatd7);
 	if((!isset($nqtd7['nomprenom'])|| empty($nqtd7['nomprenom']))) { $qt7=''; return $qt7;}
 	else {$qt7=$nqtd7['nomprenom'] ; return $qt7;}
@@ -137,7 +137,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
     
     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $idclient;?></em></div></td>
     <td align="center" bgcolor="#FFFFFF"><div align="left">
-      <?php $nom_prenom=Nom_prenom_client($idclient, $tbl_contact,$linki); echo $nom_prenom;?>
+      <?php $nom_prenom=Nom_prenom_client($idclient, $tbl_contact,$link); echo $nom_prenom;?>
     </div></td>
     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $data['titre'];?></em></div></td>
     <td align="center" bgcolor="#FFFFFF"><div align="left"></div></td>
@@ -171,7 +171,7 @@ mysqli_free_result ($req);
    //echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
 mysqli_free_result ($resultat);  
-mysqli_close ($linki); 
+mysqli_close ($link);
 }
 else {
 echo " Pas de recherche <br>";

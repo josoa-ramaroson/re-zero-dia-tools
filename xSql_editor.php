@@ -21,10 +21,10 @@ header("Content-Disposition: attachment; filename=$fichier");
 $output = fopen('php://output', 'w');
 
 fputcsv($output, array( ));
-$rows = mysqli_query($linki,"$sqlfichier");
+$rows = mysqli_query($link,"$sqlfichier");
 while ($row = mysqli_fetch_array($rows)) fputcsv($output, $row);
 
-mysqli_close($linki);
+mysqli_close($link);
 
 ?>
 

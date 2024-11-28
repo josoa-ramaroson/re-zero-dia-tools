@@ -48,13 +48,13 @@ $idservice=addslashes($_POST['subcat']);
  }
  
 $sql1 = "SELECT * FROM $tb_rhservice where idser=$idservice";
-$result1 = mysqli_query($linki,$sql1);
+$result1 = mysqli_query($link,$sql1);
 while ($row1 = mysqli_fetch_assoc($result1)) {
 $service=$row1['service'];
 }  
 
 $sql2 = "SELECT * FROM $tb_rhdirection where idrh=$iddirection";
-$result2 = mysqli_query($linki,$sql2);
+$result2 = mysqli_query($link,$sql2);
 while ($row2 = mysqli_fetch_assoc($result2)) {
 $direction=$row2['direction'];
 } 
@@ -129,9 +129,9 @@ $sql="INSERT INTO $tb_rhpersonnel ( id_nom , Designation, nomprenom, sex , stfam
 
 VALUES
 ('$id_nom' ,'$Designation', '$nomprenom', '$sex', '$stfamille', '$nenfant', '$ville', '$tel', '$email', '$matricule', '$niveau', '$specialisation', '$login', '$pwd', '$dnaissance',  '$dembauche', '$titre', '$categorie', '$direction', '$service', '$cm','$statut', '$NTC', '$CPP', '$Tin', '$igrchoix', '$crchoix', '$indice', '$tauxsalaire', '$sbase', '$igr', '$retraite' , '$SS', '$SI','$SD','$SR','$SNET')";
-$result=mysqli_query($linki,$sql);
+$result=mysqli_query($link,$sql);
 
-mysqli_close($linki); 
+mysqli_close($link); 
 ?>
 <?php
 header("location:rh_employer_affichage.php");

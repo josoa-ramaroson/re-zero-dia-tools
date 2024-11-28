@@ -114,7 +114,7 @@ require 'rh_configuration_fonction.php';
 $iddirection=addslashes($_REQUEST['direction']);
 
 $sql2 = "SELECT * FROM $tb_rhdirection where idrh=$iddirection";
-$result2 = mysql_query($sql2);
+$result2 = mysqli_query($link, $sql2);
 while ($row2 = mysql_fetch_assoc($result2)) {
 $direction=$row2['direction'];
 } 
@@ -126,12 +126,12 @@ $direction=$row2['direction'];
   <?php
 $sql2="SELECT SUM(sbase) AS sbase , SUM(SS) AS SS , SUM(SI) AS SI, SUM(SD) AS SD, SUM(SR) AS SR, SUM(SNET) AS SNET, moispaie ,anneepaie , direction, service,  SUM(igr) AS igr ,  SUM(retraite) AS retraite   FROM $tb_rhpaie   where anneepaie='$anneepaie' and moispaie='$moispaie' and direction='$m1d'"; 
 
-$resultat2 = mysql_query($sql2);	
-$data2=mysql_fetch_array($resultat2)
+$resultat2 = mysqli_query($link, $sql2);
+$data2=mysqli_fetch_array($resultat2)
 ?>
   <?php
 $sql = "SELECT * FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie' and direction='$m1d' ORDER BY matricule ASC  ";  //DESC
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
   </p>
 </p>
@@ -173,7 +173,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
      <td width="12%" align="center"><font color="#FFFFFF"><strong>SALAIRE NET</strong></font></td>
    </tr>
    <?php
-while($datafact=mysql_fetch_array($req)){ // Start looping table row 
+while($datafact=mysqli_fetch_array($req)){ // Start looping table row
 ?>
     <tr bgcolor="#FFFFFF">
      <td align="center"><font color="#000000"> <?php echo $datafact['matricule'];?></td>

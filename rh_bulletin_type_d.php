@@ -119,7 +119,7 @@ require 'rh_configuration_fonction.php';
 $iddirection=addslashes($_REQUEST['direction']);
 
 $sql2 = "SELECT * FROM $tb_rhdirection where idrh=$iddirection";
-$result2 = mysql_query($sql2);
+$result2 = mysqli_query($link, $sql2);
 while ($row2 = mysql_fetch_assoc($result2)) {
 $direction=$row2['direction'];
 } 
@@ -132,16 +132,16 @@ $direction=$row2['direction'];
   <?php
 $sql2="SELECT SUM(sbase) AS sbase , SUM(SS) AS SS , SUM(SI) AS SI, SUM(SD) AS SD, SUM(SR) AS SR, SUM(SNET) AS SNET, moispaie ,anneepaie , direction, service,  SUM(igr) AS igr ,  SUM(retraite) AS retraite   FROM $tb_rhpaie   where anneepaie='$anneepaie' and moispaie='$moispaie' and direction='$m1d'"; 
 
-$resultat2 = mysql_query($sql2);	
-$data2=mysql_fetch_array($resultat2)
+$resultat2 = mysqli_query($link, $sql2);
+$data2=mysqli_fetch_array($resultat2)
 ?>
 </p>
 <p>IMPRIMER LA LISTE <a href="rh_bulletin_type_dliste.php?<?php echo md5(microtime())?>&direction=<?php echo $iddirection;?>&<?php echo md5(microtime());?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a> IMPRIMER LES BULLETINS<a href="rh_bulletind.php?<?php echo md5(microtime());?>&direction=<?php echo $iddirection;?>&<?php echo md5(microtime());?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a>
   <?php
 
 $sql = "SELECT count(*) FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie' and direction='$m1d'";  
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
-$nb_total = mysql_fetch_array($resultat);  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$nb_total = mysqli_fetch_array($resultat);  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
 }  
@@ -149,7 +149,7 @@ else {
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page =50; 
 $sql = "SELECT * FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie' and direction='$m1d' ORDER BY matricule ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //DESC
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
   </p>
 </p>
@@ -191,7 +191,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
      <td width="11%" align="center"><font color="#FFFFFF"><strong>SALAIRE NET</strong></font></td>
    </tr>
    <?php
-while($datafact=mysql_fetch_array($req)){ // Start looping table row 
+while($datafact=mysqli_fetch_array($req)){ // Start looping table row 
 ?>
     <tr bgcolor="<?php gettatut($datafact['SNET']); ?>">
      <td align="center"><font color="#000000">

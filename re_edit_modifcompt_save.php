@@ -19,7 +19,7 @@ $quartier=addslashes($_POST['quartier']);
 
 $T=$Tarif;
 $sql82 = ("SELECT * FROM tarif where idt='$T'");
-$result82 = mysql_query($sql82);
+$result82 = mysqli_query($link, $sql82);
 while ($row82 = mysql_fetch_assoc($result82)) {
 $typecompteur=$row82['typecom'];
 }
@@ -27,8 +27,8 @@ $typecompteur=$row82['typecom'];
 //-----------------------------------------------------
 
 $sqlmaxf="SELECT MAX(idf) AS Maxa_id FROM $tbl_fact";
-$resultmaxf=mysql_query($sqlmaxf);
-$rowsmaxf=mysql_fetch_array($resultmaxf);
+$resultmaxf=mysqli_query($link, $sqlmaxf);
+$rowsmaxf=mysqli_fetch_array($resultmaxf);
 if ($rowsmaxf) {
 $Max     = $rowsmaxf['Maxa_id'];	
 $Max_idf = $rowsmaxf['Maxa_id']+1;
@@ -47,7 +47,7 @@ $libelle='Chang Compteur';
 $etat='facture';
 
 $sql82 ="SELECT * FROM tarif where idt='$Tarif'";
-$result82 = mysql_query($sql82);
+$result82 = mysqli_query($link, $sql82);
 while ($row82 = mysql_fetch_assoc($result82)) {
 $t1=$row82['t1'];
 $t2=$row82['t2'];
@@ -59,22 +59,22 @@ if ($type=='TRI') { $totalttc=$changementcompteurT; $totalnet=$changementcompteu
 if ($type=='MONO'){ $totalttc=$changementcompteur; $totalnet=$changementcompteur;}
 
 $sql="update $tbl_contact  set id_nom='$id_nom' , Police='$Police',  typecompteur='$typecompteur', phase='$phase', puissance='$puissance', Tarif='$Tarif', amperage='$amperage' , ncompteur='$ncompteur' , Indexinitial='$Indexinitial', index2='$index2', datepose='$datepose'  , miseajours='1' WHERE id LIKE '$_POST[id]' ";
-$result=mysql_query($sql);
+$result=mysqli_query($link, $sql);
 
 $sql2="INSERT INTO $tbl_fact 
 ( id, ci , st, id_nom, bnom, bquartier, nfacture, fannee, date, libelle, totalttc, totalnet, report, etat) VALUES
 ( '$id','$ci', '$st', '$id_nom', '$nomprenom', '$quartier', '$nfacture', '$fannee', '$datepose', '$libelle','$totalttc', '$totalnet', '$totalnet', '$etat')";
-$result2=mysql_query($sql2);
+$result2=mysqli_query($link, $sql2);
 
 
 	$sqfac="SELECT * FROM $tbl_fact  WHERE id LIKE '$_POST[id]' and st='E' ORDER BY idf desc limit 0,1";
-	$resultfac=mysql_query($sqfac);
-	$datindex=mysql_fetch_array($resultfac);
+	$resultfac=mysqli_query($link, $sqfac);
+	$datindex=mysqli_fetch_array($resultfac);
     $changindex=$datindex['idf'];
 
 //--------------------------------------------INITIALISATION INDEX --------------
 $sqlp="update  $tbl_fact  set   nf='$Indexinitial'  , nf2='$index2'  WHERE id LIKE '$_POST[id]' and st='E' and idf='$changindex' ";
-$resultp=mysql_query($sqlp);
+$resultp=mysqli_query($link, $sqlp);
 
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

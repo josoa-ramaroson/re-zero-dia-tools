@@ -20,7 +20,7 @@ if(($_SESSION['u_niveau'] != 2)) {
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 
 $sqlu = "SELECT * FROM $tbl_saisie where blogin='$id_nom'";
-$resultu = mysql_query($sqlu);
+$resultu = mysqli_query($link, $sqlu);
 
 while ($rowu = mysql_fetch_assoc($resultu)) {
 $bville=$rowu['bville'];
@@ -45,8 +45,8 @@ $bquartier=$rowu['bquartier'];
    <?php
 
 $sql = "SELECT count(*) FROM $tbl_contact where ville='$bville'  and quartier='$bquartier' and statut='6' and  (Tarif='1' or Tarif='5'  or Tarif='12') and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec' and nserie='$nserie')";  
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
-$nb_total = mysql_fetch_array($resultat);  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$nb_total = mysqli_fetch_array($resultat);
 if (($nb_total = $nb_total[0]) == 0) {  
 echo '</br>';
 echo 'Veuillez choisir la Ville et le quartier pour debuter la saisie des factures';  
@@ -55,7 +55,7 @@ else {
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 1; 
 $sql = "SELECT * FROM $tbl_contact where  ville='$bville'  and quartier='$bquartier' and statut='6' and  (Tarif='1' or Tarif='5'  or Tarif='12') and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec'  and nserie='$nserie') ORDER BY id ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
 	//recherche du repport 
 ?>
@@ -66,7 +66,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
      <td width="53%" align="center">&nbsp;</td>
   </tr>
    <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
    <tr>
      <td align="center" bgcolor="#FFFFFF"><form name="form1" method="post" action="">
@@ -111,13 +111,13 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 	  
 	 //recherche du repport 
 	 $sqlp = "SELECT * FROM $tbl_fact WHERE id='$idcl' and st='E' ORDER BY idf desc limit 0,1";  
-	 $resultp=mysql_query($sqlp);
-	 $datap=mysql_fetch_array($resultp);
+	 $resultp=mysqli_query($link, $sqlp);
+	 $datap=mysqli_fetch_array($resultp);
 			
 	//affichage des facturations
 	$sqfac="SELECT * FROM $tbl_fact  WHERE id='$idcl' and  st='E' ORDER BY idf desc limit 0,1";
-	$resultfac=mysql_query($sqfac);
-	$datindex=mysql_fetch_array($resultfac);
+	$resultfac=mysqli_query($link, $sqfac);
+	$datindex=mysqli_fetch_array($resultfac);
 			?>
      </form></td>
      <td align="center" bgcolor="#FFFFFF"><form name="form2" method="post" action="co_facturation_saveT.php">

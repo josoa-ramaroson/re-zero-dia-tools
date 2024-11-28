@@ -14,8 +14,8 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 require 'fonction.php';
 $id=substr($_REQUEST["id"],32);
 $sqlm="SELECT * FROM $tbl_clientgaz WHERE id='$id'";
-$resultm=mysql_query($sqlm);
-$datam=mysql_fetch_array($resultm);
+$resultm=mysqli_query($link, $sqlm);
+$datam=mysqli_fetch_array($resultm);
 ?>
 <body>
 <table width="100%" border="0">
@@ -113,7 +113,7 @@ $datam=mysql_fetch_array($resultm);
               <option selected="selected"><?php echo $datam['ville'];?></option>
               <?php
 $sql5 = ("SELECT ville FROM ville ORDER BY ville ASC ");
-$result5 = mysql_query($sql5);
+$result5 = mysqli_query($link, $sql5);
 
 while ($row5 = mysql_fetch_assoc($result5)) {
 echo '<option> '.$row5['ville'].' </option>';
@@ -149,7 +149,7 @@ echo '<option> '.$row5['ville'].' </option>';
               >
               <?php
 $sql51 = ("SELECT ile FROM ile ORDER BY ile ASC ");
-$result51 = mysql_query($sql51);
+$result51 = mysqli_query($link, $sql51);
 
 while ($row51 = mysql_fetch_assoc($result51)) {
 echo '<option> '.$row51['ile'].' </option>';

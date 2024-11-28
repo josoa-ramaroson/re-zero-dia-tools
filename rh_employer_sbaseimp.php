@@ -24,12 +24,12 @@ require 'rh_configuration_fonction.php';
 
 $sql2="SELECT SUM(sbase) AS sbase , SUM(avancement) AS avancement , SUM(anciennete) AS anciennete, SUM(gratification) AS gratification, SUM(srappel) AS srappel, SUM(heuressup) AS heuressup, SUM(conge) AS conge,
 moispaie ,anneepaie  FROM $tb_rhpaie   where anneepaie='$anneepaie' and moispaie='$moispaie' "; 
-$resultat2 = mysql_query($sql2);	
-$data2=mysql_fetch_array($resultat2)
+$resultat2 = mysqli_query($link, $sql2);
+$data2=mysqli_fetch_array($resultat2)
 ?>
   <?php
 $sql = "SELECT * FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie' ORDER BY matricule ASC "; //DESC 
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
  </p>
 <p align="center"><em>RECAPITULATIF SALAIRE DE BASE
@@ -89,7 +89,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
      <td width="9%" align="center"><font color="#FFFFFF"><strong>Congé</strong></td>
   </tr>
    <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
    <tr>
      <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['matricule'];?></em></td>

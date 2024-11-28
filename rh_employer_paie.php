@@ -60,8 +60,8 @@ require 'bienvenue.php';    // on appelle la page contenant la fonction
    <?php
 
 $sql = "SELECT count(*) FROM $tb_rhpersonnel where statut='Operationnel' and idrhp NOT IN(SELECT idrh FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie')";  
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
-$nb_total = mysql_fetch_array($resultat);  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$nb_total = mysqli_fetch_array($resultat);
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
 }  
@@ -69,14 +69,14 @@ else {
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 1; 
 $sql = "SELECT * FROM  $tb_rhpersonnel where statut='Operationnel' and idrhp NOT IN(SELECT idrh FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie') ORDER BY matricule ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
 	//recherche du repport 
 ?>
  </p>
 <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
    <?php
-while($datam=mysql_fetch_array($req)){ // Start looping table row 
+while($datam=mysqli_fetch_array($req)){ // Start looping table row
 ?>
    <tr>
    

@@ -32,15 +32,15 @@ require("bienvenue.php");
       <?php
 				  
 require 'fonction.php';
-mysql_connect ($host,$user,$pass)or die("cannot connect"); 
-mysql_select_db($db)or die("cannot select DB");  
+mysqli_connect ($host,$user,$pass)or die("cannot connect"); 
+mysqli_select_db($db)or die("cannot select DB");  
 // get value of id that sent from address bar 
 $id=$_GET['id'];
 
 $sql3="SELECT * FROM $tbl_produit WHERE idproduit='$id'";
-$result3=mysql_query($sql3);
+$result3=mysqli_query($link, $sql3);
 
-$rows3=mysql_fetch_array($result3);
+$rows3=mysqli_fetch_array($result3);
 ?>
     </font>
       <form name="form3" method="post" action="stk_produit_updates.php">
@@ -110,10 +110,10 @@ $tbl_name="ginv_produit"; // Table name
 $sql = "SELECT count(*) FROM $tbl_produit ";  
 
 // on ex?cute cette requ?te  
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
 // on r?cup?re le nombre d'?l?ments ? afficher  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
  // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -133,7 +133,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tbl_produit  ORDER BY idproduit DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
  
 // on ex?cute la requ?te  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
   </font></strong></font></font></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></p>
 <form name="form2" method="post" action="produit_cancel.php">
@@ -147,7 +147,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
       <td width="23%" align="center" bgcolor="#006ABE">&nbsp;</td>
     </tr>
     <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
     <tr> 
       <td align="center" bgcolor="#FFFFFF"> <div align="left"><?php echo $data['idproduit'];?></div>

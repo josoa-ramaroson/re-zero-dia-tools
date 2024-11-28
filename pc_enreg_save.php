@@ -20,7 +20,7 @@ $sql="INSERT INTO $tbl_pctaches ( id, id_nom , taches, statut , suivi, realisate
 VALUES
 ( '$id', '$id_nom' , '$taches','$statut', '$suivi','$realisateur','$nom','$ile', '$ville', '$agence' ,'$utilisateur','$date')";
 
-$result=mysql_query($sql);
+$result=mysqli_query($link, $sql);
    if($result){
    }
    else {

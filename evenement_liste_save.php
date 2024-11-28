@@ -28,9 +28,9 @@ $sqlp="INSERT INTO $tb_evenement ( id_nom   , datev   ,heures, datef   ,heuresf,
                     VALUES       ('$u_login','$datev', '$heures', '$datef', '$heuresf','$evenement' , '$Pris_par_user')";
 					
 													
-$r=mysqli_query($linki,$sqlp)
+$r=mysqli_query($link,$sqlp)
 or die(mysqli_error());
-mysqli_close($linki);
+mysqli_close($link);
 
 ?>
 <?php

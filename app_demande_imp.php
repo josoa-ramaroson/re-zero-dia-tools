@@ -31,7 +31,7 @@ require 'rh_configuration_fonction.php';
 //$date_dem=addslashes($_REQUEST['direction']);
 $id_dem=substr($_REQUEST["id"],32);
 $sql5="SELECT * FROM $tbl_appdeproduit where id_dem='$id_dem'";
-$req5=mysqli_query($linki,$sql5);
+$req5=mysqli_query($link,$sql5);
 $datam=mysqli_fetch_array($req5);
 
 ?>
@@ -84,7 +84,7 @@ $datam=mysqli_fetch_array($req5);
   
   <?php
 	 $sqact="SELECT * FROM $tbl_appdeproduit where id_dem='$id_dem'";
-	 $resultact=mysqli_query($linki,$sqact);
+	 $resultact=mysqli_query($link,$sqact);
 ?>
 
     <table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#000000">

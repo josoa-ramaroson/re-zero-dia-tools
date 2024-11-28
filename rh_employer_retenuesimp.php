@@ -23,12 +23,12 @@ require 'rh_configuration_fonction.php';
   <?php
 
 $sql2="SELECT SUM(sbase) AS sbase , SUM(igr) AS igr , SUM(retraite) AS retraite, SUM(prevoyance) AS prevoyance,  SUM(aretenue) AS aretenue, moispaie ,anneepaie  FROM $tb_rhpaie   where anneepaie='$anneepaie' and moispaie='$moispaie' "; 
-$resultat2 = mysql_query($sql2);	
-$data2=mysql_fetch_array($resultat2)
+$resultat2 = mysqli_query($link, $sql2);
+$data2=mysqli_fetch_array($resultat2)
 ?>
   <?php
 $sql = "SELECT * FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie' ORDER BY matricule ASC "; //DESC 
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
  </p>
 <p align="center"><em>RECAPITULATIF TOTAL RETENUES
@@ -85,11 +85,11 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
      <td width="8%" align="center"><font color="#FFFFFF"><strong>Autres </strong></font></td>
   </tr>
    <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 $idrh=$data['idrh'];
 $sqlconnect="SELECT * FROM $tb_rhpersonnel  WHERE idrhp=$idrh";
-$resultconnect=mysql_query($sqlconnect);
-$rmat=mysql_fetch_array($resultconnect);
+$resultconnect=mysqli_query($link, $sqlconnect);
+$rmat=mysqli_fetch_array($resultconnect);
 $nCPP= $rmat['CPP'];
 $NTC= $rmat['NTC'];
 ?>

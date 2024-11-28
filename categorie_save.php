@@ -1,12 +1,12 @@
 <?php
     require 'fonction.php';
-    $link = mysql_connect ($host,$user,$pass);
-    mysql_select_db($db);
+    $link = mysqli_connect ($host,$user,$pass);
+    mysqli_select_db($link, $db);
 	
 $TypeClts=addslashes($_POST['TypeClts']);
 #---------------------------------------------------3 
 $sqlp="INSERT INTO $tbl_client (TypeClts) VALUES ('$TypeClts')";
-$resultp=mysql_query($sqlp);
+$resultp=mysqli_query($link, $sqlp);
 if($resultp){
 }
 else {

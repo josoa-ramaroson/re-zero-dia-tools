@@ -1,7 +1,7 @@
 <?php
 //----------------parametre de configuration--------
 $sqlpaie = "SELECT * FROM $tb_rhconfig";
-$resultpaie = mysqli_query($linki,$sqlpaie);
+$resultpaie = mysqli_query($link,$sqlpaie);
 while ($rowpaie = mysqli_fetch_assoc($resultpaie)) {
 $anneepaie=$rowpaie['annee'];
 $moispaie=$rowpaie['mois'];

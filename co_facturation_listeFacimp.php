@@ -22,7 +22,7 @@ if(($_SESSION['u_niveau'] != 2)) {
 <?php
 $id_nom=substr($_REQUEST["id@"],32);
 $sqlu = "SELECT * FROM $tbl_saisie where blogin='$id_nom'";
-$resultu = mysql_query($sqlu);
+$resultu = mysqli_query($link, $sqlu);
 while ($rowu = mysql_fetch_assoc($resultu)) {
 $bville=$rowu['bville'];
 $bquartier=$rowu['bquartier'];
@@ -30,7 +30,7 @@ $bquartier=$rowu['bquartier'];
 
 require 'configuration.php';
 $sql = " SELECT * FROM $tbl_fact f , $tbl_contact c  where f.id=c.id and f.nserie=$nserie and f.fannee=$anneec and ville='$bville'  and quartier='$bquartier' and statut='6'  and  (Tarif='2' or Tarif='3' or Tarif='4' or Tarif='6' or Tarif='7' or Tarif='8' or Tarif='9' or Tarif='11')  ORDER BY f.id ASC";  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
  </p>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -46,7 +46,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
      <td width="11%" align="center"><font color="#FFFFFF"><strong>Montant Total</strong></font></td>
    </tr>
    <?php
-while($datafact=mysql_fetch_array($req)){ // Start looping table row 
+while($datafact=mysqli_fetch_array($req)){ // Start looping table row 
 ?>
    <tr>
      <td align="center" bgcolor="#FFFFFF"><font color="#000000">

@@ -383,7 +383,7 @@ echo "<option value=$row[idrh]>$row[direction]</option>";
             <option value='' selected>Realisez la connexion </option>
             <?php
 $sql9 = ("SELECT id_u, id_nom , u_nom , u_prenom, u_login  FROM $tbl_utilisateur  ORDER BY id_u ASC ");
-$result9 = mysql_query($sql9);
+$result9 = mysqli_query($link, $sql9);
 
 while ($row9 = mysql_fetch_assoc($result9)) {
 echo '<option value='.$row9['id_u'].'> '.$row9['u_nom'].' '.$row9['u_prenom'].' ( '.$row9['u_login'].')</option>';

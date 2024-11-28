@@ -93,10 +93,10 @@ httpxml.send(null);
 <p>
   <?php
 $sql = "SELECT * FROM $tbl_contact c, $tbl_plombage p where c.statut='6' and  p.id=c.id and  c.ville='$m1v' and  c.quartier='$m2q' ORDER BY nomprenom ASC ";  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
 
 $sqFP="SELECT  COUNT(*) AS nbres FROM $tbl_contact c, $tbl_plombage p where c.statut='6' and  p.id=c.id and  c.ville='$m1v' and  c.quartier='$m2q'"; 
-	$RFP = mysql_query($sqFP); 
+	$RFP = mysqli_query($link, $sqFP); 
 	$AFP = mysql_fetch_assoc($RFP);
 	$tFPn=$AFP['nbres'];
 
@@ -130,7 +130,7 @@ $sqFP="SELECT  COUNT(*) AS nbres FROM $tbl_contact c, $tbl_plombage p where c.st
      <td width="10%" align="center">&nbsp;</td>
   </tr>
    <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row 
 ?>
    <tr>
      <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php  $idv=$data['id']; echo $data['id'];?></em></div></td>
@@ -149,8 +149,8 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
 }
 		function stat_eda2($tbl_plombcont,$tbl_plombage,$idv){ 
 		$sqlv="SELECT COUNT(*) AS nombre FROM $tbl_plombcont ct, $tbl_plombage p  WHERE ct.idclient=p.id and ct.idclient='$idv'" ;
-        $rev = mysql_query($sqlv); 
-	    $nqtv = mysql_fetch_array($rev);
+        $rev = mysqli_query($link, $sqlv); 
+	    $nqtv = mysqli_fetch_array($rev);
         if((!isset($nqtv['nombre'])|| empty($nqtv['nombre']))) { $qt=''; return $qt; } else {$qt=$nqtv['nombre']; return $qt;}
 		} 
 		

@@ -54,7 +54,7 @@ if( isset($_POST['upload']) ) // si formulaire soumis
     $document_images="$siteweb_dir$iddocument.jpg";
 
 $sqlcon="update $tbl_client_doc set resultat='$document_images' , statut='$statut' where iddocument='$iddocument'";
-$connection=mysqli_query($linki,$sqlcon);
+$connection=mysqli_query($link,$sqlcon);
 
 
 header("location:client_document.php?id=$v1$idclient&i=$v1");

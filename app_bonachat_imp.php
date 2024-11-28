@@ -30,7 +30,7 @@ require 'rh_configuration_fonction.php';
 //$date_dem=addslashes($_REQUEST['direction']);
 $id_dem=substr($_REQUEST['id'],32);
 $sql5="SELECT * FROM $tbl_appbonachatp where id_dem='$id_dem'";
-$req5=mysqli_query($linki,$sql5);
+$req5=mysqli_query($link,$sql5);
 $datam=mysqli_fetch_array($req5);
 ?>
     <img src="images/eda.png" width="150" height="66" /></strong><strong> </strong></p></td>
@@ -78,10 +78,10 @@ $datam=mysqli_fetch_array($req5);
 </table>
 <?php
 	 $sqact="SELECT * FROM $tbl_appbonachatp WHERE id_dem='$id_dem'";
-	 $resultact=mysqli_query($linki,$sqact);
+	 $resultact=mysqli_query($link,$sqact);
 
 	 $sqsomme="SELECT SUM(prixt) AS prixtt FROM $tbl_appbonachatp WHERE id_dem='$id_dem'";
-	 $resomme=mysqli_query($linki,$sqsomme);
+	 $resomme=mysqli_query($link,$sqsomme);
 
 ?>
 <p align="left"> <font color="#000000"><strong><?php $Codebare=$datam['id_dem'];?> <img src="codeBarre.php?Code=<?php=$Codebare?>"></strong></font></p>

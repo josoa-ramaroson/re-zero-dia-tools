@@ -2,13 +2,13 @@
 require 'fonction.php';
 		$idsession=substr($_REQUEST["id"],32);
 		$sqlp="update $tbl_utilisateur  set session=0  WHERE  id_u='$idsession'";
-        $resultp=mysqli_query($linki,$sqlp);
+        $resultp=mysqli_query($link,$sqlp);
 
 // On appelle la session
 session_start();
-// On écrase le tableau de session
+// On ï¿½crase le tableau de session
 $_SESSION = array();
-// On détruit la session
+// On dï¿½truit la session
 session_destroy();		
 include "index.php";
 ?>

@@ -1,7 +1,7 @@
 <?php
 require 'fonction.php';
-$link = mysql_connect ($host,$user,$pass);
-mysql_select_db($db);
+$link = mysqli_connect ($host,$user,$pass);
+mysqli_select_db($link, $db);
 
 $id_nom=addslashes($_POST['id_nom']);
 $mois=addslashes($_POST['mois']);
@@ -17,7 +17,7 @@ $sqlp="INSERT INTO $tbl_production ( id_nom   , mois   ,annee, prod, dist, auxi,
 
  VALUES ('$id_nom' ,'$mois','$annee',  '$prod', '$dist', '$auxi', '$gazoil' ,'$Huile' , '$centrale')";
 				 
-$r=mysql_query($sqlp);
+$r=mysqli_query($link, $sqlp);
 mysql_close($link);
 ?>
 <?php

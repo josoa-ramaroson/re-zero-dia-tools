@@ -84,8 +84,8 @@ httpxml.send(null);
 <?php
 require 'bienvenue.php';  
 	$sqldate="SELECT * FROM $tbl_app_caisse "; //DESC  ASC
-	$resultldate=mysql_query($sqldate);
-	$datecaisse=mysql_fetch_array($resultldate);
+	$resultldate=mysqli_query($link, $sqldate);
+	$datecaisse=mysqli_fetch_array($resultldate);
 ?>
 <body>
 <div class="panel panel-primary">
@@ -151,7 +151,7 @@ echo "<option value=$row[idrh]>$row[direction]</option>";
             <select name="fournisseur" size="1" id="fournisseur">
               <?php
 $sqlS = ("SELECT * FROM $tb_comptf  ORDER BY Societef ASC ");
-$resultS = mysql_query($sqlS);
+$resultS = mysqli_query($link, $sqlS);
 
 while ($rowS = mysql_fetch_assoc($resultS)) {
 echo '<option> '.$rowS['Societef'].' </option>';
@@ -180,7 +180,7 @@ echo '<option> '.$rowS['Societef'].' </option>';
             <select name="codecompte" size="1" id="codecompte">
               <?php
 $sqlPC = ("SELECT * FROM $plan  ORDER BY Code ASC ");
-$resultPC = mysql_query($sqlPC);
+$resultPC = mysqli_query($link, $sqlPC);
 
 while ($rowPC = mysql_fetch_assoc($resultPC)) {
 echo '<option value='.$rowPC['Code'].'> '.$rowPC['Code'].' '.$rowPC['Description'].' </option>';
@@ -216,15 +216,15 @@ echo '<option value='.$rowPC['Code'].'> '.$rowPC['Code'].' '.$rowPC['Description
 <p><font size="2"><font size="2"><font size="2">
 <?php
 
-mysql_connect ($host,$user,$pass)or die("cannot connect"); 
-mysql_select_db($db)or die("cannot select DB");
+mysqli_connect ($host,$user,$pass)or die("cannot connect"); 
+mysqli_select_db($db)or die("cannot select DB");
   
 $sql = "SELECT count(*) FROM $tbl_appachat  ";  
 
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -240,7 +240,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tbl_appachat   ORDER BY id_da DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
  
 
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
 </font></strong></font></font></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></p>
 <form name="form2" method="post" action="produit_cancel.php">
@@ -256,7 +256,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
       <td width="107" align="center" bgcolor="#3071AA" ><font color="#FFFFFF">Prix Total</font></td>
     </tr>
     <?php
-while($data=mysql_fetch_array($req)){ 
+while($data=mysqli_fetch_array($req)){
 ?>
     <tr>
       <td align="center" bgcolor="#FFFFFF"><div align="left"><?php echo $data['codecompte'];?></div>

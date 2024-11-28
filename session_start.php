@@ -3,7 +3,7 @@
 	
 	require 'scriptbsc.php';
 	
-	$sqlrech = "SELECT * FROM $tbl_caisse";	$reqrech = mysqli_query($linki,$sqlrech); $datarech=mysqli_fetch_array($reqrech);
+	$sqlrech = "SELECT * FROM $tbl_caisse";	$reqrech = mysqli_query($link,$sqlrech); $datarech=mysqli_fetch_array($reqrech);
     $anneereference=($datarech['valbsc']);
     $anneereference=substr($anneereference,64,32);
 	

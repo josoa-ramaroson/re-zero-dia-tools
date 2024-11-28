@@ -17,12 +17,12 @@ $idco=substr($_REQUEST["idco"],32);
 $_SESSION["idclient"]=substr($_REQUEST["id"],32);
 
 $sqlso="SELECT * FROM $tbl_compteur WHERE idco='$idco'";
-$resulso=mysql_query($sqlso);
-$datso=mysql_fetch_array($resulso);
+$resulso=mysqli_query($link, $sqlso);
+$datso=mysqli_fetch_array($resulso);
 
 $sqlm="SELECT * FROM $tbl_contact WHERE id='$id'";
-$resultm=mysql_query($sqlm);
-$datam=mysql_fetch_array($resultm);
+$resultm=mysqli_query($link, $sqlm);
+$datam=mysqli_fetch_array($resultm);
 ?>
 <body>
 <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
@@ -98,10 +98,10 @@ $datam=mysql_fetch_array($resultm);
           <td width="45%"><p>
  <?php
 	 $sqact="SELECT * FROM $tbl_compteur WHERE id='$id'";
-	 $resultact=mysql_query($sqact);
+	 $resultact=mysqli_query($link, $sqact);
  ?>
       <?php
-while($rowsact=mysql_fetch_array($resultact)){ 
+while($rowsact=mysqli_fetch_array($resultact)){
 ?>
           </p>
             <table width="94%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -183,7 +183,7 @@ while($rowsact=mysql_fetch_array($resultact)){
                 <select name="secteur2" id="secteur">
                   <?php
 $sql8 = ("SELECT soussecteur FROM soussecteur ORDER BY soussecteur ASC");
-$result8 = mysql_query($sql8);
+$result8 = mysqli_query($link, $sql8);
 
 while ($row8 = mysql_fetch_assoc($result8)) {
 echo '<option> '.$row8['soussecteur'].' </option>';
@@ -199,7 +199,7 @@ echo '<option> '.$row8['soussecteur'].' </option>';
                 <select name="localite" id="localite">
                   <?php
 $sql2 = ("SELECT annee FROM annee ORDER BY annee ASC ");
-$result2 = mysql_query($sql2);
+$result2 = mysqli_query($link, $sql2);
 
 while ($row2 = mysql_fetch_assoc($result2)) {
 echo '<option> '.$row2['annee'].' </option>';
@@ -215,7 +215,7 @@ echo '<option> '.$row2['annee'].' </option>';
                 <select name="quartier" id="select2">
                   <?php
 $sql9 = ("SELECT nombre FROM nombre ORDER BY id ASC ");
-$result9 = mysql_query($sql9);
+$result9 = mysqli_query($link, $sql9);
 
 while ($row9 = mysql_fetch_assoc($result9)) {
 echo '<option> '.$row9['nombre'].' </option>';

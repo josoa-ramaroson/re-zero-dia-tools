@@ -25,7 +25,7 @@ require('stk_gaz_recapitulatif_lien.php');
 </table>
   <?php
 $sql1="SELECT YEAR(datev) AS annee , SUM(PTotal) AS prix  FROM $tbl_vente  where type=1 GROUP BY YEAR(datev) ";
-$req=mysqli_query($linki,$sql1);
+$req=mysqli_query($link,$sql1);
 ?>
   </font></strong></font></font></font></font></p>
 <p>&nbsp;</p>

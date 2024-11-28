@@ -24,8 +24,8 @@ require 'co_affichage_variable_repartion.php';
 
 
 $sql = "SELECT count(*) FROM $tbl_contact  where RefLocalite='$RefLocalite' and RefQuartier='$RefQuartier' and  statut='6'";  
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
-$nb_total = mysql_fetch_array($resultat);  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$nb_total = mysqli_fetch_array($resultat);
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
 }  
@@ -33,12 +33,12 @@ else {
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 100; 
 $sql = "SELECT * FROM $tbl_contact  where  RefLocalite='$RefLocalite' and RefQuartier='$RefQuartier'  and statut='6' ORDER BY id ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
 
 	$sqldate="SELECT * FROM $tbl_caisse "; //DESC  ASC
-	$resultldate=mysql_query($sqldate);
-	$datecaisse=mysql_fetch_array($resultldate);
+	$resultldate=mysqli_query($link, $sqldate);
+	$datecaisse=mysqli_fetch_array($resultldate);
 	
 ?>
  </p>
@@ -54,7 +54,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
      <td width="18%" align="center"><font color="#FFFFFF"><strong>REPARTITION 2</strong></font></td>
    </tr>
    <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
    <tr>
      <td align="center"><div align="left"><em><?php echo $data['id'];?></em></div></td>

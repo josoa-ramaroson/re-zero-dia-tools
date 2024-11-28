@@ -1,7 +1,7 @@
 <?php
     require 'fonction.php';
-    $link = mysql_connect ($host,$user,$pass);
-    mysql_select_db($db);
+    $link = mysqli_connect ($host,$user,$pass);
+    mysqli_select_db($link, $db);
 	
 $idproduit=addslashes($_POST['idp']);
 //echo "$idproduit <BR>";	
@@ -19,7 +19,7 @@ $type=addslashes($_POST['type']);
 $id_nom='';
 $sqlp="update $tbl_appproduit_liste set titre='$titre' , idproduit='$idproduit', prix='$prix' , id_nom='$id_nom' , type='$type' 
 WHERE  idproduit='$idproduit'";
-$resultp=mysql_query($sqlp);
+$resultp=mysqli_query($link, $sqlp);
 if($resultp){
 }
 else {

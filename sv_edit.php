@@ -14,9 +14,9 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 require 'fonction.php';
 $id=substr($_REQUEST["id"],32);
      $sqaut="SELECT * FROM  $tbl_plombage WHERE id='$id'";
-	 $resultaut=mysql_query($sqaut);
+	 $resultaut=mysqli_query($link, $sqaut);
 
-while($rowsaut=mysql_fetch_array($resultaut)){ 
+while($rowsaut=mysqli_fetch_array($resultaut)){
 ?>
 <body>
 <table width="100%" border="0" align="center">

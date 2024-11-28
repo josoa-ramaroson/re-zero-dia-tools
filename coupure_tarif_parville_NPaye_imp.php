@@ -13,9 +13,9 @@ require 'fonction.php';
      $m1v=substr($_REQUEST["m1v"],32);
 	$tarif=substr($_REQUEST["tr"],32); 
 	
-	function la_tarification($tarif,$linki){
+	function la_tarification($tarif,$link){
 	$sqld2 = "SELECT * FROM tarif  where idt='$tarif'";
-	$resultatd2 = mysqli_query($linki,$sqld2); 
+	$resultatd2 = mysqli_query($link,$sqld2); 
 	$nqtd2 = mysqli_fetch_assoc($resultatd2);
 	if((!isset($nqtd2['Libelle'])|| empty($nqtd2['Libelle']))) { $qt2=''; return $qt2;}
 	else {$qt2=$nqtd2['Libelle']; return $qt2;}
@@ -26,11 +26,11 @@ require 'configuration.php';
 $anneec=$annee_recouvrement;
 
 $sql = "SELECT * FROM $tbl_fact f, $tbl_contact c  where f.fannee='$anneec' and f.st='E' and nserie='$cserie' and c.id=f.id and c.ville='$m1v' and  f.totalnet > 1000 and  Tarif='$tarif' and idf NOT IN(SELECT idf FROM $tbl_paiement where YEAR(date)='$anneec') ORDER BY  c.quartier ASC  ";  
-$req=mysql_query($sql);
+$req=mysqli_query($link, $sql);
 
 
 $sqFP="SELECT  COUNT(*) AS nbres, SUM(f.totalnet) AS totalnet , SUM(f.totalttc) AS totalttc, SUM(f.impayee) AS impayee, f.fannee ,SUM(f.ortc) AS ortc, f.st , f.nserie, c.ville, c.quartier FROM $tbl_fact f, $tbl_contact c  where f.fannee='$anneec' and f.st='E' and nserie='$cserie' and c.id=f.id and c.ville='$m1v' and  f.totalnet > 1000 and  Tarif='$tarif'  and idf NOT IN(SELECT idf FROM $tbl_paiement where YEAR(date)='$anneec')"; 
-	$RFP = mysql_query($sqFP); 
+	$RFP = mysqli_query($link, $sqFP);
 	$AFP = mysql_fetch_assoc($RFP);
 	$tFP=$AFP['totalttc'];
 	$tFPt=$AFP['totalnet']; 
@@ -39,7 +39,7 @@ $sqFP="SELECT  COUNT(*) AS nbres, SUM(f.totalnet) AS totalnet , SUM(f.totalttc) 
 	$tFPo=$AFP['ortc'];
 	
 ?>
- <H2> <p align="center" >  LISTE DES COUPURES </p>  <?php echo la_tarification($tarif,$linki)?> </H2>
+ <H2> <p align="center" >  LISTE DES COUPURES </p>  <?php echo la_tarification($tarif,$link)?> </H2>
 <table width="100%" border="0">
    <tr>
      <td width="15%">VILLE</td>
@@ -72,7 +72,7 @@ $sqFP="SELECT  COUNT(*) AS nbres, SUM(f.totalnet) AS totalnet , SUM(f.totalttc) 
      <td width="21%" align="center"><font color="#FFFFFF"><strong>Observation</strong></font></td>
   </tr>
    <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row 
 ?>
     <tr bgcolor="<?php gettatut($data['bstatut']); ?>">
      <td  bgcolor="#FFFFFF"><em><?php echo $data['id'];?></em></td>

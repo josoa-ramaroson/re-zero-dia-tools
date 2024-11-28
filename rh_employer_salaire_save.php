@@ -146,7 +146,7 @@ $sql="update $tb_rhpersonnel  set  id_nom='$id_nom', indice='$indice', taux='$ta
 SS='$SS', SI='$SI', SD='$SD',SR='$SR',SNET='$SNET'
  
  WHERE idrhp='$id'";
-$result=mysqli_query($linki,$sql);
+$result=mysqli_query($link,$sql);
 
   if($result){
 	   //SUCCESS
@@ -156,5 +156,5 @@ $result=mysqli_query($linki,$sql);
    else {
    echo "ERROR";
    }
-  mysqli_close($linki); 
+  mysqli_close($link);
 ?>

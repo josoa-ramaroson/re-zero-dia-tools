@@ -18,26 +18,26 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 <?php
 /*$Police=$_POST['id'];
 $sql82 ="SELECT * FROM $tbl_contact where Police='$Police'";
-$result82 = mysql_query($sql82);
+$result82 = mysqli_query($link, $sql82);
 while ($row82 = mysql_fetch_assoc($result82)) {
 $id=$row82['id'];
 }*/
 
 $id=$_REQUEST['id'];
 $sqlfacturation="SELECT * FROM $tbl_fact f, $tbl_contact c  WHERE c.id=f.id and f.id='$id' and (f.st='E' or f.st='P' or f.st='D')  ORDER BY idf desc limit 0,1";
-$resultatfact=mysql_query($sqlfacturation);
-$ident=mysql_fetch_array($resultatfact);
+$resultatfact=mysqli_query($link, $sqlfacturation);
+$ident=mysqli_fetch_array($resultatfact);
 
 
 	$sqfac="SELECT * FROM $tbl_paiement WHERE id='$id' and (st='E' or st='P' or st='D') ORDER BY idp DESC "; //DESC  ASC
-	$resultfac=mysql_query($sqfac);
+	$resultfac=mysqli_query($link, $sqfac);
 	
 	$sqfaca="SELECT * FROM $tbl_paiement WHERE id='$id' and (st='F') ORDER BY idp DESC "; //DESC  ASC
-	$resultfaca=mysql_query($sqfaca);
+	$resultfaca=mysqli_query($link, $sqfaca);
 
 	$sqldate="SELECT * FROM $tbl_caisse "; //DESC  ASC
-	$resultldate=mysql_query($sqldate);
-	$datecaisse=mysql_fetch_array($resultldate);
+	$resultldate=mysqli_query($link, $sqldate);
+	$datecaisse=mysqli_fetch_array($resultldate);
 
 if ($ident) {
 $idf=$ident['idf'];
@@ -49,7 +49,7 @@ else {
 	
 	    //choix d espace de memoire pour les connection.---------------------------------------------------------------- 
 	$valeur_existant = "SELECT COUNT(*) AS nb FROM $tbl_paiconn  WHERE idrecu='$id_nom' ";
-	$sqLvaleur = mysqli_query($linki,$valeur_existant)or exit(mysqli_error()); 
+	$sqLvaleur = mysqli_query($link,$valeur_existant)or exit(mysqli_error()); 
 	$nb = mysqli_fetch_assoc($sqLvaleur);
 	
 	if($nb['nb'] == 1)
@@ -60,7 +60,7 @@ else {
    {
 	   	
 	$sqlcon="INSERT INTO $tbl_paiconn (idrecu)VALUES('$id_nom')";
-    $connection=mysqli_query($linki,$sqlcon);
+    $connection=mysqli_query($link,$sqlcon);
     }
     //------------------------FIn du Programme ---------------------------------------------------------
 	
@@ -68,7 +68,7 @@ else {
 	$fanneefacture=$ident['fannee'];
 	 //choix paiement ORTC.---------------------------------------------------------------- 
 	$valeur_existant_ortc = "SELECT COUNT(*) AS nb FROM $tbl_paiement WHERE id='$id' and st='E' and nserie='$nserie'  and fanneefacture='$fanneefacture' and ortc_dp='250' ";
-	$sqLvaleur_ortc = mysqli_query($linki,$valeur_existant_ortc)or exit(mysqli_error()); 
+	$sqLvaleur_ortc = mysqli_query($link,$valeur_existant_ortc)or exit(mysqli_error()); 
 	$nb_ortc = mysqli_fetch_assoc($sqLvaleur_ortc);
 	
 	if ($nserie==12) {$facmois='Dec'; }
@@ -246,7 +246,7 @@ N°/Ref
     <td width="9%" align="center" bgcolor="#FFFFFF"><font color="#000000"><strong>Tax</strong></font></td>
   </tr>
   <?php
-while($rowsfac=mysql_fetch_array($resultfac)){ 
+while($rowsfac=mysqli_fetch_array($resultfac)){
 ?>
   <tr>
     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $rowsfac['idp'];?></em></div></td>
@@ -278,7 +278,7 @@ while($rowsfac=mysql_fetch_array($resultfac)){
     <td width="17%" align="center" bgcolor="#FFFFFF">Reste à payer</td>
   </tr>
   <?php
-while($rowsfaca=mysql_fetch_array($resultfaca)){ 
+while($rowsfaca=mysqli_fetch_array($resultfaca)){
 ?>
   <tr>
     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $rowsfaca['idp'];?></em></div></td>

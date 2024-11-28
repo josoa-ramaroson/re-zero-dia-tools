@@ -28,7 +28,7 @@ $id_role=substr($_REQUEST["id_role"],32);
  
 $sql = "SELECT count(*) FROM $tb_role_user where id_role='$id_role' ";  
 
-$resultat = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$resultat = mysqli_query($link,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
  
  
 $nb_total = mysqli_fetch_array($resultat);  
@@ -45,13 +45,13 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
    
 $sql = "SELECT * FROM $tb_role_user  where id_role='$id_role'  ORDER BY id_role_user	DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
  
-$req = mysqli_query($linki, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
 
 
 
-	function affichage_utilisateur($id,$tbl_utilisateur,$linki){
+	function affichage_utilisateur($id,$tbl_utilisateur,$link){
 	$squser="SELECT * FROM $tbl_utilisateur  WHERE id_u='$id'";
-	$resultuser=mysqli_query($linki,$squser);
+	$resultuser=mysqli_query($link,$squser);
 	$text='';
 	while($rowspd=mysqli_fetch_array($resultuser)){ 
 	$u_nom=$rowspd['u_nom'];
@@ -96,7 +96,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
     <tr bgcolor=<?php echo "$bgcolor" ?>>
       <td height="29" align="center" ><div align="left"><em><?php echo $data['id_role_user'];?></em></div></td>
       <td align="center"><div align="left"><em>   </em><em><?php $id=$data['id_u'];
-	  $info=affichage_utilisateur($id,$tbl_utilisateur,$linki);
+	  $info=affichage_utilisateur($id,$tbl_utilisateur,$link);
       //$tab = array($info);
 	  $lenom=$info[0];
 	  $leprenom=$info[1];
@@ -127,7 +127,7 @@ mysqli_free_result ($req);
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
 mysqli_free_result ($resultat);  
-mysqli_close ($linki);  
+mysqli_close ($link);  
 ?>
   </table>
 

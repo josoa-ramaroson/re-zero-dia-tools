@@ -41,7 +41,7 @@ Require("bienvenue.php");
           <td><select name="iddr" id="iddr">
             <?php
 $sql2 = ("SELECT *  FROM $tb_rhdirection ORDER BY direction  ASC ");
-$result2 = mysql_query($sql2);
+$result2 = mysqli_query($link, $sql2);
 while ($row2 = mysql_fetch_assoc($result2)) {
 echo '<option  value= '.$row2['idrh'].'> '.$row2['direction'].' </option>';
 }
@@ -82,10 +82,10 @@ require 'fonction.php';
 $sql = "SELECT count(*) FROM $tb_rhservice ";  
 
 // on ex?cute cette requ?te  
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
 // on r?cup?re le nombre d'?l?ments ? afficher  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
  // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -105,7 +105,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tb_rhservice  ORDER BY idser DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
  
 // on ex?cute la requ?te  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
   </font></strong></font></font></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></p>
   <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -116,7 +116,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
       <td width="19%" align="center" bgcolor="#0033FF">&nbsp;</td>
     </tr>
     <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
 
     <tr> 
@@ -158,7 +158,7 @@ mysql_close ();
 	
 	$sql = "SELECT * FROM $tb_rhdirection where  idrh=$iddr ";
 
-	$resultat = mysql_query($sql) or exit(mysql_error()); 
+	$resultat = mysqli_query($link, $sql) or exit(mysql_error());
 	$nqt = mysql_fetch_assoc($resultat);
 
 	if((!isset($nqt['direction'])|| empty($nqt['direction']))) { $qt=''; return $qt;}

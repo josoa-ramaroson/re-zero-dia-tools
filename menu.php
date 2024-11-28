@@ -8,8 +8,8 @@ $class6='btn btn-danger';
 
 
   $sqlv="SELECT COUNT(*) AS nombre FROM $tbl_utilisateur u, $tbl_ind n  WHERE u.id_u='$id_user' and u.id_u=n.sid2 and n.nbligne=1" ;
-  $rev = mysql_query($sqlv); 
-  $nqtv = mysql_fetch_array($rev);
+  $rev = mysqli_query($link, $sqlv);
+  $nqtv = mysqli_fetch_array($rev);
   //$nqtv['nombre'];
   if((!isset($nqtv['nombre'])|| empty($nqtv['nombre']))) {$qt=0; $classi=$class;} else {$qt=$nqtv['nombre']; $classi=$class6;}
   

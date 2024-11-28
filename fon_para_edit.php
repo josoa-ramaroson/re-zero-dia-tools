@@ -23,8 +23,8 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 require 'fonction.php';
 $id=substr($_REQUEST["idfon_sys"],32);
 $sqlm="SELECT * FROM fonction_systeme WHERE idfon_sys='$id'";
-$resultm=mysql_query($sqlm);
-$datam=mysql_fetch_array($resultm);
+$resultm=mysqli_query($link, $sqlm);
+$datam=mysqli_fetch_array($resultm);
 ?>
 <body>
 <table width="100%" border="0">

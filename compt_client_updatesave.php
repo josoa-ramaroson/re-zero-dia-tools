@@ -11,7 +11,7 @@ $Statutcl=addslashes($_POST['Statutcl']);
 $Date=addslashes($_POST['Date']);
 $req="UPDATE  $tb_comptcl SET  Nomcl='$Nomcl',Prenomcl='$Prenomcl',Adressecl='$Adressecl',Telephonecl='$Telephonecl',Statutcl='$Statutcl',Date='$Date'
  where Numcsave='$Numcsave' ";
- $result=mysql_query($req);
+ $result=mysqli_query($link, $req);
  mysql_close();
 
 

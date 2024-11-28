@@ -11,7 +11,7 @@ $crchoix=addslashes($_POST['crchoix']);
 $sql="update $tb_rhpersonnel  set 
 
  id_nom='$id_nom' , igrchoix='$igrchoix' , crchoix='$crchoix' WHERE idrhp LIKE '$_POST[id]' ";
-$result=mysql_query($sql);
+$result=mysqli_query($link, $sql);
 
   if($result){
 	   //SUCCESS

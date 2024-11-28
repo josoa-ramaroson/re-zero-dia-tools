@@ -18,8 +18,8 @@ $id=substr($_REQUEST["id"],32);
 $idpc=substr($_REQUEST["idpc"],32);
 
 $sqlso="SELECT * FROM $tbl_pctaches WHERE idpc='$idpc'";
-$resulso=mysql_query($sqlso);
-$datso=mysql_fetch_array($resulso);
+$resulso=mysqli_query($link, $sqlso);
+$datso=mysqli_fetch_array($resulso);
 ?>
 <body>
 
@@ -35,10 +35,10 @@ $datso=mysql_fetch_array($resulso);
           <td width="45%"><p>
             <?php
 	 $sqact="SELECT * FROM $tbl_pctaches WHERE id='$id'";
-	 $resultact=mysql_query($sqact);
+	 $resultact=mysqli_query($link, $sqact);
 ?>
             <?php
-while($rowsact=mysql_fetch_array($resultact)){ 
+while($rowsact=mysqli_fetch_array($resultact)){ 
 ?>
           </p>
             <table width="94%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -108,7 +108,7 @@ while($rowsact=mysql_fetch_array($resultact)){
                   <option selected="selected"><?php echo $datso['realisateur'];?></option>
                   <?php
 $sql9 = ("SELECT id_nom , u_niveau , u_login FROM $tbl_utilisateur where u_niveau='10' ORDER BY id_u ASC ");
-$result9 = mysql_query($sql9);
+$result9 = mysqli_query($link, $sql9);
 
 while ($row9 = mysql_fetch_assoc($result9)) {
 echo '<option> '.$row9['u_login'].' </option>';

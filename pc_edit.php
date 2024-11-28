@@ -14,8 +14,8 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 require 'fonction.php';
 $id=substr($_REQUEST["id"],32);
 $sqlm="SELECT * FROM $tbl_pc WHERE id='$id'";
-$resultm=mysql_query($sqlm);
-$datam=mysql_fetch_array($resultm);
+$resultm=mysqli_query($link, $sqlm);
+$datam=mysqli_fetch_array($resultm);
 ?>
 <body>
 <table width="100%" border="0">
@@ -173,7 +173,7 @@ $datam=mysql_fetch_array($resultm);
               <option selected="selected"></option>
               <?php
 $sql9 = ("SELECT id_u, id_nom , u_nom , u_prenom  FROM $tbl_utilisateur  ORDER BY id_u ASC ");
-$result9 = mysql_query($sql9);
+$result9 = mysqli_query($link, $sql9);
 
 while ($row9 = mysql_fetch_assoc($result9)) {
 echo '<option value='.$row9['id_u'].'> '.$row9['u_nom'].' '.$row9['u_prenom'].'</option>';

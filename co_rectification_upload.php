@@ -12,7 +12,7 @@ $sqlp="update $tbl_recact  set  controle='$controle' , certifier='$id_nom' WHERE
 {
 $sqlp="update $tbl_recact  set  controle='$controle' , valider='$id_nom' WHERE  idr='$idr'";
 } 
-$resultp=mysql_query($sqlp);
+$resultp=mysqli_query($link, $sqlp);
 header("location:co_rectification.php");
 mysql_close($link);
 ?>

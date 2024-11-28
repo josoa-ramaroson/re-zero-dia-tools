@@ -30,7 +30,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 $annee=$_POST['annee'];
 
 $sql2="SELECT SUM(prixt) AS prixt, direction ,service FROM $tbl_appbonachatp where  YEAR(date_dem)=$annee GROUP by direction, service order by direction ,service  ";
-$result2=mysql_query($sql2);
+$result2=mysqli_query($link, $sql2);
 ?>
     </h3>
   </div>
@@ -40,7 +40,7 @@ $result2=mysql_query($sql2);
 	    <?php
  $numboucle=0;
  
-while($rows2=mysql_fetch_array($result2)){ 
+while($rows2=mysqli_fetch_array($result2)){ 
 
  if($numboucle %2 == 0) 
  

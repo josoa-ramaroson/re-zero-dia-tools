@@ -25,7 +25,7 @@ $ARCH=substr($_REQUEST["a"],32);
 
 
 $sql5="SELECT * FROM $tbl_contact c , $dbbk.z_"."$ARCH"."_$tbl_paiement p WHERE c.id=p.id and p.idp='$idp'";
-$req5=mysqli_query($linki,$sql5);
+$req5=mysqli_query($link,$sql5);
 
 while($data5=mysqli_fetch_array($req5)){
 ?>

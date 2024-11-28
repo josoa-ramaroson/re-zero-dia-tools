@@ -9,8 +9,8 @@ require 'configuration.php';
 
 $idf=$_POST['idf'];
 $sqlfacturation="SELECT * FROM $tbl_fact WHERE idf='$idf'";
-$resultatfact=mysql_query($sqlfacturation);
-$ident=mysql_fetch_array($resultatfact);
+$resultatfact=mysqli_query($link, $sqlfacturation);
+$ident=mysqli_fetch_array($resultatfact);
 
 if ($ident){
 $idf=$ident['idf'];
@@ -37,8 +37,8 @@ $type='P'; //paiement
 $rembourser='';
 
 $sqlconnect="SELECT * FROM $tbl_paiconn  WHERE idrecu='$id_nom' ";
-$resultconnect=mysql_query($sqlconnect);
-$rowsc=mysql_fetch_array($resultconnect);
+$resultconnect=mysqli_query($link, $sqlconnect);
+$rowsc=mysqli_fetch_array($resultconnect);
 $Maxa_id = $rowsc['idc'];
 //$Maxa_id =42872;
 
@@ -60,7 +60,7 @@ if ($clique!=1) {
 	
 //-------------------detecter les doublons --------- Une personne peut faire passer un paiement d'une facture---
 $valeur_existant = "SELECT COUNT(*) AS nb FROM $tbl_paiement  WHERE  idf='$idf' and date='$date' and nrecu='$nrecu' and  id_nom='$id_nom'";
-$sqLvaleur = mysql_query($valeur_existant)or exit(mysql_error()); 
+$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysql_error());
 $nb = mysql_fetch_assoc($sqLvaleur);
 
 if($nb['nb']==1)
@@ -73,7 +73,7 @@ else
 {
 
 $sqplace="update $tbl_fact set etat='$etat', report='$report' WHERE idf='$idf'";
-$resultplace=mysql_query($sqplace);
+$resultplace=mysqli_query($link, $sqplace);
 
 $retraite=(round($retraite, 0));
 
@@ -87,14 +87,14 @@ $sqlp="INSERT INTO $tbl_paiement
  VALUES
 ('$idf', '$id', '$st', '$nserief', '$fanneefacture','$annee','$nrecu',  '$date', '$id_nom', '$nfacture', '$Nomclient','$montant', '$paiement','$report','$rembourser',  '$modalité', '$reference', '$type', '$ortc_dp', '$tax_dp' ,'$totalht_dp')";
 					 
-$r=mysql_query($sqlp) ;
+$r=mysqli_query($link, $sqlp) ;
 
 
 $sqlmj="update  $tbl_fact  set  miseajours=1  WHERE  idf='$idf'";
-$resulmj=mysql_query($sqlmj);
+$resulmj=mysqli_query($link, $sqlmj);
 
 $sqlcon="DELETE FROM $tbl_paiconn WHERE   idc='$Maxa_id'";
-$connection=mysql_query($sqlcon);
+$connection=mysqli_query($link, $sqlcon);
 
 $clique=1;
 }
@@ -106,35 +106,35 @@ $clique=1;
 if ($bstatut=='couper')
 {
 $sqlp="update  $tbl_fact  set  bstatut='remise' WHERE  idf='$idf'";
-$resultp=mysql_query($sqlp);	
+$resultp=mysqli_query($link, $sqlp);
 }
 
 $statut=addslashes($_POST['statut']);
 if ($statut=='1' and $report=='0')
 {
 $sqlp="update  $tbl_contact  set  statut='2' WHERE  id='$id' ";
-$resultp=mysql_query($sqlp);	
+$resultp=mysqli_query($link, $sqlp);
 }
 
 if ($statut=='3' and $report=='0')
 {
 $sqlp="update  $tbl_contact  set  statut='4' WHERE  id='$id'";
-$resultp=mysql_query($sqlp);	
+$resultp=mysqli_query($link, $sqlp);
 }
 
 
 
 $valeur = "SELECT COUNT(*) AS nbrecu FROM $tbl_paiement  WHERE  nrecu='$Maxa_id'";   
-$sqLv = mysql_query($valeur); 
+$sqLv = mysqli_query($link, $valeur);
 $nbdata = mysql_fetch_assoc($sqLv);
 if($nbdata['nbrecu']==1)
 {
 
 //$sqlcon="update $tbl_paiconn set idrecu='$id' where idc='$Maxa_id'";
-//$connection=mysql_query($sqlcon);
+//$connection=mysqli_query($link, $sqlcon);
 
 $sqlcon="DELETE FROM $tbl_paiconn WHERE   idc='$Maxa_id'";
-$connection=mysql_query($sqlcon);
+$connection=mysqli_query($link, $sqlcon);
 
 header("location:paiement.php");
 exit;

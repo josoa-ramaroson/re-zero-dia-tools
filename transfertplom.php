@@ -1,11 +1,11 @@
  <?php
  
 require 'fonction.php';
-$link = mysql_connect ($host,$user,$pass);
-mysql_select_db($db);
+$link = mysqli_connect ($host,$user,$pass);
+mysqli_select_db($link, $db);
 
 $sRequete ="INSERT INTO plombage (id, Police) SELECT id,Police FROM clienteda";
-	$sresult1=mysql_query($sRequete);
+	$sresult1=mysqli_query($link, $sRequete);
 
 ?>
 

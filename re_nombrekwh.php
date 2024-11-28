@@ -32,7 +32,7 @@ require 'configuration.php';
   
 $sql = "SELECT COUNT(*) AS nbres, sum(cons2) as cons2 , sum(cons1) as cons1 , sum(cons) as cons , sum(mont1) as mont1 ,sum(mont2) as mont2 , sum(mont1+mont2) as mont, sum(puisct) as puisct , sum(totalht) as totalht, sum(tax) as tax, sum(totalttc) as totalttc , sum(ortc) as ortc , sum(impayee) as impayee , sum(Pre) as Pre, sum(totalnet) as totalnet  FROM  $tbl_fact WHERE nserie=$nserie and fannee=$anneec";  //ASC  DESC
   
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
  
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -40,7 +40,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
 <p>&nbsp;</p>
 <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
       <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
   <tr>
          <td><p>NOMBRE DES CLIENTS </p></td>

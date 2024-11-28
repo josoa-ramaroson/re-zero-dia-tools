@@ -41,10 +41,10 @@ SELECT e.titre , SUM(e.Quantite) AS qtenreg FROM $tbl_enreg e GROUP BY e.titre
 
 
 // on ex?cute cette requ?te  
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
 // on r?cup?re le nombre d'?l?ments ? afficher  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);  
  // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -67,7 +67,7 @@ $sql = "SELECT e.titre as thetitre, SUM(e.qtenreg) AS qte , SUM(v.qtvendu) AS qt
 FROM $tv_enreg e LEFT JOIN $tv_vente v ON e.titre=v.titre GROUP BY  e.titre ORDER BY e.titre  DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;
 
 // on ex?cute la requ?te  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
   <strong> <a href="pdf.php">SUIVI DE STOCK</a></strong></font><a href="pdf.php"></strong></a></font></font><a href="pdf.php"><strong></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></a> </strong> 
 </p>
@@ -84,7 +84,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
     <td width="12%" align="center" bgcolor="#006ABE"><font color="#CCCCCC" size="3">&nbsp;</font></td>
   </tr>
   <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row 
 ?>
   <tr> 
     <td align="center" bgcolor="#FFFFFF"> <div align="left"></div>

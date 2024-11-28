@@ -38,7 +38,7 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
 
 	    //choix d espace de memoire pour les connection.---------------------------------------------------------------- 
 	$valeur_existant = "SELECT COUNT(*) AS nb FROM $tbl_paiconn  WHERE idrecu='$id_nom' ";
-	$sqLvaleur = mysqli_query($linki,$valeur_existant)or exit(mysqli_error()); 
+	$sqLvaleur = mysqli_query($link,$valeur_existant)or exit(mysqli_error());
 	$nb = mysqli_fetch_assoc($sqLvaleur);
 	
 	if($nb['nb'] == 1)
@@ -49,13 +49,13 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
    {
 	   	
 	$sqlcon="INSERT INTO $tbl_paiconn (idrecu)VALUES('$id_nom')";
-    $connection=mysqli_query($linki,$sqlcon);
+    $connection=mysqli_query($link,$sqlcon);
     }
     //------------------------FIn du Programme ---------------------------------------------------------
 	
      $sqldate="SELECT * FROM $tbl_caisse "; //DESC  ASC
-	$resultldate=mysql_query($sqldate);
-	$datecaisse=mysql_fetch_array($resultldate);
+	$resultldate=mysqli_query($link, $sqldate);
+	$datecaisse=mysqli_fetch_array($resultldate);
 	
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -162,10 +162,10 @@ location.href="paiementcb_save.php?<?php  echo md5(microtime()); ?>&dt=<?php ech
 
 $sql = "SELECT count(*) FROM $tbl_paiement where id<500000";  
 
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);  
  // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -185,12 +185,12 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sqfac = "SELECT * FROM $tbl_paiement where id<500000 GROUP BY  idp desc LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC  DESC
  
 // on ex?cute la requ?te  
-$resultfac = mysql_query($sqfac) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()); 
+$resultfac = mysqli_query($link, $sqfac) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
 
 
 	//$sqfac="SELECT * FROM $tbl_paiement ORDER BY idp DESC";
-	//$resultfac=mysql_query($sqfac);
+	//$resultfac=mysqli_query($link, $sqfac);
 
 ?>
 </p>
@@ -213,7 +213,7 @@ $resultfac = mysql_query($sqfac) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql
     <td width="17%" align="center" bgcolor="#FFFFFF">Reste à payer</td>
   </tr>
   <?php
-while($rowsfac=mysql_fetch_array($resultfac)){ 
+while($rowsfac=mysqli_fetch_array($resultfac)){ 
 ?>
   <tr bgcolor="<?php gettatut($rowsfac['type']); ?>">
     <td align="center" ><em><?php echo $rowsfac['id'];?></em></td>

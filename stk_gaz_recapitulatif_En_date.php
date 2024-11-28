@@ -27,7 +27,7 @@ require('stk_gaz_recapitulatif_lien.php');
   <?php
 $date=addslashes($_POST['date']);
 $sql1="SELECT * FROM $tbl_enreg   where  date='$date' ";
-$req=mysqli_query($linki,$sql1);
+$req=mysqli_query($link,$sql1);
 ?>
   </font></strong></font></font></font></font></p>
 <p><font size="2"><font size="2"><font size="2"><font size="2"><strong><font color="#0000FF"> 
@@ -68,7 +68,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
           <?php
 // Exit looping and close connection 
 }
-mysqli_close($linki);
+mysqli_close($link);
 ?>
         </table>
       </form></td>

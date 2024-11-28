@@ -4,8 +4,8 @@ $csv->setFlags(SplFileObject::READ_CSV);
 $csv->setCsvControl(';', '"', '"');
  
 require 'fonction.php';
-$link = mysql_connect ($host,$user,$pass);
-mysql_select_db($db);
+$link = mysqli_connect ($host,$user,$pass);
+mysqli_select_db($link, $db);
 
 ?>
 <?php
@@ -21,6 +21,6 @@ foreach(new LimitIterator($csv, 1) as $ligne)
 
 <?php
 $sRequete ="update $tbl_contact  SET statut='4' WHERE Police='$Police'";
-$sresult1=mysql_query($sRequete);
+$sresult1=mysqli_query($link, $sRequete);
 }
 ?>

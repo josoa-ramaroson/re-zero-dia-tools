@@ -15,24 +15,24 @@ $id=$_REQUEST["id"];
 $ARCH=$_REQUEST['annee']; 
 
 $sqlm="SELECT * FROM $tbl_contact WHERE id='$id'";
-$resultm=mysql_query($sqlm);
-$datam=mysql_fetch_array($resultm);
+$resultm=mysqli_query($link, $sqlm);
+$datam=mysqli_fetch_array($resultm);
 
 	/*$sqact="SELECT * FROM $tbl_activite WHERE id='$id'";
-	 $resultact=mysql_query($sqact);*/
+	 $resultact=mysqli_query($link, $sqact);*/
 	 
 	 	 
 	$sqfac="SELECT * FROM z_"."$ARCH"."_$tbl_fact WHERE id='$id' and st='E' ORDER BY idf desc";
-	$resultfac=mysql_query($sqfac);
+	$resultfac=mysqli_query($link, $sqfac);
 	
 	$sqfacd="SELECT * FROM z_"."$ARCH"."_$tbl_fact WHERE id='$id' and st!='E' ORDER BY idf desc";
-	$resultfacd=mysql_query($sqfacd);
+	$resultfacd=mysqli_query($link, $sqfacd);
 	
 	$sqpaie="SELECT * FROM z_"."$ARCH"."_$tbl_paiement   WHERE id='$id' and st='E' ORDER BY idp DESC";
-	$resultpaie=mysql_query($sqpaie);
+	$resultpaie=mysqli_query($link, $sqpaie);
 	
 	$sqpaied="SELECT * FROM z_"."$ARCH"."_$tbl_paiement WHERE id='$id' and st!='E' ORDER BY idp DESC";
-	$resultpaied=mysql_query($sqpaied);
+	$resultpaied=mysqli_query($link, $sqpaied);
 	
 	$idc=$datam['id'];
 	$nomclient=$datam['nomprenom'];
@@ -59,7 +59,7 @@ require "client_lient.php";
                     <select name="annee" size="1" id="annee">
                       <?php
 $sql81 = ("SELECT * FROM z_annee  ORDER BY annee ASC ");
-$result81 = mysql_query($sql81);
+$result81 = mysqli_query($link, $sql81);
 
 while ($row81 = mysql_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
@@ -108,7 +108,7 @@ echo '<option> '.$row81['annee'].' </option>';
                     
                   </tr>
                   <?php
-while($rowsfac=mysql_fetch_array($resultfac)){ 
+while($rowsfac=mysqli_fetch_array($resultfac)){ 
 ?>
                   <tr>
                     <td align="center" bgcolor="#FFFFFF"><em>                    
@@ -149,7 +149,7 @@ while($rowsfac=mysql_fetch_array($resultfac)){
         <td width="11%" align="center" bgcolor="#FFFFFF">Reste à payer</td>
       </tr>
       <?php
-while($rowsp=mysql_fetch_array($resultpaie)){ 
+while($rowsp=mysqli_fetch_array($resultpaie)){ 
 ?>
       <tr>
         <td align="center" bgcolor="#FFFFFF"><em> <a href="z_paiement_billimp.php?idp=<?php echo md5(microtime()).$rowsp['idp'];?>&a=<?php echo md5(microtime()).$ARCH;?>" target="_blank" > <?php echo $rowsp['nrecu'];?></a></em></td>
@@ -188,7 +188,7 @@ while($rowsp=mysql_fetch_array($resultpaie)){
                 <td width="11%" align="center" bgcolor="#FFFFFF">Reste à payer</td>
                 </tr>
               <?php
-while($rowsfacd=mysql_fetch_array($resultfacd)){ 
+while($rowsfacd=mysqli_fetch_array($resultfacd)){ 
 ?>
               <tr>
                 <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfacd['nfacture'];?></em></td>
@@ -215,7 +215,7 @@ while($rowsfacd=mysql_fetch_array($resultfacd)){
                   <td width="11%" align="center" bgcolor="#FFFFFF">Reste à payer</td>
                 </tr>
                 <?php
-while($rowspd=mysql_fetch_array($resultpaied)){ 
+while($rowspd=mysqli_fetch_array($resultpaied)){ 
 ?>
                 <tr>
                   <td align="center" bgcolor="#FFFFFF"><em> <a href="paiement_bill.php?idp=<?php echo md5(microtime()).$rowspd['idp'];?>" target="_blank" > <?php echo $rowspd['nrecu'];?></a></em></td>

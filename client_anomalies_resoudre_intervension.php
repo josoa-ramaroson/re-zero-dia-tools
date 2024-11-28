@@ -16,13 +16,13 @@ require 'fonction.php';
 $id=substr($_REQUEST["id"],32);
 //$id=substr($_REQUEST["id"],32);
 $sqlm="SELECT * FROM $tbl_client_anom WHERE idanomalie='$id'";
-$resultm=mysqli_query($linki,$sqlm);
+$resultm=mysqli_query($link,$sqlm);
 $datam=mysqli_fetch_array($resultm);
 
 
-    function Nom_prenom_client($LE_idclient, $tbl_contact,$linki){
+    function Nom_prenom_client($LE_idclient, $tbl_contact,$link){
 	$sqld7 = "SELECT * FROM  $tbl_contact where id='$LE_idclient'";
-	$resultatd7 = mysqli_query($linki,$sqld7); 
+	$resultatd7 = mysqli_query($link,$sqld7); 
 	$nqtd7 = mysqli_fetch_assoc($resultatd7);
 	if((!isset($nqtd7['nomprenom'])|| empty($nqtd7['nomprenom']))) { $qt7=''; return $qt7;}
 	else {$qt7=$nqtd7['nomprenom'] ; return $qt7;}
@@ -77,7 +77,7 @@ function toggleBox(szDivID, iState)// 1 visible, 0 hidden
                 <tr>
           <td><strong><font size="2">Nom et Prenom </font></strong></td>
           <td>&nbsp;</td>
-          <td><?php $idclient=$datam['idclient']; $nom_prenom=Nom_prenom_client($idclient,$tbl_contact,$linki); echo $nom_prenom;?></td>
+          <td><?php $idclient=$datam['idclient']; $nom_prenom=Nom_prenom_client($idclient,$tbl_contact,$link); echo $nom_prenom;?></td>
           <td>&nbsp;</td>
           <td><strong><font size="2">Niveau</font></strong></td>
           <td><strong><?php echo $datam['niveau'];?></strong></td>
@@ -182,7 +182,7 @@ function toggleBox(szDivID, iState)// 1 visible, 0 hidden
         <div class="panel-body">
           <?php
 	 $sqord="SELECT * FROM $tbl_client_anom_suivi WHERE idanomalie='$id' ORDER BY idanomaliesuivi DESC ";
-	 $resultactord=mysqli_query($linki,$sqord);
+	 $resultactord=mysqli_query($link,$sqord);
 ?>
           <table width="100%" border="0" align="center" cellpadding="3" cellspacing="0" bgcolor="#FFFFFF">
             <tr bgcolor="#3071AA">

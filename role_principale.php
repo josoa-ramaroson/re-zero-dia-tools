@@ -27,7 +27,7 @@ require("bienvenue.php"); // on appelle la page contenant la fonction
  
 $sql = "SELECT count(*) FROM $tb_role_user where r_p='1' ";  
 
-$resultat = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$resultat = mysqli_query($link,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
  
  
 $nb_total = mysqli_fetch_array($resultat);  
@@ -44,13 +44,13 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
    
 $sql = "SELECT * FROM $tb_role_user  where r_p='1'  ORDER BY id_role_user	DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
  
-$req = mysqli_query($linki, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
 
 
 
-	function affichage_utilisateur($id,$tbl_utilisateur,$linki){
+	function affichage_utilisateur($id,$tbl_utilisateur,$link){
 	$squser="SELECT * FROM $tbl_utilisateur  WHERE id_u='$id'";
-	$resultuser=mysqli_query($linki,$squser);
+	$resultuser=mysqli_query($link,$squser);
 	$text='';
 	while($rowspd=mysqli_fetch_array($resultuser)){ 
 	$u_nom=$rowspd['u_nom'];
@@ -95,7 +95,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
     <tr bgcolor=<?php echo "$bgcolor" ?>>
       <td height="29" align="center" ><div align="left"><em><?php echo $data['id_role_user'];?></em></div></td>
       <td align="center"><div align="left"><em>   </em><em><?php $id=$data['id_u'];
-	  $info=affichage_utilisateur($id,$tbl_utilisateur,$linki);
+	  $info=affichage_utilisateur($id,$tbl_utilisateur,$link);
       //$tab = array($info);
 	  $lenom=$info[0];
 	  $leprenom=$info[1];
@@ -110,7 +110,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
         <select name="id_role" id="id_role">
           <?php
 $sqlrole = "SELECT u.id_u, t.id_role, t.nom_role FROM $tb_role_user u  INNER JOIN  $tb_role_type t  ON u.id_role=t.id_role  and  u.id_u=$id ORDER BY id_role  ASC ";
-$resultrole = mysqli_query($linki,$sqlrole);
+$resultrole = mysqli_query($link,$sqlrole);
 
 while ($rowrole = mysqli_fetch_assoc($resultrole)) {
 echo '<option value='.$rowrole['id_role'].'> '.$rowrole['nom_role'].' </option>';
@@ -143,7 +143,7 @@ mysqli_free_result ($req);
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
 mysqli_free_result ($resultat);  
-mysqli_close ($linki);  
+mysqli_close ($link);  
 ?>
   </table>
 

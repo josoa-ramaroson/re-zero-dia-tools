@@ -8,14 +8,14 @@ if(($_SESSION['u_niveau']!= 7) &&($_SESSION['u_niveau']!= 10)) {
  }
  
 	$sql5="UPDATE $tbl_contact  SET `miseajours`=0, syn=0 where syn=1";
-    $result5=mysqli_query($linki,$sql5);
+    $result5=mysqli_query($link,$sql5);
     if($result5){
     //echo " cancel ";
     }
     else {
    // echo "ERROR";
     }
-	mysqli_close($linki);
+	mysqli_close($link);
     ?>
 <?php
 header("location: xbackup.php");

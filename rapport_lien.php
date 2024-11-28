@@ -57,7 +57,7 @@
                   <select name="annee" size="1" id="annee">
                     <?php
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
-$result81 = mysql_query($sql81);
+$result81 = mysqli_query($link, $sql81);
 
 while ($row81 = mysql_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
@@ -124,7 +124,7 @@ echo '<option> '.$row81['annee'].' </option>';
                 <select name="agent" id="agent">
                   <?php
 $sql8 = ("SELECT * FROM $tbl_paiement GROUP BY  id_nom ORDER BY id_nom ASC ");
-$result8 = mysql_query($sql8);
+$result8 = mysqli_query($link, $sql8);
 
 while ($row8 = mysql_fetch_assoc($result8)) {
 echo '<option> '.$row8['id_nom'].' </option>';
@@ -207,7 +207,7 @@ echo '<option> '.$row8['id_nom'].' </option>';
                   <select name="annee" size="1" id="annee">
                     <?php
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
-$result81 = mysql_query($sql81);
+$result81 = mysqli_query($link, $sql81);
 
 while ($row81 = mysql_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
@@ -276,7 +276,7 @@ echo '<option> '.$row81['annee'].' </option>';
                   <select name="agentv" id="agentv">
                     <?php
 $sql8 = ("SELECT * FROM $tbl_paiement GROUP BY  id_nom ORDER BY id_nom ASC ");
-$result8 = mysql_query($sql8);
+$result8 = mysqli_query($link, $sql8);
 
 while ($row8 = mysql_fetch_assoc($result8)) {
 echo '<option> '.$row8['id_nom'].' </option>';
@@ -316,7 +316,7 @@ echo '<option> '.$row8['id_nom'].' </option>';
                   <select name="annee" size="1" id="annee">
                     <?php
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
-$result81 = mysql_query($sql81);
+$result81 = mysqli_query($link, $sql81);
 
 while ($row81 = mysql_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
@@ -358,7 +358,7 @@ echo '<option> '.$row81['annee'].' </option>';
                   <select name="annee" size="1" id="annee">
                     <?php
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
-$result81 = mysql_query($sql81);
+$result81 = mysqli_query($link, $sql81);
 
 while ($row81 = mysql_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';

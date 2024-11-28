@@ -19,13 +19,13 @@ $RefCommune=substr($RefQuartier,0,3);
 $refville=addslashes($_REQUEST['refville']);
 
 $sql1 = "SELECT * FROM quartier where id_quartier=$RefQuartier";
-$result1 = mysql_query($sql1);
+$result1 = mysqli_query($link, $sql1);
 while ($row1 = mysql_fetch_assoc($result1)) {
 $quartier=$row1['quartier'];
 }  
 
 $sql2 = "SELECT * FROM ville where refville=$refville";
-$result2 = mysql_query($sql2);
+$result2 = mysqli_query($link, $sql2);
 while ($row2 = mysql_fetch_assoc($result2)) {
 $ville=$row2['ville'];
 } 
@@ -44,13 +44,13 @@ $CodeTypeClts=addslashes($_REQUEST['CodeTypeClts']);
 require 'configuration.php';
 
 $sql = " SELECT * FROM $tbl_fact f , $tbl_contact c  where f.id=c.id and f.nserie=$nserie and f.fannee=$anneec  and c.ville='$m1v' and  c.quartier='$m2q' and CodeTypeClts='$CodeTypeClts' ORDER BY f.id ASC ";
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
 ?>
  Ville : <em><?php echo  $m1v;?></em> Quartier : <em><?php echo $m2q;?></em> Categorie : <em><?php //$CodeTypeClts;
  
 $sqltclient = "SELECT * FROM $tbl_client where idtclient='$CodeTypeClts'";
-$resulttclient = mysql_query($sqltclient);
+$resulttclient = mysqli_query($link, $sqltclient);
 $rowtclient = mysql_fetch_assoc($resulttclient);
 if ($rowtclient===FALSE) {}
 else 
@@ -70,7 +70,7 @@ echo $TypeClts=$rowtclient['TypeClts'];
      <td width="17%" align="center"><font color="#FFFFFF"><strong>Montant HT</strong></font></td>
    </tr>
    <?php
-while($datafact=mysql_fetch_array($req)){ // Start looping table row 
+while($datafact=mysqli_fetch_array($req)){ // Start looping table row
 ?>
     <tr bgcolor="<?php gettatut($datafact['totalht']); ?>">
      <td align="center"><font color="#000000">

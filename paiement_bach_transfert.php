@@ -21,7 +21,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 
 	    //choix d espace de memoire pour les connection.---------------------------------------------------------------- 
 	$valeur_existant = "SELECT COUNT(*) AS nb FROM $tbl_paiconn  WHERE idrecu='$id_nom' ";
-	$sqLvaleur = mysqli_query($linki,$valeur_existant)or exit(mysqli_error()); 
+	$sqLvaleur = mysqli_query($link,$valeur_existant)or exit(mysqli_error()); 
 	$nb = mysqli_fetch_assoc($sqLvaleur);
 	
 	if($nb['nb'] == 1)
@@ -32,25 +32,25 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
    {
 	   	
 	$sqlcon="INSERT INTO $tbl_paiconn (idrecu)VALUES('$id_nom')";
-    $connection=mysqli_query($linki,$sqlcon);
+    $connection=mysqli_query($link,$sqlcon);
     }
     //------------------------FIn du Programme ---------------------------------------------------------
 	
 	 $sqlana="SELECT * FROM $tbl_paiement_bach WHERE  id_nom='$id_nom' and miseajours!=1";
-	 $resultana=mysqli_query($linki,$sqlana);
+	 $resultana=mysqli_query($link,$sqlana);
 	 
 	 $sqldate="SELECT * FROM $tbl_caisse "; //DESC  ASC
-	$resultldate=mysqli_query($linki,$sqldate);
+	$resultldate=mysqli_query($link,$sqldate);
 	$datecaisse=mysqli_fetch_array($resultldate);
 	
 	$sql5="DELETE FROM $tbl_paiement_bachtemp WHERE miseajours=1";
-    $result5=mysqli_query($linki,$sql5);
+    $result5=mysqli_query($link,$sql5);
 	
 	$sqlDEL="DELETE FROM $tbl_paiement_bach WHERE miseajours=1";
-    $resultDEL=mysqli_query($linki,$sqlDEL);
+    $resultDEL=mysqli_query($link,$sqlDEL);
 	
     $sql6="SELECT * FROM $tbl_seq_transf  WHERE  n_transfert=1";
-    $result6=mysqli_query($linki,$sql6);
+    $result6=mysqli_query($link,$sql6);
 	$affichedate=mysqli_fetch_array($result6)
 
 

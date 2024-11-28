@@ -3,7 +3,7 @@
 	function stat_eda1($mois,$annee,$tbl_paiement, $id){
 	$sql = "SELECT SUM(paiement) AS Paie , st FROM $tbl_paiement where st='E' and MONTH(date)=$mois and YEAR(date)=$annee and id='$id' ";
 
-	$resultat = mysql_query($sql) or exit(mysql_error()); 
+	$resultat = mysqli_query($link, $sql) or exit(mysql_error());
 	$nqt = mysql_fetch_assoc($resultat);
 
 	if((!isset($nqt['Paie'])|| empty($nqt['Paie']))) { $qt=0; return $qt;}

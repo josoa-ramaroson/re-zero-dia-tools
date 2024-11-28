@@ -25,7 +25,7 @@ require 'fonction.php';
 require 'configuration.php';
 
 $sqfact=" SELECT * FROM $tbl_fact f , $tbl_contact c  where f.id=c.id and f.nserie=$nserie and f.fannee=$anneec  and Tarif='$tarif' ORDER BY f.id ASC ";
-$reqfact=mysql_query($sqfact);
+$reqfact=mysqli_query($link, $sqfact);
 ?>
 <page backcolor="#FEFEFE" backimg="./res/bas_page.png" backimgx="center" backimgy="bottom" backimgw="100%" backtop="0" backbottom="30mm" footer="date;heure;page" style="font-size: 12pt">
 <bookmark title="Lettre" level="0" ></bookmark>
@@ -49,7 +49,7 @@ $reqfact=mysql_query($sqfact);
           <td width="10%" align="center"><font color="#FFFFFF"><strong>M. HT</strong></font></td>
         </tr>
         <?php
-while($datafact=mysql_fetch_array($reqfact)){ // Start looping table row 
+while($datafact=mysqli_fetch_array($reqfact)){ // Start looping table row
 ?>
         <tr class="taille">
           <td bgcolor="#FFFFFF"><font color="#000000"><?php echo $datafact['id'];?></font></td>

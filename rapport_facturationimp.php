@@ -16,7 +16,7 @@ $annee1rp=substr($_REQUEST["an"],32);
 
 require 'configuration.php';
 $sql = "SELECT  COUNT(*) AS nbres, SUM(cons1) AS cons1, SUM(cons2) AS cons2, SUM(cons) AS cons, SUM(mont1) AS mont1,SUM(mont2) AS mont2,SUM(puisct) AS puisct, SUM(totalht) AS totalht, SUM(tax) AS tax, SUM(totalttc) AS totalttc, SUM(ortc) AS ortc, SUM(impayee) AS impayee, SUM(Pre) AS Pre, SUM(totalnet) AS totalnet, refcommune , nserie , fannee FROM $tv_facturation where fannee='$annee1rp'  and nserie='$nserie1' GROUP BY refcommune ";  
-$req=mysql_query($sql);
+$req=mysqli_query($link, $sql);
 ?>
  </p>
  <p>&nbsp; </p>
@@ -35,13 +35,13 @@ $req=mysql_query($sql);
     <td width="20%" align="center"><font color="#FFFFFF"><strong>Montant NET </strong></font></td>
   </tr>
    <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
    <tr>
      <td  bgcolor="#FFFFFF"><em><?php $RefCommune=$data['refcommune'];
 	 
 	 $sql3 = "SELECT * FROM commune where ref_com=$RefCommune";
-$result3 = mysql_query($sql3);
+$result3 = mysqli_query($link, $sql3);
 while ($row3 = mysql_fetch_assoc($result3)) {
 echo $secteur=$row3['commune'];
 }
@@ -68,7 +68,7 @@ echo $secteur=$row3['commune'];
 
 require 'configuration.php';
 $sql11 = "SELECT  COUNT(*) AS nbres, SUM(cons1) AS cons1, SUM(cons2) AS cons2, SUM(cons) AS cons, SUM(mont1) AS mont1,SUM(mont2) AS mont2,SUM(puisct) AS puisct, SUM(totalht) AS totalht, SUM(tax) AS tax, SUM(totalttc) AS totalttc, SUM(ortc) AS ortc, SUM(impayee) AS impayee, SUM(Pre) AS Pre, SUM(totalnet) AS totalnet, refcommune , nserie , fannee , Tarif , st FROM $tv_facturation where fannee='$annee1rp'  and nserie='$nserie1' GROUP BY refcommune ";  
-$req11=mysql_query($sql11);
+$req11=mysqli_query($link, $sql11);
 ?>
 </p>
 <H2>
@@ -89,14 +89,14 @@ $req11=mysql_query($sql11);
     <td width="15%" align="center"><font color="#FFFFFF"><strong>Montant TTC</strong></font></td>
   </tr>
   <?php
-while($data11=mysql_fetch_array($req11)){ // Start looping table row 
+while($data11=mysqli_fetch_array($req11)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF"><em>
       <?php $RefCommune=$data11['refcommune'];
 	 
 	 $sql3 = "SELECT * FROM commune where ref_com=$RefCommune";
-$result3 = mysql_query($sql3);
+$result3 = mysqli_query($link, $sql3);
 while ($row3 = mysql_fetch_assoc($result3)) {
 echo $secteur=$row3['commune'];
 }
@@ -124,7 +124,7 @@ echo $secteur=$row3['commune'];
   <?php
 
 $sql2 = "SELECT  COUNT(*) AS nbres, SUM(cons1) AS cons1, SUM(cons2) AS cons2, SUM(cons) AS cons, SUM(mont1) AS mont1,SUM(mont2) AS mont2,SUM(puisct) AS puisct, SUM(totalht) AS totalht, SUM(tax) AS tax, SUM(totalttc) AS totalttc, SUM(ortc) AS ortc, SUM(impayee) AS impayee, SUM(Pre) AS Pre, SUM(totalnet) AS totalnet, RefLocalite , nserie , fannee FROM $tv_facturation where fannee='$annee1rp'  and nserie='$nserie1' GROUP BY RefLocalite ";  
-$req2=mysql_query($sql2);
+$req2=mysqli_query($link, $sql2);
 ?>
 </p>
 <H2>
@@ -144,14 +144,14 @@ $req2=mysql_query($sql2);
     <td width="20%" align="center"><font color="#FFFFFF"><strong>Montant NET </strong></font></td>
   </tr>
   <?php
-while($data2=mysql_fetch_array($req2)){ // Start looping table row 
+while($data2=mysqli_fetch_array($req2)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF"><em>
       <?php $RefLocalite=$data2['RefLocalite'];
 	 
 	 $sql32 = "SELECT * FROM ville where refville=$RefLocalite";
-$result32 = mysql_query($sql32);
+$result32 = mysqli_query($link, $sql32);
 while ($row32 = mysql_fetch_assoc($result32)) {
 echo $ville=$row32['ville'];
 }
@@ -177,7 +177,7 @@ echo $ville=$row32['ville'];
   <?php
 
 $sql22 = "SELECT  COUNT(*) AS nbres, SUM(cons1) AS cons1, SUM(cons2) AS cons2, SUM(cons) AS cons, SUM(mont1) AS mont1,SUM(mont2) AS mont2,SUM(puisct) AS puisct, SUM(totalht) AS totalht, SUM(tax) AS tax, SUM(totalttc) AS totalttc, SUM(ortc) AS ortc, SUM(impayee) AS impayee, SUM(Pre) AS Pre, SUM(totalnet) AS totalnet, RefLocalite , nserie , fannee , Tarif , st FROM $tv_facturation where  fannee='$annee1rp'  and nserie='$nserie1' GROUP BY RefLocalite ";  
-$req22=mysql_query($sql22);
+$req22=mysqli_query($link, $sql22);
 ?>
 </p>
 <H2>
@@ -198,14 +198,14 @@ $req22=mysql_query($sql22);
     <td width="15%" align="center"><font color="#FFFFFF"><strong>Montant TTC</strong></font></td>
   </tr>
   <?php
-while($data22=mysql_fetch_array($req22)){ // Start looping table row 
+while($data22=mysqli_fetch_array($req22)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF"><em>
       <?php $RefLocalite=$data22['RefLocalite'];
 	 
 	 $sql322 = "SELECT * FROM ville where refville=$RefLocalite";
-$result322 = mysql_query($sql322);
+$result322 = mysqli_query($link, $sql322);
 while ($row322 = mysql_fetch_assoc($result322)) {
 echo $ville=$row322['ville'];
 }
@@ -230,7 +230,7 @@ echo $ville=$row322['ville'];
 <p>
   <?php
 $sql33i = "SELECT COUNT(*) AS nbres, SUM(cons1) AS cons1, SUM(cons2) AS cons2, SUM(cons) AS cons, SUM(mont1) AS mont1,SUM(mont2) AS mont2,SUM(puisct) AS puisct, SUM(totalht) AS totalht, SUM(tax) AS tax, SUM(totalttc) AS totalttc, SUM(ortc) AS ortc, SUM(impayee) AS impayee, SUM(Pre) AS Pre, SUM(totalnet) AS totalnet, RefLocalite , nserie , fannee , Tarif, st FROM $tv_facturation where  fannee='$annee1rp'  and nserie='$nserie1' and Tarif=3";   
-$req33i=mysql_query($sql33i);
+$req33i=mysqli_query($link, $sql33i);
 ?>
 </p>
 <H2>
@@ -251,7 +251,7 @@ $req33i=mysql_query($sql33i);
     <td width="20%" align="center"><font color="#FFFFFF"><strong>Montant TTC</strong></font></td>
   </tr>
   <?php
-while($data33i=mysql_fetch_array($req33i)){ // Start looping table row 
+while($data33i=mysqli_fetch_array($req33i)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF">&nbsp;</td>
@@ -274,7 +274,7 @@ while($data33i=mysql_fetch_array($req33i)){ // Start looping table row
 <p>
   <?php
 $sql33A = "SELECT COUNT(*) AS nbres, SUM(cons1) AS cons1, SUM(cons2) AS cons2, SUM(cons) AS cons, SUM(mont1) AS mont1,SUM(mont2) AS mont2,SUM(puisct) AS puisct, SUM(totalht) AS totalht, SUM(tax) AS tax, SUM(totalttc) AS totalttc, SUM(ortc) AS ortc, SUM(impayee) AS impayee, SUM(Pre) AS Pre, SUM(totalnet) AS totalnet, RefLocalite , nserie , fannee , Tarif, st FROM $tv_facturation where  fannee='$annee1rp'  and nserie='$nserie1' and (Tarif=6 OR Tarif=7 or Tarif=8  or Tarif=9 or Tarif=11)";   
-$req33A=mysql_query($sql33A);
+$req33A=mysqli_query($link, $sql33A);
 ?>
 </p>
 <H2>
@@ -295,7 +295,7 @@ $req33A=mysql_query($sql33A);
     <td width="20%" align="center"><font color="#FFFFFF"><strong>Montant TTC</strong></font></td>
   </tr>
   <?php
-while($data33A=mysql_fetch_array($req33A)){ // Start looping table row 
+while($data33A=mysqli_fetch_array($req33A)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF">&nbsp;</td>
@@ -318,7 +318,7 @@ while($data33A=mysql_fetch_array($req33A)){ // Start looping table row
 <p>
   <?php
 $sql33T = "SELECT COUNT(*) AS nbres, SUM(cons1) AS cons1, SUM(cons2) AS cons2, SUM(cons) AS cons, SUM(mont1) AS mont1,SUM(mont2) AS mont2,SUM(puisct) AS puisct, SUM(totalht) AS totalht, SUM(tax) AS tax, SUM(totalttc) AS totalttc, SUM(ortc) AS ortc, SUM(impayee) AS impayee, SUM(Pre) AS Pre, SUM(totalnet) AS totalnet, RefLocalite , nserie , fannee , Tarif, st FROM $tv_facturation where  fannee='$annee1rp'  and nserie='$nserie1' and (Tarif=1 OR Tarif=5 or Tarif=12)";   
-$req33T=mysql_query($sql33T);
+$req33T=mysqli_query($link, $sql33T);
 ?>
 </p>
 <H2>
@@ -339,7 +339,7 @@ $req33T=mysql_query($sql33T);
     <td width="20%" align="center"><font color="#FFFFFF"><strong>Montant TTC</strong></font></td>
   </tr>
   <?php
-while($data33T=mysql_fetch_array($req33T)){ // Start looping table row 
+while($data33T=mysqli_fetch_array($req33T)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF">&nbsp;</td>
@@ -362,7 +362,7 @@ while($data33T=mysql_fetch_array($req33T)){ // Start looping table row
 <p>
   <?php
 $sql33B = "SELECT COUNT(*) AS nbres, SUM(cons1) AS cons1, SUM(cons2) AS cons2, SUM(cons) AS cons, SUM(mont1) AS mont1,SUM(mont2) AS mont2,SUM(puisct) AS puisct, SUM(totalht) AS totalht, SUM(tax) AS tax, SUM(totalttc) AS totalttc, SUM(ortc) AS ortc, SUM(impayee) AS impayee, SUM(Pre) AS Pre, SUM(totalnet) AS totalnet, RefLocalite , nserie , fannee , Tarif, st FROM $tv_facturation where  fannee='$annee1rp'  and nserie='$nserie1' and (Tarif=2 OR Tarif=4)";   
-$req33B=mysql_query($sql33B);
+$req33B=mysqli_query($link, $sql33B);
 ?>
 </p>
 <H2>
@@ -383,7 +383,7 @@ $req33B=mysql_query($sql33B);
     <td width="20%" align="center"><font color="#FFFFFF"><strong>Montant TTC</strong></font></td>
   </tr>
   <?php
-while($data33B=mysql_fetch_array($req33B)){ // Start looping table row 
+while($data33B=mysqli_fetch_array($req33B)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF">&nbsp;</td>
@@ -406,7 +406,7 @@ while($data33B=mysql_fetch_array($req33B)){ // Start looping table row
 <p>
   <?php
 $sql33M = "SELECT COUNT(*) AS nbres, SUM(cons1) AS cons1, SUM(cons2) AS cons2, SUM(cons) AS cons, SUM(mont1) AS mont1,SUM(mont2) AS mont2,SUM(puisct) AS puisct, SUM(totalht) AS totalht, SUM(tax) AS tax, SUM(totalttc) AS totalttc, SUM(ortc) AS ortc, SUM(impayee) AS impayee, SUM(Pre) AS Pre, SUM(totalnet) AS totalnet, RefLocalite , nserie , fannee , Tarif, st FROM $tv_facturation where  fannee='$annee1rp'  and nserie='$nserie1' and Tarif=10";   
-$req33M=mysql_query($sql33M);
+$req33M=mysqli_query($link, $sql33M);
 ?>
 </p>
 <H2>
@@ -427,7 +427,7 @@ $req33M=mysql_query($sql33M);
     <td width="20%" align="center"><font color="#FFFFFF"><strong>Montant TTC</strong></font></td>
   </tr>
   <?php
-while($data33M=mysql_fetch_array($req33M)){ // Start looping table row 
+while($data33M=mysqli_fetch_array($req33M)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF">&nbsp;</td>
@@ -451,7 +451,7 @@ while($data33M=mysql_fetch_array($req33M)){ // Start looping table row
   <?php
 
 $sql3 = "SELECT  COUNT(*) AS nbres, SUM(cons1) AS cons1, SUM(cons2) AS cons2, SUM(cons) AS cons, SUM(mont1) AS mont1,SUM(mont2) AS mont2,SUM(puisct) AS puisct, SUM(totalht) AS totalht, SUM(tax) AS tax, SUM(totalttc) AS totalttc, SUM(ortc) AS ortc, SUM(impayee) AS impayee, SUM(Pre) AS Pre, SUM(totalnet) AS totalnet, RefLocalite , nserie , fannee FROM $tv_facturation where fannee='$annee1rp'  and nserie='$nserie1' ";  
-$req3=mysql_query($sql3);
+$req3=mysqli_query($link, $sql3);
 ?>
 </p>
 <H2>
@@ -471,7 +471,7 @@ $req3=mysql_query($sql3);
     <td width="20%" align="center"><font color="#FFFFFF"><strong>Montant NET </strong></font></td>
   </tr>
   <?php
-while($data3=mysql_fetch_array($req3)){ // Start looping table row 
+while($data3=mysqli_fetch_array($req3)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF">&nbsp;</td>
@@ -493,7 +493,7 @@ while($data3=mysql_fetch_array($req3)){ // Start looping table row
   <?php
 
 $sql33 = "SELECT COUNT(*) AS nbres, SUM(cons1) AS cons1, SUM(cons2) AS cons2, SUM(cons) AS cons, SUM(mont1) AS mont1,SUM(mont2) AS mont2,SUM(puisct) AS puisct, SUM(totalht) AS totalht, SUM(tax) AS tax, SUM(totalttc) AS totalttc, SUM(ortc) AS ortc, SUM(impayee) AS impayee, SUM(Pre) AS Pre, SUM(totalnet) AS totalnet, RefLocalite , nserie , fannee , Tarif, st FROM $tv_facturation where  fannee='$annee1rp'  and nserie='$nserie1' ";   
-$req33=mysql_query($sql33);
+$req33=mysqli_query($link, $sql33);
 ?>
 </p>
 <H2>
@@ -514,7 +514,7 @@ $req33=mysql_query($sql33);
     <td width="20%" align="center"><font color="#FFFFFF"><strong>Montant TTC</strong></font></td>
   </tr>
   <?php
-while($data33=mysql_fetch_array($req33)){ // Start looping table row 
+while($data33=mysqli_fetch_array($req33)){ // Start looping table row
 ?>
   <tr>
     <td  bgcolor="#FFFFFF">&nbsp;</td>

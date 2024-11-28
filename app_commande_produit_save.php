@@ -18,7 +18,7 @@ $prixt=$prixu*$quantite;
 $idfournisseur=addslashes($_POST['fournisseur']);
 
 $sqlS = "SELECT * FROM $tb_comptf  where idf=$idfournisseur";
-$resultS = mysql_query($sqlS);
+$resultS = mysqli_query($link, $sqlS);
 $rowS = mysql_fetch_assoc($resultS);
 $fournisseur=$rowS['Societef'];
 
@@ -27,9 +27,9 @@ $sql="INSERT INTO $tbl_appcoproduit ( id_dem, id_nom , date_dem, nomprenom, dire
 
 VALUES
 (  '$id_dem',  '$id_nom' ,  '$date_dem', '$nomprenom', '$direction', '$service', '$designation', '$quantite', '$prixu', '$prixt', '$fournisseur', '$idfournisseur')";
-$result=mysqli_query($linki,$sql);
+$result=mysqli_query($link,$sql);
 
-mysqli_close($linki); 
+mysqli_close($link);
 ?>
 <?php
 $idr=md5(microtime()).$id_dem;

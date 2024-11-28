@@ -9,7 +9,7 @@
     require 'fonction.php';
 	
 	$sqfacd="SELECT * FROM $tbl_contact c , $tbl_fact f WHERE c.id=f.id and f.idf='$idf' and st='E'";
-    $resultfacd=mysqli_query($linki,$sqfacd);
+    $resultfacd=mysqli_query($link,$sqfacd);
     while($data5=mysqli_fetch_array($resultfacd)){
 	
 	$leclientid=$data5['id'];
@@ -26,9 +26,9 @@
 	$information=" Mr $nom ,  Adresse : $ville , $quartier ,  Id_client : $leclientid, N°compteur : $ncompteur  type: $typecompteur , N°Fact $nfacture , ($refFact), Date limite : $datelimite,  Montant :$tnet kmf ";
 	}
 	
-	function affichage_texte($id,$tbl_paiement,$linki){
+	function affichage_texte($id,$tbl_paiement,$link){
 	$sqpaied="SELECT * FROM $tbl_paiement  WHERE id='$id' and st='E' ORDER BY idp DESC LIMIT 0 , 10";
-	$resultpaied=mysqli_query($linki,$sqpaied);
+	$resultpaied=mysqli_query($link,$sqpaied);
 	$text='';
 	while($rowspd=mysqli_fetch_array($resultpaied)){ 
 	$nsq=$rowspd['nserie'];
@@ -46,6 +46,6 @@
      return $text;
 	
 	}
-	$bscPqr=affichage_texte($id,$tbl_paiement,$linki);
+	$bscPqr=affichage_texte($id,$tbl_paiement,$link);
 	QRcode::png("$information, Ci joint un historique des paiements selon les dates : $bscPqr");
 	

@@ -22,12 +22,12 @@ $idf=$_POST['idg'];
 
 $sqlfacturation="SELECT * FROM $tbl_fact f, $tbl_clientgaz c WHERE c.id=f.id and f.idf='$idf' and f.st='A'  ORDER BY idf desc";
 
-$resultatfact=mysql_query($sqlfacturation);
-$ident=mysql_fetch_array($resultatfact);
+$resultatfact=mysqli_query($link, $sqlfacturation);
+$ident=mysqli_fetch_array($resultatfact);
 
 	$sqldate="SELECT * FROM $tbl_caisse "; //DESC  ASC
-	$resultldate=mysql_query($sqldate);
-	$datecaisse=mysql_fetch_array($resultldate);
+	$resultldate=mysqli_query($link, $sqldate);
+	$datecaisse=mysqli_fetch_array($resultldate);
 	
 if ($ident) {
 $idf=$ident['idf'];
@@ -39,7 +39,7 @@ else {
 	
 		    //choix d espace de memoire pour les connection.---------------------------------------------------------------- 
 	$valeur_existant = "SELECT COUNT(*) AS nb FROM $tbl_paiconn  WHERE idrecu='$id_nom' ";
-	$sqLvaleur = mysqli_query($linki,$valeur_existant)or exit(mysqli_error()); 
+	$sqLvaleur = mysqli_query($link,$valeur_existant)or exit(mysqli_error());
 	$nb = mysqli_fetch_assoc($sqLvaleur);
 	
 	if($nb['nb'] == 1)
@@ -50,7 +50,7 @@ else {
    {
 	   	
 	$sqlcon="INSERT INTO $tbl_paiconn (idrecu)VALUES('$id_nom')";
-    $connection=mysqli_query($linki,$sqlcon);
+    $connection=mysqli_query($link,$sqlcon);
     }
     //------------------------FIn du Programme ---------------------------------------------------------
 	

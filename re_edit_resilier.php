@@ -46,16 +46,16 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
                 if (isset($_REQUEST["id"]))
                 $id = $_REQUEST["id"];
 $sql = "SELECT * FROM $tbl_contact where id='$id' ";
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
-$datam=mysql_fetch_array($req);
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$datam=mysqli_fetch_array($req);
 
 	$sqldate="SELECT * FROM $tbl_caisse "; //DESC  ASC
-	$resultldate=mysql_query($sqldate);
-	$datecaisse=mysql_fetch_array($resultldate);
+	$resultldate=mysqli_query($link, $sqldate);
+	$datecaisse=mysqli_fetch_array($resultldate);
 	
 	$ssolde="SELECT * FROM $tbl_fact  WHERE id='$id' and st='E' ORDER BY idf DESC LIMIT 0 , 1";
- 	$rsolde=mysql_query($ssolde);
-	$datamsolde=mysql_fetch_array($rsolde);
+ 	$rsolde=mysqli_query($link, $ssolde);
+	$datamsolde=mysqli_fetch_array($rsolde);
 	
 
 ?></td>

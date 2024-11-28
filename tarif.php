@@ -27,7 +27,7 @@ require("bienvenue.php");
   
 $sql = "SELECT count(*) FROM $tbl_tarif ";  
 
-$resultat = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$resultat = mysqli_query($link,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
  
  
 $nb_total = mysqli_fetch_array($resultat);  
@@ -45,7 +45,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
  
 $sql = "SELECT * FROM $tbl_tarif   ORDER BY idt asc LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC
 
-$req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$req = mysqli_query($link,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
 ?>
             </font></font></font></h3>
   </div>
@@ -80,7 +80,7 @@ mysqli_free_result ($req);
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
 mysqli_free_result ($resultat);  
-mysqli_close ($linki);  
+mysqli_close ($link);  
 ?>
               </table>
             </div>

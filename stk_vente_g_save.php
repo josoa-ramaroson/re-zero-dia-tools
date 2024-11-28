@@ -17,9 +17,9 @@ require 'fonction.php';
 $sqlp="INSERT INTO $tbl_vente  ( datev  , titre  , Qvente  ,  PUnitaire   , PTotal ,nc, a_nom, id_nom , type  )
                     VALUES    ('$datev','$titre','$Qvente', '$PUnitaire', '$PTotal','$nc', '$a_nom', '$id_nom' , '$type')";
 					
-$r=mysqli_query($linki,$sqlp)
+$r=mysqli_query($link,$sqlp)
 
 or die(mysqli_error());
-mysqli_close($linki);
+mysqli_close($link);
 header("location: stk_vente_g.php");
 ?>

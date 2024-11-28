@@ -9,7 +9,7 @@ $Lannee=addslashes($_POST['annee']);
 
   
 $sqlRECH = "SELECT * FROM $tb_rhpaie where moispaie=$LEmois and anneepaie=$Lannee";
-$resultRECH = mysqli_query($linki,$sqlRECH);
+$resultRECH = mysqli_query($link,$sqlRECH);
 while ($RECH = mysqli_fetch_assoc($resultRECH)) {
   $idrh=$RECH['idrh'];
   $Designation=$RECH['Designation'];
@@ -60,7 +60,7 @@ while ($RECH = mysqli_fetch_assoc($resultRECH)) {
 //------------------DEBUT VERIFICATION  
 
     $sqlVER="SELECT * FROM $tb_rhpaie  WHERE  idrh='$idrh'  and moispaie=$moispaie and anneepaie=$anneepaie" ;
-	$resultatVER= mysqli_query($linki,$sqlVER);
+	$resultatVER= mysqli_query($link,$sqlVER);
 	$VERIFICATION=mysqli_fetch_array($resultatVER);
 
 	if ($VERIFICATION===FALSE)
@@ -70,7 +70,7 @@ while ($RECH = mysqli_fetch_assoc($resultRECH)) {
 $sql="update $tb_rhpersonnel  set   id_nom='$id_nom', Tin='$Tin', igrchoix='$igrchoix' , crchoix='$crchoix', indice='$indice', taux='$taux', sbase='$sbase', avancement='$avancement', anciennete='$anciennete',  gratification='$gratification', srappel='$srappel', heuressup='$heuressup', conge='$conge', fonction='$fonction', transport='$transport', logement='$logement', telephone='$telephone', risque='$risque', caisse='$caisse', astreinte='$astreinte', panier='$panier', remboursement='$remboursement', cotisation='$cotisation', avances='$avances', pret='$pret', adeduction='$adeduction',igr='$igr', retraite='$retraite', prevoyance='$prevoyance', aretenue='$aretenue',
 
 SS='$SS', SI='$SI', SD='$SD',SR='$SR',SNET='$SNET'  WHERE idrhp='$idrh'";
-$result=mysqli_query($linki,$sql);
+$result=mysqli_query($link,$sql);
 
   if($result){
 	  
@@ -79,7 +79,7 @@ $sql2="INSERT INTO $tb_rhpaie ( idrh, id_nom , moispaie , anneepaie, Designation
 
 VALUES
 ('$idrh','$id_nom' , '$moispaie',  '$anneepaie', '$Designation', '$nomprenom', '$ville', '$matricule', '$dembauche','$titre', '$direction', '$service', '$nconge', '$Tin',  '$igrchoix', '$crchoix', '$indice', '$taux', '$sbase', '$avancement', '$anciennete',  '$gratification', '$srappel', '$heuressup', '$conge','$fonction', '$transport', '$logement', '$telephone', '$risque','$caisse', '$astreinte', '$panier', '$remboursement', '$cotisation', '$avances', '$pret', '$adeduction','$igr', '$retraite', '$prevoyance', '$aretenue','$SS', '$SI','$SD','$SR','$SNET')";
-$result2=mysqli_query($linki,$sql2);
+$result2=mysqli_query($link,$sql2);
 	header("location:rh_employer_paie.php");
    }
 

@@ -30,10 +30,10 @@ Require("bienvenue.php");  // on appelle la page contenant la fonction
 <?php
 $sql = "SELECT count(id) FROM $tbl_contact  WHERE statut='6' ";  
 
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
  // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -52,7 +52,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
  
 $sql = "SELECT c.quartier, c.ville,  COUNT(id) AS nbch  FROM  $tbl_contact c WHERE statut='6' GROUP BY  quartier  order by ville LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC  DESC
   
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
  
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -63,7 +63,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
         <td width="342" align="center" bgcolor="#3071AA"><font color="#FFFFFF" size="4"><strong>Suivi des impressions</strong></font></td>
       </tr>
       <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
        <tr>
         <td><?php echo  $data['ville']; ?></td>

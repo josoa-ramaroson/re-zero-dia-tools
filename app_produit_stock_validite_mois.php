@@ -34,7 +34,7 @@ $mois=$_POST['mois'];
 $annee=$_POST['annee']; 
 
 
-$resultat = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$resultat = mysqli_query($link,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());
  
 
 $nb_total = mysqli_fetch_array($resultat);  
@@ -62,7 +62,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
  v.dateValidite  FROM  $tv_appproduit_dedate e   LEFT JOIN   $tv_appproduit_dsdate v  ON ( e.titre=v.titre) and (v.dateValidite=e.Validite) where MONTH(e.Validite)=$mois and YEAR(e.Validite)=$annee  LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;
   
   
-$req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$req = mysqli_query($link,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());
 ?>
 </font></font></font></p>
 <table width="1167" border="0">
@@ -94,7 +94,7 @@ $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql
                   <select name="annee" size="1" id="annee">
                     <?php
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
-$result81 = mysqli_query($linki,$sql81);
+$result81 = mysqli_query($link,$sql81);
 
 while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
@@ -121,7 +121,7 @@ echo '<option> '.$row81['annee'].' </option>';
                 <select name="mannee" size="1" id="mannee">
                   <?php
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
-$result81 = mysqli_query($linki,$sql81);
+$result81 = mysqli_query($link,$sql81);
 
 while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
@@ -185,7 +185,7 @@ mysqli_free_result ($req);
  
 mysqli_free_result ($resultat);  
   
-mysqli_close ($linki);  
+mysqli_close ($link);
 ?>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">

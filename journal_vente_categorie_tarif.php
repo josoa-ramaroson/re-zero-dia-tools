@@ -21,10 +21,10 @@ $tarif=addslashes($_REQUEST['tarif']);
 require 'configuration.php';
 
 $sql = " SELECT * FROM $tbl_fact f , $tbl_contact c  where f.id=c.id and f.nserie=$nserie and f.fannee=$anneec  and  Tarif='$tarif' ORDER BY f.id ASC ";
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
 $sql7 = "SELECT COUNT(*) AS nombre FROM $tbl_contact  WHERE statut='6' and Tarif='$tarif'";   
-$req7=mysql_query($sql7);
+$req7=mysqli_query($link, $sql7);
 $data7= mysql_fetch_assoc($req7);
 $nombre=$data7['nombre'];
 
@@ -48,7 +48,7 @@ $nombre=$data7['nombre'];
      <td width="17%" align="center"><font color="#FFFFFF"><strong>Montant HT</strong></font></td>
    </tr>
    <?php
-while($datafact=mysql_fetch_array($req)){ // Start looping table row 
+while($datafact=mysqli_fetch_array($req)){ // Start looping table row 
 ?>
     <tr bgcolor="<?php gettatut($datafact['totalht']); ?>">
      <td align="center"><font color="#000000">

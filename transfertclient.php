@@ -4,8 +4,8 @@ $csv->setFlags(SplFileObject::READ_CSV);
 $csv->setCsvControl(';', '"', '"');
  
 require 'fonction.php';
-$link = mysql_connect ($host,$user,$pass);
-mysql_select_db($db);
+$link = mysqli_connect ($host,$user,$pass);
+mysqli_select_db($link, $db);
 
 ?>
 <?php
@@ -24,8 +24,8 @@ foreach(new LimitIterator($csv, 1) as $ligne)
 
 //------------identification du maximun -----------
 $sqlmax="SELECT MAX(id) AS Maxa_id FROM $tbl_contact";
-$resultmax=mysql_query($sqlmax);
-$rowsmax=mysql_fetch_array($resultmax);
+$resultmax=mysqli_query($link, $sqlmax);
+$rowsmax=mysqli_fetch_array($resultmax);
 if ($rowsmax) {
 $Max_id = $rowsmax['Maxa_id']+1;
 }
@@ -82,7 +82,7 @@ $index=addslashes($ligne[31]);
 
 //$valeur_existant = "SELECT COUNT(*) AS nb FROM $tbl_contact WHERE Email='$Email'";
 $valeur_existant = "SELECT COUNT(*) AS nb FROM clienteda  WHERE Police='$Police' ";
-$sqLvaleur = mysql_query($valeur_existant)or exit(mysql_error()); 
+$sqLvaleur = mysqli_query($link, $valeur_existant)or exit(mysql_error());
 $nb = mysql_fetch_assoc($sqLvaleur);
 
 if($nb['nb'] == 1)
@@ -97,7 +97,7 @@ $sql="INSERT INTO clienteda (Designation, nomprenom,  login, pwd , tel, adresse 
 
 VALUES
 ( '$Designation', '$nomprenom',  '$login', '$pwd',  '$tel',  '$adresse' ,  '$Police', '$CodeEtat', '$CodeActivite', '$CodeService', '$RefCommune', '$RefLocalite', '$RefQuartier', '$AdresseLivraison', '$BoitePostale', '$CodeProfess', '$Exotca', '$AncienRef', '$DateCreation', '$CodeTypeClts', '$CodeTypePiece', '$NumPieces', '$Ets' , '$ile', '$secteur', '$ville', '$quartier', 'typecompteur','$phase','$puissance','$Tarif','$amperage','$ncompteur','$Indexinitial', '$datepose', '$statut')";
-$result=mysql_query($sql); 
+$result=mysqli_query($link, $sql);
 
 }
 }

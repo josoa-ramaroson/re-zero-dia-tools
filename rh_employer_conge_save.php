@@ -10,7 +10,7 @@ $nconge=addslashes($_POST['nconge']);
 $sql="update $tb_rhpersonnel  set 
 
  id_nom='$id_nom' , nconge='$nconge' WHERE idrhp LIKE '$_POST[id]' ";
-$result=mysql_query($sql);
+$result=mysqli_query($link, $sql);
 
   if($result){
 	   //SUCCESS

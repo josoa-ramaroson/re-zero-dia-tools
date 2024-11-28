@@ -30,19 +30,19 @@ require 'rh_configuration_fonction.php';
 //$date_dem=addslashes($_REQUEST['direction']);
 $id_dem=substr($_REQUEST['id'],32);
 $sql5="SELECT * FROM $tbl_appcoproduit where id_dem='$id_dem'";
-$req5=mysqli_query($linki,$sql5);
+$req5=mysqli_query($link,$sql5);
 $datam=mysqli_fetch_array($req5);
 $idf=$datam['idfournisseur'];
 
 
 $sqlmum="SELECT * FROM $tbl_appcommande WHERE id_dem='$id_dem'";
-$resultmum=mysqli_query($linki,$sqlmum);
+$resultmum=mysqli_query($link,$sqlmum);
 $datamum=mysqli_fetch_array($resultmum);
 $numero=$datamum['num'];
 
 
 $sqlT="SELECT *  FROM $tb_comptf  where idf=$idf";
-$reqT=mysqli_query($linki,$sqlT);
+$reqT=mysqli_query($link,$sqlT);
 $datamT=mysqli_fetch_array($reqT);
 
 ?>
@@ -58,10 +58,10 @@ $datamT=mysqli_fetch_array($reqT);
     <p>
       <?php
 	 $sqact="SELECT * FROM $tbl_appcoproduit WHERE id_dem='$id_dem'";
-	 $resultact=mysqli_query($linki,$sqact);
+	 $resultact=mysqli_query($link,$sqact);
 
 	 $sqsomme="SELECT SUM(prixt) AS prixtt FROM $tbl_appcoproduit WHERE id_dem='$id_dem'";
-	 $resomme=mysqli_query($linki,$sqsomme);
+	 $resomme=mysqli_query($link,$sqsomme);
 
 ?>
     </p></td>

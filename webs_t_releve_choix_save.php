@@ -7,7 +7,7 @@ $id_user = $_REQUEST["id_nom"];
 
 
 $sqlRECH = "SELECT * FROM $tbl_releve_bachtemp where miseajours!='1' and id_nom='$userchoix'";
-$resultRECH = mysql_query($sqlRECH);
+$resultRECH = mysqli_query($link, $sqlRECH);
 while ($RECH = mysql_fetch_assoc($resultRECH)) {
   $idpb=$RECH['idpb'];
   $id=$RECH['id'];
@@ -33,11 +33,11 @@ while ($RECH = mysql_fetch_assoc($resultRECH)) {
 
   $sql="INSERT INTO $tbl_releve_bach( id_nom,  id, valeur, miseajours, type , st , libelle, bnom, bquartier , bstatut , n, Tarif , coefTi , amperage , chtaxe  ) VALUES 
   ( '$id_user', '$id', '$valeur', '$miseajours', '$type' , '$st' , '$libelle', '$bnom', '$bquartier', '$bstatut', '$n' , '$Tarif',  '$coefTi','$amperage','$chtaxe' )";
-  $result=mysql_query($sql);
+  $result=mysqli_query($link, $sql);
 
   
   $sqlmj1="update  $tbl_releve_bachtemp set  miseajours=1  WHERE  idpb='$idpb'";
-  $resulmj1=mysql_query($sqlmj1);
+  $resulmj1=mysqli_query($link, $sqlmj1);
 
   //-----------------FIN ENREGISTREMENT-------------------
 	}

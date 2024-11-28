@@ -21,13 +21,13 @@ $CodeTypeClts=addslashes($_REQUEST['CodeTypeClts']);
 require 'configuration.php';
 
 $sql = " SELECT * FROM $tbl_fact f , $tbl_contact c  where f.id=c.id and f.nserie=$nserie and f.fannee=$anneec  and  CodeTypeClts='$CodeTypeClts' ORDER BY f.id ASC ";
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
 ?>
 Categorie : <em><?php //$CodeTypeClts;
  
 $sqltclient = "SELECT * FROM $tbl_client where idtclient='$CodeTypeClts'";
-$resulttclient = mysql_query($sqltclient);
+$resulttclient = mysqli_query($link, $sqltclient);
 $rowtclient = mysql_fetch_assoc($resulttclient);
 if ($rowtclient===FALSE) {}
 else 
@@ -49,7 +49,7 @@ echo $TypeClts=$rowtclient['TypeClts'];
      <td width="17%" align="center"><font color="#FFFFFF"><strong>Montant HT</strong></font></td>
    </tr>
    <?php
-while($datafact=mysql_fetch_array($req)){ // Start looping table row 
+while($datafact=mysqli_fetch_array($req)){ // Start looping table row
 ?>
     <tr bgcolor="<?php gettatut($datafact['totalht']); ?>">
      <td align="center"><font color="#000000">

@@ -27,7 +27,7 @@ require('stk_Rapport_lien.php');
   <?php
 $date=addslashes($_POST['date']);
 $sql1="SELECT * FROM $tbl_enreg   where  date='$date' ";
-$req=mysql_query($sql1);
+$req=mysqli_query($link, $sql1);
 ?>
   </font></strong></font></font></font></font></p>
 <p><font size="2"><font size="2"><font size="2"><font size="2"><strong><font color="#0000FF"> 
@@ -51,7 +51,7 @@ $req=mysql_query($sql1);
             <td width="11%" align="center"><font color="#CCCCCC" size="3"><strong>Utilisateur</strong></font></td>
           </tr>
           <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
           <tr> 
             <td bgcolor="#FFFFFF"><div align="left"><?php echo $data['date'];?><BR>

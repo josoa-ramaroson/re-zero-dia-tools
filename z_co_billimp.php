@@ -19,11 +19,11 @@
 require 'fonction.php';
 require 'configuration.php';
 
-		$linki = mysqli_connect($host,$user,$pass,$db ) or die(mysqli_error($linki));
-		mysqli_set_charset($linki, 'utf8');
+		$link = mysqli_connect($host,$user,$pass,$db ) or die(mysqli_error($link));
+		// mysqli_set_charset($link, 'utf8');
 
 		$linkibk = mysqli_connect($host,$user,$pass,$dbbk ) or die(mysqli_error($linkibk));
-		mysqli_set_charset($linkibk, 'utf8');
+		// mysqli_set_charset($linkibk, 'utf8');
 
 $idf=substr($_REQUEST["idf"],32);
 $ARCH=substr($_REQUEST["a"],32);

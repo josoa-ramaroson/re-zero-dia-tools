@@ -18,7 +18,7 @@ $transfert=addslashes($_POST['transfert']);
 
 
 $sqlconnect="SELECT * FROM $tbl_apppaiconn  WHERE loguser='$id_nom' ";
-$resultconnect=mysqli_query($linki,$sqlconnect);
+$resultconnect=mysqli_query($link,$sqlconnect);
 $rowsc=mysqli_fetch_array($resultconnect);
 $Maxa_id = $rowsc['idc'];
 $idcsortie=$Maxa_id;
@@ -35,7 +35,7 @@ $PTotal=$Qvente*$PUnitaire;
  $sqlp="INSERT INTO $tbl_appproduit_sortie  ( idcsortie, datev  , dateValidite,  titre  , Qvente  ,  PUnitaire   , PTotal ,nc, a_nom, id_nom,  service , Snumero )
                     VALUES    ('$idcsortie','$datev','$Validite', '$titre', '$Qvente', '$PUnitaire', '$PTotal','$nc', '$a_nom', '$id_nom','$service' , '$Snumero' )";
 					
-$r=mysqli_query($linki,$sqlp) 
+$r=mysqli_query($link,$sqlp) 
 or die(mysqli_error());
 
 if ($transfert==1)
@@ -44,7 +44,7 @@ if ($transfert==1)
 	$sqlpt="INSERT INTO $tbl_apptransfert  ( idcsortie,  Sdate  , Stitre , Qvente  ,  Snumero  ,  Sid_nom  , Etitre , statut , agence)
                     VALUES    ('$idcsortie','$datev', '$titre', '$Qvente', '$Snumero','$id_nom' , '$Etitre' , '$statut', '$a_nom')";
 					
-$rt=mysqli_query($linki,$sqlpt) 
+$rt=mysqli_query($link,$sqlpt) 
 or die(mysqli_error());
 }
 else 
@@ -53,8 +53,8 @@ else
 }
 
 $sqlcon="DELETE FROM $tbl_apppaiconn  WHERE   idc='$Maxa_id'";
-$connection=mysqli_query($linki,$sqlcon);
+$connection=mysqli_query($link,$sqlcon);
 
-mysqli_close($linki);
+mysqli_close($link);
 header("location: app_produit_sortie.php");
 ?>

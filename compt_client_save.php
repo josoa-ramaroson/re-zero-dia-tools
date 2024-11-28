@@ -9,7 +9,7 @@ $Adressecl=addslashes($_POST['Adressecl']);
 $Telephonecl=addslashes($_POST['Telephonecl']);
 $Statutcl=addslashes($_POST['Statutcl']);
 $Date=addslashes($_POST['Date']);
-mysql_query("INSERT INTO $tb_comptcl (Numcsave,Nomcl,Prenomcl,Adressecl,Telephonecl,Statutcl,Date) 
+mysqli_query($link, "INSERT INTO $tb_comptcl (Numcsave,Nomcl,Prenomcl,Adressecl,Telephonecl,Statutcl,Date) 
 VALUE ('$Numcsave','$Nomcl','$Prenomcl','$Adressecl','$Telephonecl','$Statutcl','$Date')");
 mysql_close();
 

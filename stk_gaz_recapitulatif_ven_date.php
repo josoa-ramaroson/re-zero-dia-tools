@@ -30,7 +30,7 @@ require('stk_gaz_recapitulatif_lien.php');
 $vente=addslashes($_POST['vente']);
 require 'fonction.php';
 $sql1="SELECT * FROM ginv_vente   where  datev='$vente'  and type=1 ";
-$req=mysqli_query($linki,$sql1);
+$req=mysqli_query($link,$sql1);
 ?>
   </font></strong></font></font></font></font></p>
 <p><font size="2"><font size="2"><font size="2"><font size="2"><strong><font color="#0000FF"> 
@@ -79,7 +79,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 require 'fonction.php';
 $tbl_name="ginv_vente"; // Table name 
 $sql2="SELECT datev, titre,  SUM(Qvente) AS qtvendu , SUM(PTotal) AS prix  FROM $tbl_name where   datev='$vente' and type=1 GROUP BY datev";
-$result2=mysqli_query($linki,$sql2);
+$result2=mysqli_query($link,$sql2);
 ?>
 </font></strong></font></font></font></font>
 <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -95,7 +95,7 @@ while($rows2=mysqli_fetch_array($result2)){ // Start looping table row
   <?php
 // Exit looping and close connection 
 }
-mysqli_close($linki);
+mysqli_close($link);
 ?>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">

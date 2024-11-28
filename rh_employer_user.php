@@ -96,8 +96,8 @@ require 'fonction.php';
 $id=substr($_REQUEST["id"],32);
 //$id=substr($_REQUEST["id"],32);
 $sqlm="SELECT * FROM $tb_rhpersonnel WHERE idrhp='$id'";
-$resultm=mysql_query($sqlm);
-$datam=mysql_fetch_array($resultm);
+$resultm=mysqli_query($link, $sqlm);
+$datam=mysqli_fetch_array($resultm);
 	
 ?>
 <body>
@@ -253,8 +253,8 @@ $datam=mysql_fetch_array($resultm);
                 <?php
 $cmr=$datam['cm'];
 $sql8="SELECT * FROM $tbl_utilisateur WHERE id_u='$cmr'";
-$result8=mysql_query($sql8);
-$data8=mysql_fetch_array($result8);
+$result8=mysqli_query($link, $sql8);
+$data8=mysqli_fetch_array($result8);
 echo $data8['u_login'];
 ?>
               </strong></td>

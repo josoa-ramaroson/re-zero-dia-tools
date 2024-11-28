@@ -246,8 +246,8 @@ Require("bienvenue.php"); // on appelle la page contenant la fonction
                           <input name="verification" type="hidden" id="verification" value="<?php 
 						  
 	$sqfac="SELECT * FROM $tbl_app_caisse";
-	$resultfac=mysql_query($sqfac);
-	$verification=mysql_fetch_array($resultfac);
+	$resultfac=mysqli_query($link, $sqfac);
+	$verification=mysqli_fetch_array($resultfac);
     $datesurv=$verification['date_verif'];
 						  
 						  
@@ -271,10 +271,10 @@ require 'fonction.php';
   
 $sql = "SELECT count(*) FROM $tbl_app_caisse ";  
 
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
 
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -290,7 +290,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tbl_app_caisse  ORDER BY idcaisse DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
  
  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
   </font></strong></font></font></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></p>
 <form name="form2" method="post" action="produit_cancel.php">
@@ -302,7 +302,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
       <td width="192" align="center" bgcolor="#3071AA" >&nbsp;</td>
     </tr>
     <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
     <tr> 
       <td align="center" bgcolor="#FFFFFF"><?php echo $data['idcaisse'];?>        <div align="left"></div></td>

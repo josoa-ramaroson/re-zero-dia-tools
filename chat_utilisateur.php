@@ -22,11 +22,11 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
 				<!-- section-header -->
 				<!-- /section-header -->
 				<?php
-					$link = mysql_connect ($host,$user,$pass);
-					mysql_set_charset('utf8',$link);
-					mysql_select_db($db);
+					$link = mysqli_connect ($host,$user,$pass);
+					// mysql_set_charset('utf8',$link);
+					mysqli_select_db($link, $db);
 					$sql1="SELECT * FROM $tbl_utilisateur ORDER BY u_prenom";
-					$req=mysql_query($sql1);					
+					$req=mysqli_query($link, $sql1);					
 					// Check If array is empty
 					if (mysql_num_rows($req)==0) {
 							
@@ -36,7 +36,7 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
 						<section id="participants" class="wrapper">
 							<div class="container">					
 								<?php // Start while loop for content
-								while($data=mysql_fetch_array($req)){
+								while($data=mysqli_fetch_array($req)){
 									$filename = 'upload/utilisateurs/'.$data['id_u'].'.jpg'; ?>
 									<div class="row">
 										<?php if (file_exists($filename) == true) { ?>
@@ -53,15 +53,15 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
 											</div>
 										</div>
 										<p class="name">											<?php 												$sqlnb ='SELECT * FROM chat_ind where sid1="'.$data['id_u'].'" and sid2="'.$_SESSION['SID'].'"';
-												$reqnb = mysql_query($sqlnb);
-												while($datanb = mysql_fetch_array($reqnb)){
+												$reqnb = mysqli_query($link, $sqlnb);
+												while($datanb = mysqli_fetch_array($reqnb)){
 													$nbligne=$datanb['nbligne'];
 													if ($nbligne=='1'){														echo 'message en attente';													} else {																										}												}
 											?>										</p>
 
 									</div>					
 								<?php } // End while loop ?>
-       <?php $sqlmess ='SELECT wi.sid1, wi.sid2 , wi.nbligne , wp.id_u, wp.u_prenom , wp.u_nom  FROM chat_ind wi, utilisateur wp 	where wi.sid2="'.$_SESSION['SID'].'" and wi.nbligne=1 and wp.id_u=wi.sid1 order by id_ind asc';								   $reqmess = mysql_query($sqlmess); while($datamess = mysql_fetch_array($reqmess)){ $name=$datamess['u_prenom'].' '.$datamess['u_nom'];?>
+       <?php $sqlmess ='SELECT wi.sid1, wi.sid2 , wi.nbligne , wp.id_u, wp.u_prenom , wp.u_nom  FROM chat_ind wi, utilisateur wp 	where wi.sid2="'.$_SESSION['SID'].'" and wi.nbligne=1 and wp.id_u=wi.sid1 order by id_ind asc';								   $reqmess = mysqli_query($link, $sqlmess); while($datamess = mysqli_fetch_array($reqmess)){ $name=$datamess['u_prenom'].' '.$datamess['u_nom'];?>
           <div id="message"> <div> <?php echo " Message en attente de  $name </Br>" ; ?> </div>   </div>   <?php }  ?>
 							</div>
 						</section>

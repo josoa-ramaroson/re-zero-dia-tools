@@ -17,15 +17,15 @@ require 'fonction.php';
 $id=substr($_REQUEST["id"],32);
 //$id=substr($_REQUEST["id"],32);
 $sqlm="SELECT * FROM $tbl_contact WHERE id='$id'";
-$resultm=mysql_query($sqlm);
-$datam=mysql_fetch_array($resultm);
+$resultm=mysqli_query($link, $sqlm);
+$datam=mysqli_fetch_array($resultm);
 
 
 	$sqfacd="SELECT * FROM $tbl_fact WHERE id='$id' and st!='E' ORDER BY idf desc";
-	$resultfacd=mysql_query($sqfacd);
+	$resultfacd=mysqli_query($link, $sqfacd);
 	
 	$sqpaied="SELECT * FROM $tbl_paiement  WHERE id='$id' and st!='E' ORDER BY idp DESC";
-	$resultpaied=mysql_query($sqpaied);
+	$resultpaied=mysqli_query($link, $sqpaied);
 	
 ?>
 <body>
@@ -152,7 +152,7 @@ function toggleBox(szDivID, iState)// 1 visible, 0 hidden
             <?php
 $CodeTypeClts=$datam['CodeTypeClts']; 
 $sqltclient = "SELECT * FROM $tbl_client where idtclient='$CodeTypeClts'";
-$resulttclient = mysql_query($sqltclient);
+$resulttclient = mysqli_query($link, $sqltclient);
 $rowtclient = mysql_fetch_assoc($resulttclient);
 if ($rowtclient===FALSE) {}
 else 
@@ -182,7 +182,7 @@ echo $TypeClts=$rowtclient['TypeClts'];
           <td><strong><?php
 $CodeTypePiece=$datam['CodeTypePiece']; 
 $sqltpiece = "SELECT * FROM $tbl_piece where CodeTypePiece='$CodeTypePiece'";
-$resulttpiece = mysql_query($sqltpiece);
+$resulttpiece = mysqli_query($link, $sqltpiece);
 $rowtpiece = mysql_fetch_assoc($resulttpiece);
 
 if ($rowtpiece===FALSE) {}
@@ -237,7 +237,7 @@ echo $Pieces=$rowtpiece['Pieces'];
 <?php
 $T=$datam['Tarif'];
 $sql82 = ("SELECT * FROM tarif where idt='$T'");
-$result82 = mysql_query($sql82);
+$result82 = mysqli_query($link, $sql82);
 while ($row82 = mysql_fetch_assoc($result82)) {
 echo $row82['Libelle'];
 }
@@ -275,10 +275,10 @@ echo $row82['Libelle'];
       <p>
         <?php
 	 $sqaut="SELECT * FROM  $tbl_plombage WHERE id='$id'";
-	 $resultaut=mysql_query($sqaut);
+	 $resultaut=mysqli_query($link, $sqaut);
 ?>
         <?php
-while($rowsaut=mysql_fetch_array($resultaut)){ 
+while($rowsaut=mysqli_fetch_array($resultaut)){
 ?>
       </p>
       <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -323,7 +323,7 @@ while($rowsaut=mysql_fetch_array($resultaut)){
                 <td width="11%" align="center" bgcolor="#FFFFFF">Reste à payer</td>
               </tr>
               <?php
-while($rowsfacd=mysql_fetch_array($resultfacd)){ 
+while($rowsfacd=mysqli_fetch_array($resultfacd)){
 ?>
               <tr>
                 <td align="center" bgcolor="#FFFFFF"><em>
@@ -354,7 +354,7 @@ while($rowsfacd=mysql_fetch_array($resultfacd)){
                   <td width="11%" align="center" bgcolor="#FFFFFF">Reste à payer</td>
                 </tr>
                 <?php
-while($rowspd=mysql_fetch_array($resultpaied)){ 
+while($rowspd=mysqli_fetch_array($resultpaied)){
 ?>
                 <tr>
                   <td align="center" bgcolor="#FFFFFF"><em> <a href="paiement_billimp.php?idp=<?php echo md5(microtime()).$rowspd['idp'];?>" target="_blank" > <?php echo $rowspd['idp'];?></a></em></td>

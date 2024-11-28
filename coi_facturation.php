@@ -40,12 +40,12 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
                 if (isset($_REQUEST["id"]))
                 $id = $_REQUEST["id"];
 $sql = "SELECT * FROM $tbl_contact where id='$id' and statut='6'";
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
-$datam=mysql_fetch_array($req);
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$datam=mysqli_fetch_array($req);
 
 	$sqldate="SELECT * FROM $tbl_caisse "; //DESC  ASC
-	$resultldate=mysql_query($sqldate);
-	$datecaisse=mysql_fetch_array($resultldate);
+	$resultldate=mysqli_query($link, $sqldate);
+	$datecaisse=mysqli_fetch_array($resultldate);
 	
 ?></td>
          <td width="21%"><a href="coi_facturation_liste.php" class="btn btn-sm btn-success">Apercu des penalités</a></td>
@@ -114,7 +114,7 @@ $datam=mysql_fetch_array($req);
     <td width="15%"><select name="libelle" id="libelle">
       <?php
 $sql2 = ("SELECT *  FROM $tbl_libelle where categorie='F' ORDER BY libelle  ASC ");
-$result2 = mysql_query($sql2);
+$result2 = mysqli_query($link, $sql2);
 while ($row2 = mysql_fetch_assoc($result2)) {
 echo '<option> '.$row2['libelle'].' </option>';
 }

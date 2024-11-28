@@ -27,7 +27,7 @@ require('stk_gaz_recapitulatif_lien.php');
 $vendeur=addslashes($_POST['Vendeur']);
 $id_nom=addslashes($_POST['user']);
 $sql1="SELECT * FROM $tbl_vente  where id_nom='$id_nom' and datev='$vendeur' and type=1 ";
-$req=mysqli_query($linki,$sql1);
+$req=mysqli_query($link,$sql1);
 ?>
   </font></strong></font></font></font></font></p>
 <p><font size="2"><font size="2"><font size="2"><font size="2"><strong><font color="#0000FF"> 
@@ -74,7 +74,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
 <font size="2"><font size="2"><font size="2"><font size="2"><strong><font color="#0000FF">
 <?php
 $sql2="SELECT datev, titre, id_nom,  SUM(Qvente) AS qtvendu , SUM(PTotal) AS prix  FROM $tbl_vente where   id_nom='$id_nom' and datev='$vendeur' and type=1  GROUP BY datev";
-$result2=mysqli_query($linki,$sql2);
+$result2=mysqli_query($link,$sql2);
 ?>
 </font></strong></font></font></font></font>
 <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -90,7 +90,7 @@ while($rows2=mysqli_fetch_array($result2)){ // Start looping table row
   <?php
 // Exit looping and close connection 
 }
-mysqli_close($linki);
+mysqli_close($link);
 ?>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">

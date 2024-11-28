@@ -25,7 +25,7 @@ require('stk_Rapport_lien.php');
 </table>
   <?php
 $sql1="SELECT YEAR(datev) AS annee , SUM(PTotal) AS prix  FROM $tbl_vente GROUP BY YEAR(datev) ";
-$req=mysql_query($sql1);
+$req=mysqli_query($link, $sql1);
 ?>
   </font></strong></font></font></font></font></p>
 <p>&nbsp;</p>
@@ -44,7 +44,7 @@ $req=mysql_query($sql1);
             <td width="18%" align="center"><font color="#CCCCCC" size="3"><strong>MONTANT</strong></font></td>
           </tr>
           <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
           <tr> 
             <td align="center" bgcolor="#FFFFFF"><?php echo $data['annee'];?></td>

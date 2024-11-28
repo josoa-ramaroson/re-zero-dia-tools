@@ -33,11 +33,11 @@ $annee=substr($_REQUEST["id"],32);
 
 
 $sql2="SELECT SUM(prixt) AS prixt FROM $tbl_appachat where  YEAR(date_dem)=$annee";
-$result2=mysql_query($sql2);
-$rows2=mysql_fetch_array($result2);
+$result2=mysqli_query($link, $sql2);
+$rows2=mysqli_fetch_array($result2);
 
 $sql = "SELECT * FROM $tbl_appachat where YEAR(date_dem)=$annee ORDER BY id_da ASC";  
-$req = mysql_query($sql); 
+$req = mysqli_query($link, $sql);
 
 ?>
     </h3>
@@ -69,7 +69,7 @@ $req = mysql_query($sql);
     
   </tr>
   <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row 
 ?>
     <tr>
       <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['codecompte'];?></em></td>

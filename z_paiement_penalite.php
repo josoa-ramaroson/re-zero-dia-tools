@@ -19,7 +19,7 @@ require 'fonction.php';
 
     
 	$sqfac="SELECT * FROM $db.$tbl_paiement WHERE idf='$idf' ORDER BY idp DESC";
-	$resultfac=mysqli_query($linki,$sqfac);
+	$resultfac=mysqli_query($link,$sqfac);
 
 ?>
 <body>

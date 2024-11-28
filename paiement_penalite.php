@@ -16,7 +16,7 @@ require 'fonction.php';
 
     $idf=substr($_REQUEST["idf"],32);
 	$sqfac="SELECT * FROM $tbl_paiement WHERE idf='$idf' ORDER BY idp DESC";
-	$resultfac=mysql_query($sqfac);
+	$resultfac=mysqli_query($link, $sqfac);
 
 ?>
 <body>
@@ -41,7 +41,7 @@ require 'fonction.php';
     <td width="17%" align="center" bgcolor="#FFFFFF">Reste à payer</td>
   </tr>
   <?php
-while($rowsfac=mysql_fetch_array($resultfac)){ 
+while($rowsfac=mysqli_fetch_array($resultfac)){ 
 ?>
   <tr>
     <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['idp'];?></em></td>

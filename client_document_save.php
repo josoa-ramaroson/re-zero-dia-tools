@@ -17,9 +17,9 @@ $sqlp="INSERT INTO $tbl_client_doc  ( id_nom   , idclient  , titre,   descriptio
                     VALUES       ('$id_nom','$idclient', '$titre', '$description' ,'$datetinfo')";
 					
 													
-$r=mysqli_query($linki,$sqlp)
+$r=mysqli_query($link,$sqlp)
 or die(mysqli_error());
-mysqli_close($linki);
+mysqli_close($link);
 
 
 $id=md5(microtime()).$idclient;

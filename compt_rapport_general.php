@@ -45,8 +45,8 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
   //$dj1=$_POST['dj1'];
   //$dj2=$_POST['dj2'];
   $req2="select * from $tb_ecriture where Date BETWEEN '$dj1'  and '$dj2' and mo='C' " ;
-  $req=mysql_query($req2);
- while ($data=mysql_fetch_array($req)){ // Start looping table row 
+  $req=mysqli_query($link, $req2);
+ while ($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
               <tr> 
                 <td height="27" bgcolor="#FFFFFF"> <div align=""> 
@@ -97,8 +97,8 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
   //$dj1=$_POST['dj1'];
   //$dj2=$_POST['dj2'];
   $req2="SELECT SUM(compt_ecriture.Credit)AS compte_ecripture ,SUM(compt_ecriture.Debit)AS compte_ecripture1  FROM $tb_ecriture  where Date BETWEEN '$dj1'  and '$dj2' and mo='C' " ;
-  $req=mysql_query($req2);
- while ($data3=mysql_fetch_array($req)){ ;// Start looping table row 
+  $req=mysqli_query($link, $req2);
+ while ($data3=mysqli_fetch_array($req)){ ;// Start looping table row
  $ct=$data3['compte_ecripture'];
  $dt=$data3['compte_ecripture1'];
 ?>
@@ -146,8 +146,8 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
   //$dj1=$_POST['dj1'];
   //$dj2=$_POST['dj2'];
   $req2="select * from $tb_ecriture where Date BETWEEN '$dj1'  and '$dj2' and mo='D' " ;
-  $req=mysql_query($req2);
- while ($data=mysql_fetch_array($req)){ // Start looping table row 
+  $req=mysqli_query($link, $req2);
+ while ($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
 
               <tr> 
@@ -198,8 +198,8 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
   //$dj1=$_POST['dj1'];
   //$dj2=$_POST['dj2'];
   $req2="SELECT SUM(compt_ecriture.Credit)AS compte_ecripture ,SUM(compt_ecriture.Debit)AS compte_ecripture1  FROM $tb_ecriture  where Date BETWEEN '$dj1'  and '$dj2' and mo='D' " ;
-  $req=mysql_query($req2);
- while ($data3=mysql_fetch_array($req)){ ;// Start looping table row 
+  $req=mysqli_query($link, $req2);
+ while ($data3=mysqli_fetch_array($req)){ ;// Start looping table row
  $ct=$data3['compte_ecripture'];
  $dt=$data3['compte_ecripture1'];
 ?>

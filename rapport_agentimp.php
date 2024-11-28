@@ -34,15 +34,15 @@ require_once('calendar/classes/tc_calendar.php');
     $date=substr($_REQUEST["datec"],32);
 	$agent=substr($_REQUEST["agent"],32);
 // Connect to server and select databse.
-mysql_connect ($host,$user,$pass)or die("cannot connect"); 
-mysql_select_db($db)or die("cannot select DB");
+mysqli_connect ($host,$user,$pass)or die("cannot connect"); 
+mysqli_select_db($db)or die("cannot select DB");
   
 $sql = "SELECT count(*) FROM $tbl_paiement";  
 
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
  // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -62,10 +62,10 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT SUM(paiement) AS Paie, st, date , id_nom FROM $tbl_paiement where id_nom='$agent' and date='$date' GROUP BY st  LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC  DESC
 
 // on ex?cute la requ?te  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()); 
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
 $sqlt = "SELECT SUM(paiement) AS Paie, id_nom , date , st , nserie FROM $tbl_paiement where  id_nom='$agent' and date='$date'";  //ASC  DESC
-$reqt = mysql_query($sqlt); 
+$reqt = mysqli_query($link, $sqlt);
 
 ?>
 </p>
@@ -76,7 +76,7 @@ $reqt = mysql_query($sqlt);
       <td width="257" align="center" bgcolor="#3071AA"><font color="#FFFFFF" size="4"><strong>Par date</strong></font></td>
     </tr>
     <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
     <tr bgcolor="#FFFFFF">
       <td> <?php $n=$data['st'];
@@ -112,7 +112,7 @@ mysql_close ();
     <td width="18%" align="center"><font color="#FFFFFF" size="4"><strong>DATE</strong></font></td>
   </tr>
   <?php
-while($datat=mysql_fetch_array($reqt)){ // Start looping table row 
+while($datat=mysqli_fetch_array($reqt)){ // Start looping table row
 ?>
   <tr>
     <td height="102" align="center" bgcolor="#FFFFFF"><?php echo  $datat['id_nom']; ?></td>

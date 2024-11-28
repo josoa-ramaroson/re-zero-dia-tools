@@ -95,8 +95,8 @@ httpxml.send(null);
 <?php
     require 'bienvenue.php';    // on appelle la page contenant la fonction
 	$sqldate="SELECT * FROM $tbl_caisse "; //DESC  ASC
-	$resultldate=mysql_query($sqldate);
-	$datecaisse=mysql_fetch_array($resultldate);
+	$resultldate=mysqli_query($link, $sqldate);
+	$datecaisse=mysqli_fetch_array($resultldate);
 ?>
 <body>
 <div class="panel panel-primary">
@@ -120,8 +120,8 @@ httpxml.send(null);
                 if (isset($_REQUEST["id"]))
                 $id = $_REQUEST["id"];
 $sql = "SELECT * FROM $tbl_contact where id='$id' and statut='6'";
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
-$datam=mysql_fetch_array($req);
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$datam=mysqli_fetch_array($req);
 ?></td>
         </tr>
       </table>
@@ -234,7 +234,7 @@ $datam=mysql_fetch_array($req);
             <input name="Tarif" type="text" disabled="disabled" id="secteur2" value="<?php
 $T=$datam['Tarif'];
 $sql82 = ("SELECT * FROM tarif where idt='$T'");
-$result82 = mysql_query($sql82);
+$result82 = mysqli_query($link, $sql82);
 while ($row82 = mysql_fetch_assoc($result82)) {
 echo $row82['Libelle'];
 }
@@ -249,7 +249,7 @@ echo $row82['Libelle'];
             
               <?php
 			  $sql8 = ("SELECT * FROM tarif ORDER BY idt ASC");
-$result8 = mysql_query($sql8);
+$result8 = mysqli_query($link, $sql8);
 while ($row8 = mysql_fetch_assoc($result8)) {
 echo '<option value='.$row8['idt'].'> '.$row8['Libelle'].' </option>';
 }

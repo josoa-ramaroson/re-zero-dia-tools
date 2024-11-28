@@ -6,7 +6,7 @@ require_once('calendar/classes/tc_calendar.php');
 
 	
 	$sqldate="SELECT * FROM $tbl_app_caisse"; //DESC  ASC
-	$resultldate=mysqli_query($linki,$sqldate);
+	$resultldate=mysqli_query($link,$sqldate);
 	$datecaisse=mysqli_fetch_array($resultldate);
 	
 ?>
@@ -93,7 +93,7 @@ require 'bienvenue.php';    // on appelle la page contenant la fonction
 
  //choix d espace de memoire pour les connection.---------------------------------------------------------------- 
 	$valeur_existant = "SELECT COUNT(*) AS nb FROM $tbl_apppaiconn WHERE loguser='$id_nom' ";
-	$sqLvaleur = mysqli_query($linki,$valeur_existant)or exit(mysqli_error()); 
+	$sqLvaleur = mysqli_query($link,$valeur_existant)or exit(mysqli_error());
 	$nb = mysqli_fetch_assoc($sqLvaleur);
 	
 	if($nb['nb'] == 1)
@@ -104,7 +104,7 @@ require 'bienvenue.php';    // on appelle la page contenant la fonction
    {
 	   	
 	$sqlcon="INSERT INTO $tbl_apppaiconn (loguser)VALUES('$id_nom')";
-    $connection=mysqli_query($linki,$sqlcon);
+    $connection=mysqli_query($link,$sqlcon);
     }
 ?>
 <body>
@@ -152,7 +152,7 @@ require 'bienvenue.php';    // on appelle la page contenant la fonction
           <td><select name="service" id="service">
             <?php
 $sql2s ="SELECT 	service FROM $tb_rhservice ORDER BY service  ASC ";
-$result2s = mysqli_query($linki,$sql2s);
+$result2s = mysqli_query($link,$sql2s);
 while ($row2s = mysqli_fetch_assoc($result2s)) {
 echo '<option> '.$row2s['service'].' </option>';
 }
@@ -175,7 +175,7 @@ echo '<option> '.$row2s['service'].' </option>';
           <td><select name="nameproduit" id="nameproduit">
             <?php
 $sql2B = ("SELECT DISTINCT(titre) FROM 	$tv_v_app_produit_type_menu where reste>0 ORDER BY titre  ASC ");
-$result2B= mysql_query($sql2B);
+$result2B= mysqli_query($link, $sql2B);
 while ($row2B = mysql_fetch_assoc($result2B)) {
 echo '<option> '.$row2B['titre'].' </option>';
 }
@@ -190,7 +190,7 @@ echo '<option> '.$row2B['titre'].' </option>';
           <td><select name="a_nom" id="a_nom">
             <?php
 $sql2A = ("SELECT a_nom  FROM $tbl_agence ORDER BY a_nom  ASC ");
-$result2A = mysqli_query($linki,$sql2A);
+$result2A = mysqli_query($link,$sql2A);
 while ($row2A = mysqli_fetch_assoc($result2A)) {
 echo '<option> '.$row2A['a_nom'].' </option>';
 }
@@ -216,7 +216,7 @@ echo '<option> '.$row2A['a_nom'].' </option>';
           <td><select name="Etitre" id="Etitre">
             <?php
 $sql2 = "SELECT titre  FROM $tbl_produit  ORDER BY titre  ASC ";
-$result2 = mysqli_query($linki,$sql2);
+$result2 = mysqli_query($link,$sql2);
 while ($row2 = mysqli_fetch_assoc($result2)) {
 echo '<option> '.$row2['titre'].' </option>';
 }
@@ -277,10 +277,10 @@ echo '<option> '.$row2['titre'].' </option>';
 $sql = "SELECT count(*) FROM $tbl_appproduit_sortie ";  
 
 // on ex?cute cette requ?te  
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
 // on r?cup?re le nombre d'?l?ments ? afficher  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
  // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -300,7 +300,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tbl_appproduit_sortie  ORDER BY idvente  DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
  
 // on ex?cute la requ?te  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
 ?>
 </p>
@@ -316,7 +316,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
   </tr>
   <?php
 $numboucle=0;
-while($data=mysql_fetch_array($req)){ // Start looping table row
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 
  if($numboucle %2 == 0) 
  

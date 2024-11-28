@@ -10,7 +10,7 @@
     require 'fonction.php';
 	
 	$sqfacd="SELECT * FROM $db.$tbl_contact c , $dbbk.z_"."$ARCH"."_$tbl_fact  WHERE c.id=f.id and f.idf='$idf' and st='E'";
-    $resultfacd=mysqli_query($linki,$sqfacd);
+    $resultfacd=mysqli_query($link,$sqfacd);
     while($data5=mysqli_fetch_array($resultfacd)){
 	
 	$leclientid=$data5['id'];

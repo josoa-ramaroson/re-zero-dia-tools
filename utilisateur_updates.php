@@ -1,7 +1,7 @@
 <?php
 	require 'fonction.php';
-    $link = mysql_connect ($host,$user,$pass);
-    mysql_select_db($db);
+    $link = mysqli_connect ($host,$user,$pass);
+    mysqli_select_db($link, $db);
 	
 $id=addslashes($_POST['idp']);
 $id_nom=addslashes($_POST['id_nom']);
@@ -25,7 +25,7 @@ header("location: utilisateur.php");
 #---------------------------------------------------3 
 
 $sqlp="update $tbl_utilisateur  set  id_nom='$id_nom', u_nom='$u_nom' , u_prenom='$u_prenom' ,  u_email='$u_email' , u_niveau='$u_niveau' ,type='$type' , datetime='$datetime', titre='$titre', mobile='$mobile',  statut='$statut', agence='$agence', datetime='$datetime'  WHERE  id_u='$id'";
-$resultp=mysql_query($sqlp);
+$resultp=mysqli_query($link, $sqlp);
 if($resultp){
 }
 else {

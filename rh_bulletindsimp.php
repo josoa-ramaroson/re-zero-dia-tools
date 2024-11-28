@@ -24,13 +24,13 @@ $iddirection=addslashes($_REQUEST['direction']);
 $idservice=addslashes($_REQUEST['subcat']);
 
 $sql1 = "SELECT * FROM $tb_rhservice where idser=$idservice";
-$result1 = mysql_query($sql1);
+$result1 = mysqli_query($link, $sql1);
 while ($row1 = mysql_fetch_assoc($result1)) {
 $service=$row1['service'];
 }  
 
 $sql2 = "SELECT * FROM $tb_rhdirection where idrh=$iddirection";
-$result2 = mysql_query($sql2);
+$result2 = mysqli_query($link, $sql2);
 while ($row2 = mysql_fetch_assoc($result2)) {
 $direction=$row2['direction'];
 } 
@@ -38,14 +38,14 @@ $direction=$row2['direction'];
 	$m2s=$service;
 
 $sql5="SELECT * FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie' and direction='$m1d' and service='$m2s' ORDER BY matricule ASC";
-$req5=mysql_query($sql5);
+$req5=mysqli_query($link, $sql5);
 
-while($datam=mysql_fetch_array($req5)){ // Start looping table row
+while($datam=mysqli_fetch_array($req5)){ // Start looping table row
 
 $idrh=$datam['idrh'];
 $sqlconnect="SELECT * FROM $tb_rhpersonnel  WHERE idrhp=$idrh";
-$resultconnect=mysql_query($sqlconnect);
-$rmat=mysql_fetch_array($resultconnect);
+$resultconnect=mysqli_query($link, $sqlconnect);
+$rmat=mysqli_fetch_array($resultconnect);
 //$nconge= $rmat['nconge'];
 $nCPP= $rmat['CPP'];
 ?>

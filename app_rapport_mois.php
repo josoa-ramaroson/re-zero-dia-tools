@@ -31,8 +31,8 @@ $mois=$_POST['mois'];
 $annee=$_POST['annee'];
 
 $sql2="SELECT SUM(prixt) AS prixt FROM $tbl_appachat where  MONTH(date_dem)=$mois and YEAR(date_dem)=$annee";
-$result2=mysql_query($sql2);
-$rows2=mysql_fetch_array($result2)
+$result2=mysqli_query($link, $sql2);
+$rows2=mysqli_fetch_array($result2)
 ?>
     </h3>
   </div>

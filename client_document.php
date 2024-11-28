@@ -17,7 +17,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 require 'fonction.php';
 $id=substr($_REQUEST["id"],32);
 $sqlm="SELECT * FROM $tbl_contact WHERE id='$id'";
-$resultm=mysqli_query($linki,$sqlm);
+$resultm=mysqli_query($link,$sqlm);
 $datam=mysqli_fetch_array($resultm);
 ?>
 <body>
@@ -124,7 +124,7 @@ function toggleBox(szDivID, iState)// 1 visible, 0 hidden
         <?php
 	  $idclient=$datam['id'];
 	 $sqlana="SELECT * FROM $tbl_client_doc WHERE  idclient='$idclient'";
-	 $resultana=mysqli_query($linki,$sqlana);
+	 $resultana=mysqli_query($link,$sqlana);
 ?>
 
         <table width="100%" border="0" align="center" cellpadding="3" cellspacing="0" bgcolor="#FFFFFF">

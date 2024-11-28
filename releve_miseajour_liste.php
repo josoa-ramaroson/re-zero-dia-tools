@@ -26,13 +26,13 @@ $RefCommune=substr($RefQuartier,0,3);
 $refville=addslashes($_REQUEST['refville']);
 
 $sql1 = "SELECT * FROM quartier where id_quartier=$RefQuartier";
-$result1 = mysqli_query($linki,$sql1);
+$result1 = mysqli_query($link,$sql1);
 while ($row1 = mysqli_fetch_assoc($result1)) {
 $quartier=$row1['quartier'];
 }  
 
 $sql2 = "SELECT * FROM ville where refville=$refville";
-$result2 = mysqli_query($linki,$sql2);
+$result2 = mysqli_query($link,$sql2);
 while ($row2 = mysqli_fetch_assoc($result2)) {
 $ville=$row2['ville'];
 } 
@@ -44,7 +44,7 @@ $ville=$row2['ville'];
   <?php
 require 'configuration.php';
 $sql = "SELECT * FROM  $tbl_contact c  where c.ville='$m1v' and  c.quartier='$m2q' and statut='6'   ORDER BY c.id ASC";  
-$req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$req = mysqli_query($link,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
 
 
 ?></p>
@@ -90,7 +90,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
    </tr>
    <?php
 }
-mysqli_close ($linki);  
+mysqli_close ($link);  
 			 
 ?>
 </table>

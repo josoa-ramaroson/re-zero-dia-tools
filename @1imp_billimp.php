@@ -21,20 +21,20 @@
 require 'fonction.php';
 require 'configuration.php';
 
-$link = mysql_connect ($host,$user,$pass); 
-mysql_select_db($db);
+$link = mysqli_connect ($host,$user,$pass); 
+mysqli_select_db($link, $db);
 
     $m1=$m1v;
 	$m2=$m2q;
 
 //$idf=substr($_REQUEST["idf"],32);
 $sql5="SELECT * FROM $tbl_fact f , $tbl_contact c  WHERE f.id=c.id and f.nserie=$nserie and f.fannee=$anneec and st='E' and c.ville='$m1' and c.quartier='$m2' and  Tarif!='10' ORDER BY f.id ASC";
-$req5=mysql_query($sql5);
+$req5=mysqli_query($link, $sql5);
 
 	$sqlp="update  $tbl_fact  set impression='imprimé' WHERE nserie='$nserie' and st='E' and bquartier='$m2'";
-    $resultp=mysql_query($sqlp);
+    $resultp=mysqli_query($link, $sqlp);
 	
-while($data5=mysql_fetch_array($req5)){
+while($data5=mysqli_fetch_array($req5)){
 ?>
     <img src="images/eda.png" width="208" height="96" /></strong><strong> </strong></p></td>
     <td width="53%"><h1 class="centre"> FACTURE <span style="width: 75%; font-size: 24px;">

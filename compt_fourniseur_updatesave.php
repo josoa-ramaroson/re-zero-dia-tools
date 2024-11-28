@@ -27,7 +27,7 @@ $req="UPDATE  $tb_comptf SET  Societef='$Societef',Adressef='$Adressef',Telephon
 personne='$personne' , Telephonem='$Telephonem' , faxe='$faxe' , email='$email' , web='$web' , ville='$ville' , pays='$pays'
 
  where idf='$idf' ";
- $result=mysql_query($req);
+ $result=mysqli_query($link, $req);
  mysql_close();
 
 

@@ -35,13 +35,13 @@ require_once('calendar/classes/tc_calendar.php');
 Require("bienvenue.php");    // on appelle la page contenant la fonction
 $id=substr($_REQUEST["id"],32);
 $sqlm="SELECT * FROM $tbl_appcommande WHERE id_dem='$id'";
-$resultm=mysqli_query($linki,$sqlm);
+$resultm=mysqli_query($link,$sqlm);
 $datam=mysqli_fetch_array($resultm);
 
 
 $sqlmax="SELECT MAX(id_cnum) AS Maxa_idnum FROM app_commande_numero";
-$resultmax=mysql_query($sqlmax);
-$rowsmax=mysql_fetch_array($resultmax);
+$resultmax=mysqli_query($link, $sqlmax);
+$rowsmax=mysqli_fetch_array($resultmax);
 if ($rowsmax) {
 $Max_idnum = $rowsmax['Maxa_idnum']+1;
 }
@@ -57,10 +57,10 @@ $num=$num.'/'.$Max_idnum;
 
   if ($datam['code']!=1){
   $sqlmj1="update  $tbl_appcommande set  num='$num', code=1  WHERE  id_dem='$id' ";
-  $resulmj1=mysqli_query($linki,$sqlmj1);
+  $resulmj1=mysqli_query($link,$sqlmj1);
   
   $sqlmj2="INSERT INTO app_commande_numero ( id_nom ) VALUES ('$id_nom')";
-  $r=mysqli_query($linki,$sqlmj2) ;
+  $r=mysqli_query($link,$sqlmj2) ;
    }
   
   
@@ -174,7 +174,7 @@ $num=$num.'/'.$Max_idnum;
             <select name="fournisseur" size="1" id="fournisseur">
               <?php
 $sqlS = ("SELECT * FROM $tb_comptf  ORDER BY Societef ASC ");
-$resultS = mysql_query($sqlS);
+$resultS = mysqli_query($link, $sqlS);
 
 while ($rowS = mysql_fetch_assoc($resultS)) {
 echo '<option value='.$rowS['idf'].'> '.$rowS['Societef'].' </option>';
@@ -220,7 +220,7 @@ echo '<option value='.$rowS['idf'].'> '.$rowS['Societef'].' </option>';
 <p>
   <?php
 	 $sqact="SELECT * FROM $tbl_appcoproduit WHERE id_dem='$id'";
-	 $resultact=mysqli_query($linki,$sqact);
+	 $resultact=mysqli_query($link,$sqact);
 
 ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">

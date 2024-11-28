@@ -32,7 +32,7 @@ require 'rh_configuration_fonction.php';
  $service=$_REQUEST['sr'];
 
 $sql2="SELECT date_dem,direction,service,designation,quantite,prixu,prixt , id_dem FROM $tbl_appbonachatp where  YEAR(date_dem)='$annee' and direction='$direction' and  service='$service' order by direction ,service ";
-$result2=mysqli_query($linki,$sql2);
+$result2=mysqli_query($link,$sql2);
 ?>
     </h3>
   </div>
@@ -62,22 +62,22 @@ while($rows2=mysqli_fetch_array($result2)){
           <td width="10%"><?php $P=strrev(chunk_split(strrev($rows2['prixu']),3," "));   echo $P;?></td>
           <td width="7%"><?php echo $rows2['quantite'];?></td>
           <td width="11%"><?php $P=strrev(chunk_split(strrev($rows2['prixt']),3," "));   echo $P;?></td>
-          <td width="15%"><?php $id_dem2=$rows2['id_dem']; $numero=le_bondeachat($id_dem2,$tbl_appbonachat,$linki); echo $numero; ?></td>
+          <td width="15%"><?php $id_dem2=$rows2['id_dem']; $numero=le_bondeachat($id_dem2,$tbl_appbonachat,$link); echo $numero; ?></td>
         </tr>
 		  <?php
 $numboucle++;
 }
 
-	function le_bondeachat($id_dem2,$tbl_appbonachat,$linki){
+	function le_bondeachat($id_dem2,$tbl_appbonachat,$link){
 	$sqld3b = "SELECT * FROM $tbl_appbonachat where id_dem='$id_dem2'";
-	$resultatd3b = mysqli_query($linki,$sqld3b); 
+	$resultatd3b = mysqli_query($link,$sqld3b);
 	$nqtd3b = mysqli_fetch_assoc($resultatd3b);
 	if((!isset($nqtd3b['num'])|| empty($nqtd3b['num']))) { $qt3b=''; return $qt3b;}
 	else {$qt3b=$nqtd3b['num'];   return $qt3b; }
 	}
 	
 mysqli_free_result ($result2);  
-mysqli_close ($linki);  
+mysqli_close ($link);
 ?>
       </table>
 

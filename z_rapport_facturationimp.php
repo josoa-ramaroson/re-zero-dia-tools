@@ -45,7 +45,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
      <td  bgcolor="#FFFFFF"><em><?php $RefCommune=$data['refcommune'];
 	 
 	 $sql3 = "SELECT * FROM commune where ref_com=$RefCommune";
-$result3 = mysqli_query($linki,$sql3);
+$result3 = mysqli_query($link,$sql3);
 while ($row3 = mysqli_fetch_assoc($result3)) {
 echo $secteur=$row3['commune'];
 }
@@ -100,7 +100,7 @@ while($data11=mysqli_fetch_array($req11)){ // Start looping table row
       <?php $RefCommune=$data11['refcommune'];
 	 
 	 $sql3 = "SELECT * FROM commune where ref_com=$RefCommune";
-$result3 = mysqli_query($linki,$sql3);
+$result3 = mysqli_query($link,$sql3);
 while ($row3 = mysqli_fetch_assoc($result3)) {
 echo $secteur=$row3['commune'];
 }
@@ -155,7 +155,7 @@ while($data2=mysqli_fetch_array($req2)){ // Start looping table row
       <?php $RefLocalite=$data2['RefLocalite'];
 	 
 	 $sql32 = "SELECT * FROM ville where refville=$RefLocalite";
-$result32 = mysqli_query($linki,$sql32);
+$result32 = mysqli_query($link,$sql32);
 while ($row32 = mysqli_fetch_assoc($result32)) {
 echo $ville=$row32['ville'];
 }
@@ -209,7 +209,7 @@ while($data22=mysqli_fetch_array($req22)){ // Start looping table row
       <?php $RefLocalite=$data22['RefLocalite'];
 	 
 	 $sql322 = "SELECT * FROM ville where refville=$RefLocalite";
-$result322 = mysqli_query($linki,$sql322);
+$result322 = mysqli_query($link,$sql322);
 while ($row322 = mysqli_fetch_assoc($result322)) {
 echo $ville=$row322['ville'];
 }

@@ -45,7 +45,7 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
      
       <?php
 $sql="SELECT * FROM $tbl_utilisateur ";
-$result=mysql_query($sql);
+$result=mysqli_query($link, $sql);
 ?>
     </font></strong></font></font></font></font></h3>
   </div>
@@ -59,7 +59,7 @@ $result=mysql_query($sql);
         <td width="21%" align="center" ><strong><font color="#CCCCCC" size="4">Categorie </font></strong></td>
       </tr>
       <?php
-while($rows=mysql_fetch_array($result)){ // Start looping table row 
+while($rows=mysqli_fetch_array($result)){ // Start looping table row
 ?>
       <tr>
         <td bgcolor="#FFFFFF"><?php echo $rows['u_nom']; ?></td>
@@ -89,7 +89,7 @@ while($rows=mysql_fetch_array($result)){ // Start looping table row
             <select name="u_login" id="u_login">
               <?php
 $sql8 = ("SELECT * FROM $tbl_utilisateur ORDER BY id_nom ASC ");
-$result8 = mysql_query($sql8);
+$result8 = mysqli_query($link, $sql8);
 
 while ($row8 = mysql_fetch_assoc($result8)) {
 echo '<option> '.$row8['u_login'].' </option>';
@@ -173,7 +173,7 @@ echo '<option> '.$row8['u_login'].' </option>';
             <select name="id_role" id="id_role">
               <?php
 $sqlrole = "SELECT u.id_u, t.id_role, t.nom_role FROM $tb_role_user u  INNER JOIN  $tb_role_type t  ON u.id_role=t.id_role  and  u.id_u=$id_user ORDER BY id_role  ASC ";
-$resultrole = mysqli_query($linki,$sqlrole);
+$resultrole = mysqli_query($link,$sqlrole);
 
 while ($rowrole = mysqli_fetch_assoc($resultrole)) {
 echo '<option value='.$rowrole['id_role'].'> '.$rowrole['nom_role'].' </option>';

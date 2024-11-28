@@ -34,7 +34,7 @@
 
 
 
-$result81 = mysqli_query($linki,$sql81);
+$result81 = mysqli_query($link,$sql81);
 
 while ($row81 = mysqli_fetch_array($result81)) {
 	 

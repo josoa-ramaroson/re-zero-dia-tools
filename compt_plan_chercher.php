@@ -116,8 +116,8 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 
 $Numc=$_POST['Numc'];
 $req="SELECT Code , Description FROM $plan where  Code like '$Numc%' ";
-$resultat=mysql_query($req);
-while($row=mysql_fetch_array($resultat)){ // Start looping table row 
+$resultat=mysqli_query($link, $req);
+while($row=mysqli_fetch_array($resultat)){ // Start looping table row
 ?>
               <tr> 
                 <td bgcolor="#FFFFFF"><div align="left"> 

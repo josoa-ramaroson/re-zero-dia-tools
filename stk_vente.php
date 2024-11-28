@@ -5,8 +5,8 @@ require 'fonction.php';
 require_once('calendar/classes/tc_calendar.php');
 
 	$sqldate="SELECT * FROM $tbl_caisse "; //DESC  ASC
-	$resultldate=mysql_query($sqldate);
-	$datecaisse=mysql_fetch_array($resultldate);
+	$resultldate=mysqli_query($link, $sqldate);
+	$datecaisse=mysqli_fetch_array($resultldate);
 	
 ?>
 <?php
@@ -148,7 +148,7 @@ echo "<option value=$row[idproduit]>$row[titre]</option>";
             <?php
 
 $sql4 = "SELECT *  FROM $tbl_contact where statut='2' ORDER BY nomprenom   ASC ";
-$result4 = mysql_query($sql4);
+$result4 = mysqli_query($link, $sql4);
 while ($row4 = mysql_fetch_assoc($result4)) {
 echo '<option value='.$row4['id'].'>'.$row4['nomprenom'].'</option>';
 }
@@ -180,10 +180,10 @@ echo '<option value='.$row4['id'].'>'.$row4['nomprenom'].'</option>';
 $sql = "SELECT count(*) FROM $tbl_vente where '500000'>=nc ";  
 
 
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
 
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
 
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -196,7 +196,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
    
 
 $sql = "SELECT * FROM $tbl_vente  where '500000'>=nc ORDER BY idvente  DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;   
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
 </p>
 <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -212,7 +212,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
       Total </strong></font></td>
   </tr>
   <?php
-while($data=mysql_fetch_array($req)){
+while($data=mysqli_fetch_array($req)){
 ?>
   <tr>
     <td align="center" bgcolor="#FFFFFF"><div align="left"><?php echo $data['id_nom'];?>/<?php echo $data['nc'];?></div>

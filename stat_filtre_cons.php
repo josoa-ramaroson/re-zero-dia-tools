@@ -39,7 +39,7 @@ else
 {
 $sql11 = "SELECT  COUNT(*) AS nbres, SUM(f.cons1) AS cons1, SUM(f.cons2) AS cons2, SUM(f.cons) AS cons, SUM(f.mont1) AS mont1,SUM(f.mont2) AS mont2,SUM(f.puisct) AS puisct, SUM(f.totalht) AS totalht, SUM(f.tax) AS tax, SUM(f.totalttc) AS totalttc, SUM(f.ortc) AS ortc, SUM(f.impayee) AS impayee, SUM(f.Pre) AS Pre, SUM(f.totalnet) AS totalnet, c.refcommune , f.nserie , f.fannee , c.Tarif , f.st FROM $dbbk.z_"."$ARCH"."_$tbl_fact f , $db.$tbl_contact c  where  c.id=f.id and f.fannee='$annee1fl'  and f.nserie='$nserie1' and f.cons > '$CA' and  '$CB' > f.cons GROUP BY c.refcommune "; 
 }
-$req11=mysqli_query($linki,$sql11);
+$req11=mysqli_query($link,$sql11);
 ?>
 </p>
 <H2>
@@ -67,7 +67,7 @@ while($data11=mysqli_fetch_array($req11)){ // Start looping table row
       <?php $RefCommune=$data11['refcommune'];
 	 
 	 $sql3 = "SELECT * FROM commune where ref_com=$RefCommune";
-$result3 = mysqli_query($linki,$sql3);
+$result3 = mysqli_query($link,$sql3);
 while ($row3 = mysqli_fetch_assoc($result3)) {
 echo $secteur=$row3['commune'];
 }
@@ -105,7 +105,7 @@ else
 $sql22 = "SELECT  COUNT(*) AS nbres, SUM(f.cons1) AS cons1, SUM(f.cons2) AS cons2, SUM(f.cons) AS cons, SUM(f.mont1) AS mont1,SUM(f.mont2) AS mont2,SUM(f.puisct) AS puisct, SUM(f.totalht) AS totalht, SUM(f.tax) AS tax, SUM(f.totalttc) AS totalttc, SUM(f.ortc) AS ortc, SUM(f.impayee) AS impayee, SUM(f.Pre) AS Pre, SUM(f.totalnet) AS totalnet, c.RefLocalite , f.nserie , f.fannee , c.Tarif , f.st FROM $dbbk.z_"."$ARCH"."_$tbl_fact f , $db.$tbl_contact c  where  c.id=f.id and fannee='$annee1fl'  and f.nserie='$nserie1' and f.cons > '$CA' and  '$CB' > f.cons GROUP BY c.RefLocalite ";
 
 }
-$req22=mysqli_query($linki,$sql22); 
+$req22=mysqli_query($link,$sql22);
 ?>
 </p>
 <H2>
@@ -133,7 +133,7 @@ while($data22=mysqli_fetch_array($req22)){ // Start looping table row
       <?php $RefLocalite=$data22['RefLocalite'];
 	 
 	 $sql322 = "SELECT * FROM ville where refville=$RefLocalite";
-$result322 = mysqli_query($linki,$sql322);
+$result322 = mysqli_query($link,$sql322);
 while ($row322 = mysqli_fetch_assoc($result322)) {
 echo $ville=$row322['ville'];
 }
@@ -175,8 +175,8 @@ $sql4 = "SELECT COUNT(*) AS nbtotal FROM $dbbk.z_"."$ARCH"."_$tbl_fact f , $db.$
 
 
 }
-$req33=mysqli_query($linki,$sql33);
-$req4=mysqli_query($linki,$sql4);
+$req33=mysqli_query($link,$sql33);
+$req4=mysqli_query($link,$sql4);
 while($data4=mysqli_fetch_array($req4)){$nbt=$data4['nbtotal'];}
 
 ?>
@@ -253,7 +253,7 @@ $nb= $data33['nbres'];
   </tr>
   <tr>
     <td height="21"><?php
- mysqli_close ($linki); 
+ mysqli_close ($link);
 
 	
 include_once('pied.php');

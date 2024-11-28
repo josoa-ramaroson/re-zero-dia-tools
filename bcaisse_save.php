@@ -28,17 +28,17 @@ exit;
 else
 {
 $valeur_existant = "SELECT COUNT(*) AS nb FROM $tbl_caisse ";
-$sqLvaleur = mysqli_query($linki,$valeur_existant)or exit(mysqli_error()); 
+$sqLvaleur = mysqli_query($link,$valeur_existant)or exit(mysqli_error());
 $nb = mysqli_fetch_assoc($sqLvaleur);
 
 if($nb['nb'] == 1)
 {
 $sqlp="update  $tbl_caisse  set  datecaisse='$date' , blogin='$blogin' , valbsc='$valbsc' ";
-$resultp=mysqli_query($linki,$sqlp);
+$resultp=mysqli_query($link,$sqlp);
 
 
 $sqlp2="update  $tbl_date  set  date='$date' ";
-$resultp2=mysqli_query($linki,$sqlp2);
+$resultp2=mysqli_query($link,$sqlp2);
 
 
 header("location: bcaisse.php");
@@ -48,14 +48,14 @@ else
 
 $sqlp="INSERT INTO $tbl_caisse  ( blogin  ,  datecaisse , valbsc )
                     VALUES      ('$blogin','$date' , '$valbsc')";								
-$r=mysqli_query($linki,$sqlp)
+$r=mysqli_query($link,$sqlp)
 or die(mysqli_error());
 
 
 
 $sqldate="INSERT INTO $tbl_date  (date) VALUES ('$date')";								
-$rdate=mysqli_query($linki,$sqldate);
-mysqli_close($linki);
+$rdate=mysqli_query($link,$sqldate);
+mysqli_close($link);
 
 header("location: bcaisse.php");
 }

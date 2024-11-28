@@ -84,8 +84,8 @@ require 'fonction.php';
 //$id=$_GET['id'];
 $id=substr($_REQUEST["id"],32);
 $sqlm="SELECT * FROM $tb_rhpersonnel WHERE idrhp='$id'";
-$resultm=mysql_query($sqlm);
-$datam=mysql_fetch_array($resultm);
+$resultm=mysqli_query($link, $sqlm);
+$datam=mysqli_fetch_array($resultm);
 ?>
 <body>
 <table width="100%" border="0">
@@ -364,8 +364,8 @@ $cmr=$datam['cm'];
 
 if($datam['cm']!=0){
 $sql8="SELECT * FROM $tbl_utilisateur WHERE id_u='$cmr'";
-$result8=mysql_query($sql8);
-$data8=mysql_fetch_array($result8);
+$result8=mysqli_query($link, $sql8);
+$data8=mysqli_fetch_array($result8);
 echo '<option value='.$data8['id_u'].'> '.$data8['u_nom'].' '.$data8['u_prenom'].' ( '.$data8['u_login'].')</option>';
 } else 
 {
@@ -374,7 +374,7 @@ echo '<option value='.$vide.' selected> Realisez la connexion </option>';
 ?> 
             <?php
 $sql9 = ("SELECT id_u, id_nom , u_nom , u_prenom, u_login  FROM $tbl_utilisateur  ORDER BY id_u ASC ");
-$result9 = mysql_query($sql9);
+$result9 = mysqli_query($link, $sql9);
 
 while ($row9 = mysql_fetch_assoc($result9)) {
 echo '<option value='.$row9['id_u'].'> '.$row9['u_nom'].' '.$row9['u_prenom'].' ( '.$row9['u_login'].')</option>';
@@ -478,7 +478,7 @@ Statut
 	
 	$sql = "SELECT * FROM $tb_rhdirection where  idrh=$iddr ";
 
-	$resultat = mysql_query($sql) or exit(mysql_error()); 
+	$resultat = mysqli_query($link, $sql) or exit(mysql_error()); 
 	$nqt = mysql_fetch_assoc($resultat);
 
 	if((!isset($nqt['direction'])|| empty($nqt['direction']))) { $qt=''; return $qt;}

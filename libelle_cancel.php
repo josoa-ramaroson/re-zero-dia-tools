@@ -1,11 +1,11 @@
 <?php
     session_start();
     require 'fonction.php';
-    $link = mysql_connect ($host,$user,$pass);
-    mysql_select_db($db);
+    $link = mysqli_connect ($host,$user,$pass);
+    mysqli_select_db($link, $db);
 	$id=substr($_REQUEST["ID"],32);
 	$sql5="DELETE FROM $tbl_libelle WHERE idL='$id'";
-    $result5=mysql_query($sql5);
+    $result5=mysqli_query($link, $sql5);
     if($result5){
     //echo " cancel ";
     }

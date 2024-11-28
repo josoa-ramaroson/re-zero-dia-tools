@@ -9,7 +9,7 @@
 	
 	$sql5="DELETE FROM $tbl_fact WHERE idf='$idr' ";
 	
-    $result5=mysql_query($sql5);
+    $result5=mysqli_query($link, $sql5);
     if($result5){
     //echo " cancel ";
     }

@@ -39,7 +39,7 @@
         <option selected="selected"><?php echo $datam['Tarif']; ?></option>
           <?php
 $sql8 = ("SELECT * FROM tarif ORDER BY idt ASC");
-$result8 = mysql_query($sql8);
+$result8 = mysqli_query($link, $sql8);
 while ($row8 = mysql_fetch_assoc($result8)) {
 echo '<option value='.$row8['idt'].'> '.$row8['Libelle'].' </option>';
 }

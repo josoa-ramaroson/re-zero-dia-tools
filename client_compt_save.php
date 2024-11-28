@@ -14,7 +14,7 @@ $sqlp="INSERT INTO $tb_echangagent  (id_client   , nom_client   ,service,  Nomco
                     VALUES       ('$id_client','$nom_client',  '$service' ,'$Nomcompt', '$Nsend' , '$montant', '$Banque', '$dated', '$note' )";
 					
 													
-$r=mysql_query($sqlp);
+$r=mysqli_query($link, $sqlp);
 mysql_close($link);
 
 ?>

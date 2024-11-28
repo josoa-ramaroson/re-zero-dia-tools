@@ -23,15 +23,15 @@ $ARCH=substr($_REQUEST["a"],32);
 require 'fonction.php';
 require 'configuration.php';
 
-		$linki = mysqli_connect($host,$user,$pass,$db ) or die(mysqli_error($linki));
-		mysqli_set_charset($linki, 'utf8');
+		$link = mysqli_connect($host,$user,$pass,$db ) or die(mysqli_error($link));
+		// mysqli_set_charset($link, 'utf8');
 		
 //$idf=substr($_REQUEST["idf"],32);
 $sql5="SELECT * FROM $db.$tbl_contact c , $dbbk.z_"."$ARCH"."_$tbl_fact f WHERE c.id=f.id and f.idf='$idf' and st='E'";
-$req5=mysqli_query($linki,$sql5);
+$req5=mysqli_query($link,$sql5);
 
 	//$sqlp="update  z_"."$ARCH"."_$tbl_fact  set impression='imprimé' WHERE idf='$idf' and st='E'";
-    //$resultp=mysql_query($sqlp);
+    //$resultp=mysqli_query($link, $sqlp);
 
 while($data5=mysqli_fetch_array($req5)){
 ?>

@@ -203,8 +203,8 @@ httpxml.send(null);
 Require("bienvenue.php"); // on appelle la page contenant la fonction
 
 	$sqfac="SELECT * FROM $tb_rhconfig WHERE rhc='1' ORDER BY rhc desc limit 0,1";
-	$resultfac=mysql_query($sqfac);
-	$dattaux=mysql_fetch_array($resultfac);
+	$resultfac=mysqli_query($link, $sqfac);
+	$dattaux=mysqli_fetch_array($resultfac);
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
 <div class="panel panel-primary">
@@ -312,7 +312,7 @@ Require("bienvenue.php"); // on appelle la page contenant la fonction
                           <option> <?php echo $dattaux['annee']; ?>
                             <?php
 $sql82 = ("SELECT * FROM annee  ORDER BY annee ASC ");
-$result82 = mysql_query($sql82);
+$result82 = mysqli_query($link, $sql82);
 
 while ($row82 = mysql_fetch_assoc($result82)) {
 echo '<option> '.$row82['annee'].' </option>';
@@ -371,15 +371,15 @@ echo '<option> '.$row82['annee'].' </option>';
 require 'fonction.php';
 
 // Connect to server and select databse.
-mysql_connect ($host,$user,$pass)or die("cannot connect"); 
-mysql_select_db($db)or die("cannot select DB");
+mysqli_connect ($host,$user,$pass)or die("cannot connect"); 
+mysqli_select_db($db)or die("cannot select DB");
   
 $sql = "SELECT count(*) FROM $tb_rhconfig ";  
 
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);  
  // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -399,7 +399,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tb_rhconfig  ORDER BY rhc DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
  
 // on ex?cute la requ?te  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
 
 	
@@ -416,7 +416,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
       <td width="291" align="center" bgcolor="#3071AA" ><font color="#FFFFFF">ETAT C RETRAITE</font></td>
     </tr>
     <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row 
 ?>
     <tr> 
       <td align="center" bgcolor="#FFFFFF"><?php echo $data['rhc'];?>        <div align="left"></div></td>

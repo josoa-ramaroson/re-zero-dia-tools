@@ -31,7 +31,7 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
      
       <?php
 $sql="SELECT * FROM $tbl_utilisateur  where u_niveau='5'  ";
-$result=mysqli_query($linki,$sql);
+$result=mysqli_query($link,$sql);
 ?>
 
     </font></strong></font></font></font></font></h3>

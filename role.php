@@ -37,7 +37,7 @@ require("bienvenue.php"); // on appelle la page contenant la fonction
                         <td><select name="id_u" id="id_u">
                           <?php
 $sql2A = ("SELECT *  FROM $tbl_utilisateur  where  (privileges !=7 and privileges !=6) and id_u not in ( SELECT id_u FROM $tb_role_user  ) ORDER BY u_nom ASC ");
-$result2A = mysqli_query($linki,$sql2A);
+$result2A = mysqli_query($link,$sql2A);
 while ($row2A = mysqli_fetch_assoc($result2A)) {
 echo '<option value='.$row2A['id_u'].'> '.$row2A['u_nom'].' '.$row2A['u_prenom'].'</option>';
 }
@@ -75,7 +75,7 @@ echo '<option value='.$row2A['id_u'].'> '.$row2A['u_nom'].' '.$row2A['u_prenom']
                         <td><select name="id_u" id="id_u">
                           <?php
 $sql2A = ("SELECT *  FROM $tbl_utilisateur where  id_u in ( SELECT id_u FROM $tb_role_user ) ORDER BY u_nom ASC ");
-$result2A = mysqli_query($linki,$sql2A);
+$result2A = mysqli_query($link,$sql2A);
 while ($row2A = mysqli_fetch_assoc($result2A)) {
 echo '<option value='.$row2A['id_u'].'> '.$row2A['u_nom'].' '.$row2A['u_prenom'].'</option>';
 }
@@ -94,7 +94,7 @@ if ($_SESSION['u_niveau']==7){ $sql2B ="SELECT *  FROM  $tb_role_type  ORDER BY 
 
 { $sql2B ="SELECT *  FROM  $tb_role_type where  niveau!=7 and id_statut=1 ORDER BY nom_role ASC ";}
 
-$result2B = mysqli_query($linki,$sql2B);
+$result2B = mysqli_query($link,$sql2B);
 while ($row2B = mysqli_fetch_assoc($result2B)) {
 echo '<option value='.$row2B['id_role'].'> '.$row2B['nom_role'].' </option>';
 }
@@ -148,7 +148,7 @@ echo '<option value='.$row2B['id_role'].'> '.$row2B['nom_role'].' </option>';
   
 $sql = "SELECT count(*) FROM $tb_role_type ";  
 
-$resultat = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$resultat = mysqli_query($link,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());
  
  
 $nb_total = mysqli_fetch_array($resultat);  
@@ -165,7 +165,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
    
 $sql = "SELECT * FROM $tb_role_type  ORDER BY nom_role ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
  
-$req = mysqli_query($linki, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());
 ?>
   
 </p>
@@ -192,7 +192,7 @@ while($data=mysqli_fetch_array($req)){ // Start looping table row
       <td height="41" align="center" > <div align="left"><?php echo $data['id_role'];?></div>
         <div align="left"></div></td>
       <td align="center"><div align="left"><em><?php echo $data['nom_role'];?></em></div></td>
-      <td width="176" ><em><?php $sta=$data['id_statut']; $statut=le_statut($sta,$tb_role_statut,$linki);  echo $statut;?>
+      <td width="176" ><em><?php $sta=$data['id_statut']; $statut=le_statut($sta,$tb_role_statut,$link);  echo $statut;?>
       
       </em></td>
    
@@ -213,7 +213,7 @@ mysqli_free_result ($req);
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 20).'</span>';  
 }  
 mysqli_free_result ($resultat);  
-mysqli_close ($linki);  
+mysqli_close ($link);
 ?>
   </table>
 

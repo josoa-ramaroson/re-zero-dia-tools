@@ -16,7 +16,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 $_SESSION['id_nom']=$id_nom;
 
 	$sqfac="SELECT * FROM $tbl_fact where st='Ti' and id_nom='$id_nom' ORDER BY idf desc  limit 0,10 ";
-	$resultfac=mysql_query($sqfac);
+	$resultfac=mysqli_query($link, $sqfac);
 
 ?>
 <body>
@@ -40,7 +40,7 @@ $_SESSION['id_nom']=$id_nom;
     <td width="17%" align="center" bgcolor="#FFFFFF">Reste à payer</td>
   </tr>
   <?php
-while($rowsfac=mysql_fetch_array($resultfac)){ 
+while($rowsfac=mysqli_fetch_array($resultfac)){ 
 ?>
   <tr>
     <td align="center" bgcolor="#FFFFFF"><em><?php echo $rowsfac['idf'];?></em></td>

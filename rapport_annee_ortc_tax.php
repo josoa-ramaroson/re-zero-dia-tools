@@ -36,15 +36,15 @@ $annee=$_POST['annee'];
 
 
 // Connect to server and select databse.
-mysql_connect ($host,$user,$pass)or die("cannot connect"); 
-mysql_select_db($db)or die("cannot select DB");
+mysqli_connect ($host,$user,$pass)or die("cannot connect");
+mysqli_select_db($db)or die("cannot select DB");
   
 $sql = "SELECT count(*) FROM $tbl_paiement where  YEAR(date)=$annee";  
 
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
  // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -64,15 +64,15 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT SUM(paiement) AS Paie,  SUM(ortc_dp) AS ortc_dp, SUM(tax_dp) AS tax_dp, SUM(totalht_dp) AS totalht_dp, st, date , id_nom FROM $tbl_paiement where  YEAR(date)=$annee GROUP BY st  LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC  DESC
 
 // on ex?cute la requ?te  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()); 
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
 $sqlt = "SELECT SUM(paiement) AS Paie,  SUM(ortc_dp) AS ortc_dp, SUM(tax_dp) AS tax_dp, SUM(totalht_dp) AS totalht_dp, id_nom , date , st , nserie FROM $tbl_paiement where  YEAR(date)=$annee ";  //ASC  DESC
-$reqt = mysql_query($sqlt); 
+$reqt = mysqli_query($link, $sqlt);
 
 
 $sqltE = "SELECT SUM(paiement) AS PaieE, id_nom , date , st , nserie FROM $tbl_paiement where  st='E'   and YEAR(date)=$annee ";  //ASC  DESC
-$reqtE = mysql_query($sqltE); 
-$datatE=mysql_fetch_array($reqtE);
+$reqtE = mysqli_query($link, $sqltE);
+$datatE=mysqli_fetch_array($reqtE);
 
 ?>
 
@@ -86,7 +86,7 @@ $datatE=mysql_fetch_array($reqtE);
      <td width="12%" align="center"><font color="#FFFFFF"><strong>TOTAL M S ortc/tax</strong></font></td> 
   </tr>
   <?php
-while($datat=mysql_fetch_array($reqt)){ // Start looping table row 
+while($datat=mysqli_fetch_array($reqt)){ // Start looping table row
 ?>
   <tr>
     <td align="center" bgcolor="#FFFFFF"><?php echo $annee; ?></td>

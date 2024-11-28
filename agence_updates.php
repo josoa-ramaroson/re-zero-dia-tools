@@ -1,7 +1,7 @@
 <?php
     require 'fonction.php';
-    $link = mysql_connect ($host,$user,$pass);
-    mysql_select_db($db);
+    $link = mysqli_connect ($host,$user,$pass);
+    mysqli_select_db($link, $db);
 	
 $id=addslashes($_POST['idp']);
 
@@ -24,7 +24,7 @@ exit();
 }
 #---------------------------------------------------3 
 $sqlp="update  $tbl_agence  set  id_nom='$id_nom', a_nom='$a_nom' , a_adresse='$a_adresse' ,  a_tel='$a_tel' , id_a='$id' ,  a_statut='$a_statut' , datetime='$datetime'  WHERE  id_a='$id'";
-$resultp=mysql_query($sqlp);
+$resultp=mysqli_query($link, $sqlp);
 if($resultp){
 }
 else {

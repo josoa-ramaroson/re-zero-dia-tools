@@ -5,7 +5,7 @@
                     <select name="Numc" id="select3">
                       <?php
 $req="select Numc, Description  from $compte ";
-$resultat4=mysql_query($req);
+$resultat4=mysqli_query($link, $req);
 while ($row3 = mysql_fetch_assoc($resultat4)) {
 //echo '<option> '.$row3['Numc'].' </option>';
 echo '<option value='.$row3['Numc'].'> '.$row3['Numc'].' '.$row3['Description'].' </option>';

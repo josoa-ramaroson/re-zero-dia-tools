@@ -62,7 +62,7 @@ require("bienvenue.php");    // on appelle la page contenant la fonction
                    <select name="annee" size="1" id="annee">
                      <?php
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
-$result81 = mysql_query($sql81);
+$result81 = mysqli_query($link, $sql81);
 
 while ($row81 = mysql_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
@@ -88,17 +88,17 @@ if ((isset($_POST['mois']))&& (isset($_POST['annee'])))
 $mois=$_POST['mois'];
 $annee=$_POST['annee'];  
 // Connect to server and select databse.
-mysql_connect ($host,$user,$pass)or die("cannot connect"); 
-mysql_select_db($db)or die("cannot select DB");
+mysqli_connect ($host,$user,$pass)or die("cannot connect"); 
+mysqli_select_db($db)or die("cannot select DB");
   
 $sqFS="SELECT  SUM(Pre) AS Pre, RefLocalite , nserie , fannee FROM $tv_facturation where fannee='$annee'  and nserie='$mois' ";  
-	$RFS = mysql_query($sqFS); 
+	$RFS = mysqli_query($link, $sqFS);
 	$AFFS = mysql_fetch_assoc($RFS);
 	$tFSl=$AFFS['Pre'];
 	$A=$tFSl;
 
 $sqFSN="SELECT  SUM(Pre) AS Pre, totalnet, report, RefLocalite , nserie , fannee FROM $tv_facturation where fannee='$annee'  and nserie='$mois' and totalnet=report";  
-	$RFSN = mysql_query($sqFSN); 
+	$RFSN = mysqli_query($link, $sqFSN);
 	$AFFSN = mysql_fetch_assoc($RFSN);
 	$tFSlN=$AFFSN['Pre'];
 	$B=$tFSlN;

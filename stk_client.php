@@ -103,7 +103,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
             <select name="ville" id="select4">
               <?php
 $sql5 = ("SELECT ville FROM ville ORDER BY ville ASC ");
-$result5 = mysql_query($sql5);
+$result5 = mysqli_query($link, $sql5);
 
 while ($row5 = mysql_fetch_assoc($result5)) {
 echo '<option> '.$row5['ville'].' </option>';
@@ -137,7 +137,7 @@ echo '<option> '.$row5['ville'].' </option>';
             <select name="ile" id="ile">
               <?php
 $sql51 = ("SELECT ile FROM ile ORDER BY ile ASC ");
-$result51 = mysql_query($sql51);
+$result51 = mysqli_query($link, $sql51);
 
 while ($row51 = mysql_fetch_assoc($result51)) {
 echo '<option> '.$row51['ile'].' </option>';
@@ -164,8 +164,8 @@ echo '<option> '.$row51['ile'].' </option>';
 <p>
   <?php
 $sql = "SELECT count(*) FROM $tbl_clientgaz";  
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
-$nb_total = mysql_fetch_array($resultat);  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$nb_total = mysqli_fetch_array($resultat);
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
 }  
@@ -173,7 +173,7 @@ else {
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 50; 
 $sql = "SELECT * FROM $tbl_clientgaz ORDER BY nomprenom ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
 </p>
 <table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
@@ -187,7 +187,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
     <td width="8%" align="center">&nbsp;</td>
   </tr>
   <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
   <tr>
     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><a href="stk_user.php?id=<?php echo md5(microtime()).$data['id']; ?>" class="btn btn-sm btn-default" ><?php echo $data['id'];?></a></em></div></td>

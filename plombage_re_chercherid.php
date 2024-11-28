@@ -182,7 +182,7 @@ $sql = "SELECT * FROM $tbl_contact c, $tbl_plombage p where c.statut='6' and  p.
 
 $sql.=" ORDER BY nomprenom ASC ";  
 
-$req = mysql_query($sql); 
+$req = mysqli_query($link, $sql);
 
  
 ?>
@@ -203,7 +203,7 @@ $req = mysql_query($sql);
      <td width="8%" align="center">&nbsp;</td>
    </tr>
    <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 
 	$id=$data['id'];
 
@@ -250,7 +250,7 @@ $mr2=addslashes($_REQUEST['mr2']);
 	
 $sql3 = "SELECT * FROM $tbl_plombcont  where idclient='$mr2' ORDER BY idpp DESC ";  //ASC
 
-$req3 = mysql_query($sql3); 
+$req3 = mysqli_query($link, $sql3);
 while($data2=mysql_fetch_assoc($req3)){ // Start looping table row 
 ?>
 </p>
@@ -273,8 +273,8 @@ echo " ce compteur n'est pas encore verifier <br>";
 
 		function stat_eda2($tbl_plombcont,$tbl_plombage,$idv){ 
 		$sqlv="SELECT COUNT(*) AS nombre FROM $tbl_plombcont ct, $tbl_plombage p  WHERE ct.idclient=p.id and ct.idclient='$idv'" ;
-        $rev = mysql_query($sqlv); 
-	    $nqtv = mysql_fetch_array($rev);
+        $rev = mysqli_query($link, $sqlv);
+	    $nqtv = mysqli_fetch_array($rev);
         if((!isset($nqtv['nombre'])|| empty($nqtv['nombre']))) { $qt=''; return $qt; } else {$qt=$nqtv['nombre']; return $qt;}
 		} 
 		

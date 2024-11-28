@@ -33,8 +33,8 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 <p>
  <?php
 $sql = "SELECT count(*) FROM $tb_rhpersonnel where statut='Operationnel'";  
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
-$nb_total = mysql_fetch_array($resultat);  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$nb_total = mysqli_fetch_array($resultat);
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
 }  
@@ -42,7 +42,7 @@ else {
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 50; 
 $sql = "SELECT * FROM  $tb_rhpersonnel where statut='Operationnel' ORDER BY matricule ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
 	//recherche du repport  
 ?>
@@ -73,7 +73,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
               <select name="annee" size="1" id="annee">
                 <?php
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
-$result81 = mysqli_query($linki,$sql81);
+$result81 = mysqli_query($link,$sql81);
 
 while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
@@ -98,7 +98,7 @@ echo '<option> '.$row81['annee'].' </option>';
      <td width="13%" align="center">&nbsp;</td>
   </tr>
    <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 $idrh=$data['idrhp'];
 ?>
    <tr bgcolor="<?php gettatut(stat_eda3($tb_rhconge, $anneepaie, $idrh)); ?>">
@@ -123,8 +123,8 @@ mysql_free_result ($resultat);
 
 		function stat_eda3($tb_rhconge, $anneepaie, $idrh){ 
 		$sqlv="SELECT COUNT(*) AS nombre FROM $tb_rhconge  WHERE idrh='$idrh'  and anneeconge='$anneepaie'" ;
-        $rev = mysql_query($sqlv); 
-	    $nqtv = mysql_fetch_array($rev);
+        $rev = mysqli_query($link, $sqlv);
+	    $nqtv = mysqli_fetch_array($rev);
         if((!isset($nqtv['nombre'])|| empty($nqtv['nombre']))) { $qt=''; return $qt; } else {$qt=$nqtv['nombre']; return $qt;}
 		} 
 		

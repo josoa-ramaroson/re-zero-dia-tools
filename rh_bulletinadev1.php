@@ -23,16 +23,16 @@ require 'rh_configuration_fonction.php';
 $iddirection=addslashes($_REQUEST['direction']);
 
 $sql2 = "SELECT * FROM $tb_rhdirection where idrh=$iddirection";
-$result2 = mysql_query($sql2);
+$result2 = mysqli_query($link, $sql2);
 while ($row2 = mysql_fetch_assoc($result2)) {
 $direction=$row2['direction'];
 } 
     $m1d=$direction;
 
 $sql5="SELECT * FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie' and direction='$m1d' ORDER BY matricule ASC";
-$req5=mysql_query($sql5);
+$req5=mysqli_query($link, $sql5);
 
-while($datam=mysql_fetch_array($req5)){ // Start looping table row
+while($datam=mysqli_fetch_array($req5)){ // Start looping table row
 ?>
     <img src="images/eda.png" width="208" height="96" /></strong><strong> </strong></p></td>
     <td width="53%"><h1 class="centre"> BULLETIN DE PAIE <span style="width: 75%; font-size: 24px;">

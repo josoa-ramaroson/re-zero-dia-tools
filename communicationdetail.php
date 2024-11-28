@@ -21,15 +21,15 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
  <?php
 				  
 require 'fonction.php';
-$link = mysql_connect ($host,$user,$pass);
-mysql_select_db($db);
+$link = mysqli_connect ($host,$user,$pass);
+mysqli_select_db($link, $db);
 
 $id=substr($_REQUEST["id"],32);
 
 $sql="SELECT * FROM $tbl_com WHERE idcom='$id'";
-$result=mysql_query($sql);
+$result=mysqli_query($link, $sql);
 
-$rows=mysql_fetch_array($result);
+$rows=mysqli_fetch_array($result);
 ?>
  </span>
  <div class="panel panel-primary">

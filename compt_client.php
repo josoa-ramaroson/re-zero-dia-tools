@@ -27,7 +27,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
     <h3 class="panel-title">Ajouter un client 
       <?php
 $req1="SELECT * FROM $tb_comptcl  ";
-$req=mysql_query($req1);
+$req=mysqli_query($link, $req1);
 ?>
     </h3>
     </div>
@@ -41,8 +41,8 @@ $req=mysql_query($req1);
 
 $sql="SELECT count( compt_client.Numcsave ) AS $tb_comptcl FROM compt_client ";
 // OREDER BY id DESC is order result by descending 
-$result=mysql_query($sql);
-while($rows=mysql_fetch_array($result)){
+$result=mysqli_query($link, $sql);
+while($rows=mysqli_fetch_array($result)){
  $nf=$rows['compt_client'];
   //echo $nf+1 ;
    }
@@ -125,7 +125,7 @@ mysql_close();
           <td width="9%" align="center">&nbsp;</td>
         </tr>
         <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
         <tr>
           <td bgcolor="#FFFFFF"><div align="left"> <?php echo $data['Numcsave'];?> <BR>

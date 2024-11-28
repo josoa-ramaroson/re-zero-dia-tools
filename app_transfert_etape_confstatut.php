@@ -16,12 +16,12 @@ if ($statut=='2')
 {
 	
 $sqlp="update  $tbl_apptransfert set  statut='$statut', Eid_nom='$id_nom',Edate='$date' WHERE  idtansft='$id'";
-$resultp=mysqli_query($linki,$sqlp);	
+$resultp=mysqli_query($link,$sqlp);	
 
 $sqlp="INSERT INTO $tbl_enreg ( date  , titre  , Quantite  ,   id_nom , a_nom )
                     VALUES    ('$date','$titre','$Quantite', '$id_nom', '$agence')";
 					
-$r=mysqli_query($linki,$sqlp) or die(mysqli_error());
+$r=mysqli_query($link,$sqlp) or die(mysqli_error());
 
 header("location:app_transfert_etape2.php");
 }  
@@ -29,7 +29,7 @@ if ($statut=='3')
 {
 
 $sqlp="update  $tbl_apptransfert set  statut='$statut', Cid_nom='$id_nom' WHERE  idtansft='$id'";
-$resultp=mysqli_query($linki,$sqlp);	
+$resultp=mysqli_query($link,$sqlp);	
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 /*ini_set('SMTP','smtp.comorestelecom.km');

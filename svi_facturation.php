@@ -33,13 +33,13 @@ $id=0;
 require 'configuration.php';
 
 $sql5="SELECT matricule , idau FROM $tbl_automobile  ORDER BY matricule ASC";
-$result5 = mysql_query($sql5);
+$result5 = mysqli_query($link, $sql5);
 while ($row5 = mysql_fetch_assoc($result5)) {
 echo '<option value='.$row5['idau'].'>'.$row5['matricule'].'</option>';
 }
 $idau=$_POST['idau'];
 $sql4 = "SELECT * FROM $tbl_automobile  where idau='$idau'";
-$result4 = mysql_query($sql4);
+$result4 = mysqli_query($link, $sql4);
 while ($row4 = mysql_fetch_assoc($result4)) {
 $id=$row4['id'];
 }  
@@ -66,16 +66,16 @@ $sqlm="SELECT  co.Designation as coDesignation, co.nomprenom as conomprenom, co.
 au.matricule as  aumatricule, au.marque as aumarque, au.modèle as aumodèle, au.annee as auannee, au.cylindre as aucylindre, au.utilisation as auutilisation , au.statut as austatut
 
  FROM $tbl_contact co , $tbl_automobile au WHERE au.id='$id' and au.idau='$idau' and au.id=co.id";
-$resultm=mysql_query($sqlm);
-$datam=mysql_fetch_array($resultm);
+$resultm=mysqli_query($link, $sqlm);
+$datam=mysqli_fetch_array($resultm);
 
 	// affichage des transport
 	 $sqact="SELECT * FROM $tbl_automobile WHERE id='$id'";
-	 $resultact=mysql_query($sqact);
+	 $resultact=mysqli_query($link, $sqact);
 	 
 	 	 
 	$sqfac="SELECT * FROM $tbl_fact WHERE id='$id' and idso='$idau' ORDER BY idf desc";
-	$resultfac=mysql_query($sqfac);
+	$resultfac=mysqli_query($link, $sqfac);
 	 
 ?>
 <table width="100%" border="0" align="center">
@@ -145,7 +145,7 @@ $datam=mysql_fetch_array($resultm);
     <td width="14%"><select name="libelle" id="libelle">
       <?php
 $sql2 = ("SELECT *  FROM $tbl_libelle where categorie='Ti' ORDER BY libelle  ASC ");
-$result2 = mysql_query($sql2);
+$result2 = mysqli_query($link, $sql2);
 while ($row2 = mysql_fetch_assoc($result2)) {
 echo '<option> '.$row2['libelle'].' </option>';
 }
@@ -210,7 +210,7 @@ echo '<option> '.$row2['libelle'].' </option>';
       <td width="12%"><select name="libelle" id="libelle">
         <?php
 $sql2 = ("SELECT *  FROM $tbl_libelle where categorie='Ti' ORDER BY libelle  ASC ");
-$result2 = mysql_query($sql2);
+$result2 = mysqli_query($link, $sql2);
 while ($row2 = mysql_fetch_assoc($result2)) {
 echo '<option> '.$row2['libelle'].' </option>';
 }

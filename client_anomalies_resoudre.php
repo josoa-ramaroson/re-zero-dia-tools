@@ -21,9 +21,9 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 require 'fonction.php';
 $sql = "SELECT count(*) FROM $tbl_client_anom where statut!='Traité'";  
 
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);  
 
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -37,11 +37,11 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tbl_client_anom  where statut!='Traité' ORDER BY idanomalie DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
  
 // on ex?cute la requ?te  ASC
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
-    function Nom_prenom_client($LE_idclient, $tbl_contact ,$linki){
+    function Nom_prenom_client($LE_idclient, $tbl_contact ,$link){
 	$sqld7 = "SELECT * FROM $tbl_contact where id='$LE_idclient'";
-	$resultatd7 = mysqli_query($linki,$sqld7); 
+	$resultatd7 = mysqli_query($link,$sqld7); 
 	$nqtd7 = mysqli_fetch_assoc($resultatd7);
 	if((!isset($nqtd7['nomprenom'])|| empty($nqtd7['nomprenom']))) { $qt7=''; return $qt7;}
 	else {$qt7=$nqtd7['nomprenom'] ; return $qt7;}
@@ -61,13 +61,13 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
     <td width="204" bgcolor="#3071AA">&nbsp;</td>
   </tr>
   <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row 
 ?>
   <tr bgcolor="<?php gettatut($data['statut']); ?>">
     <td ><a href="client_anomalies_resoudre_intervension.php?id=<?php echo md5(microtime()).$data['idanomalie']; ?>" class="btn btn-sm btn-danger" > <?php echo $data['idanomalie']; ?></a>
       <div align="left"></div></td>
     <td ><?php echo $data['datetinfo']; ?></span></td>
-    <td ><?php $idclient=$data['idclient']; $nom_prenom=Nom_prenom_client($idclient, $tbl_contact,$linki); echo $nom_prenom;?>     - (<?php echo $idclient; ?>) </td>
+    <td ><?php $idclient=$data['idclient']; $nom_prenom=Nom_prenom_client($idclient, $tbl_contact,$link); echo $nom_prenom;?>     - (<?php echo $idclient; ?>) </td>
     <td ><?php echo $data['description'];?></td>
     <td ><?php echo $data['service'];?></td>
     <td ><?php echo $data['niveau'];?></td>

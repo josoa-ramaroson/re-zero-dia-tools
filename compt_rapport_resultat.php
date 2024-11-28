@@ -41,8 +41,8 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
  // $dc1=$_POST['dc1'];
  // $dc2=$_POST['dc2'];
   $req2="select Compte , Description , Debit , SUM(compt_ecriture.Credit) AS compt_ecriture from $tb_ecriture where Date BETWEEN '$dc1'  and '$dc2' and Type='C' and  mo='C' GROUP BY Compte " ;
-  $req=mysql_query($req2);
- while ($data=mysql_fetch_array($req)){ // Start looping table row 
+  $req=mysqli_query($link, $req2);
+ while ($data=mysqli_fetch_array($req)){ // Start looping table row
  $de=$data['compt_ecriture'];
 ?>
 
@@ -77,8 +77,8 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
   //$dc1=$_POST['dc1'];
   //$dc2=$_POST['dc2'];
   $req2="SELECT  SUM(compt_ecriture.Credit) AS compt_ecriture FROM $tb_ecriture where Date BETWEEN '$dc1'  and '$dc2' and Type='C' and mo='C'  " ;
-  $req=mysql_query($req2);
- while ($data5=mysql_fetch_array($req)){ // Start looping table row 
+  $req=mysqli_query($link, $req2);
+ while ($data5=mysqli_fetch_array($req)){ // Start looping table row
  $nb=$data5['compt_ecriture'];
 ?>
 
@@ -100,8 +100,8 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
   //$dc1=$_POST['dc1'];
   //$dc2=$_POST['dc2'];
   $req2="select Compte , Description , Credit ,SUM(compt_ecriture.Debit) AS compt_ecriture from $tb_ecriture where Date BETWEEN '$dc1'  and '$dc2' and Type='D' and mo='D' GROUP BY Compte  " ;
-  $req=mysql_query($req2);
- while ($data3=mysql_fetch_array($req)){ // Start looping table row 
+  $req=mysqli_query($link, $req2);
+ while ($data3=mysqli_fetch_array($req)){ // Start looping table row
  $cr=$data3['compt_ecriture']; 
 ?>
               <tr> 
@@ -133,8 +133,8 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
   //$dc1=$_POST['dc1'];
   //$dc2=$_POST['dc2'];
   $req2="SELECT  SUM(compt_ecriture.Debit) AS compt_ecriture FROM $tb_ecriture where Date BETWEEN '$dc1'  and '$dc2' and Type='D' and mo='D'   " ;
-  $req=mysql_query($req2);
- while ($data6=mysql_fetch_array($req)){ // Start looping table row 
+  $req=mysqli_query($link, $req2);
+ while ($data6=mysqli_fetch_array($req)){ // Start looping table row
  $nb1=$data6['compt_ecriture'];
 ?>
 

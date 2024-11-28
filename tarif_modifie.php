@@ -39,7 +39,7 @@ Require("bienvenue.php");    // on appelle la page contenant la fonction
 //$id=$_GET['id'];
 $id=substr($_REQUEST["id"],32);
 $sql3="SELECT * FROM $tbl_tarif WHERE idt='$id'";
-$result3=mysqli_query($linki,$sql3);
+$result3=mysqli_query($link,$sql3);
 
 $rows3=mysqli_fetch_array($result3);
 ?>

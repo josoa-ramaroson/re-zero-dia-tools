@@ -18,7 +18,7 @@ require("bienvenue.php");    // on appelle la page contenant la fonction
 $service=$_SESSION['u_niveau'];
 
 $sql = "SELECT *FROM $tb_echangagent where service='$service' ORDER BY idv  DESC";  
-$req = mysql_query($sql)
+$req = mysqli_query($link, $sql)
 
 ?>
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -37,7 +37,7 @@ $req = mysql_query($sql)
                   <td width="15%">Valider par </td>
                 </tr>
                   <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row 
 ?>
                 <tr>
                 <td><p><?php echo $data['dated'];?></p></td>
@@ -59,8 +59,8 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
                    <?php
 				   
 				   $sqlr="SELECT * FROM $tb_echangreponse WHERE idv='$idv'" ;
-				   $resu= mysql_query($sqlr);
-				   $suivi=mysql_fetch_array($resu);
+				   $resu= mysqli_query($link, $sqlr);
+				   $suivi=mysqli_fetch_array($resu);
 
 				  if ($suivi===FALSE){?>
                   <a href="client_reponse.php?idv=<?php echo md5(microtime()).$data['idv']; ?>" class="btn btn-xs btn-success">Realiser la tache</a>

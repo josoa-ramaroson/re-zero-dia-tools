@@ -3,14 +3,14 @@
 	$login=addslashes($_POST['m1']);
 	$motdepasse=addslashes(md5($_POST['m2']));
 	require 'fonction.php';
-	$link = mysql_connect ($host,$user,$pass);
+	$link = mysqli_connect ($host,$user,$pass);
 //	$link = mysqli_connect ($host,$user,$pass);
-	mysql_select_db($db);
+	mysqli_select_db($link, $db);
 	$sql="SELECT * FROM $tbl_utilisateur WHERE u_login='$_POST[m1]' and u_pwd='$motdepasse' and statut='Operationnel'" ;
-	$resultat= mysql_query($sql);
-//	$resultat= mysqli_query($sql);
-	$u_utilisateur=mysql_fetch_array($resultat);
-//	$u_utilisateur=mysql_fetch_array($resultat);
+	$resultat= mysqli_query($link, $sql);
+//	$resultat= mysqli_query($link, $sql);
+	$u_utilisateur=mysqli_fetch_array($resultat);
+//	$u_utilisateur=mysqli_fetch_array($resultat);
 
 	if ($u_utilisateur===FALSE)
 	{
@@ -30,7 +30,7 @@
 
 	    $idsession=$u_utilisateur['id_u'];
 		$sqlp="update $tbl_utilisateur  set session=1  WHERE  id_u='$idsession'";
-        $resultp=mysqli_query($linki,$sqlp);
+        $resultp=mysqli_query($link,$sqlp);
 
 
 		header("location:welcome.php");

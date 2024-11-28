@@ -38,8 +38,8 @@ $annee=$_POST['annee'];
               </tr>
 <?php
   $req2="select * from $tb_ecriture where MONTH(Date)=$mois and YEAR(Date)=$annee ORDER BY Compte DESC " ;
-  $req=mysql_query($req2);
- while ($data=mysql_fetch_array($req)){ // Start looping table row 
+  $req=mysqli_query($link, $req2);
+ while ($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
               <tr> 
 			  <td bgcolor="#FFFFFF"><div align=""> 

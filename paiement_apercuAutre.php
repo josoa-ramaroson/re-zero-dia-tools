@@ -20,12 +20,12 @@ $idf=$_POST['idf'];
 //$sqlfacturation="SELECT * FROM $tbl_fact f, $tbl_contact c, $tbl_clientgaz g  WHERE (c.id=f.id or g.id=f.id) and f.idf='$idf' and (f.st='F' or f.st='A')  ORDER BY idf desc";
 
 $sqlfacturation="SELECT * FROM $tbl_fact f, $tbl_contact c WHERE (c.id=f.id) and f.idf='$idf' and (f.st='F' or f.st='A')  ORDER BY idf desc";
-$resultatfact=mysql_query($sqlfacturation);
-$ident=mysql_fetch_array($resultatfact);
+$resultatfact=mysqli_query($link, $sqlfacturation);
+$ident=mysqli_fetch_array($resultatfact);
 
 	$sqldate="SELECT * FROM $tbl_caisse "; //DESC  ASC
-	$resultldate=mysql_query($sqldate);
-	$datecaisse=mysql_fetch_array($resultldate);
+	$resultldate=mysqli_query($link, $sqldate);
+	$datecaisse=mysqli_fetch_array($resultldate);
 	
 if ($ident) {
 $idf=$ident['idf'];

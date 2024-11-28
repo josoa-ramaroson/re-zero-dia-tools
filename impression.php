@@ -109,10 +109,10 @@ Require("bienvenue.php");  // on appelle la page contenant la fonction
 <?php
 $sql = "SELECT count(*) FROM $tbl_fact  WHERE fannee='$anneec' and nserie='$nserie' and st='E' ";  
 
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
  // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -134,20 +134,20 @@ $sql = "SELECT  f.bstatut, c.quartier, c.ville, f.impression , COUNT(*) AS nbch 
 
    /*//Nombre FACTURE_ par Quartier
     $rqfact = "SELECT COUNT(quartier) AS nbfc FROM $tbl_contact c , $tbl_fact f WHERE c.id=f.id  and  nserie='$nserie' and st='E' GROUP BY  quartier"; 
-	$sqnbf = mysql_query($rqfact);
+	$sqnbf = mysqli_query($link, $rqfact);
 	$nbfc= mysql_fetch_assoc($sqnbf);
 	$nfact=$nbfc['nbfc']; 
 
  
     //Nombre total des clients par quartier
     $rqtfact = "SELECT COUNT(quartier) AS nbtfc FROM $tbl_contact GROUP BY  quartier"; 
-	$sqtnbf = mysql_query($rqtfact);
+	$sqtnbf = mysqli_query($link, $rqtfact);
 	$nbtfc= mysql_fetch_assoc($sqtnbf);
 	$ntclient=$nbtfc['nbtfc']; */
 	
  
 // on ex?cute la requ?te  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
  
 <body link="#0000FF" vlink="#0000FF" alink="#0000FF">
@@ -220,7 +220,7 @@ echo "<option value=$row[refville]>$row[ville]</option>";
         <td width="427" align="center" bgcolor="#3071AA"><font color="#FFFFFF" size="4"><strong>Suivi des impressions ( MT &amp; AUTRES)</strong></font></td>
       </tr>
       <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
        <tr bgcolor="<?php gettatut($data['bstatut']); ?>">
         <td align="center"><?php echo  $data['ville']; ?></td>

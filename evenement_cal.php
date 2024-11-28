@@ -33,7 +33,7 @@ require 'fonction.php';
 			    if (isset($_REQUEST["annee"])){ $annee = $_REQUEST["annee"]; $mois = $_REQUEST["mois"];}
 				
 $sql2 = "SELECT DISTINCT(id_nom) FROM $tb_evenement where MONTH(datev)=$mois and YEAR(datev)=$annee"; // DESC ASC  
-$req2 = mysqli_query($linki,$sql2) or die('Erreur SQL !<br />'.$sql2.'<br />'.mysqli_error()); 
+$req2 = mysqli_query($link,$sql2) or die('Erreur SQL !<br />'.$sql2.'<br />'.mysqli_error());
  
 ?>
 
@@ -127,175 +127,175 @@ while($data2=mysqli_fetch_array($req2)){
 ?>
   <tr bgcolor="#FFFFFF">
      <td height="39" align="center" ><div align="left"><em><?php $nom_cal=$data2['id_nom'];
-	 echo personne($nom_cal, $tbl_utilisateur , $linki); ?></em></div></td>
+	 echo personne($nom_cal, $tbl_utilisateur , $link); ?></em></div></td>
     <td align="center" >
       <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=1" >
-      <?php echo $a1=scan_date($nom_cal, $annee, $mois,1, $tb_evenement, $linki);?>
+      <?php echo $a1=scan_date($nom_cal, $annee, $mois,1, $tb_evenement, $link);?>
     </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=2" >
-	 <?php echo $a2=scan_date($nom_cal, $annee, $mois,2, $tb_evenement ,$linki);?>
+	 <?php echo $a2=scan_date($nom_cal, $annee, $mois,2, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=3" >
-	 <?php echo $a3=scan_date($nom_cal, $annee, $mois,3, $tb_evenement ,$linki);?>
+	 <?php echo $a3=scan_date($nom_cal, $annee, $mois,3, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=4" >
-	 <?php echo $a4=scan_date($nom_cal, $annee, $mois,4, $tb_evenement ,$linki);?>
+	 <?php echo $a4=scan_date($nom_cal, $annee, $mois,4, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=5" >
-	 <?php echo $a5=scan_date($nom_cal, $annee, $mois,5, $tb_evenement ,$linki);?>
+	 <?php echo $a5=scan_date($nom_cal, $annee, $mois,5, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=6" >
-	 <?php echo $a6=scan_date($nom_cal, $annee, $mois,6, $tb_evenement ,$linki);?>
+	 <?php echo $a6=scan_date($nom_cal, $annee, $mois,6, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=7" >
-	 <?php echo $a7=scan_date($nom_cal, $annee, $mois,7, $tb_evenement ,$linki);?>
+	 <?php echo $a7=scan_date($nom_cal, $annee, $mois,7, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=8" >
-	 <?php echo $a8=scan_date($nom_cal, $annee, $mois,8, $tb_evenement ,$linki);?>
+	 <?php echo $a8=scan_date($nom_cal, $annee, $mois,8, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=9" >
-	 <?php echo $a9=scan_date($nom_cal, $annee, $mois,9, $tb_evenement ,$linki);?>
+	 <?php echo $a9=scan_date($nom_cal, $annee, $mois,9, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=10" >
-	 <?php echo $a10=scan_date($nom_cal, $annee, $mois,10, $tb_evenement ,$linki);?>
+	 <?php echo $a10=scan_date($nom_cal, $annee, $mois,10, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=11" >
-	 <?php echo $a11=scan_date($nom_cal, $annee, $mois,11, $tb_evenement ,$linki);?>
+	 <?php echo $a11=scan_date($nom_cal, $annee, $mois,11, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=12" >
-	 <?php echo $a12=scan_date($nom_cal, $annee, $mois,12, $tb_evenement ,$linki);?>
+	 <?php echo $a12=scan_date($nom_cal, $annee, $mois,12, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=13" >
-	 <?php echo $a13=scan_date($nom_cal, $annee, $mois,13, $tb_evenement ,$linki);?>
+	 <?php echo $a13=scan_date($nom_cal, $annee, $mois,13, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=14" >
-	 <?php echo $a14=scan_date($nom_cal, $annee, $mois,14, $tb_evenement ,$linki);?>
+	 <?php echo $a14=scan_date($nom_cal, $annee, $mois,14, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=15" >
-	 <?php echo $a15=scan_date($nom_cal, $annee, $mois,15, $tb_evenement ,$linki);?>
+	 <?php echo $a15=scan_date($nom_cal, $annee, $mois,15, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=16" >
-	 <?php echo $a16=scan_date($nom_cal, $annee, $mois,16, $tb_evenement ,$linki);?>
+	 <?php echo $a16=scan_date($nom_cal, $annee, $mois,16, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=17" >
-	 <?php echo $a17=scan_date($nom_cal, $annee, $mois,17, $tb_evenement ,$linki);?>
+	 <?php echo $a17=scan_date($nom_cal, $annee, $mois,17, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=18" >
-	 <?php echo $a18=scan_date($nom_cal, $annee, $mois,18, $tb_evenement ,$linki);?>
+	 <?php echo $a18=scan_date($nom_cal, $annee, $mois,18, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=19" >
-	 <?php echo $a19=scan_date($nom_cal, $annee, $mois,19, $tb_evenement ,$linki);?>
+	 <?php echo $a19=scan_date($nom_cal, $annee, $mois,19, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=20" >
-	 <?php echo $a20=scan_date($nom_cal, $annee, $mois,20, $tb_evenement ,$linki);?>
+	 <?php echo $a20=scan_date($nom_cal, $annee, $mois,20, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=21" >
-	 <?php echo $a21=scan_date($nom_cal, $annee, $mois,21, $tb_evenement ,$linki);?>
+	 <?php echo $a21=scan_date($nom_cal, $annee, $mois,21, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=22" >
-	 <?php echo $a22=scan_date($nom_cal, $annee, $mois,22, $tb_evenement ,$linki);?>
+	 <?php echo $a22=scan_date($nom_cal, $annee, $mois,22, $tb_evenement ,$link);?>
 	 </td>
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=23" >
-	 <?php echo $a23=scan_date($nom_cal, $annee, $mois,23, $tb_evenement ,$linki);?>
+	 <?php echo $a23=scan_date($nom_cal, $annee, $mois,23, $tb_evenement ,$link);?>
 	 </td>
      
 	 
 	 <td align="center" >
      <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=24" >
-	  <?php echo $a24=scan_date($nom_cal, $annee, $mois,24, $tb_evenement ,$linki);?></a>
+	  <?php echo $a24=scan_date($nom_cal, $annee, $mois,24, $tb_evenement ,$link);?></a>
      </td>
 	 
 	 
      <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=25" >
-	 <?php echo $a25=scan_date($nom_cal, $annee, $mois,25, $tb_evenement ,$linki);?>
+	 <?php echo $a25=scan_date($nom_cal, $annee, $mois,25, $tb_evenement ,$link);?>
 	 </td>
      
 	 
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=26" >
-	 <?php echo $a26=scan_date($nom_cal, $annee, $mois,26, $tb_evenement ,$linki);?>
+	 <?php echo $a26=scan_date($nom_cal, $annee, $mois,26, $tb_evenement ,$link);?>
 	 </td>
 	 
      
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=27" >
-	 <?php echo $a27=scan_date($nom_cal, $annee, $mois,27, $tb_evenement ,$linki);?>
+	 <?php echo $a27=scan_date($nom_cal, $annee, $mois,27, $tb_evenement ,$link);?>
 	 </td>
      
 	 
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=28" >
-	 <?php echo $a28=scan_date($nom_cal, $annee, $mois,28, $tb_evenement ,$linki);?>
+	 <?php echo $a28=scan_date($nom_cal, $annee, $mois,28, $tb_evenement ,$link);?>
 	 </td>
      
 	 
 	 <td align="center" > 
      <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=29" >
-     <?php echo $a29=scan_date($nom_cal, $annee, $mois,29, $tb_evenement ,$linki);?></a>
+     <?php echo $a29=scan_date($nom_cal, $annee, $mois,29, $tb_evenement ,$link);?></a>
      </td>
      
 	 
 	 <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=30" >
-	 <?php echo $a30=scan_date($nom_cal, $annee, $mois,30, $tb_evenement , $linki);?>
+	 <?php echo $a30=scan_date($nom_cal, $annee, $mois,30, $tb_evenement , $link);?>
 	 </td>
 	 
      <td align="center" >
 	 <a href="evenement_cal.php?nom_cal=<?php echo $nom_cal;?>&annee=<?php echo $annee;?>&mois=<?php echo $mois;?>&jour=31" >
-	 <?php echo $a31=scan_date($nom_cal, $annee, $mois,31, $tb_evenement ,$linki);?>
+	 <?php echo $a31=scan_date($nom_cal, $annee, $mois,31, $tb_evenement ,$link);?>
 	 </td>
    </tr>
  <?php
 }
 
-	function scan_date($nom_cal,$annee, $mois, $jour, $tb_evenement , $linki){
+	function scan_date($nom_cal,$annee, $mois, $jour, $tb_evenement , $link){
 	$sqlfonct = "SELECT COUNT(*) AS nb  FROM $tb_evenement where  id_nom='$nom_cal' and DAY(datev)=$jour and  MONTH(datev)=$mois and YEAR(datev)=$annee ";
-	$resultatfonct = mysqli_query($linki,$sqlfonct) or exit(mysqli_error()); 
+	$resultatfonct = mysqli_query($link,$sqlfonct) or exit(mysqli_error());
 	$nqtfonct = mysqli_fetch_assoc($resultatfonct);
     $nombre=$nqtfonct['nb'] ;
 	if((!isset($nombre)|| empty($nombre))) { $nombre=0; return '';}
@@ -303,9 +303,9 @@ while($data2=mysqli_fetch_array($req2)){
 	}	
 		
 		
-    function personne($login, $tbl_utilisateur , $linki){
+    function personne($login, $tbl_utilisateur , $link){
 	$sqlper = "SELECT * FROM $tbl_utilisateur WHERE u_login LIKE '$login' ";
-	$resultatper=mysqli_query($linki,$sqlper) or die("Invalid query");
+	$resultatper=mysqli_query($link,$sqlper) or die("Invalid query");
     while($Moinadamou=mysqli_fetch_array($resultatper))
 	{
 	$nom=$Moinadamou['u_nom'];

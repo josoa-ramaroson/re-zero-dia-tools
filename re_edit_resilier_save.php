@@ -12,7 +12,7 @@ $date=addslashes($_POST['date']);
 
 
      $ssolde="SELECT * FROM $tbl_fact  WHERE id='$id' and st='E' ORDER BY idf DESC LIMIT 0 , 1";
- 	$rsolde=mysqli_query($linki,$ssolde);
+ 	$rsolde=mysqli_query($link,$ssolde);
 	$datamsolde=mysqli_fetch_array($rsolde);
 
     if ($datamsolde['report']<=0)
@@ -21,7 +21,7 @@ $date=addslashes($_POST['date']);
 //-----------------------------------------------------
 
 $sql="update $tbl_contact  set id_nom='$id_nom', CodeActivite='$CodeActivite' , statut='7' , miseajours='1'  WHERE id='$id'";
-$result=mysqli_query($linki,$sql);
+$result=mysqli_query($link,$sql);
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ini_set('SMTP','smtp.comorestelecom.km');
@@ -31,7 +31,7 @@ $texte = " l'agent : $id_nom a realisé une resilation du client  $nomprenom son
 mail($destinataires,$sujet,$texte,"From:contact@sonelecanjouan.com");
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-   mysqli_close($linki); 
+   mysqli_close($link);
    
 
 	}

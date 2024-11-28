@@ -8,7 +8,7 @@
 	$u_pwd=md5(addslashes($valeur));
 	require 'fonction.php';
 	$sqlp="update  $tbl_utilisateur set  u_pwd='$u_pwd' WHERE  u_login='$u_login'";
-	$resultp=mysqli_query($linki,$sqlp);
+	$resultp=mysqli_query($link,$sqlp);
     header("location:utilisateurs.php");
 
 ?>

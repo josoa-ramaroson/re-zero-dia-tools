@@ -24,13 +24,13 @@ $RefCommune=substr($RefQuartier,0,3);
 $refville=addslashes($_POST['refville']);
 
 $sql1 = "SELECT * FROM quartier where id_quartier=$RefQuartier";
-$result1 = mysql_query($sql1);
+$result1 = mysqli_query($link, $sql1);
 while ($row1 = mysql_fetch_assoc($result1)) {
 $quartier=$row1['quartier'];
 }  
 
 $sql2 = "SELECT * FROM ville where refville=$refville";
-$result2 = mysql_query($sql2);
+$result2 = mysqli_query($link, $sql2);
 while ($row2 = mysql_fetch_assoc($result2)) {
 $ville=$row2['ville'];
 } 
@@ -43,12 +43,12 @@ $ville=$row2['ville'];
   <?php
 require 'configuration.php';
 $sql = "SELECT * FROM  $tbl_contact c  where c.ville='$m1v' and  c.quartier='$m2q' and statut='6'   ORDER BY c.id ASC";  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
 	function stat_eda($mois,$annee,$tv_facturation, $id){
 	$sql = "SELECT SUM(cons) AS cons, SUM(totalht) AS totalht, SUM(tax) AS tax, SUM(totalttc) AS totalttc, SUM(ortc) AS ortc, SUM(impayee) AS impayee, SUM(Pre) AS Pre, SUM(totalnet) AS totalnet, RefLocalite , nserie , fannee , st 
 	FROM $tv_facturation where  st='E' and  fannee='$annee'  and nserie='$mois' and id='$id' "; 
-	$resultat = mysql_query($sql) or exit(mysql_error()); 
+	$resultat = mysqli_query($link, $sql) or exit(mysql_error());
 	$nqt = mysql_fetch_assoc($resultat);
 
 	if((!isset($nqt['cons'])|| empty($nqt['cons']))) { $qt=0; return $qt;}
@@ -77,7 +77,7 @@ Base de connaissance  Ville : <em><?php echo  $m1v;?></em> Quartier : <em><?php 
      <td width="8%" align="center">&nbsp;</td>
   </tr>
    <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row 
 ?>
    <tr>
      <td align="center" ><em><?php echo $the_id=$data['id'];?></em></td>
@@ -109,7 +109,7 @@ while($data=mysql_fetch_array($req)){ // Start looping table row
      <td align="center" ><em><?php echo $alerte=$AL+$AL1+$AL2+$AL3+$AL4+$AL5+$AL6+$AL7+$AL8+$AL9;
 	 
 	 $sqlcon="update $tbl_contact set alerte=$alerte where id='$the_id'";
-     $connection=mysqli_query($linki,$sqlcon);
+     $connection=mysqli_query($link,$sqlcon);
 	 
 	 
 	 ?></em></td>

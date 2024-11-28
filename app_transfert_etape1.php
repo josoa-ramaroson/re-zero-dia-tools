@@ -24,9 +24,9 @@ require 'bienvenue.php';    // on appelle la page contenant la fonction
 require 'fonction.php';
 $sql = "SELECT count(*) FROM $tbl_apptransfert where statut='1'";  
 
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
  
-$nb_total = mysql_fetch_array($resultat);  
+$nb_total = mysqli_fetch_array($resultat);
 
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
@@ -40,10 +40,10 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tbl_apptransfert  where statut='1' ORDER BY idtansft DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
  
 // on ex?cute la requ?te  ASC
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 
 	$sqldate="SELECT * FROM $tbl_caisse"; //DESC  ASC
-	$resultldate=mysqli_query($linki,$sqldate);
+	$resultldate=mysqli_query($link,$sqldate);
 	$datecaisse=mysqli_fetch_array($resultldate);
 
 ?>
@@ -62,7 +62,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
     <td width="150" bgcolor="#3071AA"><strong><font color="#FFFFFF">Agent(C)</font></strong></td>
   </tr>
   <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
   <tr bgcolor="<?php gettatut($data['statut']); ?>">
     <td ><?php echo $data['idtansft']; ?>

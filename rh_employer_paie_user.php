@@ -53,14 +53,14 @@ require 'bienvenue.php';    // on appelle la page contenant la fonction
 $mr1=addslashes($_POST['mr1']);
  
 $sql = "SELECT * FROM  $tb_rhpaie where matricule='$mr1' and  anneepaie='$anneepaie' and moispaie='$moispaie'";  
-$req = mysql_query($sql);  
+$req = mysqli_query($link, $sql);  
 
 	//recherche du repport 
 ?>
  </p>
 <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
    <?php
-while($datam=mysql_fetch_array($req)){ // Start looping table row 
+while($datam=mysqli_fetch_array($req)){ // Start looping table row 
 ?>
    <tr>
    

@@ -25,8 +25,8 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
 $idr=$_POST['idr'];
 
 $sqlreservation="SELECT * FROM $tbl_paiement WHERE id='$idr' ORDER BY idp desc limit 0,1";
-$resultatreserv=mysql_query($sqlreservation);
-$ident=mysql_fetch_array($resultatreserv);
+$resultatreserv=mysqli_query($link, $sqlreservation);
+$ident=mysqli_fetch_array($resultatreserv);
 
 if ($ident) {
 $idr=$ident['idp'];
@@ -40,11 +40,11 @@ $date=$ident['date'];
 }
 
 	$sqfac="SELECT * FROM $tbl_paiement WHERE id='$id'  ORDER BY idp DESC "; //DESC  ASC
-	$resultfac=mysql_query($sqfac);
+	$resultfac=mysqli_query($link, $sqfac);
 	
 	$sqldate="SELECT * FROM $tbl_caisse "; //DESC  ASC
-	$resultldate=mysql_query($sqldate);
-	$datecaisse=mysql_fetch_array($resultldate);
+	$resultldate=mysqli_query($link, $sqldate);
+	$datecaisse=mysqli_fetch_array($resultldate);
 
 if ($ident) {
 }
@@ -145,7 +145,7 @@ else {
     <td width="17%" align="center" bgcolor="#FFFFFF">Reste à payer</td>
   </tr>
   <?php
-while($rowsfac=mysql_fetch_array($resultfac)){ 
+while($rowsfac=mysqli_fetch_array($resultfac)){
 ?>
   <tr>
     <td align="center" bgcolor="#FFFFFF"><div align="left"><em><?php echo $rowsfac['idp'];?></em></div></td>

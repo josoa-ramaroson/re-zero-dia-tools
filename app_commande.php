@@ -84,7 +84,7 @@ httpxml.send(null);
 <?php
 require 'bienvenue.php';  
 	$sqldate="SELECT * FROM $tbl_app_caisse "; //DESC  ASC
-	$resultldate=mysqli_query($linki,$sqldate);
+	$resultldate=mysqli_query($link,$sqldate);
 	$datecaisse=mysqli_fetch_array($resultldate);
 ?>
 <body>
@@ -169,7 +169,7 @@ echo "<option value=$row[idrh]>$row[direction]</option>";
   
 $sql = "SELECT count(*) FROM $tbl_appcommande where statut='Traitement' ";  
 
-$resultat = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$resultat = mysqli_query($link,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());
  
  
 $nb_total = mysqli_fetch_array($resultat);  
@@ -188,7 +188,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 $sql = "SELECT * FROM $tbl_appcommande  where statut='Traitement' ORDER BY id_dem DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
  
 
-$req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());  
+$req = mysqli_query($link,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error());
 ?>
 </font></strong></font></font></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></p>
 <form name="form2" method="post" action="produit_cancel.php">
@@ -223,7 +223,7 @@ mysqli_free_result ($req);
    echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
 }  
 mysqli_free_result ($resultat);  
-mysqli_close ($linki);  
+mysqli_close ($link);
 ?>
   </table>
 </form>

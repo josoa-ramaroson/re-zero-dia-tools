@@ -2,7 +2,7 @@
   
     require 'fonction.php';
 	$sqlVER="SELECT * FROM $tbl_seq_transf  WHERE  n_transfert='2' " ;
-	$resultatVER= mysqli_query($linki,$sqlVER);
+	$resultatVER= mysqli_query($link,$sqlVER);
 	while ($VERIFICATION = mysqli_fetch_assoc($resultatVER)) {
 	$sequence=$VERIFICATION['n_sequence'];
 	}
@@ -32,8 +32,8 @@ while($reader->read()) {
 	  require 'fonction.php';
 	  
 	  $sqlfacturation = "SELECT * FROM $tbl_contact where  id='$id' and statut='6' ";  
-      $resultatfact=mysql_query($sqlfacturation);
-      $ident=mysql_fetch_array($resultatfact);
+      $resultatfact=mysqli_query($link, $sqlfacturation);
+      $ident=mysqli_fetch_array($resultatfact);
 	  if ($ident){
 	 $st='E'; 
      $libelle='facture';
@@ -49,11 +49,11 @@ while($reader->read()) {
 	  	  
 	  $sql="INSERT INTO releve_bach_tempo( id_nom,  id, valeur, miseajours, type, st , libelle, bnom, bquartier , bstatut , n, Tarif , coefTi , amperage , chtaxe ) VALUES 
 	  ( '$id_nom', '$id', '$valeur', '$miseajours', '$type', '$st' , '$libelle', '$bnom', '$bquartier', '$bstatut', '$n' , '$Tarif',  '$coefTi','$amperage','$chtaxe'  )";
-      $result=mysqli_query($linki,$sql);
+      $result=mysqli_query($link,$sql);
   
       $periode=date("y/m/d H:i:s"); 
       $sqlmj2="update  $tbl_seq_transf  set  n_sequence='$idpb' , periode='$periode' WHERE  n_transfert=2";
-      $resulmj2=mysqli_query($linki,$sqlmj2);	
+      $resulmj2=mysqli_query($link,$sqlmj2);	
   
   
 	}

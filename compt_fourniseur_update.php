@@ -26,7 +26,7 @@ Require 'bienvenue.php';    // on appelle la page contenant la fonction
     <h3 class="panel-title">Modifier un fourniseur 
       <?php
 $req1="SELECT * FROM $tb_comptf  ";
-$req=mysql_query($req1);
+$req=mysqli_query($link, $req1);
 ?>
     </h3>
     </div>
@@ -39,8 +39,8 @@ $req=mysql_query($req1);
             <?php
 $idf=substr($_REQUEST["idf"],32);
 $sql="SELECT *  FROM $tb_comptf where idf='$idf' "; 
-$result=mysql_query($sql);
-$rows=mysql_fetch_array($result);
+$result=mysqli_query($link, $sql);
+$rows=mysqli_fetch_array($result);
    
 mysql_close();
 			
@@ -147,7 +147,7 @@ mysql_close();
     <td width="" align="center">&nbsp;</td>
   </tr>
   <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
   <tr>
     <td bgcolor="#FFFFFF"><div align="left"> <?php echo $data['Numf'];?> <BR>

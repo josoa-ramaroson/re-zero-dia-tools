@@ -36,10 +36,10 @@ require("bienvenue.php");
 //$nc=addslashes($_POST['nc']);
 $_SESSION["nc"]=$nc;
 $sql1="SELECT SUM(PTotal) AS prix , nc , datev  FROM $tbl_vente   where  nc='$nc' GROUP BY datev ORDER BY datev  ASC  ";
-$req=mysql_query($sql1);
+$req=mysqli_query($link, $sql1);
 
 $sql5="SELECT * FROM $tbl_clientgaz  where  id='$nc'  ";
-$req5=mysql_query($sql5);
+$req5=mysqli_query($link, $sql5);
 
 ?>
   </font></strong></font></font></font></font></p>
@@ -61,7 +61,7 @@ $req5=mysql_query($sql5);
                         <?php
 
 $sql4 = "SELECT *  FROM $tbl_clientgaz  ORDER BY nomprenom   ASC ";
-$result4 = mysql_query($sql4);
+$result4 = mysqli_query($link, $sql4);
 while ($row4 = mysql_fetch_assoc($result4)) {
 echo '<option value='.$row4['id'].'>'.$row4['nomprenom'].'</option>';
 }
@@ -103,8 +103,8 @@ echo '<option value='.$row4['id'].'>'.$row4['nomprenom'].'</option>';
               Unitaire </strong></font></td>
           </tr>
           <?php
-while($data5=mysql_fetch_array($req5)){ // Start looping table row
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data5=mysqli_fetch_array($req5)){ // Start looping table row
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
           <tr> 
             <td bgcolor="#FFFFFF"><div align="left"><strong></strong><?php echo $data['nc'];?><BR>

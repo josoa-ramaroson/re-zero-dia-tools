@@ -9,7 +9,7 @@
 	$v1= md5(microtime());
 	
 	$sql5="DELETE FROM $tbl_client_doc  WHERE  iddocument='$iddocument' ";
-    $result5=mysqli_query($linki,$sql5);
+    $result5=mysqli_query($link,$sql5);
     if($result5){
     //echo " cancel ";
     }

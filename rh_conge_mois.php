@@ -102,8 +102,8 @@ require 'fonction.php';
 $annee=$_POST['annee']; 
 
 $sql = "SELECT count(*) FROM $tb_rhconge_date where MONTH(date_entre)=$mois and YEAR(date_entre)=$annee ";  
-$resultat = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
-$nb_total = mysql_fetch_array($resultat);  
+$resultat = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+$nb_total = mysqli_fetch_array($resultat);
 if (($nb_total = $nb_total[0]) == 0) {  
 echo 'Aucune reponse trouvee';  
 }  
@@ -111,7 +111,7 @@ else {
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 50; 
 $sql = "SELECT * FROM $tb_rhconge_date  where MONTH(date_entre)=$mois and YEAR(date_entre)=$annee ORDER BY matricule ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
-$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
+$req = mysqli_query($link, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
 ?>
 </p>
 <div class="panel panel-primary">
@@ -141,7 +141,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error()
               <select name="annee" size="1" id="annee">
                 <?php
 $sql81 = ("SELECT * FROM annee  ORDER BY annee ASC ");
-$result81 = mysqli_query($linki,$sql81);
+$result81 = mysqli_query($link,$sql81);
 
 while ($row81 = mysqli_fetch_assoc($result81)) {
 echo '<option> '.$row81['annee'].' </option>';
@@ -166,7 +166,7 @@ echo '<option> '.$row81['annee'].' </option>';
     <td width="16%" align="center"><font color="#FFFFFF"><strong>Type d'absence</strong></font></td>
   </tr>
   <?php
-while($data=mysql_fetch_array($req)){ // Start looping table row 
+while($data=mysqli_fetch_array($req)){ // Start looping table row
 ?>
   <tr>
     <td align="center" bgcolor="#FFFFFF"><em><?php echo $data['matricule'];?></em></td>

@@ -12,7 +12,7 @@ $sqlp="INSERT INTO $tb_echangreponse  (idv   , id_nom   ,niveau,  nom   , dater 
                     VALUES       ('$idv','$id_nom',  '$niveau' ,'$nom', '$dater')";
 					
 													
-$r=mysql_query($sqlp);
+$r=mysqli_query($link, $sqlp);
 mysql_close($link);
 
 ?>

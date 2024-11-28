@@ -21,16 +21,16 @@ $idf=substr($_REQUEST["idf"],32);
 require 'fonction.php';
 require 'configuration.php';
 
-$link = mysql_connect ($host,$user,$pass); 
-mysql_select_db($db);
+$link = mysqli_connect ($host,$user,$pass); 
+mysqli_select_db($link, $db);
 //$idf=substr($_REQUEST["idf"],32);
 $sql5="SELECT * FROM $tbl_contact c , $tbl_fact f WHERE c.id=f.id and f.idf='$idf' and st='E'";
-$req5=mysql_query($sql5);
+$req5=mysqli_query($link, $sql5);
 
 	$sqlp="update  $tbl_fact  set impression='imprimé' WHERE idf='$idf' and st='E'";
-    $resultp=mysql_query($sqlp);
+    $resultp=mysqli_query($link, $sqlp);
 
-while($data5=mysql_fetch_array($req5)){
+while($data5=mysqli_fetch_array($req5)){
 ?>
     </span></h1>
     <p align="center"> <b><?php echo $data5['nserie'].'/'.$data5['fannee']; ?></b></p></td></td>
