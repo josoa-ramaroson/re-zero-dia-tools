@@ -128,205 +128,207 @@ $datam=mysqli_fetch_array($req);
     </form>
   </div>
 </div>
+    <?php if($id != null) { ?>
 <table width="100%" border="0" align="center">
-                  <tr bgcolor="#0794F0">
-          <td colspan="6" bgcolor="#3071AA"><div align="center"><strong><font color="#FFFFFF">Information de la personne  </font></strong></div></td>
-  </tr>
-  <tr>
-    <td height="107"><form action="re_enregistrement_save.php" method="post" name="form1" id="form1">
-      <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
-        <tr>
-          <td width="11%">ID_CLIENT</td>
-          <td width="1%">&nbsp;</td>
-          <td width="35%"><strong>
-            <?php echo $datam['id'];?>
-            </strong></td>
-          <td width="1%">&nbsp;</td>
-          <td width="12%">&nbsp;</td>
-          <td width="40%">&nbsp;</td>
-        </tr>
-        <tr>
-          <td><strong><font size="2">Designation</font></strong></td>
-          <td>&nbsp;</td>
-          <td><strong>
-           <?php echo $datam['Designation'];?>
-          </strong></td>
-          <td>&nbsp;</td>
-          <td><strong><font color="#000000" size="2">Ville</font></strong></td>
-          <td><strong>
-           <?php echo $datam['ville'];?>
-          </strong></td>
-        </tr>
-        <tr>
-          <td><strong><font size="2">Nom et Prénom <font size="2"><font color="#FF0000"> *</font></font></font></strong></td>
-          <td>&nbsp;</td>
-          <td><?php echo $datam['nomprenom'];?>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td><strong><font size="2">Quartier</font></strong></td>
-          <td><strong>
-            <?php echo $datam['quartier'];?>
-          </strong></td>
-        </tr>
-      </table>
-    </form></td>
-  </tr>
+    <tr bgcolor="#0794F0">
+        <td colspan="6" bgcolor="#3071AA"><div align="center"><strong><font color="#FFFFFF">Information de la personne  </font></strong></div></td>
+    </tr>
+    <tr>
+        <td height="107"><form action="re_enregistrement_save.php" method="post" name="form1" id="form1">
+                <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+                    <tr>
+                        <td width="11%">ID_CLIENT</td>
+                        <td width="1%">&nbsp;</td>
+                        <td width="35%"><strong>
+                                <?php echo $datam['id'];?>
+                            </strong></td>
+                        <td width="1%">&nbsp;</td>
+                        <td width="12%">&nbsp;</td>
+                        <td width="40%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><strong><font size="2">Designation</font></strong></td>
+                        <td>&nbsp;</td>
+                        <td><strong>
+                                <?php echo $datam['Designation'];?>
+                            </strong></td>
+                        <td>&nbsp;</td>
+                        <td><strong><font color="#000000" size="2">Ville</font></strong></td>
+                        <td><strong>
+                                <?php echo $datam['ville'];?>
+                            </strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong><font size="2">Nom et Prénom <font size="2"><font color="#FF0000"> *</font></font></font></strong></td>
+                        <td>&nbsp;</td>
+                        <td><?php echo $datam['nomprenom'];?>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td><strong><font size="2">Quartier</font></strong></td>
+                        <td><strong>
+                                <?php echo $datam['quartier'];?>
+                            </strong></td>
+                    </tr>
+                </table>
+            </form></td>
+    </tr>
 </table>
 <div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">CHANGEMENT DE COMPTEUR </h3>
-  </div>
-  <div class="panel-body">
-    <form action="re_edit_modifcompt_save.php" method="post" name="testform" id="form2">
-      <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
-        <tr>
-          <td width="11%">&nbsp;</td>
-          <td width="1%">&nbsp;</td>
-          <td width="35%"><strong>
-            <input name="id" type="hidden" id="id" value="<?php echo $datam['id'];?>" size="10" readonly="readonly" />
-            </strong><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-              <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
-            </font><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-            <input name="nomprenom" type="hidden" id="nomprenom" value="<?php echo $datam['nomprenom'];?>" />
-            </font><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font color="#FF0000">
-            <input name="quartier" type="hidden" id="quartier" value="<?php echo $datam['quartier'];?>" />
-            </font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></td>
-          <td width="1%">&nbsp;</td>
-          <td width="16%">&nbsp;</td>
-          <td width="36%">&nbsp;</td>
-        </tr>
-        <tr>
-          <td><strong><font size="2">N° Phase</font></strong></td>
-          <td>&nbsp;</td>
-          <td><strong>
-            <input name="phase" type="text" disabled="disabled" id="phase" value="<?php echo $datam['phase'];?>" size="40" readonly="readonly" />
-          </strong></td>
-          <td>&nbsp;</td>
-          <td><strong><font size="2">N° Phase</font></strong></td>
-          <td><strong>
-            <select name="phase" id="phase">
-              <option selected="selected"><?php echo $datam['phase']; ?></option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-            </select>
-          </strong></td>
-        </tr>
-        <tr>
-          <td><strong>Puissance</strong></td>
-          <td>&nbsp;</td>
-          <td><strong>
-            <input name="nomprenomi" type="text" disabled="disabled" id="nomprenomi" value="<?php echo $datam['puissance'];?>" size="40" readonly="readonly" />
-          </strong></td>
-          <td>&nbsp;</td>
-          <td><strong>Puissance</strong></td>
-          <td><strong>
-            <select name="puissance" id="puissance">
-              <option selected="selected"><?php echo $datam['puissance']; ?></option>
-              <option>1</option>
-              <option>2</option>
-            </select>
-          </strong></td>
-        </tr>
-        <tr>
-          <td><strong><font color="#000000" size="2">Tarif</font></strong></td>
-          <td>&nbsp;</td>
-          <td><strong>
-            <input name="Tarif" type="text" disabled="disabled" id="secteur2" value="<?php
-$T=$datam['Tarif'];
-$sql82 = ("SELECT * FROM tarif where idt='$T'");
-$result82 = mysqli_query($linki,$sql82);
-while ($row82 = mysqli_fetch_assoc($result82)) {
-echo $row82['Libelle'];
-}
+    <div class="panel-heading">
+        <h3 class="panel-title">CHANGEMENT DE COMPTEUR </h3>
+    </div>
+    <div class="panel-body">
+        <form action="re_edit_modifcompt_save.php" method="post" name="testform" id="form2">
+            <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+                <tr>
+                    <td width="11%">&nbsp;</td>
+                    <td width="1%">&nbsp;</td>
+                    <td width="35%"><strong>
+                            <input name="id" type="hidden" id="id" value="<?php echo $datam['id'];?>" size="10" readonly="readonly" />
+                        </strong><font size="2"><strong><font size="2"><strong><font color="#FF0000">
+                                            <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>" />
+                                        </font><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font color="#FF0000">
+                                                                            <input name="nomprenom" type="hidden" id="nomprenom" value="<?php echo $datam['nomprenom'];?>" />
+                                                                        </font><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font size="2"><strong><font color="#FF0000">
+                                                                                                                            <input name="quartier" type="hidden" id="quartier" value="<?php echo $datam['quartier'];?>" />
+                                                                                                                        </font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></strong></font></td>
+                    <td width="1%">&nbsp;</td>
+                    <td width="16%">&nbsp;</td>
+                    <td width="36%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><strong><font size="2">N° Phase</font></strong></td>
+                    <td>&nbsp;</td>
+                    <td><strong>
+                            <input name="phase" type="text" disabled="disabled" id="phase" value="<?php echo $datam['phase'];?>" size="40" readonly="readonly" />
+                        </strong></td>
+                    <td>&nbsp;</td>
+                    <td><strong><font size="2">N° Phase</font></strong></td>
+                    <td><strong>
+                            <select name="phase" id="phase">
+                                <option selected="selected"><?php echo $datam['phase']; ?></option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Puissance</strong></td>
+                    <td>&nbsp;</td>
+                    <td><strong>
+                            <input name="nomprenomi" type="text" disabled="disabled" id="nomprenomi" value="<?php echo $datam['puissance'];?>" size="40" readonly="readonly" />
+                        </strong></td>
+                    <td>&nbsp;</td>
+                    <td><strong>Puissance</strong></td>
+                    <td><strong>
+                            <select name="puissance" id="puissance">
+                                <option selected="selected"><?php echo $datam['puissance']; ?></option>
+                                <option>1</option>
+                                <option>2</option>
+                            </select>
+                        </strong></td>
+                </tr>
+                <tr>
+                    <td><strong><font color="#000000" size="2">Tarif</font></strong></td>
+                    <td>&nbsp;</td>
+                    <td><strong>
+                            <input name="Tarif" type="text" disabled="disabled" id="secteur2" value="<?php
+                            $T=$datam['Tarif'];
+                            $sql82 = ("SELECT * FROM tarif where idt='$T'");
+                            $result82 = mysqli_query($linki,$sql82);
+                            while ($row82 = mysqli_fetch_assoc($result82)) {
+                                echo $row82['Libelle'];
+                            }
 
-?>" size="40" readonly="readonly" />
-          </strong></td>
-          <td>&nbsp;</td>
-          <td><strong><font color="#000000" size="2">Tarif</font></strong></td>
-          <td><strong>
-            <select name="Tarif" id="Tarif">
-      
-            
-              <?php
-			  $sql8 = ("SELECT * FROM tarif ORDER BY idt ASC");
-$result8 = mysqli_query($linki,$sql8);
-while ($row8 = mysqli_fetch_assoc($result8)) {
-echo '<option value='.$row8['idt'].'> '.$row8['Libelle'].' </option>';
-}
+                            ?>" size="40" readonly="readonly" />
+                        </strong></td>
+                    <td>&nbsp;</td>
+                    <td><strong><font color="#000000" size="2">Tarif</font></strong></td>
+                    <td><strong>
+                            <select name="Tarif" id="Tarif">
 
-?>
-            </select>
-          </strong></td>
-        </tr>
-        <tr>
-          <td><strong><font size="2">Calibre ( Amperage)</font></strong></td>
-          <td>&nbsp;</td>
-          <td><strong>
-            <input name="amperage" type="text" disabled="disabled" id="amperage" value="<?php echo $datam['amperage'];?>" size="40" readonly="readonly" />
-          </strong></td>
-          <td>&nbsp;</td>
-          <td><strong><font size="2">Calibre ( Amperage)</font></strong></td>
-          <td></select><strong>
-            <input name="amperage" type="text" id="amperage" value="10" size="20" />
-            </strong></td>
-        </tr>
-        <tr>
-          <td><strong><font size="2">Numero Compteur</font></strong></td>
-          <td>&nbsp;</td>
-          <td><strong>
-            <input name="ncompteur" type="text" disabled="disabled" id="ncompteur" value="<?php echo $datam['ncompteur'];?>" size="40" readonly="readonly" />
-          </strong></td>
-          <td>&nbsp;</td>
-          <td><strong><font size="2">Numero Compteur</font></strong></td>
-          <td><strong>
-            <input name="ncompteur" type="text" id="ncompteur" size="20" />
-          </strong></td>
-        </tr>
-        <tr>
-          <td><strong><font size="2">Index de depart J</font></strong></td>
-          <td>&nbsp;</td>
-          <td><strong>
-            <input name="Indexinitial" type="text" disabled="disabled" id="Indexinitial" value="<?php echo $datam['Indexinitial'];?>" size="40" readonly="readonly" />
-          </strong></td>
-          <td>&nbsp;</td>
-          <td><strong><font size="2">Index de depart Jour </font></strong></td>
-          <td><strong>
-            <input name="Indexinitial" type="text" id="Indexinitial" size="20" />
-          </strong></td>
-        </tr>
-        <tr>
-          <td><strong><font size="2">Index de depart N</font></strong></td>
-          <td>&nbsp;</td>
-          <td><strong>
-            <input name="index2" type="text" disabled="disabled" id="index2" value="<?php echo $datam['index2'];?>" size="40" readonly="readonly" />
-          </strong></td>
-          <td>&nbsp;</td>
-          <td><strong><font size="2">Index de depart</font></strong> Nuit </td>
-          <td><strong>
-            <input name="index2" type="text" id="index2" size="20" />
-          </strong></td>
-        </tr>
-        <tr>
-          <td><strong><font size="2">Date de pose</font></strong></td>
-          <td>&nbsp;</td>
-          <td><strong>
-            <input name="datepose" type="text" disabled="disabled" id="datepose" value="<?php echo $datam['datepose'];?>" size="40" readonly="readonly" />
-          </strong></td>
-          <td>&nbsp;</td>
-          <td><strong><font size="2">Date de pose</font></strong></td>
-          <td><input name="date" type="text" id="date" value="<?php echo $datecaisse['datecaisse'];?>" size="30" readonly="readonly" /></td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td><strong><span style="font-size:8.5pt;font-family:Arial">
+
+                                <?php
+                                $sql8 = ("SELECT * FROM tarif ORDER BY idt ASC");
+                                $result8 = mysqli_query($linki,$sql8);
+                                while ($row8 = mysqli_fetch_assoc($result8)) {
+                                    echo '<option value='.$row8['idt'].'> '.$row8['Libelle'].' </option>';
+                                }
+
+                                ?>
+                            </select>
+                        </strong></td>
+                </tr>
+                <tr>
+                    <td><strong><font size="2">Calibre ( Amperage)</font></strong></td>
+                    <td>&nbsp;</td>
+                    <td><strong>
+                            <input name="amperage" type="text" disabled="disabled" id="amperage" value="<?php echo $datam['amperage'];?>" size="40" readonly="readonly" />
+                        </strong></td>
+                    <td>&nbsp;</td>
+                    <td><strong><font size="2">Calibre ( Amperage)</font></strong></td>
+                    <td></select><strong>
+                            <input name="amperage" type="text" id="amperage" value="10" size="20" />
+                        </strong></td>
+                </tr>
+                <tr>
+                    <td><strong><font size="2">Numero Compteur</font></strong></td>
+                    <td>&nbsp;</td>
+                    <td><strong>
+                            <input name="ncompteur" type="text" disabled="disabled" id="ncompteur" value="<?php echo $datam['ncompteur'];?>" size="40" readonly="readonly" />
+                        </strong></td>
+                    <td>&nbsp;</td>
+                    <td><strong><font size="2">Numero Compteur</font></strong></td>
+                    <td><strong>
+                            <input name="ncompteur" type="text" id="ncompteur" size="20" />
+                        </strong></td>
+                </tr>
+                <tr>
+                    <td><strong><font size="2">Index de depart J</font></strong></td>
+                    <td>&nbsp;</td>
+                    <td><strong>
+                            <input name="Indexinitial" type="text" disabled="disabled" id="Indexinitial" value="<?php echo $datam['Indexinitial'];?>" size="40" readonly="readonly" />
+                        </strong></td>
+                    <td>&nbsp;</td>
+                    <td><strong><font size="2">Index de depart Jour </font></strong></td>
+                    <td><strong>
+                            <input name="Indexinitial" type="text" id="Indexinitial" size="20" />
+                        </strong></td>
+                </tr>
+                <tr>
+                    <td><strong><font size="2">Index de depart N</font></strong></td>
+                    <td>&nbsp;</td>
+                    <td><strong>
+                            <input name="index2" type="text" disabled="disabled" id="index2" value="<?php echo $datam['index2'];?>" size="40" readonly="readonly" />
+                        </strong></td>
+                    <td>&nbsp;</td>
+                    <td><strong><font size="2">Index de depart</font></strong> Nuit </td>
+                    <td><strong>
+                            <input name="index2" type="text" id="index2" size="20" />
+                        </strong></td>
+                </tr>
+                <tr>
+                    <td><strong><font size="2">Date de pose</font></strong></td>
+                    <td>&nbsp;</td>
+                    <td><strong>
+                            <input name="datepose" type="text" disabled="disabled" id="datepose" value="<?php echo $datam['datepose'];?>" size="40" readonly="readonly" />
+                        </strong></td>
+                    <td>&nbsp;</td>
+                    <td><strong><font size="2">Date de pose</font></strong></td>
+                    <td><input name="date" type="text" id="date" value="<?php echo $datecaisse['datecaisse'];?>" size="30" readonly="readonly" /></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td><strong><span style="font-size:8.5pt;font-family:Arial">
             <input type="submit" name="Submit" value="Enregistrer" />
           </span></strong></td>
-        </tr>
-      </table>
+                </tr>
+            </table>
+            <?php } ?>
     </form>
   </div>
 </div>
