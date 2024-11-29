@@ -1,175 +1,154 @@
 <?php
-require 'session.php';
+Require 'session.php';
 require 'fc-affichage.php';
 require 'fonction.php';
+require_once('calendar/classes/tc_calendar.php');
 ?>
+
 <html>
 <head>
 <title><?php include("titre.php"); ?></title>
 <meta name="viewport" content="width=device-width, minimum-scale=0.25"/>
-
-<!-- Bootstrap et jQuery UI pour un meilleur design -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
+<script language="JavaScript" src="js/validator.js" type="text/javascript" xml:space="preserve"></script>
+<link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 .centrevaleur {
-    text-align: center;
+	text-align: center;
 }
 .centrevaleur td {
-    text-align: center;
+	text-align: center;
 }
-.taille16 {
-    font-size: 16px;
+.taille16 {	font-size: 16px;
 }
 </style>
+<script language="javascript" src="calendar/calendar.js"></script>
+
 </head>
 <?php
-require("bienvenue.php");
+Require("bienvenue.php");    // on appelle la page contenant la fonction
 ?>
-<body>
-<?php
-require 'configuration.php';
+<body link="#0000FF" vlink="#0000FF" alink="#0000FF">
+ <?php //require 'rapport_lien.php'; ?>
+<p><font size="2"><font size="2"><font size="2">
+  <?php
+ $date=$_POST['datec'];
+ $agent=$_POST['agent']; 
+// Connect to server and select databse.
 
-// Vérification et conversion de la date
-if(!isset($_POST['datec']) || !isset($_POST['agent'])) {
-    die('Paramètres manquants');
-}
-
-// Conversion de la date du format dd-mm-yyyy vers yyyy-mm-dd
-$dateInput = $_POST['datec'];
-$dateParts = explode('-', $dateInput);
-if(count($dateParts) == 3) {
-    $date = $dateParts[2] . '-' . $dateParts[1] . '-' . $dateParts[0];
-} else {
-    die('Format de date invalide');
-}
-
-$agent = mysqli_real_escape_string($linki, $_POST['agent']);
-$date = mysqli_real_escape_string($linki, $date);
-
-// Requête initiale
 $sql = "SELECT count(*) FROM $tbl_paiement";  
-$resultat = mysqli_query($linki, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
+
+$resultat = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
+ 
+ 
 $nb_total = mysqli_fetch_array($resultat);  
-
+ // on teste si ce nombre de vaut pas 0  
 if (($nb_total = $nb_total[0]) == 0) {  
-    echo 'Aucune réponse trouvée';  
-} else { 
-    if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
-    $nb_affichage_par_page = 10; 
+echo 'Aucune reponse trouvee';  
+}  
+else { 
+        // premi?re ligne on affiche les titres pr?nom et surnom dans 2 colonnes
+  
+    
+   
+// sinon, on regarde si la variable $debut (le x de notre LIMIT) n'a pas d?j? ?t? d?clar?e, et dans ce cas, on l'initialise ? 0  
+if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
+    
+	// 6 maroufchangement 1 par 5
+   $nb_affichage_par_page = 10; 
+   
 
-    // Requête pour les données groupées par statut
-    $sql = "SELECT SUM(paiement) AS Paie, SUM(ortc_dp) AS ortc_dp, SUM(tax_dp) AS tax_dp, 
-            SUM(totalht_dp) AS totalht_dp, st, date, id_nom 
-            FROM $tbl_paiement 
-            WHERE id_nom='$agent' AND date='$date' 
-            GROUP BY st 
-            LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;
-    $req = mysqli_query($linki, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki)); 
+$sql = "SELECT SUM(paiement) AS Paie,  SUM(ortc_dp) AS ortc_dp, SUM(tax_dp) AS tax_dp, SUM(totalht_dp) AS totalht_dp, st, date , id_nom FROM $tbl_paiement where id_nom='$agent' and date='$date' GROUP BY st  LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC  DESC
 
-    // Requête pour les totaux
-    $sqlt = "SELECT SUM(paiement) AS Paie, SUM(ortc_dp) AS ortc_dp, SUM(tax_dp) AS tax_dp, 
-             SUM(totalht_dp) AS totalht_dp, id_nom, date, st, nserie 
-             FROM $tbl_paiement 
-             WHERE id_nom='$agent' AND date='$date'";
-    $reqt = mysqli_query($linki, $sqlt); 
+// on ex?cute la requ?te  
+$req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki)); 
 
-    // Requête pour les paiements électriques
-    $sqltE = "SELECT SUM(paiement) AS PaieE, id_nom, date, st, nserie 
-              FROM $tbl_paiement 
-              WHERE st='E' AND id_nom='$agent' AND date='$date'";
-    $reqtE = mysqli_query($linki, $sqltE); 
-    $datatE = mysqli_fetch_array($reqtE);
-    ?>
+$sqlt = "SELECT SUM(paiement) AS Paie,  SUM(ortc_dp) AS ortc_dp, SUM(tax_dp) AS tax_dp, SUM(totalht_dp) AS totalht_dp, id_nom , date , st , nserie FROM $tbl_paiement where  id_nom='$agent' and date='$date'";  //ASC  DESC
+$reqt = mysqli_query($linki,$sqlt); 
 
-    <div class="container-fluid">
-        <a href="rapport_agentimp.php?datec=<?php echo md5(microtime()).$date;?>&agent=<?php echo md5(microtime()).$agent;?>" 
-           class="btn btn-primary mb-3" target="_blank">
-            <img src="images/imprimante.png" width="50" height="30" alt="Imprimer">
-        </a>
 
-        <!-- Premier tableau -->
-        <table class="table table-bordered">
-            <thead class="table-primary">
-                <tr>
-                    <th class="text-center">AGENT (VENDEUR)</th>
-                    <th class="text-center">DATE</th>
-                    <th class="text-center">MONTANT TOTAL</th>
-                    <th class="text-center">MONTANT ELEC</th>
-                    <th class="text-center">TOTAL ORTC</th>
-                    <th class="text-center">TOTAL TAX</th>
-                    <th class="text-center">TOTAL M S ORTC/TAX</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while($datat = mysqli_fetch_array($reqt)) { ?>
-                    <tr>
-                        <td class="text-center"><?php echo htmlspecialchars($datat['id_nom']); ?></td>
-                        <td class="text-center"><?php echo htmlspecialchars($datat['date']); ?></td>
-                        <td class="text-center"><?php echo strrev(chunk_split(strrev($datat['Paie']), 3, " ")); ?></td>
-                        <td class="text-center"><?php echo strrev(chunk_split(strrev($datatE['PaieE']), 3, " ")); ?></td>
-                        <td class="text-center"><?php echo strrev(chunk_split(strrev($datat['ortc_dp']), 3, " ")); ?></td>
-                        <td class="text-center">
-                            <?php
-                            $P2 = $datatE['PaieE'] - $datat['ortc_dp'];
-                            $tax_dp = round(0.03 * ($P2), 0);
-                            echo $tax_dp;
-                            ?>
-                        </td>
-                        <td class="text-center">
-                            <?php
-                            $P3 = $datatE['PaieE'] - $datat['ortc_dp'] - $tax_dp;
-                            echo $P3;
-                            ?>
-                        </td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+$sqltE = "SELECT SUM(paiement) AS PaieE, id_nom , date , st , nserie FROM $tbl_paiement where  st='E'  and id_nom='$agent' and date='$date'";  //ASC  DESC
+$reqtE = mysqli_query($linki,$sqltE); 
+$datatE=mysqli_fetch_array($reqtE);
 
-        <!-- Deuxième tableau -->
-        <table class="table table-bordered mt-4">
-            <thead class="table-primary">
-                <tr>
-                    <th class="text-center">Activités</th>
-                    <th class="text-center">MONTANT PAR ACTIVITE</th>
-                    <th class="text-center">Par date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while($data = mysqli_fetch_array($req)) { ?>
-                    <tr>
-                        <td>
-                            <?php
-                            $activities = [
-                                'E' => 'FACTURATION',
-                                'P' => 'POLICE D\'ABONNEMENT',
-                                'D' => 'BRANCHEMENT',
-                                'F' => 'FRAUDE',
-                                'A' => 'Autre (Chang Nom/compteur/Activation/Transfert)'
-                            ];
-                            echo isset($activities[$data['st']]) ? $activities[$data['st']] : $data['st'];
-                            ?>
-                        </td>
-                        <td class="text-center"><?php echo strrev(chunk_split(strrev($data['Paie']), 3, " ")); ?></td>
-                        <td class="text-center"><?php echo htmlspecialchars($data['date']); ?></td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-    </div>
-
+?>
+ <a href="rapport_agentimp.php?datec=<?php echo md5(microtime()).$date;?>&agent=<?php echo md5(microtime()).$agent;?>" target="_blank"><img src="images/imprimante.png" width="50" height="30"></a></p>
+<table width="100%" border="1" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+  <tr bgcolor="#3071AA">
+    <td width="15%" align="center"><font color="#FFFFFF" size="4"><strong>AGENT ( VENDEUR)</strong></font></td>
+    <td width="10%" align="center"><font color="#FFFFFF" size="4"><strong>DATE</strong></font></td>
+    <td width="12%" align="center"><font color="#FFFFFF"><strong>MONTANT TOTAL </strong></font></td>
+    <td width="12%" align="center"><font color="#FFFFFF"><strong>MONTANT ELEC </strong></font></td>
+    <td width="12%" align="center"><font color="#FFFFFF"><strong>TOTAL ortc</strong></font></td>
+	 <td width="12%" align="center"><font color="#FFFFFF"><strong>TOTAL tax </strong></font></td>
+     <td width="12%" align="center"><font color="#FFFFFF"><strong>TOTAL M S ortc/tax</strong></font></td> 
+  </tr>
+  <?php
+while($datat=mysqli_fetch_array($reqt)){ // Start looping table row 
+?>
+  <tr>
+    <td align="center" bgcolor="#FFFFFF"><?php echo  $datat['id_nom']; ?></td>
+    <td align="center" bgcolor="#FFFFFF"><?php echo  $datat['date']; ?></td>
+    <td align="center" bgcolor="#FFFFFF"><?php $P=strrev(chunk_split(strrev($datat['Paie']),3," "));   echo $P;?></td>
+     <td align="center" bgcolor="#FFFFFF"><?php $PE=strrev(chunk_split(strrev($datatE['PaieE']),3," "));   echo $PE;?></td>
+    <td align="center" bgcolor="#FFFFFF"><?php  $P1=strrev(chunk_split(strrev($datat['ortc_dp']),3," "));   echo $P1;?></td>
+   <td align="center" bgcolor="#FFFFFF">
+     <?php  $P2=$datatE['PaieE']-$datat['ortc_dp']; $tax_dp=(round(0.03 *($P2),0)); echo $tax_dp; ?></td>
+	<td align="center" bgcolor="#FFFFFF"><?php $P3=$datatE['PaieE']-$datat['ortc_dp']-$tax_dp;   echo $P3;?></td>
+  </tr>
+  <?php
+}
+?>
+</table>
+<p>&nbsp;</p>
+  <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+    <tr bgcolor="#0000FF"> 
+      <td width="516" align="center" bgcolor="#3071AA"><font color="#FFFFFF" size="4"><strong>Activités</strong></font></td>
+      <td width="322" align="center" bgcolor="#3071AA"><font color="#FFFFFF" size="4"><strong>MONTANT PAR ACTIVITE</strong></font></td>
+      <td width="261" align="center" bgcolor="#3071AA"><font color="#FFFFFF" size="4"><strong>Par date</strong></font></td>
+    </tr>
     <?php
-    mysqli_free_result($req);
+while($data=mysqli_fetch_array($req)){ // Start looping table row 
+?>
+    <tr bgcolor="#FFFFFF">
+      <td> <?php $n=$data['st']; 
+                  if ($n=='E') echo 'FACTURATION';
+                  if ($n=='P') echo 'POLICE D ABONNEMENT'; 
+                  if ($n=='D') echo 'BRANCHEMENT';
+                  if ($n=='F') echo 'FRAUDE'; 
+				  if ($n=='A') echo 'Autre (Chang Nom/compteur/Activation/Transfert)'; 
+                  ?></td>
+      <td align="center"><?php $P=strrev(chunk_split(strrev($data['Paie']),3," "));   echo $P;?></td>
+      <td align="center"><?php echo $data['date'];?></td>
+    </tr>
+    <?php
+
 }
 
-mysqli_free_result($resultat);
-if(isset($reqtE)) mysqli_free_result($reqtE);
-if(isset($reqt)) mysqli_free_result($reqt);
-mysqli_close($linki);
+mysqli_free_result ($req); 
+   //echo '<span class="gras">'.barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10).'</span>';  
+}  
+mysqli_free_result ($resultat);  
 
+
+
+ mysqli_close($linki);;  
+?>
+  </table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td> <div align="center"></div></td>
+  </tr>
+  <tr> 
+    <td height="21">&nbsp; </td>
+  </tr>
+  <tr> 
+    <td height="21"> 
+      <?php
 include_once('pied.php');
 ?>
+    </td>
+  </tr>
+</table>
+<p>&nbsp; </p>
 </body>
 </html>

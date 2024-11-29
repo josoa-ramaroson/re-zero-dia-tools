@@ -51,7 +51,9 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
    $nb_affichage_par_page = 30; 
    
  
-$sql = "SELECT SUM(paiement) AS Paie, date  FROM $tbl_paiement GROUP BY  date  DESC LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC  DESC
+// $sql = "SELECT SUM(paiement) AS Paie, date  FROM $tbl_paiement GROUP BY  date  DESC LIMIT ".$_GET['debut'].','.$nb_affichage_par_page;  //ASC  DESC
+$sql = "SELECT SUM(paiement) AS Paie, date  FROM $tbl_paiement GROUP BY date ORDER BY date DESC LIMIT ".$nb_affichage_par_page.' OFFSET '.$_GET['debut'];
+// SELECT SUM(paiement) AS Paie, date  FROM paiement GROUP BY date ORDER BY date DESC LIMIT 30 OFFSET 0;
  
 // on ex?cute la requ?te  
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki)); 

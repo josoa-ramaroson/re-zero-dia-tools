@@ -1,17 +1,14 @@
-<?php 
-
-require "session.php";
-require 'fonction.php';
-
-// Remplacer l'ancien calendrier par jQuery UI
-?>
-<!-- Ajout des CDN nécessaires -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 
 <table width="100%" border="0">
-  <!-- ... début du tableau ... -->
+  <tr>
+    <td width="27%">&nbsp;</td>
+    <td width="2%">&nbsp;</td>
+    <td width="3%">&nbsp;</td>
+    <td width="39%">&nbsp;</td>
+    <td width="4%">&nbsp;</td>
+    <td width="22%">&nbsp;</td>
+    <td width="3%">&nbsp;</td>
+  </tr>
   <tr>
     <td>
       <div class="panel panel-primary">
@@ -26,12 +23,27 @@ require 'fonction.php';
                   <tr>
                     <td width="52%">
                       <form action="rapport_listedateagent.php" method="post" name="form3" id="form5">
-                        <input type="text" id="dateB" name="dateB" class="datepicker" readonly="readonly">
+                        <?php
+                        try {
+                          $myCalendar = new tc_calendar("dateB", true, false);
+                          $myCalendar->setIcon("calendar/images/iconCalendar.gif");
+                          $myCalendar->setPath("calendar/");
+                          $myCalendar->setYearInterval($annee1, $annee2);
+                          $myCalendar->dateAllow($date3, $date2);
+                          $myCalendar->setDateFormat('j F Y');
+                          $myCalendar->setAlignment('left', 'bottom');
+                          $myCalendar->writeScript();
+                        } catch (Exception $e) {
+                          echo "Calendar error: " . $e->getMessage();
+                        }
+                        ?>
                         <font color="#000000">
                           <strong>
                             <select name="agentv" id="agentv">
                               <?php
-                              $sql8 = "SELECT DISTINCT * FROM $tbl_paiement WHERE id_nom = '$id_nom'  ORDER BY id_nom ASC";
+                             
+                          $sql8 = "SELECT id_nom FROM $tbl_paiement WHERE id_nom = '$id_nom' GROUP BY id_nom ORDER BY id_nom ASC ";
+
                               $result8 = mysqli_query($linki, $sql8);
                               if ($result8) {
                                 while ($row8 = mysqli_fetch_assoc($result8)) {
@@ -66,12 +78,26 @@ require 'fonction.php';
             <tr>
               <td width="47%">
                 <form action="rapport_agent.php" method="post" name="form2" id="form6">
-                  <input type="text" id="datec" name="datec" class="datepicker" readonly="readonly">
+                  <?php
+                  try {
+                    $myCalendar = new tc_calendar("datec", true, false);
+                    $myCalendar->setIcon("calendar/images/iconCalendar.gif");
+                    $myCalendar->setPath("calendar/");
+                    $myCalendar->setYearInterval($annee1, $annee2);
+                    $myCalendar->dateAllow($date3, $date2);
+                    $myCalendar->setDateFormat('j F Y');
+                    $myCalendar->setAlignment('left', 'bottom');
+                    $myCalendar->writeScript();
+                   
+                  } catch (Exception $e) {
+                    echo "Calendar error: " . $e->getMessage();
+                  }
+                  ?>
                   <font color="#000000">
                     <strong>
                       <select name="agent" id="agent">
                         <?php
-                        $sql8 = "SELECT DISTINCT * FROM $tbl_paiement WHERE id_nom = '$id_nom' ORDER BY id_nom ASC";
+                        $sql8 = "SELECT id_nom FROM $tbl_paiement WHERE id_nom = '$id_nom' GROUP BY id_nom ORDER BY id_nom ASC ";
                         $result8 = mysqli_query($linki, $sql8);
                         if ($result8) {
                           while ($row8 = mysqli_fetch_assoc($result8)) {
@@ -91,22 +117,23 @@ require 'fonction.php';
         </div>
       </div>
     </td>
-    <!-- ... reste du tableau ... -->
+    <td>&nbsp;</td>
+    <td>
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title">&nbsp;</h3>
+        </div>
+        <div class="panel-body">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#000000">
+            <tr>
+              <td width="47%">
+                <a href="paiement_doublon.php" class="btn btn-sm btn-success">SCAN THE DUPLICATES</a>|
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </td>
+    <td>&nbsp;</td>
   </tr>
 </table>
-
-<script>
-$(document).ready(function() {
-    $(".datepicker").datepicker({
-        dateFormat: 'dd-mm-yy',
-        changeMonth: true,
-        changeYear: true,
-        yearRange: '2018:2024',
-        firstDay: 1,
-        dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-        dayNamesMin: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-        monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-        monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc']
-    });
-});
-</script>
