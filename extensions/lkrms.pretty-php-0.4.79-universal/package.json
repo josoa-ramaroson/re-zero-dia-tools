@@ -1,0 +1,282 @@
+{
+	"name": "pretty-php",
+	"displayName": "pretty-php",
+	"description": "The opinionated PHP code formatter",
+	"version": "0.4.79",
+	"publisher": "lkrms",
+	"engines": {
+		"vscode": "^1.74.0"
+	},
+	"keywords": [
+		"php",
+		"formatter",
+		"beautifier",
+		"pretty",
+		"opinionated",
+		"deterministic",
+		"determinism"
+	],
+	"categories": [
+		"Formatters"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/lkrms/vscode-pretty-php.git"
+	},
+	"activationEvents": [
+		"onLanguage:php"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "pretty-php.format",
+				"title": "Format PHP",
+				"enablement": "resourceLangId == php"
+			},
+			{
+				"command": "pretty-php.formatWithoutNewlines",
+				"title": "Format PHP without Preserving Newlines",
+				"enablement": "resourceLangId == php"
+			},
+			{
+				"command": "pretty-php.createConfigFile",
+				"title": "Create .prettyphp or prettyphp.json"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "pretty-php.createConfigFile",
+					"group": "pretty-php@1"
+				}
+			]
+		},
+		"configuration": {
+			"title": "pretty-php",
+			"properties": {
+				"pretty-php.formatting.sortImportsBy": {
+					"description": "Set the sort order for consecutive alias/import statements",
+					"type": "string",
+					"enum": [
+						"off",
+						"none",
+						"name",
+						"depth"
+					],
+					"markdownEnumDescriptions": [
+						"Don't sort or group imports",
+						"Group imports by type without changing order",
+						"Order imports by name\n\n```php\n<?php\nuse A;\nuse B\\C\\E;\nuse B\\C\\F\\G;\nuse B\\C\\F\\{H, I};\nuse B\\C\\F\\J;\nuse B\\D;\n```",
+						"Order imports by name, depth-first\n\n```php\n<?php\nuse B\\C\\F\\{H, I};\nuse B\\C\\F\\G;\nuse B\\C\\F\\J;\nuse B\\C\\E;\nuse B\\D;\nuse A;\n```"
+					],
+					"default": "depth",
+					"order": 9
+				},
+				"pretty-php.formatting.simplifyStrings": {
+					"description": "Normalise escape sequences in strings, and replace single- and double-quoted strings with the most readable and economical syntax",
+					"type": "boolean",
+					"default": true,
+					"order": 10
+				},
+				"pretty-php.formatting.simplifyNumbers": {
+					"description": "Normalise integers and floats",
+					"type": "boolean",
+					"default": true,
+					"order": 11
+				},
+				"pretty-php.formatting.declarationSpacing": {
+					"description": "Normalise vertical spacing between declarations",
+					"type": "boolean",
+					"default": true,
+					"order": 12
+				},
+				"pretty-php.formatting.heredocIndentation": {
+					"description": "Set the indentation level of heredocs and nowdocs",
+					"type": "string",
+					"enum": [
+						"none",
+						"line",
+						"mixed",
+						"hanging"
+					],
+					"markdownEnumDescriptions": [
+						"Do not indent heredocs\n\n```php\n<?php\nfunction f()\n{\n    $a = <<<EOF\nContent\nEOF;\n}\n```",
+						"Apply line indentation to heredocs\n\n```php\n<?php\nfunction f()\n{\n    $a = <<<EOF\n    Content\n    EOF;\n}\n```",
+						"Apply hanging indentation to inline heredocs\n\n```php\n<?php\n$alpha = <<<EOF\n    Content\n    EOF;\n$bravo =\n    <<<EOF\n    Content\n    EOF;\n```",
+						"Always apply hanging indentation to heredocs\n\n```php\n<?php\n$alpha = <<<EOF\n    Content\n    EOF;\n$bravo =\n    <<<EOF\n        Content\n        EOF;\n```"
+					],
+					"default": "mixed",
+					"order": 13
+				},
+				"pretty-php.formatting.operatorPlacement": {
+					"description": "Place operators before or after newlines when splitting code over multiple lines",
+					"type": "string",
+					"enum": [
+						"mixed",
+						"first",
+						"last"
+					],
+					"markdownEnumDescriptions": [
+						"Place arithmetic operators at the start of the line\n\n```php\n<?php\n$baz =\n    $foo ||\n    $bar;\n$a = ($b\n        / $c)\n    * 100;\n```",
+						"Place operators at the start of the line\n\n```php\n<?php\n$baz =\n    $foo\n    || $bar;\n$a = ($b\n        / $c)\n    * 100;\n```",
+						"Place operators at the end of the line\n\n```php\n<?php\n$baz =\n    $foo ||\n    $bar;\n$a = ($b /\n        $c) *\n    100;\n```"
+					],
+					"default": "mixed",
+					"order": 14
+				},
+				"pretty-php.formatting.moveComments": {
+					"markdownDescription": "Move comments if necessary for correct placement of adjacent delimiters and operators\n\n```php\n<?php\n// Disabled:\n[\n    'foo'\n        // comment\n        , 'bar'\n];\n// Enabled:\n[\n    'foo',\n    // comment\n    'bar'\n];\n```",
+					"type": "boolean",
+					"default": true,
+					"order": 16
+				},
+				"pretty-php.formatting.tightDeclarationSpacing": {
+					"description": "Remove blank lines between declarations of the same type where possible",
+					"type": "boolean",
+					"default": false,
+					"order": 18
+				},
+				"pretty-php.formatting.alignment.alignData": {
+					"markdownDescription": "Align consecutive operators and values\n\n```php\n<?php\n$start = [  0, 'first', $foo];\n$end   = [100, 'last',  $bar];\n```",
+					"type": "boolean",
+					"default": false,
+					"order": 20
+				},
+				"pretty-php.formatting.alignment.alignChains": {
+					"markdownDescription": "Align consecutive object operators in the same chain of method calls\n\n```php\n<?php\n$result = $foo->bar()\n              ->baz();\n```",
+					"type": "boolean",
+					"default": false,
+					"order": 21
+				},
+				"pretty-php.formatting.alignment.alignComments": {
+					"markdownDescription": "Align comments beside code\n\n```php\n<?php\n$i = 0;               // index\n$value = Foo::bar();  // value\n```",
+					"type": "boolean",
+					"default": false,
+					"order": 22
+				},
+				"pretty-php.formatting.alignment.alignFn": {
+					"markdownDescription": "Align arrow function expressions with their definitions\n\n```php\n<?php\n$obj->Callback = fn($value) =>\n                     $this->receive($value);\n```",
+					"type": "boolean",
+					"default": false,
+					"order": 23
+				},
+				"pretty-php.formatting.alignment.alignLists": {
+					"markdownDescription": "Align arguments, array elements and other list items with their owners\n\n```php\n<?php\n$obj->method($arg1,\n             $arg2);\n```",
+					"type": "boolean",
+					"default": false,
+					"order": 24
+				},
+				"pretty-php.formatting.alignment.alignTernaryOperators": {
+					"markdownDescription": "Align ternary and null coalescing operators with their expressions\n\n```php\n<?php\n$alpha = $bravo\n             ? $charlie\n             : $delta;\n```",
+					"type": "boolean",
+					"default": false,
+					"order": 25
+				},
+				"pretty-php.formatting.blankBeforeReturn": {
+					"markdownDescription": "Add a blank line before `return` and `yield` statements unless they appear consecutively or at the beginning of a compound statement",
+					"type": "boolean",
+					"default": false,
+					"order": 30
+				},
+				"pretty-php.formatting.strictLists": {
+					"description": "Arrange items in lists horizontally or vertically by replicating the arrangement of the first and second items",
+					"type": "boolean",
+					"default": false,
+					"order": 31
+				},
+				"pretty-php.formatting.preserveOneLineStatements": {
+					"markdownDescription": "Suppress newlines in statements and control structures that start and end on the same line, including individual `case` statements",
+					"type": "boolean",
+					"default": false,
+					"order": 32
+				},
+				"pretty-php.formatting.psr12": {
+					"markdownDescription": "Enforce strict compliance with [PSR-12](https://www.php-fig.org/psr/psr-12/) / [PER Coding Style](https://www.php-fig.org/per/coding-style/) where implemented, ignoring other settings if necessary",
+					"type": "boolean",
+					"default": false,
+					"order": 40
+				},
+				"pretty-php.files.exclude": {
+					"markdownDescription": "Configure glob patterns for files to exclude from formatting, e.g. `**/vendor/**`",
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"order": 50
+				},
+				"pretty-php.formatterArguments": {
+					"markdownDescription": "Pass [additional arguments](https://github.com/lkrms/pretty-php/blob/main/docs/Usage.md) to `pretty-php`",
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"order": 60
+				},
+				"pretty-php.phpPath": {
+					"description": "Path to the PHP executable",
+					"type": "string",
+					"default": "php",
+					"order": 61
+				}
+			}
+		},
+		"languages": [
+			{
+				"id": "json",
+				"filenames": [
+					".prettyphp"
+				]
+			}
+		],
+		"jsonValidation": [
+			{
+				"fileMatch": [
+					".prettyphp",
+					"prettyphp.json"
+				],
+				"url": "./resources/prettyphp-schema.json"
+			}
+		]
+	},
+	"scripts": {
+		"postinstall": "npm run update-phar",
+		"postversion": "npm run update-phar",
+		"vscode:prepublish": "npm run update-changelog && npm run compile",
+		"update-changelog": "scripts/update-changelog.sh",
+		"update-phar": "scripts/update-phar.sh && npm run check-phar",
+		"check-phar": "scripts/check-phar.sh",
+		"compile": "npm run check-phar && tsc -p ./",
+		"watch": "npm run check-phar && tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "ts-standard"
+	},
+	"dependencies": {
+		"minimatch": "^10.0.1",
+		"which": "^3.0.1"
+	},
+	"devDependencies": {
+		"@types/minimatch": "^5.1.2",
+		"@types/node": "^18.x",
+		"@types/vscode": "^1.74.0",
+		"@types/which": "^3.0.0",
+		"@vscode/vsce": "^2.21.0",
+		"ovsx": "^0.8.3",
+		"ts-standard": "^12.0.2",
+		"typescript": "^4.9.5"
+	},
+	"icon": "images/pretty-php.png",
+	"__metadata": {
+		"id": "e3d923a6-c7db-4cca-9582-07cdaa8ef24d",
+		"publisherId": "d6dc577b-95d4-4a86-aa9e-67878382838d",
+		"publisherDisplayName": "lkrms",
+		"targetPlatform": "universal",
+		"isApplicationScoped": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1732859364296,
+		"pinned": false,
+		"preRelease": false,
+		"source": "gallery"
+	}
+}

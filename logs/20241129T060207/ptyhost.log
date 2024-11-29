@@ -1,0 +1,7 @@
+2024-11-29 06:03:19.937 [warning] Shell integration cannot be enabled for executable "/bin/sh" and args undefined
+2024-11-29 06:03:39.592 [info] Expanding terminal instance, old id -2d7d1729-1 -> new id undefined
+2024-11-29 06:05:16.060 [info] Expanding terminal instance, old id -2d7d1729-1 -> new id undefined
+2024-11-29 06:05:21.769 [warning] Persistent process "1": Process had no disconnect runners but was an orphan
+2024-11-29 06:05:21.769 [info] Persistent process reconnection "1"
+2024-11-29 06:05:22.088 [info] Persistent process "1": Replaying 2 chars and 1 size events
+2024-11-29 08:47:24.268 [warning] Shell integration cannot be enabled for executable "/bin/sh" and args []

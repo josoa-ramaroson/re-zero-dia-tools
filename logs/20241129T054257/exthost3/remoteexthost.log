@@ -1,0 +1,63 @@
+2024-11-29 05:48:04.662 [info] Extension host with pid 7451 started
+2024-11-29 05:48:04.662 [error] Error: EEXIST: file already exists, open '/var/www/html/User/workspaceStorage/-2d7d1729/vscode.lock'
+2024-11-29 05:48:04.664 [info] Lock '/var/www/html/User/workspaceStorage/-2d7d1729/vscode.lock': Could not acquire lock, checking if the file is stale.
+2024-11-29 05:48:04.667 [info] Lock '/var/www/html/User/workspaceStorage/-2d7d1729/vscode.lock': The lock does not look stale, elapsed: 481 ms, giving up.
+2024-11-29 05:48:04.676 [info] Lock '/var/www/html/User/workspaceStorage/-2d7d1729-1/vscode.lock': Lock acquired.
+2024-11-29 05:48:05.234 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*'
+2024-11-29 05:48:05.672 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2024-11-29 05:48:05.708 [info] ExtensionService#_doActivateExtension vscode.git, startup: false, activationEvent: '*'
+2024-11-29 05:48:06.291 [info] Eager extensions activated
+2024-11-29 05:48:06.291 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2024-11-29 05:48:06.292 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2024-11-29 05:48:06.976 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2024-11-29 05:48:08.047 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2024-11-29 05:48:42.316 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2024-11-29 05:48:42.317 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2024-11-29 05:48:42.318 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2024-11-29 05:48:52.485 [info] ExtensionService#_doActivateExtension vscode.php-language-features, startup: false, activationEvent: 'onLanguage:php'
+2024-11-29 05:49:15.118 [info] ExtensionService#_doActivateExtension StoilDobreff.php-resolver, startup: false, activationEvent: 'onLanguage:php'
+2024-11-29 05:49:21.222 [info] ExtensionService#_doActivateExtension junstyle.php-cs-fixer, startup: false, activationEvent: 'onLanguage:php'
+2024-11-29 05:49:25.356 [info] ExtensionService#_doActivateExtension lkrms.pretty-php, startup: false, activationEvent: 'onLanguage:php'
+2024-11-29 05:49:29.366 [info] ExtensionService#_doActivateExtension MehediDracula.php-namespace-resolver, startup: false, activationEvent: 'onLanguage:php'
+2024-11-29 05:49:31.186 [info] ExtensionService#_doActivateExtension DEVSENSE.phptools-vscode, startup: false, activationEvent: 'onLanguage:php'
+2024-11-29 05:49:31.186 [info] ExtensionService#_doActivateExtension DEVSENSE.intelli-php-vscode, startup: false, activationEvent: 'onLanguage:php'
+2024-11-29 05:49:38.172 [warning] [Decorations] CAPPING events from decorations provider vscode.git 1565
+2024-11-29 05:50:00.587 [warning] [Decorations] CAPPING events from decorations provider vscode.git 6053
+2024-11-29 05:50:04.604 [info] ExtensionService#_doActivateExtension zobo.php-intellisense, startup: false, activationEvent: 'onLanguage:php'
+2024-11-29 05:50:44.334 [info] ExtensionService#_doActivateExtension neilbrayfield.php-docblocker, startup: false, activationEvent: 'onLanguage:php'
+2024-11-29 05:50:53.328 [info] ExtensionService#_doActivateExtension felixfbecker.php-intellisense, startup: false, activationEvent: 'onLanguage:php'
+2024-11-29 05:51:07.554 [info] ExtensionService#_doActivateExtension valeryanm.vscode-phpsab, startup: false, activationEvent: 'onLanguage:php'
+2024-11-29 05:51:07.589 [warning] DiagnosticCollection with name 'php' does already exist.
+2024-11-29 05:51:08.050 [error] Activating extension valeryanm.vscode-phpsab failed due to an error:
+2024-11-29 05:51:08.051 [error] Error: Unable to locate the executable.
+	at Gv (/var/www/html/extensions/valeryanm.vscode-phpsab-0.0.20-universal/out/main.js:20:14932)
+	at async zv (/var/www/html/extensions/valeryanm.vscode-phpsab-0.0.20-universal/out/main.js:20:15468)
+	at async Pe (/var/www/html/extensions/valeryanm.vscode-phpsab-0.0.20-universal/out/main.js:20:16891)
+	at async t0 (/var/www/html/extensions/valeryanm.vscode-phpsab-0.0.20-universal/out/main.js:25:1238)
+	at async B0.n (file:///usr/lib/code-server/lib/vscode/out/vs/workbench/api/node/extensionHostProcess.js:114:4447)
+	at async B0.m (file:///usr/lib/code-server/lib/vscode/out/vs/workbench/api/node/extensionHostProcess.js:114:4410)
+	at async B0.l (file:///usr/lib/code-server/lib/vscode/out/vs/workbench/api/node/extensionHostProcess.js:114:3866)
+2024-11-29 05:51:11.181 [info] ExtensionService#_doActivateExtension vscode.html-language-features, startup: false, activationEvent: 'api', root cause: DEVSENSE.phptools-vscode
+2024-11-29 05:51:43.216 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:51:48.464 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:51:55.040 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:53:23.400 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:53:28.671 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:53:33.833 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:53:39.004 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:53:44.162 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:53:49.427 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:54:26.311 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:54:31.463 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:54:37.283 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:54:48.785 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:54:53.939 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:55:00.575 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:55:05.734 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:55:10.874 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:55:16.085 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:57:21.689 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:57:26.821 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:57:52.207 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 05:58:08.405 [warning] [Decorations] CAPPING events from decorations provider vscode.git 7230
+2024-11-29 06:00:22.790 [info] ExtensionService#_doActivateExtension vscode.tunnel-forwarding, startup: false, activationEvent: 'onTunnel'
