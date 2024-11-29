@@ -18,7 +18,7 @@
 
 <footer class="footer">
     <div class="copyright">
-        <?php echo 'Copyright COMORES BUSINESS © ® 2024, IA-Marketing. '; ?>
+        <?php echo 'Copyright CB SARL © ® 2024, IA-Marketing. '; ?>
     </div>
     <?php require 'Journal_audit_v_bd_save.php';?>
 </footer>
