@@ -92,10 +92,10 @@ function toggleBox(szDivID, iState)// 1 visible, 0 hidden
   <table width="1195" border="0">
     <tr>
       <td width="169"><font color="#FF0000">
-        <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $id_nom; ?>"/>
+        <input name="id_nom" type="hidden" id="id_nom" value="<?php echo $datam['id_nom']; ?>"/>
         <input name="idclient" type="hidden" id="idclient" value="<?php echo $datam['id'];?>"/>
         <input name="nom" type="hidden" id="nom" value="<?php echo $datam['nomprenom']; ?>"/>
-        <input name="prenom" type="hidden" id="prenom" value="<?php echo  $datam['prenom']; ?>"/>
+        <input name="surnom" type="hidden" id="surnom" value="<?php echo  $datam['surnom']; ?>"/>
       </font></td>
       <td width="289">&nbsp;</td>
       <td width="300">&nbsp;</td>
@@ -158,11 +158,11 @@ while($document=mysqli_fetch_array($resultana)){
             
             <td height="32">
             
-            <?php $filename = 'upload/document_client/'.$document['iddocument'].'.jpg'; ?>
+            <?php $filename = 'upload/document_client/'.$document['iddocument'].'.jpg';?>
             <div class="row">
             <?php if (file_exists($filename) == true) { ?>
 
-<a href="client_document_file_apercu.php?doc=<?php echo md5(microtime()).$document['iddocument']; ?>&amp;d=<?php echo  md5(microtime());?>" onClick="return !window.open(this.href, 'pop', 'width=679,height=679,left=120,top=120');"> <img src="upload/document_client/document_file.jpg" width="57" height="63" class="pix" />
+<a href="client_document_file_apercu.php?doc=<?php echo md5(microtime()).$document['iddocument']; ?>&amp;d=<?php echo  md5(microtime()); ?>" onClick="return !window.open(this.href, 'pop', 'width=679,height=679,left=120,top=120');"> <img src="upload/document_client/document_file.jpg" width="57" height="63" class="pix" />
             </a>
            
        
@@ -179,7 +179,7 @@ while($document=mysqli_fetch_array($resultana)){
             <input type="submit" name="upload" value="Mise à jour" class="btn btn-info">
             <?php } else { ?>
                           
-            <a href="client_document_file_cancel.php?ID=<?php echo  md5(microtime()).$document['iddocument'];?>&<?php echo  md5(microtime());?>&idc=<?php echo  md5(microtime()).$idclient;?>" onClick="return confirm('Etes-vous s&ucirc;r de vouloir supprimer')" ; style="margin:5px"  class="btn btn-sm btn-danger">SUPPRIMER</a>
+            <a href="client_document_file_cancel.php?ID=<?php $_SESSION['id_nom'] = $datam['id_nom']; echo  md5(microtime()).$document['iddocument'];?>&<?php echo  md5(microtime());?>&idc=<?php echo  md5(microtime()).$idclient;?>" onClick="return confirm('Etes-vous s&ucirc;r de vouloir supprimer')" ; style="margin:5px"  class="btn btn-sm btn-danger">SUPPRIMER</a>
              
              
              

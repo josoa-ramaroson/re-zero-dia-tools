@@ -19,8 +19,8 @@ require 'fonction.php';
 Require 'bienvenue.php';    // on appelle la page contenant la fonction
 ?>
 <?
-$sql = "SELECT COUNT(*) AS actif FROM $tbl_contact  WHERE statut='6'";   
-$req=mysqli_query($linki,$sql);
+$sql = "SELECT COUNT(*) AS actif FROM $tbl_contact  WHERE statut='6'";
+$req=mysqli_query($linki, $sql);
 $data= mysqli_fetch_assoc($req);
 $Actif=$data['actif'];
 

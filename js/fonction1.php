@@ -1,4 +1,4 @@
-<?	
+<?php
 		
 		$host = 'localhost';
 		$user = 'websit77_boltoso';
