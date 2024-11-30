@@ -147,7 +147,8 @@ require 'fonction.php';
 $date=$_POST['date'];
 $sql1="SELECT SUM(Montant) AS Paie , date FROM $tbl_caisse_ver where date='$date'";
 $result1=mysqli_query($linki,$sql1);
-
+// var_dump($result1);
+// die();
 ?>
 </font><font size="2"></strong></font></font></font></font></font></font></font></font></font></strong></font></font></font></font></font></font></font></font></font></font></p>
   <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">

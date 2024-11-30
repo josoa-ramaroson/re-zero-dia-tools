@@ -1,9 +1,9 @@
 <?php	
 		
 		$host = 'localhost';
-		$user = 'phpmyadmin';
-		$pass = 'serveurweb';
-		$db = 'iasoft';
+		$user = 'root';
+		$pass = 'I7I4I2-70&o@';
+		$db = 'eda';
 		$dbbk='edabk';
 		
 		
