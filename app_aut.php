@@ -257,7 +257,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
    $nb_affichage_par_page = 10; 
    
 
-$sql = "SELECT * FROM $tbl_appaut  ORDER BY idapp_aut DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
+$sql = "SELECT * FROM $tbl_appaut  ORDER BY idapp_aut DESC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  //ASC
  
 
 $req = mysqli_query($linki, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  

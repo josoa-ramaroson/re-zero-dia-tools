@@ -121,7 +121,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
    $nb_affichage_par_page = 10; 
    
 // Pr?paration de la requ?te avec le LIMIT  
-$sql = "SELECT * FROM $tbl_com  ORDER BY idcom DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
+$sql = "SELECT * FROM $tbl_com  ORDER BY idcom DESC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  //ASC
  
 // on execute la requete  
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  

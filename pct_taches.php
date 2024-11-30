@@ -38,7 +38,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
     
    $nb_affichage_par_page = 10; 
 
-$sql = "SELECT * FROM $tbl_pctaches  where suivi!='Traité' ORDER BY idpc DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
+$sql = "SELECT * FROM $tbl_pctaches  where suivi!='Traité' ORDER BY idpc DESC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  
  
 // on ex?cute la requ?te  ASC
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  

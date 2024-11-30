@@ -97,7 +97,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
    $nb_affichage_par_page = 20; 
    
 // Pr?paration de la requ?te avec le LIMIT  
-$sql = "SELECT * FROM $tbl_client  ORDER BY idtclient DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
+$sql = "SELECT * FROM $tbl_client  ORDER BY idtclient DESC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  //ASC
  
 // on ex?cute la requ?te  
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  

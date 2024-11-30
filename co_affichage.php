@@ -157,7 +157,7 @@ require 'fonction.php';
         } else {
             if (!isset($_GET['debut'])) $_GET['debut'] = 0;
             $nb_affichage_par_page = 50;
-            $sql = "SELECT * FROM $tbl_contact WHERE statut='6' ORDER BY nomprenom ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;
+            $sql = "SELECT * FROM $tbl_contact WHERE statut='6' ORDER BY nomprenom ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;
             $req = mysqli_query($linki, $sql);
             ?>
             <div class="card">

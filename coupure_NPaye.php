@@ -153,7 +153,7 @@ else {
 if (!isset($_GET['debut'])) 
 $_GET['debut'] = 0; 
 $nb_affichage_par_page = 50; 
-$sql = "SELECT * FROM $tbl_fact f, $tbl_contact c  where f.fannee='$anneec' and f.st='E' and nserie='$cserie' and c.id=f.id and c.ville='$m1v' and  c.quartier='$m2q' and  f.totalnet > 1000  and idf NOT IN(SELECT idf FROM $tbl_paiement where YEAR(date)='$anneec') ORDER BY f.id ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
+$sql = "SELECT * FROM $tbl_fact f, $tbl_contact c  where f.fannee='$anneec' and f.st='E' and nserie='$cserie' and c.id=f.id and c.ville='$m1v' and  c.quartier='$m2q' and  f.totalnet > 1000  and idf NOT IN(SELECT idf FROM $tbl_paiement where YEAR(date)='$anneec') ORDER BY f.id ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  
 $req=mysqli_query($linki,$sql);
 
 

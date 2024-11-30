@@ -56,7 +56,7 @@ echo 'Veuillez choisir la Ville et le quartier pour debuter la saisie des factur
 else { 
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 1; 
-$sql = "SELECT * FROM $tbl_contact where  ville='$bville'  and quartier='$bquartier' and statut='6' and  (Tarif='1' or Tarif='5'  or Tarif='12') and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec'  and nserie='$nserie') ORDER BY id ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
+$sql = "SELECT * FROM $tbl_contact where  ville='$bville'  and quartier='$bquartier' and statut='6' and  (Tarif='1' or Tarif='5'  or Tarif='12') and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec'  and nserie='$nserie') ORDER BY id ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
 
 	//recherche du repport 

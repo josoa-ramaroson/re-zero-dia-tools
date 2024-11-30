@@ -28,7 +28,7 @@ echo 'Aucune reponse trouvee';
 else { 
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 400; 
-$sql = "SELECT * FROM $dbbk.z_"."$ARCH"."_$tbl_paiement where id_nom='$agent' and date='$date' ORDER BY idp ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
+$sql = "SELECT * FROM $dbbk.z_"."$ARCH"."_$tbl_paiement where id_nom='$agent' and date='$date' ORDER BY idp ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  
 $req = mysqli_query($linkibk,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
 
 

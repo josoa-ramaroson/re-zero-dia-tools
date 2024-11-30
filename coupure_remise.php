@@ -26,7 +26,7 @@ echo 'Aucune reponse trouvee';
 else { 
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 50; 
-$sql = "SELECT * FROM $tbl_paiement p , $tbl_fact f, $tbl_contact c where YEAR(p.date)='$anneec' and p.st='E' and p.nserie=f.nserie and f.nserie='$nserie' and bstatut!='retablie' and  bstatut!='saisie' and p.id=c.id and p.id=f.id  ORDER BY idp DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
+$sql = "SELECT * FROM $tbl_paiement p , $tbl_fact f, $tbl_contact c where YEAR(p.date)='$anneec' and p.st='E' and p.nserie=f.nserie and f.nserie='$nserie' and bstatut!='retablie' and  bstatut!='saisie' and p.id=c.id and p.id=f.id  ORDER BY idp DESC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
 ?>
  </p>

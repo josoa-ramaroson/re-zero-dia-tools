@@ -82,7 +82,7 @@ if ($nb_total == 0) {
     if (!isset($_GET['debut'])) $_GET['debut'] = 0;
     $nb_affichage_par_page = 50;
 
-    $sql = "SELECT * FROM $tbl_appbonachat WHERE statut='Finaliser' ORDER BY id_dem DESC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;
+    $sql = "SELECT * FROM $tbl_appbonachat WHERE statut='Finaliser' ORDER BY id_dem DESC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;
     $req = mysqli_query($linki, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));
 ?>
 </font></strong></font></font></font></p>

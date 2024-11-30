@@ -68,7 +68,7 @@ echo 'Aucune reponse trouvee';
 else { 
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 1; 
-$sql = "SELECT * FROM  $tb_rhpersonnel where statut='Operationnel' and idrhp NOT IN(SELECT idrh FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie') ORDER BY matricule ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
+$sql = "SELECT * FROM  $tb_rhpersonnel where statut='Operationnel' and idrhp NOT IN(SELECT idrh FROM $tb_rhpaie where anneepaie='$anneepaie' and moispaie='$moispaie') ORDER BY matricule ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
 
 	//recherche du repport 

@@ -80,7 +80,7 @@ foreach($s as $mot) {
 	$sql.="nomprenom like '%".$mot."%' OR tel like '%".$mot."%' OR adresse like '%".$mot."%' OR ville like '%".$mot."%' OR quartier like '%".$mot."%' OR c.id  like '%".$mot."%' OR c.Police  like '%".$mot."%' OR "; 
 					
 					}
-//$sql.=" 0 ORDER BY raisonsociale ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
+//$sql.=" 0 ORDER BY raisonsociale ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  
 
 $sql.=" 0 )  ORDER BY nomprenom ASC ";  
 

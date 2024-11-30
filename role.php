@@ -163,7 +163,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
 
    $nb_affichage_par_page = 50; 
    
-$sql = "SELECT * FROM $tb_role_type  ORDER BY nom_role ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  //ASC
+$sql = "SELECT * FROM $tb_role_type  ORDER BY nom_role ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  //ASC
  
 $req = mysqli_query($linki, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
 ?>

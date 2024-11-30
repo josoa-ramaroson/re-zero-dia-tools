@@ -83,7 +83,7 @@ foreach($s as $mot) {
 					
 					
 					}
-//$sql.=" 0 ORDER BY raisonsociale ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
+//$sql.=" 0 ORDER BY raisonsociale ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  
 
 $sql.=" 0  ORDER BY idclient ASC ";  
 

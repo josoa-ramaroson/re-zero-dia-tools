@@ -39,7 +39,7 @@ echo 'Aucune reponse trouvee';
 else { 
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 1; 
-$sql = "SELECT * FROM $tbl_contact where  statut='6' and Tarif='10' and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec'  and nserie='$nserie') ORDER BY id ASC LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
+$sql = "SELECT * FROM $tbl_contact where  statut='6' and Tarif='10' and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec'  and nserie='$nserie') ORDER BY id ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
 
 	//recherche du repport 

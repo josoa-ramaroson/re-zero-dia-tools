@@ -186,7 +186,7 @@ echo 'Aucune reponse trouvee';
 else { 
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 50; 
-$sql = "SELECT * FROM $tbl_fact where st='F' and etat='$valeuretat' ORDER BY idf desc LIMIT ".$_GET['debut'].",".$nb_affichage_par_page;  
+$sql = "SELECT * FROM $tbl_fact where st='F' and etat='$valeuretat' ORDER BY idf desc LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
 ?>
  </p>
