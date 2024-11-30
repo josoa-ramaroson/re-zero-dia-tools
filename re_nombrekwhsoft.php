@@ -6,7 +6,7 @@
 
     require_once('./re_nombrekwh.php');
     $HTML = ob_get_clean();
-
+// include_once("./fonction.php");
 require_once("./mpdf60/mpdf.php"); 
 $mpdf=new mPDF("s","A4","12","Arial",10,10,10,10,0,5); 
 $mpdf->useOnlyCoreFonts = false;    // false is default

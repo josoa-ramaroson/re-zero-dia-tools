@@ -1,4 +1,4 @@
- <?
+ <?php
  
  require 'fonction.php';
  $le_path= $_SERVER['PHP_SELF']; // $path = /home/httpd/html/index.php
