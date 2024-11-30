@@ -1,37 +1,68 @@
 <?php
-echo "here";
 require 'fonction.php';
-// $linki = mysqli_connect ($host,$user,$pass);
-// mysqli_select_db($db);
-//------------identification du maximun -----------
-$u_nom=addslashes($_POST['u_nom']);
-$u_prenom=addslashes($_POST['u_prenom']);
-$u_email=addslashes($_POST['u_email']);
-$u_login=strtolower(addslashes($_POST['u_login']));
-$u_login=str_replace(' ', '', ($u_login));
-$u_pwd=md5(addslashes($_POST['u_pwd']));
-$u_niveau=addslashes($_POST['u_niveau']);
-$titre=addslashes($_POST['titre']);
-$mobile=addslashes($_POST['mobile']);
-$statut=addslashes($_POST['statut']);
-$agence=addslashes($_POST['agence']);
-$datetime=date("y/m/d H:i:s");  
-$id_nom=addslashes($_POST['id_nom']);
 
+// Nettoyage et préparation des données
+$u_nom = addslashes(trim($_POST['u_nom']));
+$u_prenom = addslashes(trim($_POST['u_prenom']));
+$u_email = addslashes(trim($_POST['u_email']));
+$u_login = strtolower(str_replace(' ', '', addslashes(trim($_POST['u_login']))));
+$u_pwd = md5(trim($_POST['u_pwd']));
+$u_niveau = addslashes(trim($_POST['u_niveau']));
+$titre = addslashes(trim($_POST['titre']));
+$mobile = addslashes(trim($_POST['mobile']));
+$statut = addslashes(trim($_POST['statut']));
+$agence = addslashes(trim($_POST['agence']));
+$id_nom = addslashes(trim($_POST['id_nom']));
+$datetime = date("y/m/d H:i:s");
+
+// Inclusion du fichier qui définit probablement la variable $type
 require 'fonction_niveau_save.php';
-// ancien code
-// $sqlp="INSERT INTO $tbl_utilisateur ( id_nom   , u_nom   ,u_prenom,  u_email, u_login, u_pwd, u_niveau , type, titre, mobile, statut, agence,  datetime )
 
-//  VALUES ('$id_nom' ,'$u_nom','$u_prenom',  '$u_email', '$u_login', '$u_pwd', '$u_niveau' ,'$type' , '$titre','$mobile' ,'$statut', '$agence', '$datetime')";
-				 
+// Préparation de la requête SQL
+$sqlp = "INSERT INTO $tbl_utilisateur (
+    id_nom, 
+    u_nom, 
+    u_prenom, 
+    u_email, 
+    u_login, 
+    u_pwd, 
+    u_niveau, 
+    type, 
+    titre, 
+    mobile, 
+    statut, 
+    agence, 
+    datetime,
+    privileges,
+    session
+) VALUES (
+    '$id_nom',
+    '$u_nom',
+    '$u_prenom',
+    '$u_email',
+    '$u_login',
+    '$u_pwd',
+    '$u_niveau',
+    '$type',
+    '$titre',
+    '$mobile',
+    '$statut',
+    '$agence',
+    '$datetime',
+    0,
+    0
+)";
 
-// $r=mysqli_query($linki,$sqlp);
-// mysqli_close($linki);
-$sqlp = "INSERT INTO $tbl_utilisateur (id_nom, u_nom, u_prenom, u_email, u_login, u_pwd, u_niveau, type, titre, mobile, statut, agence, datetime)
-         VALUES ('$id_nom', '$u_nom', '$u_prenom', '$u_email', '$u_login', '$u_pwd', '$u_niveau', '$type', '$titre', '$mobile', '$statut', '$agence', '$datetime')";
-$r = mysqli_query($linki, $sqlp) or die("Erreur SQL : " . mysqli_error($linki));
+// Exécution de la requête avec gestion d'erreur
+if (!$r = mysqli_query($linki, $sqlp)) {
+    die("Erreur SQL : " . mysqli_error($linki));
+}
+
+// Fermeture de la connexion
 mysqli_close($linki);
-?>
-<?php
-header("location: utilisateur.php");
+
+// Redirection vers la page de liste des utilisateurs
+header("Location: utilisateur.php");
+exit;
+
 ?>
