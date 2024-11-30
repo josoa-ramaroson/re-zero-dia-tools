@@ -1,9 +1,9 @@
 <?php	
 		
 		$host = 'localhost';
-		$user = 'root';
-		$pass = 'I7I4I2-70&o@';
-		$db = 'eda';
+		$user = 'phpmyadmin';
+		$pass = 'serveurweb';
+		$db = 'iasoft';
 		$dbbk='edabk';
 		
 		
@@ -168,8 +168,12 @@
 		$CONSULTANT='BSC';
 		
 		//------------------VUE
-		$tv_enreg="V_enreg"; // Table name
-		$tv_vente="V_vente"; // Table name
+		// $tv_enreg="V_enreg"; // Table name
+		$tv_enreg="v_enreg"; // Table name
+		
+		$tv_vente="v_vente"; // Table name
+		// $tv_vente="V_vente"; // Table name
+		
 		$tv_paiement="v_paiement"; // Table name
 	    $tv_facturation="v_facturation"; // Table name
 	
