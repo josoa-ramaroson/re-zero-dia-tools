@@ -126,7 +126,7 @@ $result2 = mysqli_query($linki,$sql2);
 while ($row2 = mysqli_fetch_assoc($result2)) {
 $ville=$row2['ville'];
 } 
-    $m1v=$ville;
+   $m1v=$ville;
 	$m2q=$quartier;
 
     //$m1v=addslashes($_REQUEST['m1v']);

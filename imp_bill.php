@@ -7,6 +7,7 @@
 	//$m2q=substr($_REQUEST["m2q"],32);
     require_once('./imp_billimp.php');
     $HTML = ob_get_clean();
+
 	
 
 require_once("./mpdf60/mpdf.php"); 

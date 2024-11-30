@@ -25,10 +25,10 @@ require 'configuration.php';
 <script language="javascript" src="calendar/calendar.js"></script>
 
 </head>
-<?
+<?php
 //Require("bienvenue.php");  // on appelle la page contenant la fonction
 ?>
-<?
+<?php
   
 $sql = "SELECT COUNT(*) AS nbres, sum(cons2) as cons2 , sum(cons1) as cons1 , sum(cons) as cons , sum(mont1) as mont1 ,sum(mont2) as mont2 , sum(mont1+mont2) as mont, sum(puisct) as puisct , sum(totalht) as totalht, sum(tax) as tax, sum(totalttc) as totalttc , sum(ortc) as ortc , sum(impayee) as impayee , sum(Pre) as Pre, sum(totalnet) as totalnet  FROM  $tbl_fact WHERE nserie=$nserie and fannee=$anneec";  //ASC  DESC
   

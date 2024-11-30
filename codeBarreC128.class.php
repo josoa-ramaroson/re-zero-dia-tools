@@ -1,4 +1,4 @@
-<?
+<?php
 class codeBarreC128 {
 	// Definition de l'algo pour un type C128
 	private $typeC128 = array(
