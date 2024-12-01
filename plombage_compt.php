@@ -168,7 +168,7 @@ echo 'Aucune reponse trouvee';
 else { 
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 50; 
-$sql = "SELECT * FROM $tbl_contact c, $tbl_plombage p where c.statut='6' and  p.id=c.id ORDER BY nomprenom ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  
+$sql = "SELECT * FROM $tbl_contact c, $tbl_plombage p where c.statut='6' and  p.id=c.id ORDER BY nomprenom ASC LIMIT ".$nb_affichage_par_page." OFFSET ".$_GET['debut'];  
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
 
 ?>

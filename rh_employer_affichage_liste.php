@@ -58,7 +58,7 @@ echo 'Aucune reponse trouvee';
 else { 
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 50; 
-$sql = "SELECT * FROM $tb_rhpersonnel ORDER BY matricule ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  
+$sql = "SELECT * FROM $tb_rhpersonnel ORDER BY matricule ASC LIMIT ".$nb_affichage_par_page." OFFSET ".$_GET['debut'];  
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
 ?>
  </p>

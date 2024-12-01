@@ -32,7 +32,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
     
    $nb_affichage_par_page = 10; 
 
-$sql = "SELECT * FROM $tbl_pc  where id_u='$id_user' ORDER BY id ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  
+$sql = "SELECT * FROM $tbl_pc  where id_u='$id_user' ORDER BY id ASC LIMIT ".$nb_affichage_par_page." OFFSET ".$_GET['debut'];  
  
 // on ex?cute la requ?te  
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  

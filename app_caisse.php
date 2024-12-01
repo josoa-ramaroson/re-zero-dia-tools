@@ -232,7 +232,7 @@ if (($nb_total = $nb_total[0]) == 0) {
     
     $nb_affichage_par_page = 10;
     
-    $sql = "SELECT * FROM $tbl_app_caisse ORDER BY idcaisse DESC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;
+    $sql = "SELECT * FROM $tbl_app_caisse ORDER BY idcaisse DESC LIMIT ".$nb_affichage_par_page." OFFSET ".$_GET['debut'];
     
     $req = mysqli_query($linki, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));
 ?>

@@ -131,7 +131,7 @@ if ($nb_total == 0) {
     if (!isset($_GET['debut'])) $_GET['debut'] = 0;
     $nb_affichage_par_page = 10;
 
-    $sql = "SELECT * FROM $tbl_appbonachat WHERE statut='Traitement' ORDER BY id_dem DESC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;
+    $sql = "SELECT * FROM $tbl_appbonachat WHERE statut='Traitement' ORDER BY id_dem DESC LIMIT ".$nb_affichage_par_page." OFFSET ".$_GET['debut'];
     $req = mysqli_query($linki, $sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));
 ?>
     <form name="form2" method="post" action="produit_cancel.php">

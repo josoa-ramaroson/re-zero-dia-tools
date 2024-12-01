@@ -67,7 +67,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
     // CREATE VIEW V_Sagm AS SELECT  a.id_c, a.nom_C, a.SAVoix , g.SGVoix , m.SMVoix , (a.SAVoix+g.SGVoix+m.SMVoix) AS SAGM  FROM v_a_voix a JOIN v_g_voix g JOIN v_m_voix m ON a.id_c=g.id_c and a.id_c=m.id_c ;
 	
  $sql = "SELECT e.titre as thetitre, SUM(e.qtenreg) AS qte , SUM(v.qtvendu) AS  qtv , SUM(e.qtenreg)-SUM(v.qtvendu) as reste
-FROM $tv_appproduit_entre e LEFT JOIN $tv_appproduit_sortie v ON e.titre=v.titre GROUP BY  e.titre ORDER BY e.titre  ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;
+FROM $tv_appproduit_entre e LEFT JOIN $tv_appproduit_sortie v ON e.titre=v.titre GROUP BY  e.titre ORDER BY e.titre  ASC LIMIT ".$nb_affichage_par_page." OFFSET ".$_GET['debut'];
 
 
 

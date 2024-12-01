@@ -152,7 +152,7 @@ else {
 if (!isset($_GET['debut'])) 
 $_GET['debut'] = 0; 
 $nb_affichage_par_page = 50; 
-$sql = "SELECT * FROM $tbl_fact f, $tbl_contact c  where f.fannee='$anneec' and f.st='E' and nserie='$cserie' and c.id=f.id and c.ville='$m1v' and  c.quartier='$m2q' and  f.report > 1000 and (f.report-f.totalnet+f.impayee)>0  ORDER BY f.id ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;
+$sql = "SELECT * FROM $tbl_fact f, $tbl_contact c  where f.fannee='$anneec' and f.st='E' and nserie='$cserie' and c.id=f.id and c.ville='$m1v' and  c.quartier='$m2q' and  f.report > 1000 and (f.report-f.totalnet+f.impayee)>0  ORDER BY f.id ASC LIMIT ".$nb_affichage_par_page." OFFSET ".$_GET['debut'];
 
 
 $sqFP="SELECT  COUNT(*) AS nbres, SUM(f.totalnet) AS totalnet , SUM(f.totalttc) AS totalttc, SUM(f.impayee) AS impayee, SUM(f.report) AS report, f.fannee , f.st , f.nserie, c.ville, c.quartier   FROM $tbl_fact f, $tbl_contact c  where f.fannee='$anneec' and f.st='E' and nserie='$cserie' and c.id=f.id and c.ville='$m1v' and  c.quartier='$m2q' and  f.report > 1000 and (f.report-f.totalnet+f.impayee)>0"; 

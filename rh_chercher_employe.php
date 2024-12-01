@@ -85,7 +85,7 @@ foreach($s as $mot) {
 	$sql.="nomprenom like '%".$mot."%' OR tel like '%".$mot."%' OR matricule like '%".$mot."%' OR direction like '%".$mot."%' OR service  like '%".$mot."%' OR "; 
 					
 					}
-//$sql.=" 0 ORDER BY raisonsociale ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  
+//$sql.=" 0 ORDER BY raisonsociale ASC LIMIT ".$nb_affichage_par_page." OFFSET ".$_GET['debut'];  
 
 $sql.=" 0 ORDER BY matricule ASC ";  
 

@@ -32,7 +32,7 @@ echo 'Aucune reponse trouvee';
 else { 
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 100; 
-$sql = "SELECT * FROM $tbl_contact  where  RefLocalite='$RefLocalite' and RefQuartier='$RefQuartier'  and statut='6' ORDER BY id ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  
+$sql = "SELECT * FROM $tbl_contact  where  RefLocalite='$RefLocalite' and RefQuartier='$RefQuartier'  and statut='6' ORDER BY id ASC LIMIT ".$nb_affichage_par_page." OFFSET ".$_GET['debut'];  
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
 
 

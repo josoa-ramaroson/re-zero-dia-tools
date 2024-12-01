@@ -56,7 +56,7 @@ $np=substr($_REQUEST["np"],32);
  // CREATE VIEW v_app_produit_dedate AS SELECT  titre, SUM(Quantite) AS qtenreg , Validite FROM app_produit_entre GROUP BY  titre, Validite ;
  
  //$sql = "SELECT e.titre as thetitre, e.qtenreg AS qte , v.qtvendu AS  qtv , e.qtenreg-v.qtvendu as reste , e.Validite ,  v.dateValidite  FROM $tv_appproduit_dsdate v ,  $tv_appproduit_dedate e where  e.titre='$np' and v.dateValidite=e.Validite
- // GROUP BY  e.Validite ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;
+ // GROUP BY  e.Validite ASC LIMIT ".$nb_affichage_par_page." OFFSET ".$_GET['debut'];
 
   
    $sql = "SELECT * FROM $tbl_appproduit_sortie  where titre='$np'   order by  datev DESC LIMIT ".$_GET['debut']." OFFSET ".

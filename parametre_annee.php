@@ -282,7 +282,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
    $nb_affichage_par_page = 10; 
    
 
-$sql = "SELECT * FROM annee  ORDER BY annee DESC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  //ASC
+$sql = "SELECT * FROM annee  ORDER BY annee DESC LIMIT ".$nb_affichage_par_page." OFFSET ".$_GET['debut'];  //ASC
  
  
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  

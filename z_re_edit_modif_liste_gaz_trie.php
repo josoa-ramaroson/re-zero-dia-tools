@@ -198,7 +198,7 @@ echo 'Aucune reponse trouvee';
 else { 
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 5; 
-$sql = "SELECT * FROM $dbbk.z_"."$ARCH"."_$tbl_fact where st='A' and libelle='Gaz' and etat='$valeuretat' ORDER BY idf desc LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  
+$sql = "SELECT * FROM $dbbk.z_"."$ARCH"."_$tbl_fact where st='A' and libelle='Gaz' and etat='$valeuretat' ORDER BY idf desc LIMIT ".$nb_affichage_par_page." OFFSET ".$_GET['debut'];  
 $req = mysqli_query($linkibk,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
 ?>
  </p>

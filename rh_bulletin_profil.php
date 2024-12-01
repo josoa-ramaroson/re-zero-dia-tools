@@ -137,7 +137,7 @@ echo 'Aucune reponse trouvee';
 else { 
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page =12; 
-$sql = "SELECT * FROM $tb_rhpaie where  matricule='$m1p' ORDER BY nomprenom ASC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  //DESC
+$sql = "SELECT * FROM $tb_rhpaie where  matricule='$m1p' ORDER BY nomprenom ASC LIMIT ".$nb_affichage_par_page." OFFSET ".$_GET['debut'];  //DESC
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
 ?>
   Matricule : <?php echo  $m1p ?></p>

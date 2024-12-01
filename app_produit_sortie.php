@@ -297,7 +297,7 @@ if (!isset($_GET['debut'])) $_GET['debut'] = 0;
    $nb_affichage_par_page =50; 
    
 // Pr?paration de la requ?te avec le LIMIT  
-$sql = "SELECT * FROM $tbl_appproduit_sortie  ORDER BY idvente  DESC LIMIT ".$_GET['debut']." OFFSET ".$nb_affichage_par_page;  //ASC
+$sql = "SELECT * FROM $tbl_appproduit_sortie  ORDER BY idvente  DESC LIMIT ".$nb_affichage_par_page." OFFSET ".$_GET['debut'];  //ASC
  
 // on ex?cute la requ?te  
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
