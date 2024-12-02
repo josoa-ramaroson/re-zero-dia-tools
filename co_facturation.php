@@ -48,8 +48,7 @@ $bquartier=$rowu['bquartier'];
 $sql = "SELECT count(*) FROM $tbl_contact where ville='$bville'  and quartier='$bquartier' and statut='6' and  (Tarif='2' or Tarif='3' or Tarif='4' or Tarif='6' or Tarif='7' or Tarif='8' or Tarif='9' or Tarif='11') and id IN (SELECT id FROM $tbl_factsave where annee='$anneec' and nserie='$nserie')";  
 $resultat = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
 
-$nb_total = mysqli_fetch_array($resultat);
-// echo 'Nombre de clients à facturer : '.$nb_total[0];  
+$nb_total = mysqli_fetch_array($resultat);  
 if (($nb_total = $nb_total[0]) == 0) {  
 echo '</br>';
 echo 'Veuillez choisir la Ville et le quartier pour debuter la saisie des factures';  
@@ -58,17 +57,8 @@ else {
 if (!isset($_GET['debut'])) $_GET['debut'] = 0; 
 $nb_affichage_par_page = 1; 
 $sql = "SELECT * FROM $tbl_contact where  ville='$bville'  and quartier='$bquartier' and statut='6' and  (Tarif='2' or Tarif='3' or Tarif='4' or Tarif='6' or Tarif='7' or Tarif='8' or Tarif='9' or Tarif='11') and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec'  and nserie='$nserie') ORDER BY id ASC LIMIT ".$nb_affichage_par_page." OFFSET ".$_GET['debut'];  
-// $sql = "SELECT * FROM $tbl_contact where  ville='$bville'  and quartier='$bquartier' and statut='6' and  (Tarif='2' or Tarif='3' or Tarif='4' or Tarif='6' or Tarif='7' or Tarif='8' or Tarif='9' or Tarif='11') and id NOT IN(SELECT id FROM $tbl_factsave where annee='$anneec'  and nserie='$nserie') ORDER BY id ASC LIMIT 1 OFFSET ".$_GET['debut'];  
-// var_dump($sql);
-$res = mysqli_query($linki, $sql);
-// var_dump($res);
-$test = mysqli_num_rows($res);
-echo "Nombre d'entrées: ".$test;
-//  die();
 
 $req = mysqli_query($linki,$sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error($linki));  
-
-// var_dump($req);
 
 	//recherche du repport 
 ?>
