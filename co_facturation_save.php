@@ -43,7 +43,7 @@ exit;
 
 $Tarif=addslashes($_POST['Tarif']);
 $sql82 ="SELECT * FROM tarif where idt='$Tarif'";
-var_dump($sql82);
+// var_dump($sql82);
 $result82 = mysqli_query($linki,$sql82);
 while ($row82 = mysqli_fetch_assoc($result82)) {
 $t1=$row82['t1'];
@@ -55,7 +55,7 @@ $alpha=$row82['alpha'];
 
 $c=$nf-$n;
 //$q = 20;
-var_dump($nf);die();
+// var_dump($nf);die();
 
 if ($c < $q)  {$c1 = $c; $c2 = 0;}
 if ($c == $q) {$c1 = $c; $c2 = 0;}
