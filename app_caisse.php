@@ -1,4 +1,4 @@
-<?php
+ <?php
 require("session.php"); 
 require_once('calendar/classes/tc_calendar.php');
 
