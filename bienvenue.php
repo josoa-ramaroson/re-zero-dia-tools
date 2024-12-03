@@ -26,7 +26,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="/welcome.php">
-            <i class="fas fa-laptop-code"></i> D-IA TOols
+            <i class="fas fa-laptop-code"></i> D-IA Tools
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>

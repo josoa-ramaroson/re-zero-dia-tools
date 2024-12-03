@@ -4,7 +4,7 @@ Require("session.php");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	 <link rel="stylesheet" href="css/stylechat.css">
+<!--	 <link rel="stylesheet" href="css/stylechat.css">-->
 </head>
 <?php
 Require("bienvenue.php");    // on appelle la page contenant la fonction

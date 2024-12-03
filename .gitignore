@@ -21,3 +21,4 @@ upload
 logs
 logs/*
 logs*
+/.idea
